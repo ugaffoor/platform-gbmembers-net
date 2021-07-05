@@ -4,7 +4,7 @@
     {
       "name": "Billing Company",
       "values": [
-        "Payline"
+        "Bambora"
       ]
     },
     {
@@ -34,19 +34,25 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "http://localhost:8081/billingservice"
+        "https://services.gbmembers.net/billingservice"
+      ]
+    },
+    {
+      "name": "Kinetic Email Server URL",
+      "values": [
+        "https://services.gbmembers.net/mail-handler"
       ]
     },
     {
       "name": "Kinetic Messaging Server URL",
       "values": [
-        "https://gbbilling.com.au:8443/gbmembers-messaging"
+        "https://services.gbmembers.net/gbmembers-messaging"
       ]
     },
     {
       "name": "Lead Source Values",
       "values": [
-        "Brochure,Facebook,Facebook Ad,Family,Google+,Google Ad,Instagram,Instagram Ad,Internal Referral,Leaflet,Linkedin,Magazine,Newspaper,Phone Call,Poster,Signage,Television,Twitter,Website,Word of Mouth,Walk-In,Other Advertising"
+        "Demo / Special Classes,Referral,Direct Mail,Drive-By,Facebook/IG Ads,Google Search,Anti-Bullying Campaign,Yelp,Family"
       ]
     },
     {
@@ -190,6 +196,15 @@
   ],
   "slug": "gbmembers",
   "webApis": [
-
+    {
+      "method": "POST",
+      "securityPolicies": [
+        {
+          "endpoint": "Execution",
+          "name": "Everyone"
+        }
+      ],
+      "slug": "billing-transaction"
+    }
   ]
 }

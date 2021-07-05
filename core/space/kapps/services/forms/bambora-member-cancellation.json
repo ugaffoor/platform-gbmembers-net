@@ -44,6 +44,36 @@
     },
     {
       "model": "Members",
+      "name": "Get Member by Username",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${identity('username')}",
+          "name": "username"
+        }
+      ],
+      "qualification": "Get Member by Username",
+      "status": "Active"
+    },
+    {
+      "model": "Service Member Submissions",
+      "name": "Get PaySmart Member Cancellations",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Member GUID')}",
+          "name": "Member GUID"
+        }
+      ],
+      "qualification": "Get PaySmart Member Cancellation",
+      "status": "Active"
+    },
+    {
+      "model": "Members",
       "name": "Members",
       "order": [
 
@@ -58,13 +88,13 @@
   "categorizations": [
     {
       "category": {
-        "slug": "payline-billing"
+        "slug": "bambora-billing"
       }
     }
   ],
-  "customHeadContent": "",
-  "description": "Paysmart Request to freeze a Membership",
-  "name": "Payline Membership Freeze",
+  "customHeadContent": "<style>\n  .hidden{\n   display:none; \n  }\n  body a {\n      color: #003b72;\n  }  \n</style>\n",
+  "description": "Bambora Request to cancel a Membership",
+  "name": "Bambora Member Cancellation",
   "notes": null,
   "pages": [
     {
@@ -72,6 +102,69 @@
       "displayCondition": null,
       "displayPage": null,
       "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Current Cancellation",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "cancellations",
+              "text": "<div>\n  <table>\n    <tbody  id=\"cancellationsTableBody\">      \n    </tbody>\n  </table>\n</div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Not to be Completed",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "MessageOne",
+              "text": "<p>This form must be initiated by the a Gracie Barra Representative.</p>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Invalid Member",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Message",
+              "text": "<p>This Member Cancellation form was not intended for you to complete. Please contact your GB School to inform them of the mistake.</p>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
         {
           "type": "section",
           "renderType": null,
@@ -103,7 +196,7 @@
                   "name": "Get Member",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "loadingDetails=true;\nK('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n\t\tloadingDetails=false;\n\n    K('section[Member Select Space]').hide();    \n    $.ajax({\n      method: \"POST\",\n      url: K('space').attributes(\"Kinetic Billing Server URL\")+\"/billingInfo\",\n      data: JSON.stringify({ \n        customerId: bridgedData['Billing Customer Id'],\n        space: K('space').slug(),\n        billingService: K('space').attributes(\"Billing Company\"),\n      }),\n      headers: {\n        'Accept': 'application/json, text/plain, */*',\n        'Content-Type': 'application/json;charset=UTF-8'\n    \t}\n    })\n      .done(function( data ) {\n        if (data.data===null) {\n          K('field[Next Billing Date]').value(\"\");\n          K('field[Billing Period]').value(\"\");\n        } else {\n          K('field[Next Billing Date]').value(moment(data.data['nextBillingDate'],'DD-MM-YYYY').format('YYYY-MM-DD'));\n          K('field[Billing Period]').value(data.data['paymentPeriod']);\n          \n          bundle.config.widgets.xdsoftDatepickerRemove({\n              element: K(\"form\").find(\"#dateoflastpayment\")[0]\n          });          \n          bundle.config.widgets.xdsoftDatepickerRemove({\n              element: K(\"form\").find(\"#datepaymentsresume\")[0]\n          });          \n          period=1;\n          span=\"days\";\n          if (data.data['paymentPeriod']===\"Weekly\"){\n            period=7;\n          }\n          if (data.data['paymentPeriod']===\"Fortnightly\"){\n            period=14;\n          }\n          if (data.data['paymentPeriod']===\"Monthly\"){\n            span=\"months\";\n          }\n          debugger;\n         allowDates=[];\n          for (i=0;i<22;i++){\n            if (moment(data.data['nextBillingDate'], \"DD-MM-YYYY\").add(period*i,span).isAfter(moment())) {\n \t\t\t\t\t\t  allowDates[allowDates.length]=moment(data.data['nextBillingDate'], \"DD-MM-YYYY\").add(period*i,span).format(\"DD-MM-YYYY\");\n            }\n\t\t\t\t\t}\n          bundle.config.widgets.xdsoftDatepicker({\n              element: K(\"form\").find(\"#dateoflastpayment\")[0],\n              timepicker: false,\n              displayDateFormat: \"DD/MM/YYYY\",\n              options: {\n                allowDates: allowDates,\n                formatDate:\"d-m-Y\",\n                validateOnBlur:false\n              },\n              onSelectDate:function(ct,$i){\n                K('field[Date of Last Payment]').value(ct.dateFormat('YYYY-MM-DD'));\n              }                \n          });          \n          bundle.config.widgets.xdsoftDatepicker({\n              element: K(\"form\").find(\"#datepaymentsresume\")[0],\n              timepicker: false,\n              displayDateFormat: \"DD/MM/YYYY\",\n              options: {\n                allowDates: allowDates,\n                formatDate:\"d-m-Y\",\n                validateOnBlur:false\n              },\n              onSelectDate:function(ct,$i){\n                K('field[Date Payments Resume]').value(ct.dateFormat('YYYY-MM-DD'));\n              }                \n          });          \n        }\n      });    \n }\n});",
+                  "code": "loadingDetails=true;\nK('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n\n    var paymentPeriod=bridgedData['Billing Period'];\n    var period=\"months\";\n    if (paymentPeriod===\"Daily\") {\n      period=\"days\";\n    } else if (paymentPeriod===\"Weekly\") {\n      period=\"weeks\"; \n    } else if (paymentPeriod===\"Monthly\") {\n      period=\"months\"; \n    } \n\n    var nextBillingDate=moment(bridgedData['Billing Start Date'],\"YYYY-MM-DD\").add(moment().diff(moment(bridgedData['Billing Start Date'],\"YYYY-MM-DD\"), period)+1,period);\n    K('field[Billing Next Date]').value(nextBillingDate.format('YYYY-MM-DD'));\n    K('field[The last debit will be taken on]').value(nextBillingDate.format('YYYY-MM-DD'));\n\n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#lastdebitdate\")[0]\n    });          \n    period=1;\n    span=\"days\";\n    if (paymentPeriod===\"Weekly\"){\n      period=7;\n    }\n    if (paymentPeriod===\"Fortnightly\"){\n      period=14;\n    }\n    if (paymentPeriod===\"Monthly\"){\n      span=\"months\";\n    }\n    allowDates=[];\n    for (i=0;i<22;i++){\n      if (moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).isAfter(moment())) {\n        allowDates[allowDates.length]=moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).format(\"DD-MM-YYYY\");\n      }\n    }\n    debugger;\n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#lastdebitdate\")[0],\n      timepicker: false,\n      displayDateFormat: \"DD/MM/YYYY\",\n      options: {\n        allowDates: allowDates,\n        formatDate:\"d-m-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[The last debit will be taken on]').value(ct.dateFormat('YYYY-MM-DD'));\n      }                \n    });          \n    loadingDetails=false;\n    \n    K('section[Member Select Space]').hide();    \n   }\n});\n\n",
                   "bridgedResourceName": null,
                   "runIf": "values('Members')!==\"\""
                 },
@@ -111,7 +204,7 @@
                   "name": "Clear Member Details",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "K('field[Member ID]').value(\"\");\nK('field[Student First Name]').value(\"\");\nK('field[Student Last Name]').value(\"\");\nK('field[Billing Customer Id]').value(\"\");\n\nK('section[Member Select Space]').show();    \n",
+                  "code": "K('field[Member ID]').value(\"\");\nK('field[Student First Name]').value(\"\");\nK('field[Student Last Name]').value(\"\");\nK('field[Billing Customer Id]').value(\"\");\n\nK('section[Student Information]').hide();\nK('section[Cancellation Information]').hide();\nK('section[Terms]').hide();\nK('section[List of Documents]').hide();    \n\nK('section[Member Select Space]').show();    \n",
                   "runIf": "values('Members')===null"
                 }
               ],
@@ -159,6 +252,31 @@
               "required": false,
               "requiredMessage": null,
               "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Member GUID",
+              "label": "Member GUID",
+              "key": "f49",
+              "defaultValue": "${resources('Get Member by Username:id')}",
+              "defaultResourceName": "Get Member by Username",
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
@@ -251,7 +369,7 @@
               "type": "field",
               "name": "Billing Customer Id",
               "label": "Billing Customer Id",
-              "key": "f49",
+              "key": "f47",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": false,
@@ -276,6 +394,56 @@
               "type": "field",
               "name": "Billing Period",
               "label": "Billing Period",
+              "key": "f48",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Start Date",
+              "label": "Billing Start Date",
+              "key": "f50",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Next Date",
+              "label": "Billing Next Date",
               "key": "f51",
               "defaultValue": null,
               "defaultResourceName": null,
@@ -299,9 +467,9 @@
             },
             {
               "type": "field",
-              "name": "Next Billing Date",
-              "label": "Last Billing Date",
-              "key": "f50",
+              "name": "Payment Frequency",
+              "label": "Payment Frequency",
+              "key": "f52",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -319,14 +487,40 @@
               "renderAttributes": {
               },
               "dataType": "string",
-              "renderType": "date"
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Next Billing Date",
+              "label": "Next Billing Date",
+              "key": "f53",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             }
           ]
         },
         {
           "type": "section",
           "renderType": null,
-          "name": "Freeze Information",
+          "name": "Cancellation Information",
           "title": "",
           "visible": "values('Members')!==null && ((typeof(loadingDetails) !== \"undefined\" && !loadingDetails) || form('review')) ",
           "omitWhenHidden": false,
@@ -335,8 +529,8 @@
           "elements": [
             {
               "type": "field",
-              "name": "Reason for freeze",
-              "label": "Reason for freeze",
+              "name": "Reason for cancellation",
+              "label": "Reason for cancellation",
               "key": "f40",
               "defaultValue": null,
               "defaultResourceName": null,
@@ -384,7 +578,7 @@
               "key": "f41",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": "values('Reason for freeze').indexOf(\"Other\")!=-1",
+              "visible": "values('Reason for cancellation').indexOf(\"Other\")!=-1",
               "enabled": true,
               "required": false,
               "requiredMessage": null,
@@ -405,16 +599,16 @@
             {
               "type": "content",
               "renderType": "html",
-              "name": "Date of Last Payment HMTL",
-              "text": "<div class=\"form-group required\" linkedField=\"Date of Last Payment\">  \n  <label class=\"field-label\" for=\"dateoflastpayment\">Freeze Date(no payment made)</label>\n  <div id=\"dateoflastpayment\"></div>\n</div>",
+              "name": "The last debit will be taken on HTML",
+              "text": "<div class=\"form-group required\" linkedField=\"The last debit will be taken on\">  \n  <label class=\"field-label\" for=\"lastdebitdate\">Cancellation Date(no payment made)</label>\n  <div id=\"lastdebitdate\"></div>\n</div>",
               "visible": "!form('review')",
               "renderAttributes": {
               }
             },
             {
               "type": "field",
-              "name": "Date of Last Payment",
-              "label": "Freeze Date(last payment made)",
+              "name": "The last debit will be taken on",
+              "label": "Cancellation Date(no payment made)",
               "key": "f32",
               "defaultValue": null,
               "defaultResourceName": null,
@@ -461,9 +655,9 @@
             },
             {
               "type": "field",
-              "name": "Resume Date Option",
-              "label": "Resume Date Option",
-              "key": "f52",
+              "name": "Please explain in detail your request for cancellation",
+              "label": "Please explain in detail your request for cancellation",
+              "key": "f43",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -481,52 +675,8 @@
               "renderAttributes": {
               },
               "dataType": "string",
-              "renderType": "radio",
-              "choicesResourceName": null,
-              "choicesRunIf": null,
-              "choices": [
-                {
-                  "label": "Until Further Notice",
-                  "value": "Until Further Notice"
-                },
-                {
-                  "label": "Resume Date",
-                  "value": "Resume Date"
-                }
-              ]
-            },
-            {
-              "type": "content",
-              "renderType": "html",
-              "name": "Date Payments Resume HTML",
-              "text": "<div class=\"form-group required\" linkedField=\"Date Payments Resume\">  \n  <label class=\"field-label\" for=\"datepaymentsresume\">Date Payments Resume</label>\n  <div id=\"datepaymentsresume\"></div>\n</div>",
-              "visible": "!form('review') && values('Resume Date Option')===\"Resume Date\"",
-              "renderAttributes": {
-              }
-            },
-            {
-              "type": "field",
-              "name": "Date Payments Resume",
-              "label": "Date Payments Resume",
-              "key": "f47",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": "form('review')",
-              "enabled": true,
-              "required": "values('Resume Date Option')===\"Resume Date\"",
-              "requiredMessage": null,
-              "omitWhenHidden": false,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "date"
+              "renderType": "text",
+              "rows": 5
             }
           ]
         },
@@ -544,7 +694,7 @@
               "type": "content",
               "renderType": "html",
               "name": "Document Information",
-              "text": "<p>Please provide the list of documents you are submitting to prove the reason for your membership freeze request.</p>",
+              "text": "<p>Please provide the list of documents you are submitting to prove the reason for your membership cancellation request.</p>",
               "visible": true,
               "renderAttributes": {
               }
@@ -640,34 +790,10 @@
               "type": "content",
               "renderType": "html",
               "name": "Terms Information",
-              "text": "<div class=\"emf-section-text\">The student's installment payments must be current and up to date prior to submitting the application.<br>\n<br>\nThirty (30) days written notice must be given at the school, and the minimum freeze period is thirty (30) days.<br>\n<br>\nYour request will be evaluated and you will be contacted within 3 business days.</div>",
+              "text": "<div class=\"emf-section-text\">The student's installment payments must be current and up to date prior to submitting the application.<br>\n<br>\nFor any cancellation request, the appropriate document must be provided:<br>\n<br>\n- Change of address; bill or lease agreement for the new address<br>\n- Medical condition; doctor's letter proving the permanent disability<br>\n- Document proving deployment<br>\n- Document proving loss of employment<br>\n<br>\nStudents who would like to cancel without reason must give 60 days written notice.<br>\n<br>\nYour request will be evaluated and you will be contacted within 3 business days.</div>",
               "visible": true,
               "renderAttributes": {
               }
-            },
-            {
-              "type": "field",
-              "name": "Term Date",
-              "label": "Term Date",
-              "key": "f48",
-              "defaultValue": null,
-              "defaultResourceName": null,
-              "visible": true,
-              "enabled": true,
-              "required": true,
-              "requiredMessage": null,
-              "omitWhenHidden": null,
-              "pattern": null,
-              "constraints": [
-
-              ],
-              "events": [
-
-              ],
-              "renderAttributes": {
-              },
-              "dataType": "string",
-              "renderType": "date"
             },
             {
               "type": "content",
@@ -728,6 +854,16 @@
         },
         {
           "type": "button",
+          "label": "Save for Member to Complete",
+          "name": "Save for Member to Complete",
+          "visible": true,
+          "enabled": "values('The last debit will be taken on')!==null && values('Can train up until')!==null",
+          "renderType": "save",
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "button",
           "label": "Submit",
           "name": "Submit Button",
           "visible": true,
@@ -749,26 +885,34 @@
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "bundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\n"
+          "code": "K('bridgedResource[Get PaySmart Member Cancellations]').load({\n  attributes: ['id'],\n  values: {},\n  success: function(bridgedData) {\n    debugger;\n    if (bridgedData.length===0 && !form('review')) {\n\t\t\tif (!K(\"identity\").teams.includes(\"Role::Program Managers\")) {\n        K('section[Select Member]').hide();\n        K('section[Not to be Completed]').show();\n        K('button[Save for Member to Complete]').hide();\n        K('button[Submit Button]').hide();        \n      } else {      \n        K('bridgedResource[Members]').load({\n          attributes: ['First Name', 'Last Name','id'],\n          values: {},\n          success: function(bridgedData) {\n            var options=[];\n            $.each( bridgedData, function( key, value ) {\n              console.log(value['id']+\"-\"+value['First Name']+\" \"+value['Last Name']);\n              options[options.length]={'label':value['First Name']+\" \"+value['Last Name'], 'value':value['id']};\n            });\n            var label=null;\n         debugger;   \n            K('field[Members]').options(options);\n            if (!K(\"identity\").teams.includes(\"Role::Program Managers\")) {\n              K('field[Members]').value(K('field[Member GUID]').value());\n              $(K('field[Members]').options()).each(function(index) {\n               if (K('field[Members]').options()[index].value===K('field[Member GUID]').value()) {\n                label=K('field[Members]').options()[index].label;\n                }\n              });      \n            }\n\n            bundle.config.widgets.selectMenu({\n              element: K(\"form\").find(\"#selectMemberMenu\")[0],\n              options: K('field[Members]').options(),\n              onChange: function(option) {\n                K('field[Members]').value(option.value);\n                setTimeout(function(){\n                  $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n                },100);\n              },\n              value: K('field[Members]').value(),\n            });\n          }\n        });\n      }\n    } else {\n      debugger;\n      if (!form('review')) {\n        var html=\"\";\n        bridgedData.forEach(elem => {\n          if (elem['Payment Method']===\"\") {\n            html=html+\"<tr><td><p>Click <a href='/#/kapps/services/categories/billing-registration/member-cancellation/\"+elem.id+\"'>here</a> to complete your Member Cancellation form.</td></tr>\";\n          } else {\n            html=html+\"<tr><td><p>Click <a href='/#/kapps/services/requests/request/\"+elem.id+\"/review'>here</a> to view your Member Cancellation form.</td></tr>\";\n          }\n        });\n        $(\"#cancellationsTableBody\").append(html);\n        K('section[Current Cancellation]').show();\n        K('section[Select Member]').hide();\n        K('button[Save for Member to Complete]').hide();\n        K('button[Submit Button]').hide();\n      } else {        \n      }\n    }\n  }\n});\n",
+          "runIf": "values('Member ID')===null"
         },
         {
           "name": "Handle Errors",
           "type": "Submit",
           "action": "Custom",
-          "code": "if (!jQuery.isEmptyObject(K('form').validate())){\n  setTimeout(function(){\n  if ($(\".has-error\").length>0){\n    $(\".has-error\").each(function(i,l) { \n      if ($(l).attr(\"data-element-name\").indexOf(\"Signature\")!==-1) {\n        sigCanElName=$(l).attr(\"data-element-name\").replace(\"Encoded \",\"\");\n        $(K('content['+sigCanElName+']').element()).addClass(\"has-error\");\n      } else {\n        $(\"div[linkedField='\"+$(l).attr(\"data-element-name\")+\"']\").addClass(\"has-error\");\n      }\n    })  \n    $('.main-container').animate({\n      scrollTop: 0\n    },500);\n  }\n  },100);\n}"
+          "code": "if (!jQuery.isEmptyObject(K('form').validate())){\n  setTimeout(function(){\n  if ($(\".has-error\").length>0){\n    $(\".has-error\").each(function(i,l) { \n      if ($(l).attr(\"data-element-name\").indexOf(\"Signature\")!==-1) {\n        sigCanElName=$(l).attr(\"data-element-name\").replace(\"Encoded \",\"\");\n        $(K('content['+sigCanElName+']').element()).addClass(\"has-error\");\n      }\n    })  \n    $('.main-container').animate({\n      scrollTop: 0\n    },500);\n  }\n  },100);\n}"
         },
         {
           "name": "Load Review",
           "type": "Load",
           "action": "Custom",
-          "code": "K('section[Member Select Space]').hide();    \n",
+          "code": "K('section[Student Information]').show();\nK('section[Cancellation Information]').show();\nK('section[List of Documents]').show();    \nK('section[Terms]').show();\n\nK('section[Member Select Space]').hide();    \n",
           "runIf": "form('review')"
         },
         {
           "name": "Set Defaults",
           "type": "Load",
           "action": "Custom",
-          "code": "if (K('field[Members]').value()===null) {\n\tloadingDetails=true;\n  K('section[Member Select Space]').show();   \n}else {\n\tloadingDetails=false;\n  K('section[Member Select Space]').hide();   \n}\nK('field[Term Date]').value(moment().format(\"YYYY-MM-DD\"));"
+          "code": "if (K('field[Members]').value()===null) {\n\tloadingDetails=true;\n  K('section[Member Select Space]').show();   \n}else {\n\tloadingDetails=false;\n  K('section[Member Select Space]').hide();   \n}"
+        },
+        {
+          "name": "Member User Load",
+          "type": "Load",
+          "action": "Custom",
+          "code": "debugger;\nif (!K(\"identity\").teams.includes(\"Role::Program Managers\")) {\n  if (K('field[Member ID]').value().toLowerCase()!==K(\"identity\").username) {\n    K('section[Select Member]').hide();\n    K('section[Invalid Member]').show();\n    K('section[Student Information]').hide();  \n    K('section[Cancellation Information]').hide();\n    K('section[List of Documents]').hide();\n    K('section[Terms]').hide();\n\t\tK('button[Save for Member to Complete]').hide();\n    K('button[Submit Button]').hide();\n  } else {\n    K('section[Select Member]').hide();\n    K('section[Student Information]').show();  \n    if (K('field[Members]').value()!==\"\") {\n      K('field[The last debit will be taken on]').disable();\n      K('field[Can train up until]').disable();\n      \n      K('content[The last debit will be taken on HTML]').hide();\n      K('field[The last debit will be taken on]').disable();\n      K('field[The last debit will be taken on]').show();\n      K('field[Can train up until]').disable();\n      K('button[Save for Member to Complete]').hide();\n    }\n  }\n} else {\n    K('section[Select Member]').hide();\n    K('section[Student Information]').show();  \n  \n    $.ajax({\n      type: \"post\",\n        url: K('space').attributes(\"Kinetic Billing Server URL\")+\"/billingInfo\",\n        data: JSON.stringify({ \n          customerId: K('field[Billing Customer Id]').value(),\n          space: K('space').slug(),\n          billingService: K('space').attributes(\"Billing Company\"),\n        }),\n        headers: {\n          'Accept': 'application/json, text/plain, */*',\n          'Content-Type': 'application/json;charset=UTF-8'\n      \t}\n      })\n      .done(function( data ) {\n        if (data.data===null) {\n  \t      K('field[The last debit will be taken on]').value(\"\");\n          K('field[Billing Period]').value(\"\");\n        } else {\n          bundle.config.widgets.xdsoftDatepickerRemove({\n              element: K(\"form\").find(\"#lastdebitdate\")[0]\n          });          \n          period=7;\n          if (data.data['paymentPeriod']===\"Fortnightly\"){\n            period=14;\n          }\n          allowDates=[];\n          for (i=0;i<20;i++){\n            if (moment(data.data['nextBillingDate'], \"DD-MM-YYYY\").add(period*i,\"days\").isAfter(moment())) {\n  \t\t\t\t\t\t  allowDates[allowDates.length]=moment(data.data['nextBillingDate'], \"DD-MM-YYYY\").add(period*i,\"days\").format(\"DD-MM-YYYY\");\n            }\n  \t\t\t\t}\n          debugger;\n          bundle.config.widgets.xdsoftDatepicker({\n              element: K(\"form\").find(\"#lastdebitdate\")[0],\n              timepicker: false,\n              displayDateFormat: \"d/m/Y\",\n            \tvalue:  K('field[The last debit will be taken on]').value(),\n              value_format: \"YYYY-MM-DD\",\n              options: {\n                allowDates: allowDates,\n                formatDate:\"d-m-Y\",\n                validateOnBlur:false\n              },\n              onSelectDate:function(ct,$i){\n                K('field[The last debit will be taken on]').value(ct.dateFormat('YYYY-MM-DD'));\n              }                \n          });          \n         }\n      });\n  \n}",
+          "runIf": "values('Member ID')!==null && !form('review')"
         }
       ],
       "name": "Instalment Information",
@@ -779,18 +923,18 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Payline Program Managers"
+      "name": "Bombara Authenticated Users"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Program Managers"
+      "name": "Bombara Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Program Managers"
+      "name": "Bombara Authenticated Users"
     }
   ],
-  "slug": "payline-membership-freeze",
+  "slug": "bambora-member-cancellation",
   "status": "Active",
   "submissionLabelExpression": "${values('Student First Name')} ${values('Student Last Name')}",
   "type": "Service"

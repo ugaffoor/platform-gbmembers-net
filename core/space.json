@@ -32,15 +32,27 @@
       ]
     },
     {
+      "name": "AWS GBShop Bucket",
+      "values": [
+        "us-gbmembers-gbshop"
+      ]
+    },
+    {
+      "name": "AWS Photos Bucket",
+      "values": [
+        "us-gbmembers-photos"
+      ]
+    },
+    {
       "name": "AWS Region",
       "values": [
-        "ap-southeast-2"
+        "us-east-2"
       ]
     },
     {
       "name": "Billing Company",
       "values": [
-        "Payline"
+        "Bambora"
       ]
     },
     {
@@ -127,7 +139,7 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "http://localhost:8081/billingservice"
+        "https://services.gbmembers.net/billingservice"
       ]
     },
     {
@@ -145,31 +157,37 @@
     {
       "name": "Payment Frequencies",
       "values": [
-        "Fortnightly,Weekly,Monthly"
+        "Daily,Weekly,Fortnightly,Monthly"
+      ]
+    },
+    {
+      "name": "PhoneNumber Format",
+      "values": [
+        "###-###-####"
       ]
     },
     {
       "name": "POS Accepted Cards",
       "values": [
-        "['visa','mastercard','amex']"
+        "[\"amex\", \"visa\", \"mastercard\"]"
       ]
     },
     {
       "name": "POS Service URL",
       "values": [
-        "http://localhost:8081/billingservice/processPOS"
+        "https://services.gbmembers.net/billingservice/processPOS"
       ]
     },
     {
       "name": "POS System",
       "values": [
-        "Payline"
+        "Bambora"
       ]
     },
     {
       "name": "Postcode Format",
       "values": [
-        "######"
+        "#####"
       ]
     },
     {
@@ -187,25 +205,25 @@
     {
       "name": "School Address",
       "values": [
-        "Unit 3 456 Main St, NSW 2000"
+        "123 Somewhere St"
       ]
     },
     {
       "name": "School Email",
       "values": [
-        "test.gboceania@gmail.com"
+        "gbusbeta2@gmail.com"
       ]
     },
     {
       "name": "School Legal Name",
       "values": [
-        "Members Template Pty LTD"
+        "GB US Beta Inc"
       ]
     },
     {
       "name": "School Name",
       "values": [
-        "Gracie Barra Template"
+        "GB US Beta"
       ]
     },
     {
@@ -217,19 +235,19 @@
     {
       "name": "School Telephone",
       "values": [
-        "02 9899 7778"
+        "6510001111"
       ]
     },
     {
       "name": "School Timetable URL",
       "values": [
-        "https://gbsydney.com.au/timetable"
+        ""
       ]
     },
     {
       "name": "School Website",
       "values": [
-        "https://gboceania.com.au"
+        ""
       ]
     },
     {
@@ -274,9 +292,27 @@
       ]
     },
     {
+      "name": "Task Server Host",
+      "values": [
+        "usbeta.gbmembers.net"
+      ]
+    },
+    {
+      "name": "Task Server Scheme",
+      "values": [
+        "https"
+      ]
+    },
+    {
       "name": "Task Server Space Slug",
       "values": [
-        "gbmembers-template"
+        "usbeta"
+      ]
+    },
+    {
+      "name": "Task Server Url",
+      "values": [
+        "https://usbeta.gbmembers.net/kinetic-task"
       ]
     },
     {
@@ -288,7 +324,7 @@
     {
       "name": "Web Server Url",
       "values": [
-        "https://gbmembers-template.kinops.io"
+        "https://usbeta.gbmembers.net"
       ]
     }
   ],
@@ -299,15 +335,15 @@
   "defaultDatastoreFormConfirmationPage": null,
   "defaultDatastoreFormDisplayPage": null,
   "defaultLocale": "en-US",
-  "defaultTimezone": "Australia/Brisbane",
+  "defaultTimezone": "America/Los_Angeles",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers-v2",
+  "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
   "enabledLocales": [
     "en-AU",
     "en-US"
   ],
   "loginPage": null,
-  "name": "GBMembers Template",
+  "name": "GB US Beta",
   "platformComponents": {
     "agents": [
 
@@ -342,7 +378,7 @@
   ],
   "sessionInactiveLimitInSeconds": 2592000,
   "sharedBundleBase": "hydrogen-v1",
-  "slug": "gbmembers-template",
+  "slug": "usbeta",
   "trustedFrameDomains": [
 
   ],

@@ -60,6 +60,14 @@
         {
           "name": "Get Payline Member Registrations",
           "query": "kappSlug=services&formSlug=payline-member-registration&limit=10&q=values[Members]=\"${parameters('Member GUID')}\""
+        },
+        {
+          "name": "Get Bambora Member Cancellation",
+          "query": "kappSlug=services&formSlug=bambora-member-cancellation&limit=10&q=values[Members]=\"${parameters('Member GUID')}\""
+        },
+        {
+          "name": "Get Bambora Member Registrations",
+          "query": "kappSlug=services&formSlug=bambora-member-registration&limit=10&q=values[Members]=\"${parameters('Member GUID')}\""
         }
       ],
       "structure": "Submissions"
@@ -67,6 +75,24 @@
   ],
   "name": "Service Member Submissions",
   "qualifications": [
+    {
+      "name": "Get Bambora Member Cancellation",
+      "parameters": [
+        {
+          "name": "Member GUID"
+        }
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "Get Bambora Member Registrations",
+      "parameters": [
+        {
+          "name": "Member GUID"
+        }
+      ],
+      "resultType": "Multiple"
+    },
     {
       "name": "Get Payline Member Cancellation",
       "parameters": [

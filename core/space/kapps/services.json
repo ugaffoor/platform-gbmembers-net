@@ -47,7 +47,7 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "https://simplebilling.co.in:8443/billingservice"
+        "https://services.gbmembers.net/billingservice"
       ]
     },
     {

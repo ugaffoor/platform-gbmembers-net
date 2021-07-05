@@ -53,6 +53,21 @@
       "status": "Active"
     },
     {
+      "model": "Email Templates",
+      "name": "Get Lead Email by Name",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Template Name')}",
+          "name": "name"
+        }
+      ],
+      "qualification": "Get Email Template by Name",
+      "status": "Active"
+    },
+    {
       "model": "Call Scripts",
       "name": "Get Lead Script",
       "order": [
@@ -65,6 +80,21 @@
         }
       ],
       "qualification": "Get Script",
+      "status": "Active"
+    },
+    {
+      "model": "Call Scripts",
+      "name": "Get Lead Script by Name",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Template Name')}",
+          "name": "name"
+        }
+      ],
+      "qualification": "Get Script By Name",
       "status": "Active"
     },
     {
@@ -83,6 +113,21 @@
       "status": "Active"
     },
     {
+      "model": "SMS Templates",
+      "name": "Get Lead SMS by Name",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Template Name')}",
+          "name": "name"
+        }
+      ],
+      "qualification": "Get SMS Template by Name",
+      "status": "Active"
+    },
+    {
       "model": "Email Templates",
       "name": "Get Member Email",
       "order": [
@@ -95,6 +140,21 @@
         }
       ],
       "qualification": "Get Email Template",
+      "status": "Active"
+    },
+    {
+      "model": "Email Templates",
+      "name": "Get Member Email by Name",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Template Name')}",
+          "name": "name"
+        }
+      ],
+      "qualification": "Get Email Template by Name",
       "status": "Active"
     },
     {
@@ -113,6 +173,21 @@
       "status": "Active"
     },
     {
+      "model": "Call Scripts",
+      "name": "Get Member Script by Name",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Template Name')}",
+          "name": "name"
+        }
+      ],
+      "qualification": "Get Script By Name",
+      "status": "Active"
+    },
+    {
       "model": "SMS Templates",
       "name": "Get Member SMS",
       "order": [
@@ -125,6 +200,21 @@
         }
       ],
       "qualification": "Get SMS Template",
+      "status": "Active"
+    },
+    {
+      "model": "SMS Templates",
+      "name": "Get Member SMS by Name",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Template Name')}",
+          "name": "name"
+        }
+      ],
+      "qualification": "Get SMS Template by Name",
       "status": "Active"
     },
     {
@@ -1000,7 +1090,7 @@
                   "name": "Get Email",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "$(K('content[Content View]').element()).html(resource['Email Content']);\nK('field[Template Name]').value(resource['Template Name']);",
+                  "code": "debugger;\n$(K('content[Content View]').element()).html(resource['Email Content']);\nK('field[Template Name]').value(resource['Template Name']);",
                   "bridgedResourceName": "Get Member Email"
                 }
               ],
@@ -1076,7 +1166,54 @@
         }
       ],
       "events": [
-
+        {
+          "name": "Load Member Email Template Preview",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(K('content[Content View]').element()).html(resource[0]['Email Content']);\nK('field[Template Name]').value(resource[0]['Template Name']);",
+          "runIf": "values('Record Type')===\"Member\" && values('Contact Type')===\"Email\" && values('Template Name')!==null",
+          "bridgedResourceName": "Get Member Email by Name"
+        },
+        {
+          "name": "Load Lead Email Template Preview",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(K('content[Content View]').element()).html(resource[0]['Email Content']);\nK('field[Template Name]').value(resource[0]['Template Name']);",
+          "runIf": "values('Record Type')===\"Lead\" && values('Contact Type')===\"Email\" && values('Template Name')!==null",
+          "bridgedResourceName": "Get Lead Email by Name"
+        },
+        {
+          "name": "Load Lead Call Template Preview",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(K('content[Content View]').element()).html(resource[0]['Script']);\nK('field[Template Name]').value(resource[0]['Script Name']);",
+          "runIf": "values('Record Type')===\"Lead\" && values('Contact Type')===\"Call\" && values('Template Name')!==null",
+          "bridgedResourceName": "Get Lead Script by Name"
+        },
+        {
+          "name": "Load Member Call Template Preview",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(K('content[Content View]').element()).html(resource[0]['Script']);\nK('field[Template Name]').value(resource[0]['Script Name']);",
+          "runIf": "values('Record Type')===\"Member\" && values('Contact Type')===\"Call\" && values('Template Name')!==null",
+          "bridgedResourceName": "Get Member Script by Name"
+        },
+        {
+          "name": "Load Lead SMS Template Preview",
+          "type": "Load",
+          "action": "Custom",
+          "code": "debugger;\n$(K('content[Content View]').element()).html(resource[0]['SMS Content']);\nK('field[Template Name]').value(resource[0]['Template Name']);",
+          "runIf": "values('Record Type')===\"Lead\" && values('Contact Type')===\"SMS\" && values('Template Name')!==null",
+          "bridgedResourceName": "Get Lead SMS by Name"
+        },
+        {
+          "name": "Load Member SMS Template Preview",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(K('content[Content View]').element()).html(resource[0]['SMS Content']);\nK('field[Template Name]').value(resource[0]['Template Name']);",
+          "runIf": "values('Record Type')===\"Member\" && values('Contact Type')===\"SMS\" && values('Template Name')!==null",
+          "bridgedResourceName": "Get Member SMS by Name"
+        }
       ],
       "name": "Main",
       "renderType": "submittable",
@@ -1090,7 +1227,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Data Admins"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",

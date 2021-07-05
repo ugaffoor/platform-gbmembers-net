@@ -51,6 +51,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Region of Cards used (leave empty to default, US)",
+    "name": "Card Region"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Slug of this spaces Catalog Kapp (typically catalog)",
     "name": "Catalog Kapp Slug"
   },

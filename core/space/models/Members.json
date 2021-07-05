@@ -5,10 +5,19 @@
       "name": "Address"
     },
     {
+      "name": "Admin Fee"
+    },
+    {
       "name": "Billing Customer Id"
     },
     {
       "name": "Billing Customer Reference"
+    },
+    {
+      "name": "Billing Period"
+    },
+    {
+      "name": "Billing Start Date"
     },
     {
       "name": "Billing User"
@@ -36,6 +45,9 @@
     },
     {
       "name": "First Name"
+    },
+    {
+      "name": "First Payment"
     },
     {
       "name": "Gender"
@@ -68,6 +80,12 @@
       "name": "Next Schedule Promotion"
     },
     {
+      "name": "Payment"
+    },
+    {
+      "name": "Payment Method"
+    },
+    {
       "name": "Phone Number"
     },
     {
@@ -81,6 +99,9 @@
     },
     {
       "name": "Ranking Program"
+    },
+    {
+      "name": "Setup Fee"
     },
     {
       "name": "State"
@@ -208,6 +229,34 @@
         {
           "name": "Max Weekly Classes",
           "structureField": "${fields('values[Max Weekly Classes]')}"
+        },
+        {
+          "name": "Payment",
+          "structureField": "${fields('values[Payment]')}"
+        },
+        {
+          "name": "First Payment",
+          "structureField": "${fields('values[First Payment]')}"
+        },
+        {
+          "name": "Billing Period",
+          "structureField": "${fields('values[Billing Period]')}"
+        },
+        {
+          "name": "Billing Start Date",
+          "structureField": "${fields('values[Billing Start Date]')}"
+        },
+        {
+          "name": "Payment Method",
+          "structureField": "${fields('values[Payment Method]')}"
+        },
+        {
+          "name": "Admin Fee",
+          "structureField": "${fields('values[Admin Fee]')}"
+        },
+        {
+          "name": "Setup Fee",
+          "structureField": "${fields('values[Setup Fee]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",
@@ -223,7 +272,7 @@
         },
         {
           "name": "Get Billing Members",
-          "query": "kappSlug=gbmembers&formSlug=member&q=values[Billing User]=\"YES\" AND values[Status]=\"Active\""
+          "query": "kappSlug=gbmembers&formSlug=member&q=values[Billing User]=\"YES\" AND (values[Status]=\"Active\" OR values[Status]=\"Pending Freeze\" OR values[Status]=\"Pending Cancellation\")"
         },
         {
           "name": "Get Frozen Members",

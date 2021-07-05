@@ -120,6 +120,9 @@
   ],
   "formTypes": [
     {
+      "name": "Approval"
+    },
+    {
       "name": "Console"
     },
     {
@@ -132,13 +135,22 @@
       "name": "Service"
     },
     {
+      "name": "Service Description"
+    },
+    {
       "name": "Subconsole"
+    },
+    {
+      "name": "Subservice"
     },
     {
       "name": "Template"
     },
     {
       "name": "Utility"
+    },
+    {
+      "name": "Work Order"
     }
   ],
   "loginPage": null,

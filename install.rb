@@ -317,6 +317,13 @@ space_sdk.update_space({
   "defaultTimezone" => defaultTimezone,
 })
 
+vars_gbmembers_attributes_map = (vars["data"].has_key?("gbmembers") &&
+                             vars["data"]["gbmembers"].has_key?("attributesMap")) ?
+  vars["data"]["gbmembers"]["attributesMap"] : {}
+
+space_sdk.update_kapp("gbmembers",{
+    "attributesMap" => vars_gbmembers_attributes_map,
+})
 # import kapp & datastore submissions
 Dir["#{core_path}/**/*.ndjson"].sort.each do |filename|
   is_datastore = filename.include?("/datastore/forms/")

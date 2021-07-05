@@ -969,8 +969,12 @@
   ],
   "securityPolicies": [
     {
+      "endpoint": "Display",
+      "name": "Authenticated Users"
+    },
+    {
       "endpoint": "Submission Access",
-      "name": "Everyone"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",

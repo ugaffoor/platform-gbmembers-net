@@ -572,8 +572,16 @@
   ],
   "securityPolicies": [
     {
-      "endpoint": "Submission Access",
+      "endpoint": "Display",
       "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Data Admins"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Data Admins"
     }
   ],
   "slug": "pos-order",

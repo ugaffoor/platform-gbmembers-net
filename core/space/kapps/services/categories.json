@@ -3,6 +3,13 @@
     "attributes": [
 
     ],
+    "name": "Bambora Billing",
+    "slug": "bambora-billing"
+  },
+  {
+    "attributes": [
+
+    ],
     "name": "Billing Registration",
     "slug": "billing-registration"
   },

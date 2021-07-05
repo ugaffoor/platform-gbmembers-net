@@ -231,7 +231,7 @@ logger.info "  exporting with api: #{task_sdk.api_url}"
 
 # export all sources, trees, routines, handlers,
 # groups, policy rules, categories, and access keys
-task_sdk.export
+#task_sdk.export
 
 # ------------------------------------------------------------------------------
 # complete

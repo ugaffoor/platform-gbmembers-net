@@ -118,6 +118,11 @@
   "categorizations": [
     {
       "category": {
+        "slug": "bambora-billing"
+      }
+    },
+    {
+      "category": {
         "slug": "billing-registration"
       }
     }
