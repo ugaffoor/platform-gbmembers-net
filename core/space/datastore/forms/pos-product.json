@@ -974,7 +974,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Authenticated Users"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",

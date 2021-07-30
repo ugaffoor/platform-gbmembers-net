@@ -156,6 +156,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Percentage sales tax value to be applied on top of sub-total",
+    "name": "POS Sales Tax"
+  },
+  {
+    "allowsMultiple": false,
     "description": "URL for processing POS credit card",
     "name": "POS Service URL"
   },
@@ -186,8 +191,18 @@
   },
   {
     "allowsMultiple": false,
+    "description": "ISO 3166-1 country code for School (US-United States, CA-Canada)",
+    "name": "School Country Code"
+  },
+  {
+    "allowsMultiple": false,
     "description": null,
     "name": "School Email"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Additional school email addresses that can be applied to Email campaigns",
+    "name": "School Email Alias"
   },
   {
     "allowsMultiple": false,

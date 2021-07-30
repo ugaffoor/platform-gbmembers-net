@@ -62,6 +62,12 @@
       ]
     },
     {
+      "name": "Card Region",
+      "values": [
+        "US"
+      ]
+    },
+    {
       "name": "Catalog Kapp Slug",
       "values": [
         "services"
@@ -206,6 +212,12 @@
       "name": "School Address",
       "values": [
         "123 Somewhere St"
+      ]
+    },
+    {
+      "name": "School Country Code",
+      "values": [
+        "US"
       ]
     },
     {
