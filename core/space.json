@@ -179,6 +179,18 @@
       ]
     },
     {
+      "name": "POS Sales Tax",
+      "values": [
+        "0.012"
+      ]
+    },
+    {
+      "name": "POS Sales Tax Label",
+      "values": [
+        "Sales Tax"
+      ]
+    },
+    {
       "name": "POS Service URL",
       "values": [
         "https://services.gbmembers.net/billingservice/processPOS"
@@ -224,6 +236,12 @@
       "name": "School Email",
       "values": [
         "gbusbeta2@gmail.com"
+      ]
+    },
+    {
+      "name": "School Freeze Charge",
+      "values": [
+        "25"
       ]
     },
     {

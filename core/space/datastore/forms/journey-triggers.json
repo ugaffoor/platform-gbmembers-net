@@ -335,6 +335,13 @@
       "unique": false
     },
     {
+      "name": "values[Additional Qual]",
+      "parts": [
+        "values[Additional Qual]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Belt]",
       "parts": [
         "values[Belt]"
@@ -1106,6 +1113,40 @@
               }
             }
           ]
+        },
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "Additional Qual",
+          "text": "<div id=\"additionalHelp\" style=\"display:none\">\n<p>This is an advanced qualification and should be used with care.<br>\nThis allows additional values to be used to filter Members or Leads<br>\nAn example, ['values']['Ranking Program']=='GB1'</p>\n</div>",
+          "visible": true,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "field",
+          "name": "Additional Qual",
+          "label": "Additional Qualication <a href=\"javascript:$('#additionalHelp').toggle()\"> (Help)</a>",
+          "key": "f19",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
         },
         {
           "type": "field",

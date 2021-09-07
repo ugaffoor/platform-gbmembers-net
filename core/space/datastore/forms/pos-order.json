@@ -618,5 +618,5 @@
   ],
   "slug": "pos-order",
   "status": "New",
-  "submissionLabelExpression": "${values('Person Type')}-${values('Person Name')}-${values('Payment Type')}-${values('Date time processed')}-${values('Transaction ID')}"
+  "submissionLabelExpression": "${values('Person Type')}-${values('Person Name')}-${values('Payment Type')}-${values('Date time processed')}-${values('Transaction ID')}-${values('Sales Tax')}"
 }

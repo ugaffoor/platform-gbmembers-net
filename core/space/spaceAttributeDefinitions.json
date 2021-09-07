@@ -161,6 +161,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Surcharge, Sales Tax, GST, VAT etc..",
+    "name": "POS Sales Tax Label"
+  },
+  {
+    "allowsMultiple": false,
     "description": "URL for processing POS credit card",
     "name": "POS Service URL"
   },
@@ -203,6 +208,11 @@
     "allowsMultiple": false,
     "description": "Additional school email addresses that can be applied to Email campaigns",
     "name": "School Email Alias"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Charge to be applied when an account is Frozen, such as 25 ($25 per month).\nFor Fortnightly, this will be divided by 2.",
+    "name": "School Freeze Charge"
   },
   {
     "allowsMultiple": false,
