@@ -11,7 +11,7 @@
   "bundlePath": null,
   "defaultFormConfirmationPage": null,
   "defaultFormDisplayPage": null,
-  "defaultSubmissionLabelExpression": null,
+  "defaultSubmissionLabelExpression": "",
   "displayType": "Display Page",
   "displayValue": null,
   "fields": [
@@ -92,7 +92,7 @@
     }
   ],
   "loginPage": null,
-  "name": "Registrations",
+  "name": "Waivers",
   "resetPasswordPage": null,
   "securityPolicies": [
     {

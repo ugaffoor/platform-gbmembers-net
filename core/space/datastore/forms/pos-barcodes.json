@@ -182,7 +182,18 @@
     }
   ],
   "securityPolicies": [
-
+    {
+      "endpoint": "Display",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Authenticated Users"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Authenticated Users"
+    }
   ],
   "slug": "pos-barcodes",
   "status": "New",

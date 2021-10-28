@@ -1179,6 +1179,31 @@
         },
         {
           "type": "field",
+          "name": "POS Profile ID",
+          "label": "POS Profile ID",
+          "key": "f48",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
           "name": "SMS Messages",
           "label": "SMS Messages",
           "key": "f24",

@@ -71,6 +71,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Currency value for Billing POS (AUD, USD ....)",
+    "name": "Currency"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Allows Space Administrators to set a default Kapp that will display for Users in their Space. This can be overridden by a User Profile Attribute.",
     "name": "Default Kapp Display"
   },
@@ -138,6 +143,11 @@
     "allowsMultiple": false,
     "description": "Discounts for family members",
     "name": "Member Discounts"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Membership email, may be different to School email",
+    "name": "Membership Email"
   },
   {
     "allowsMultiple": false,

@@ -43,7 +43,6 @@ end
 # determine the directory paths
 platform_template_path = File.dirname(File.expand_path(__FILE__))
 core_path = File.join(platform_template_path, "core")
-task_path = File.join(platform_template_path, "task")
 
 # ------------------------------------------------------------------------------
 # methods
@@ -70,7 +69,6 @@ end
 SUBMISSIONS_TO_EXPORT = [
   { "datastore" => true, "formSlug" => "notification-data" },
   { "datastore" => true, "formSlug" => "notification-template-dates" },
-  { "datastore" => true, "formSlug" => "all-scripts" },
   { "datastore" => true, "formSlug" => "email-templates" },
   { "datastore" => true, "formSlug" => "membership-fees" },
   { "datastore" => true, "formSlug" => "membership-types" },
@@ -84,6 +82,7 @@ SUBMISSIONS_TO_EXPORT = [
   { "datastore" => true, "formSlug" => "pos-categories" },
   { "datastore" => true, "formSlug" => "pos-discounts" },
   { "datastore" => true, "formSlug" => "pos-product" },
+  { "datastore" => true, "formSlug" => "pos-barcodes" },
 ]
 
 REMOVE_DATA_PROPERTIES = [
@@ -171,6 +170,31 @@ Dir["#{core_path}/**/*.json"].each do |filename|
   File.open(filename, "w") { |file| file.write(JSON.pretty_generate(model)) }
 end
 
+# use a custom Http client because the translations SDK doesn't yet exist
+custom_http = KineticSdk::CustomHttp.new({
+  username: vars["core"]["service_user_username"],
+  password: vars["core"]["service_user_password"],
+  options: {
+    log_level: "off"
+  }
+})
+
+# export translations
+path = "#{space_sdk.api_url}/translations/entries"
+parameters = { "export" => "csv" }
+response = space_sdk.get(path, parameters, custom_http.default_headers)
+if response.status != 200
+  raise "Unable to export translations: #{response.inspect}"
+end
+exported_entries = response.content_string
+translationFilename = "#{core_path}/space/translations.csv"
+# create directory if not exists and write the file
+dir_path = File.dirname(translationFilename)
+FileUtils.mkdir_p(dir_path, :mode => 0700)
+File.open(translationFilename, 'w') { |file| file.write(exported_entries) }
+puts "Translations exported to #{translationFilename}"
+
+
 # export submissions
 logger.info "  - exporting and writing submission data"
 SUBMISSIONS_TO_EXPORT.each do |item|
@@ -212,26 +236,6 @@ SUBMISSIONS_TO_EXPORT.each do |item|
   file.close()
 end
 logger.info "  - submission data export complete"
-
-# ------------------------------------------------------------------------------
-# task
-# ------------------------------------------------------------------------------
-logger.info "Removing files and folders from the existing \"#{template_name}\" template."
-FileUtils.rm_rf Dir.glob("#{task_path}/*")
-
-task_sdk = KineticSdk::Task.new({
-  app_server_url: "#{vars["core"]["proxy_url"]}/task",
-  username: vars["core"]["service_user_username"],
-  password: vars["core"]["service_user_password"],
-  options: http_options.merge({ export_directory: "#{task_path}" }),
-})
-
-logger.info "Exporting the task components for the \"#{template_name}\" template."
-logger.info "  exporting with api: #{task_sdk.api_url}"
-
-# export all sources, trees, routines, handlers,
-# groups, policy rules, categories, and access keys
-#task_sdk.export
 
 # ------------------------------------------------------------------------------
 # complete

@@ -145,7 +145,7 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "https://services.gbmembers.net/billingservice"
+        "http://localhost:8081/billingservice"
       ]
     },
     {
@@ -193,7 +193,7 @@
     {
       "name": "POS Service URL",
       "values": [
-        "https://services.gbmembers.net/billingservice/processPOS"
+        "http://localhost:8081/billingservice/processPOS"
       ]
     },
     {
