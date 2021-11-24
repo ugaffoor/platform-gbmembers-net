@@ -145,7 +145,7 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "http://localhost:8081/billingservice"
+        "https://services.gbmembers.net/billingservice"
       ]
     },
     {
@@ -193,7 +193,7 @@
     {
       "name": "POS Service URL",
       "values": [
-        "http://localhost:8081/billingservice/processPOS"
+        "https://services.gbmembers.net/billingservice/processPOS"
       ]
     },
     {
@@ -284,6 +284,12 @@
       "name": "Service Days Due",
       "values": [
         "7"
+      ]
+    },
+    {
+      "name": "Services Slugs",
+      "values": [
+        "bambora-change-payment-type,bambora-member-cancellation,bambora-member-registration,bambora-membership-freeze,bambora-resume-frozen-member,bambora-setup-biller-details,cash-member-registration,incident-report,kids-registration,mens-registration,pink-team-registration"
       ]
     },
     {

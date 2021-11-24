@@ -145,6 +145,27 @@
         {
           "type": "section",
           "renderType": null,
+          "name": "Not a Member",
+          "title": "",
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Not a member info",
+              "text": "<div class=\"notAMember\">\n  <h1>Not a Member</h1>\n  <p>The account being used is not a Member.</p>\n  <p>Only accounts with a Member record can book a class.</p>\n</div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
           "name": "Already Booked",
           "title": "",
           "visible": false,
@@ -868,7 +889,7 @@
           "name": "Load Form",
           "type": "Load",
           "action": "Custom",
-          "code": "$(\"#bookingQuestions\").append(K('section[Booking Questions]').element());\n\nsetTimeout(function() {\nK('field[Today]').value(moment().format(\"YYYY-MM-DD\"));\n  K('bridgedResource[Load Member]').load({\n    success: function(bridgedData) {\n      memberGUID=bridgedData.id;\n      K('field[Member ID]').value(bridgedData['Member ID']);\n      K('field[Member GUID]').value(bridgedData['id']);\n      K('field[Member Program]').value(bridgedData['Program']);\n      K('field[Max Weekly Classes]').value(bridgedData['Max Weekly Classes']);\n      \n      K('field[Member Name]').value(bridgedData['First Name']+' '+bridgedData['Last Name']);\n      debugger;\n      if (bridgedData['Covid19 Waiver']===undefined || bridgedData['Covid19 Waiver']===\"\" || bridgedData['Covid19 Waiver']===\"NOT Agreed\") {\n        $(\"#initialise\").hide();\n        debugger;\n        $(\"#legalName\").text(K('space').attributes('School Legal Name'));\n        K('section[Waiver Section]').show();      \n      } else {\n        setTimeout(function() {loadClasses();}, 200);\n      } \n    }\n  });\n\n  \n}, 100);\n",
+          "code": "$(\"#bookingQuestions\").append(K('section[Booking Questions]').element());\n\nsetTimeout(function() {\nK('field[Today]').value(moment().format(\"YYYY-MM-DD\"));\n  K('bridgedResource[Load Member]').load({\n    success: function(bridgedData) {\n      debugger;\n\t\t\tif (bridgedData!==null) {\n        memberGUID=bridgedData.id;\n        K('field[Member ID]').value(bridgedData['Member ID']);\n        K('field[Member GUID]').value(bridgedData['id']);\n        K('field[Member Program]').value(bridgedData['Program']);\n        K('field[Max Weekly Classes]').value(bridgedData['Max Weekly Classes']);\n\n        K('field[Member Name]').value(bridgedData['First Name']+' '+bridgedData['Last Name']);\n        debugger;\n        if (bridgedData['Covid19 Waiver']===undefined || bridgedData['Covid19 Waiver']===\"\" || bridgedData['Covid19 Waiver']===\"NOT Agreed\") {\n          $(\"#initialise\").hide();\n          debugger;\n          $(\"#legalName\").text(K('space').attributes('School Legal Name'));\n          K('section[Waiver Section]').show();      \n        } else {\n          setTimeout(function() {loadClasses();}, 200);\n        } \n      } else {\n        \t$(\"#initialise\").hide();\n          K('section[Not a Member]').show();      \t\t\t\t        \n      }\n    }\n  });\n\n  \n}, 100);\n",
           "runIf": "!form('review')"
         }
       ],

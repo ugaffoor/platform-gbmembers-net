@@ -119,7 +119,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\nvar discounts;\nfunction completeTableChange(){\n  K('field[Family Member]').value(\"\");\n\t$(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(\"Select...\");  \t\t\t\t\n  K('field[Programs]').value(\"\");\n  K('field[tableMemberID]').value(\"\");\n  K('field[tableMemberName]').value(\"\");\n  K('field[tableProgram]').value(\"\");\n  K('field[tableFee]').value(\"\");\n  var useDiscounts=K('field[Apply Discounts]').value();\n  // Sort table\n  viewerConfig.response.sort(function(a, b){return b.cost - a.cost});\n  // Let calculate the discounts\n  viewerConfig.response.forEach(function(item, index){\n    if (useDiscounts===\"Yes\" && index<=discounts.length-1){\n      item.discount=discounts[index].discount;\n      item.fee=((new Number(item.cost))*discounts[index].cost).toFixed(2);\n    } else if (useDiscounts===\"Yes\" && index>discounts.length-1 && discounts.length>0){\n      item.discount=discounts[discounts.length-1].discount;\n      item.fee=((new Number(item.cost))*discounts[discounts.length-1].cost).toFixed(2);\n    } else {\n    item.discount=\"0%\";\n    item.fee=((new Number(item.cost))).toFixed(2);\n    }\n  });\n  \n  // Set payment value\n  var total=0;\n  viewerConfig.response.forEach(function(item, index){\n\t\ttotal=total+(new Number((new Number(item.fee)).toFixed(2)));\n  });\n  K('field[Payment Total]').value(total);\n\n  global.viewerConfig.renderer.type($('#memberTableDiv'),global.viewerConfig);\n\n  $('#member-table tbody tr').on( 'click', function () {\n    if ( $(this).hasClass('selected') ) {\n      $(this).removeClass('selected');\n    }\n    else {\n      $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n      $(this).addClass('selected');\n    }\n  } );  \n  \n}  \n  \nfunction memberProgramAdded(memberID, feeProgram) {\n  found=false;\n\n  viewerConfig.response.forEach(function(item){\n      if (item.id===memberID && item.feeProgram===feeProgram) {\n        found=true;\n      }\n  });  \n  return found;\n}\n</script>",
+  "customHeadContent": "<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n</script>\n<script>\nvar discounts;\nfunction completeTableChange(){\n  K('field[Family Member]').value(\"\");\n\t$(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(\"Select...\");  \t\t\t\t\n  K('field[Programs]').value(\"\");\n  K('field[tableMemberID]').value(\"\");\n  K('field[tableMemberName]').value(\"\");\n  K('field[tableProgram]').value(\"\");\n  K('field[tableFee]').value(\"\");\n  var useDiscounts=K('field[Apply Discounts]').value();\n  // Sort table\n  viewerConfig.response.sort(function(a, b){return b.cost - a.cost});\n  // Let calculate the discounts\n  viewerConfig.response.forEach(function(item, index){\n    if (useDiscounts===\"Yes\" && index<=discounts.length-1){\n      item.discount=discounts[index].discount;\n      item.fee=((new Number(item.cost))*discounts[index].cost).toFixed(2);\n    } else if (useDiscounts===\"Yes\" && index>discounts.length-1 && discounts.length>0){\n      item.discount=discounts[discounts.length-1].discount;\n      item.fee=((new Number(item.cost))*discounts[discounts.length-1].cost).toFixed(2);\n    } else {\n    item.discount=\"0%\";\n    item.fee=((new Number(item.cost))).toFixed(2);\n    }\n  });\n  \n  // Set payment value\n  var total=0;\n  viewerConfig.response.forEach(function(item, index){\n\t\ttotal=total+(new Number((new Number(item.fee)).toFixed(2)));\n  });\n  K('field[Payment Total]').value(total);\n\n  global.viewerConfig.renderer.type($('#memberTableDiv'),global.viewerConfig);\n\n  $('#member-table tbody tr').on( 'click', function () {\n    if ( $(this).hasClass('selected') ) {\n      $(this).removeClass('selected');\n    }\n    else {\n      $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n      $(this).addClass('selected');\n    }\n  } );  \n  \n}  \n  \nfunction memberProgramAdded(memberID, feeProgram) {\n  found=false;\n\n  viewerConfig.response.forEach(function(item){\n      if (item.id===memberID && item.feeProgram===feeProgram) {\n        found=true;\n      }\n  });  \n  return found;\n}\n</script>",
   "description": "Bambora Use to configure an existing Billing Member to assign programs and fees and manage Families.",
   "name": "Bambora Setup Biller Details(Family)",
   "notes": null,
@@ -160,7 +160,7 @@
                   "name": "Get Members",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    debugger;\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Reference]').value(bridgedData['Billing Customer Reference']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n    K('field[Current Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Current Payment]').value(bridgedData['Payment']);\n    K('field[Current Fee]').value(bridgedData['Admin Fee'].replace(\"$\",\"\"));\n    K('section[Student Information]').show();\n    var paymentPeriod=bridgedData['Billing Period'];\n    var period=\"months\";\n    if (paymentPeriod===\"Daily\") {\n      period=\"days\";\n    } else if (paymentPeriod===\"Weekly\") {\n      period=\"weeks\"; \n    } else if (paymentPeriod===\"Monthly\") {\n      period=\"months\"; \n    } \n    var nextBillingDate=moment(bridgedData['Billing Start Date'],\"YYYY-MM-DD\").add(moment().diff(moment(bridgedData['Billing Start Date'],\"YYYY-MM-DD\"), period)+1,period);\n    K('field[Date Affective]').value(nextBillingDate.format('YYYY-MM-DD'));\n//    K('field[Billing Next Date]').value(nextBillingDate.format('YYYY-MM-DD'));\n\n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#dateaffective\")[0]\n    });          \n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#datepaymentsresume\")[0]\n    });          \n    period=1;\n    span=\"days\";\n    if (paymentPeriod===\"Weekly\"){\n      period=7;\n    }\n    if (paymentPeriod===\"Fortnightly\"){\n      period=14;\n    }\n    if (paymentPeriod===\"Monthly\"){\n      span=\"months\";\n    }\n    debugger;\n    var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000);\n    allowDates=[];\n    for (i=0;i<22;i++){\n      if (moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).isAfter(moment())) {\n        allowDates[allowDates.length]=moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).format(\"DD-MM-YYYY\");\n      }\n    }\n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#dateaffective\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n       /* allowDates: allowDates,*/\n        startDate: tomorrow,\n        minDate: 0,\n        formatDate:\"m-d-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[Date Affective]').value(ct.dateFormat('YYYY-MM-DD'));\n      }                \n    });          \n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#datepaymentsresume\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n       /* allowDates: allowDates,*/\n        startDate: tomorrow,\n        minDate: 0,\n        formatDate:\"m-d-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[Date Payments Resume]').value(ct.dateFormat('YYYY-MM-DD'));\n      },                \n      onGenerate: function( ct ){\n      $('.xdsoft_today')\n        .addClass('xdsoft_disabled');\n    }                \n    });          \n  }\n});",
+                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    debugger;\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Reference]').value(bridgedData['Billing Customer Reference']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n    K('field[Current Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Current Payment]').value(bridgedData['Payment']);\n    K('field[Payment Total]').value(bridgedData['Payment']);\n    K('field[Current Fee]').value(bridgedData['Admin Fee'].replace(\"$\",\"\"));\n    K('section[Student Information]').show();\n    var paymentPeriod=bridgedData['Billing Period'];\n    var period=\"months\";\n    if (paymentPeriod===\"Daily\") {\n      period=\"days\";\n    } else if (paymentPeriod===\"Weekly\") {\n      period=\"weeks\"; \n    } else if (paymentPeriod===\"Monthly\") {\n      period=\"months\"; \n    } \n    var nextBillingDate=moment(bridgedData['Billing Start Date'],\"YYYY-MM-DD\").add(moment().diff(moment(bridgedData['Billing Start Date'],\"YYYY-MM-DD\"), period)+1,period);\n //   K('field[Date Affective]').value(nextBillingDate.format('YYYY-MM-DD'));\n//    K('field[Billing Next Date]').value(nextBillingDate.format('YYYY-MM-DD'));\n\n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#dateaffective\")[0]\n    });          \n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#datepaymentsresume\")[0]\n    });          \n    period=1;\n    span=\"days\";\n    if (paymentPeriod===\"Weekly\"){\n      period=7;\n    }\n    if (paymentPeriod===\"Fortnightly\"){\n      period=14;\n    }\n    if (paymentPeriod===\"Monthly\"){\n      span=\"months\";\n    }\n    debugger;\n    var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000);\n    allowDates=[];\n    for (i=0;i<22;i++){\n      if (moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).isAfter(moment())) {\n        allowDates[allowDates.length]=moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).format(\"DD-MM-YYYY\");\n      }\n    }\n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#dateaffective\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n       /* allowDates: allowDates,*/\n        startDate: tomorrow,\n        minDate: 0,\n        formatDate:\"m-d-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[Date Affective]').value(ct.dateFormat('YYYY-MM-DD'));\n      }                \n    });          \n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#datepaymentsresume\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n       /* allowDates: allowDates,*/\n        startDate: tomorrow,\n        minDate: 0,\n        formatDate:\"m-d-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[Date Payments Resume]').value(ct.dateFormat('YYYY-MM-DD'));\n      },                \n      onGenerate: function( ct ){\n      $('.xdsoft_today')\n        .addClass('xdsoft_disabled');\n    }                \n    });    \n    \n    var familyMembers=bridgedData['Billing Family Members'];\n    if (familyMembers!==\"\" && familyMembers!==null && familyMembers!==\"[]\"){\n      if (JSON.parse(familyMembers).length>1) {\n\t      K('field[Include Family Members]').value(\"Yes\");\n      } else {\n\t      K('field[Include Family Members]').value(\"No\");\n      }\n      K('field[membersJSON]').value(familyMembers);\n      K('field[feesJSON]').value(bridgedData['Family Fee Details']);\n      \n      viewerConfig.response = JSON.parse(K('field[feesJSON]').value());\n      DataViewer.renderResults($('#memberTableDiv'), viewerConfig);  \n      \n      $('#member-table tbody tr').on( 'click', function () {\n        if ( $(this).hasClass('selected') ) {\n          $(this).removeClass('selected');\n        }\n        else {\n          $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n          $(this).addClass('selected');\n        }\n      });  \n      \n    }\n  }\n});",
                   "bridgedResourceName": null,
                   "runIf": "values('Members')!==\"\""
                 },
@@ -286,11 +286,11 @@
               "key": "f55",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": false,
               "enabled": false,
               "required": false,
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
@@ -311,11 +311,11 @@
               "key": "f72",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": false,
               "enabled": false,
               "required": false,
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
@@ -336,11 +336,11 @@
               "key": "f60",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": false,
               "enabled": false,
               "required": false,
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
@@ -461,11 +461,11 @@
               "key": "f70",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": false,
               "enabled": false,
               "required": false,
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
@@ -580,7 +580,7 @@
               "name": "Payment Frequency",
               "label": "Payment Frequency",
               "key": "f40",
-              "defaultValue": "Fortnightly",
+              "defaultValue": "${values('Current Payment Frequency')}",
               "defaultResourceName": null,
               "visible": true,
               "enabled": true,
@@ -1072,7 +1072,7 @@
               "name": "Update Bambora",
               "label": "",
               "key": "f56",
-              "defaultValue": null,
+              "defaultValue": "Update Bambora",
               "defaultResourceName": null,
               "visible": true,
               "enabled": true,
@@ -1162,7 +1162,7 @@
                   "key": "f57",
                   "defaultValue": null,
                   "defaultResourceName": null,
-                  "visible": "form('review')",
+                  "visible": "form('review') ",
                   "enabled": true,
                   "required": "values('Update Bambora')==\"Update Bambora\"",
                   "requiredMessage": null,
@@ -1255,8 +1255,8 @@
               "renderType": null,
               "name": "Signature",
               "title": null,
-              "visible": true,
-              "omitWhenHidden": null,
+              "visible": false,
+              "omitWhenHidden": false,
               "renderAttributes": {
               },
               "elements": [
@@ -1335,7 +1335,7 @@
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "discounts=(K('space').attributes('Member Discounts')!==undefined ? JSON.parse(K('space').attributes('Member Discounts')) : []);  \n\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\n\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectFamilyMemberMenu\")[0],\n\toptions: K('field[Family Member]').options(),\n  onChange: function(option) {\n\t  K('field[Family Member]').value(option.value);\n    setTimeout(function(){\n      $(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Family Member]').value(),\n});\n",
+          "code": "discounts=(K('space').attributes('Member Discounts')!==undefined ? JSON.parse(K('space').attributes('Member Discounts')) : []);  \n\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\n\nif (GetURLParameter(\"id\")!==null) {\n  K('field[Members]').value(GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n\n\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectFamilyMemberMenu\")[0],\n\toptions: K('field[Family Member]').options(),\n  onChange: function(option) {\n\t  K('field[Family Member]').value(option.value);\n    setTimeout(function(){\n      $(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Family Member]').value(),\n});\n",
           "runIf": "!form('review')"
         },
         {

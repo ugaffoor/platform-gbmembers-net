@@ -261,6 +261,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Slugs needed to appears in the Services Report",
+    "name": "Services Slugs"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Use a shared workflow engine (true/false)?",
     "name": "Shared Workflow Engine"
   },
