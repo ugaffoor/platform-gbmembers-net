@@ -65,12 +65,12 @@
       "unique": false
     },
     {
-      "name": "values[Category],values[Template Name]:UNIQUE",
+      "name": "values[Category],values[Template Name]",
       "parts": [
         "values[Category]",
         "values[Template Name]"
       ],
-      "unique": true
+      "unique": false
     },
     {
       "name": "values[Email Content]",
@@ -94,11 +94,11 @@
       "unique": false
     },
     {
-      "name": "values[Template Name]:UNIQUE",
+      "name": "values[Template Name]",
       "parts": [
         "values[Template Name]"
       ],
-      "unique": true
+      "unique": false
     }
   ],
   "name": "Email Templates",

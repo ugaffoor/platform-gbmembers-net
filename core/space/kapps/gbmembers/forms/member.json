@@ -2330,6 +2330,6 @@
   ],
   "slug": "member",
   "status": "New",
-  "submissionLabelExpression": "${values('Member ID')}",
+  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')}-${values('Billing User')}-${values('Billing Start Date')}",
   "type": "Content"
 }

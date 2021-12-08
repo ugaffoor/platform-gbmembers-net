@@ -226,6 +226,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "From Alias name for school",
+    "name": "School From Alias"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Legal name used for Billing terms",
     "name": "School Legal Name"
   },
