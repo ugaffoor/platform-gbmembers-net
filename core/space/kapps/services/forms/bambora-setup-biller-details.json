@@ -602,7 +602,7 @@
                   "name": "Set Fees",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "/*if (K('field[Payment Frequency]').value()===\"Daily\"){\n  K('field[Admin Fee]').value(\"0.10\");\n} else if (K('field[Payment Frequency]').value()===\"Weekly\"){\n  K('field[Admin Fee]').value(\"0.50\");\n//  K('field[Setup Fee]').value(\"5.50\");\n} else if (K('field[Payment Frequency]').value()===\"Fortnightly\"){\n  K('field[Admin Fee]').value(\"0.99\");\n//  K('field[Setup Fee]').value(\"5.50\");\n} else if (K('field[Payment Frequency]').value()===\"Monthly\"){\n  K('field[Admin Fee]').value(\"1.99\");\n//  K('field[Setup Fee]').value(\"5.50\");\n} else if (K('field[Payment Frequency]').value()===\"Quarterly\"){\n  K('field[Admin Fee]').value(\"5.99\");\n//  K('field[Setup Fee]').value(\"5.50\");\n}*/\nK('field[Admin Fee]').value(\"1.33%\");\n",
+                  "code": "if (K('space').attributes('Ignore Admin Fee')!==\"YES\") {\n\tK('field[Admin Fee]').value(\"1.33%\");\n} else {\n\tK('field[Admin Fee]').value(\"0\");\n}\n",
                   "runIf": "values('Payment Frequency')!==null"
                 }
               ],
@@ -1380,7 +1380,7 @@
           "name": "Set Payment Frequencies",
           "type": "Load",
           "action": "Custom",
-          "code": "options=[];\nvar freqValue=K('field[Payment Frequency]').value();\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n\toptions[options.length]={'label':value,'value':value};\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nK('field[Payment Frequency]').disable();",
+          "code": "options=[];\nvar freqValue=K('field[Payment Frequency]').value();\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n\toptions[options.length]={'label':value,'value':value};\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nK('field[Payment Frequency]').disable();\n\nif (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n\tK('field[Current Fee]').hide();\n  K('field[Admin Fee]').hide();\n  K('field[Admin Fee]').value(\"0\");\n}",
           "runIf": ""
         },
         {

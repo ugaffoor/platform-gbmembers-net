@@ -126,6 +126,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "YES to not apply a Admin fee percentage",
+    "name": "Ignore Admin Fee"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Form used by Admins to mass invite others to kinops",
     "name": "Invite Others Form Slug"
   },
