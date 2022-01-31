@@ -1226,7 +1226,7 @@
               "type": "content",
               "renderType": "html",
               "name": "Person Signature",
-              "text": "<span>\n<i>I hereby acknowledge and understand that Brazilian Jiu Jitsu is a physical activity and learning self-defense skills involves some physical contact. GB Oceania Association Pty Ltd, <span id=\"legalName\"></span> and or its staff and student are not to be hold liable or responsible for any risks and/or injuries as a result of training Brazilian Jiu-Jitsu. \n</i>\n</span>\n<label class=\"field-label required\">Person Signature</label><div id=\"person-signature-canvas\"/>",
+              "text": "<span>\n<i>I hereby acknowledge and understand that Brazilian Jiu Jitsu is a physical activity and learning self-defense skills involves some physical contact. <span id=\"legalName\"></span> and or its staff and student are not to be hold liable or responsible for any risks and/or injuries as a result of training Brazilian Jiu-Jitsu. \n</i>\n</span>\n<label class=\"field-label required\">Person Signature</label><div id=\"person-signature-canvas\"/>",
               "visible": true,
               "renderAttributes": {
               }

@@ -1,6 +1,16 @@
 [
   {
     "allowsMultiple": false,
+    "description": "Set as YES to include\nInclude additional agenda options:\nOther\nPrefer not to answer",
+    "name": "Additional Gender Options"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Admin Charge used by US, initially set as 1.33%",
+    "name": "Admin Fee Charge"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Slug of this spaces Admin Kapp (typically admin)",
     "name": "Admin Kapp Slug"
   },

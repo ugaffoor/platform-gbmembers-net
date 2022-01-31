@@ -2,6 +2,18 @@
   "afterLogoutPath": "",
   "attributes": [
     {
+      "name": "Additional Gender Options",
+      "values": [
+        "YES"
+      ]
+    },
+    {
+      "name": "Admin Fee Charge",
+      "values": [
+        "1.33%"
+      ]
+    },
+    {
       "name": "Admin Kapp Slug",
       "values": [
         "admin"

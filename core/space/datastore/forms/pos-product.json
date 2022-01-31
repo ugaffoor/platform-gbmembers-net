@@ -798,6 +798,10 @@
               "value": "A5"
             },
             {
+              "label": "A6",
+              "value": "A6"
+            },
+            {
               "label": "F1",
               "value": "F1"
             },
@@ -816,6 +820,10 @@
             {
               "label": "F5",
               "value": "F5"
+            },
+            {
+              "label": "F6",
+              "value": "F6"
             },
             {
               "label": "Y0",
