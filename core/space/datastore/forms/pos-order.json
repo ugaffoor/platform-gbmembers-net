@@ -208,6 +208,10 @@
             {
               "label": "Ordered",
               "value": "Ordered"
+            },
+            {
+              "label": "Refunded",
+              "value": "Refunded"
             }
           ]
         },

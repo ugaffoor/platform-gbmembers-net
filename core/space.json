@@ -169,7 +169,7 @@
     {
       "name": "Member Discounts",
       "values": [
-        "[{\"discount\":\"0%\",\"cost\":1.0},{\"discount\":\"10%\",\"cost\":0.9},{\"discount\":\"20%\",\"cost\":0.8},{\"discount\":\"30%\",\"cost\":0.7}]"
+        "[]"
       ]
     },
     {
