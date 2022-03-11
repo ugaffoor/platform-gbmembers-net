@@ -573,6 +573,31 @@
               },
               "dataType": "string",
               "renderType": "date"
+            },
+            {
+              "type": "field",
+              "name": "Opt-Out",
+              "label": "Opt-Out",
+              "key": "f95",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             }
           ]
         },
@@ -889,7 +914,7 @@
               "type": "field",
               "name": "POS Profile ID",
               "label": "POS Profile ID",
-              "key": "f91",
+              "key": "f90",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -1462,7 +1487,7 @@
               "type": "field",
               "name": "Biller Migrated",
               "label": "Biller Migrated",
-              "key": "f90",
+              "key": "f91",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
@@ -2292,6 +2317,81 @@
           "rows": 1
         },
         {
+          "type": "field",
+          "name": "Student Covid Check",
+          "label": "Student Covid Check",
+          "key": "f92",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Mother Covid Check",
+          "label": "Mother Covid Check",
+          "key": "f93",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Father Covid Check",
+          "label": "Father Covid Check",
+          "key": "f94",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
           "type": "button",
           "label": "Submit",
           "name": "Submit Button",
@@ -2330,6 +2430,6 @@
   ],
   "slug": "member",
   "status": "New",
-  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')}-${values('Billing User')}-${values('Billing Start Date')}",
+  "submissionLabelExpression": "${values('Member ID')}-${values('POS Profile ID')}",
   "type": "Content"
 }

@@ -206,6 +206,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "A URL to open the schools Private Policy (a document or web page)",
+    "name": "Privacy Policy"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Slug of this spaces Queue Kapp (typically queue)",
     "name": "Queue Kapp Slug"
   },
