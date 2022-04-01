@@ -2,6 +2,9 @@
   "activeMappingName": "Service Member Submissions",
   "attributes": [
     {
+      "name": "coreState"
+    },
+    {
       "name": "id"
     },
     {
@@ -40,6 +43,10 @@
         {
           "name": "Payment Method",
           "structureField": "${fields('values[Payment Method]')}"
+        },
+        {
+          "name": "coreState",
+          "structureField": "${fields(\"coreState\")}"
         }
       ],
       "bridgeSlug": "kinetic-core",
