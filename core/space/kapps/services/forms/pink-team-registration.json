@@ -74,11 +74,7 @@
     }
   ],
   "categorizations": [
-    {
-      "category": {
-        "slug": "registrations"
-      }
-    }
+
   ],
   "customHeadContent": "<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n</script>\n<style>\nbody a {\n    color: #003b72;\n}    \n  .brochureImage{\n  \tbackground-image: url(https://s3-ap-southeast-2.amazonaws.com/gbfms-files/registration/Women.png);\n  \theight: 520px;\n    max-width: 640px;\t\t\n    background-size: contain;\n  }  \n  @media (min-width: 400px) {\n    .brochureImage{\n  \t\theight: 988px;\n    }\n  }\n#equipe {\n    display: block;\n    background: url(https://s3-ap-southeast-2.amazonaws.com/gbfms-files/registration/mother-baby.png) no-repeat;\n    background-size: contain;\n    height: 200px;\n  \tbackground-color: white;\n}  \n.emf-section-text {\n    font-family: Questrial;\n    color: rgb(96, 96, 96);\n    background-image: none;\n    font-size: 14px;\n}\n.emf-section-text {\n    clear: both;\n    font-size: 13px;\n    padding: 2px 0;\n}\n.programs {\n    font-family: \"Days One\";\n    font-size: 16px;\n    padding: 12px 0 0 250px;\n    display: block;\n}  \n#emf-li-16 .emf-field-grid, #emf-li-16 tr {\n    border: none;\n    border-top: 2px solid #000;\n}\n\n.emf-field-grid {\n    border-collapse: collapse;\n    margin: 0 0 .9em;\n    background: white;\n    width: 100%;\n    border: 1px solid #DEDEDE;\n    border-bottom: none;\n    clear: both;\n}\n#emf-li-16 .emf-field-grid, #emf-li-16 tr {\n    border: none;\n    border-top: 2px solid #000;\n}\n\n.emf-banding-head {\n    background-color: transparent;\n}\n.emf-banding-odd {\n    background-color: #fff;\n}\n.emf-field-grid th {\n    text-align: left;\n    font-weight: 700;\n}\n\n.emf-field-grid th, .emf-field-grid td {\n    border-bottom: 1px solid #DEDEDE;\n    padding: 8px;\n}\n#emf-container .emf-field-grid td {\n    border-left: 2px solid #000;\n    padding: 10px 0;\n    font-size: 18px;\n}\n\n#emf-container .emf-field-grid td {\n}\n#emf-form td {\n    padding: 2px;\n}\n.emf-field-grid td {\n    border-left: 1px solid #CCC;\n    text-align: center;\n    vertical-align: middle;\n}\n.emf-field-grid th, .emf-field-grid td {\n    border-bottom: 1px solid #DEDEDE;\n    padding: 8px;\n}\n#emf-li-16 input {\n    border: none;\n    padding: 0 5px;\n    height: 40px;\n    background-color: transparent;\n    outline: none;\n}\n#emf-form input, #emf-form select, #emf-form textarea {\n    max-width: 100%;\n}\n#curr {\n    display: block;\n    height: 250px;\n    background: url(https://s3-ap-southeast-2.amazonaws.com/gbfms-files/registration/learn-love-live.png) no-repeat left;\n    background-size: contain;\n}  \n#emf-li-37 {\n    background: url(https://s3-ap-southeast-2.amazonaws.com/gbfms-files/registration/Learn1.png) no-repeat;\n    background-size: contain;\n    height: 450px;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n</style>\n<script>\nfunction enabledAddressEdit(){\n  K('field[Address]').enable();\n  K('field[City]').enable();\n  K('field[State]').enable();\n  K('field[Postcode]').enable();\n}\nfunction geolocate() {\n  if (navigator.geolocation) {\n    navigator.geolocation.getCurrentPosition(function(position) {\n      var geolocation = {\n        lat: position.coords.latitude,\n        lng: position.coords.longitude\n      };\n      var circle = new google.maps.Circle(\n          {center: geolocation, radius: position.coords.accuracy});\n      autocomplete.setBounds(circle.getBounds());\n    });\n  }\n}\nfunction fillInAddress() {\n  K(\"field[Address]\").value(\"\");\n\n  // Get the place details from the autocomplete object.\n  var place = autocomplete.getPlace();\n\ndebugger;\n  // Get each component of the address from the place details,\n  // and then fill-in the corresponding field on the form.\n  for (var i = 0; i < place.address_components.length; i++) {\n    var addressType = place.address_components[i].types[0];\n\n    if (addressType===\"street_number\") {\n    \tK(\"field[Address]\").value(place.address_components[i][\"long_name\"]);\n    }\n    if (addressType===\"route\") {\n    \tK(\"field[Address]\").value(K(\"field[Address]\").value()+\" \"+place.address_components[i][\"long_name\"]);\n    }\n    if (addressType===\"locality\") {\n    \tK(\"field[City]\").value(place.address_components[i][\"long_name\"]);\n    }\n    if (addressType===\"administrative_area_level_1\") {\n    \tK(\"field[State]\").value(place.address_components[i][\"short_name\"]);\n    }\n    if (addressType===\"postal_code\") {\n    \tK(\"field[Postcode]\").value(place.address_components[i][\"short_name\"]);\n    }\n    if (addressType===\"country\") {\n    \tK(\"field[Country]\").value(place.address_components[i][\"long_name\"]);\n    }\n  }\n}  \nfunction initAutocomplete() {\n  debugger;\n  // Create the autocomplete object, restricting the search predictions to\n  // geographical location types.\n  autocomplete = new google.maps.places.Autocomplete(\n      document.getElementById('autocomplete'), {types: ['geocode']});\n\n  // Avoid paying for data that you don't need by restricting the set of\n  // place fields that are returned to just the address components.\n  autocomplete.setFields(['address_component']);\n\n  // When the user selects an address from the drop-down, populate the\n  // address fields in the form.\n  autocomplete.addListener('place_changed', fillInAddress);\n}  \n</script>\n\n<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyANn8OeuTR-YH0f-l7S-Qk04cROra8iUfM&libraries=places&callback=initAutocomplete\"\n        async defer>\n</script>",
   "description": "Pink Team Registration",
@@ -1363,6 +1359,40 @@
       ],
       "name": "Registration Information",
       "renderType": "submittable",
+      "type": "page"
+    },
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Thank you",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Info",
+              "text": "<img src=\"https://gbfms-files.s3-ap-southeast-2.amazonaws.com/GB+Name+Log.png\" alt=\"GB Logo\" class=\"GBLogo\">\n<br>\n<p>Thank you for completing the information required.</p>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Confirmation",
+      "renderType": "confirmation",
       "type": "page"
     }
   ],

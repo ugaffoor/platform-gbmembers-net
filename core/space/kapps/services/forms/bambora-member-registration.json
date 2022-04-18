@@ -1063,7 +1063,7 @@
             {
               "type": "field",
               "name": "Admin Fee",
-              "label": "Admin Fee",
+              "label": "<span id=\"admin_fee_label\">Admin Fee</span>",
               "key": "f41",
               "defaultValue": null,
               "defaultResourceName": null,
@@ -1529,7 +1529,7 @@
           "name": "Set Payment Frequencies",
           "type": "Load",
           "action": "Custom",
-          "code": "options=[];\nvar freqValue=K('field[Payment Frequency]').value();\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n\toptions[options.length]={'label':value,'value':value};\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nif (form('review')) K('field[Payment Frequency]').disable();\n\nif (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  K('field[Admin Fee]').hide();\n  K('field[Admin Fee]').value(\"\");\n}",
+          "code": "options=[];\nvar freqValue=K('field[Payment Frequency]').value();\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n\toptions[options.length]={'label':value,'value':value};\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nif (form('review')) K('field[Payment Frequency]').disable();\n\nif (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  K('field[Admin Fee]').hide();\n  K('field[Admin Fee]').value(\"\");\n} else {\n  if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\") {\n    $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n  }\n}",
           "runIf": ""
         },
         {

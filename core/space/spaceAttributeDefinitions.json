@@ -11,6 +11,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "If provided this will be displayed instead of the default \"Admin Fee\".",
+    "name": "Admin Fee Label"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Slug of this spaces Admin Kapp (typically admin)",
     "name": "Admin Kapp Slug"
   },
