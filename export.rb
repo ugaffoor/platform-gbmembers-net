@@ -209,7 +209,8 @@ SUBMISSIONS_TO_EXPORT.each do |item|
   FileUtils.mkdir_p(submission_path, :mode => 0700)
 
   # build params to pass to the retrieve_form_submissions method
-  params = { "include" => "values", "limit" => 1000, "direction" => "ASC" }
+  params = { "include" => "values", "limit" => 1000}
+
 
   # open the submissions file in write mode
   file = File.open("#{submission_path}/submissions.ndjson", "w")
@@ -218,6 +219,12 @@ SUBMISSIONS_TO_EXPORT.each do |item|
   file.truncate(0)
   response = nil
   begin
+    if item["formSlug"]=="pos-barcodes"
+      params = { "include" => "values", "limit" => 1000, "index" => "createdAt", "q" => "createdAt >= \"2022-04-21T00:00:00.000Z\""}
+    else
+      params = { "include" => "values", "limit" => 1000}
+    end
+
     # get submissions
     response = is_datastore ?
       space_sdk.find_all_form_datastore_submissions(item["formSlug"], params).content :

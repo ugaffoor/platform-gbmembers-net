@@ -327,6 +327,10 @@
         {
           "name": "Get Active and Frozen Members",
           "query": "kappSlug=gbmembers&formSlug=member&q=values[Status]=\"Active\" OR  values[Status]=\"Frozen\" OR values[Status]=\"Pending Freeze\" OR values[Status]=\"Pending Cancellation\""
+        },
+        {
+          "name": "Get Pending Cancellation Members",
+          "query": "kappSlug=gbmembers&formSlug=member&q=values[Status]=\"Pending Cancellation\""
         }
       ],
       "structure": "Submissions"
@@ -379,6 +383,13 @@
         }
       ],
       "resultType": "Single"
+    },
+    {
+      "name": "Get Pending Cancellation Members",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
     }
   ],
   "status": "Active"
