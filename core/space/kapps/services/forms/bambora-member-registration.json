@@ -2527,9 +2527,17 @@
               "name": "Submit",
               "visible": true,
               "enabled": true,
-              "renderType": "submit-page",
+              "renderType": "custom",
               "renderAttributes": {
-              }
+              },
+              "events": [
+                {
+                  "name": "Submit",
+                  "type": "Click",
+                  "action": "Custom",
+                  "code": "debugger;\n\nif (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n  var settings = {\n    \"crossDomain\": true,\n    \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/registerUser\",\n    \"method\": \"POST\",\n    \"headers\": {},\n    \"dataType\": \"json\",\n    \"contentType\": \"application/json\",\n    \"data\": JSON.stringify({\n      \"customerId\": K('field[Member ID]').value(),\n      \"firstName\": K('field[First Name]').value(),\n      \"lastName\": K('field[Last Name]').value(),\n      \"dob\": K('field[DOB]').value(),\n      \"address\": K('field[Address]').value(),\n      \"suburb\": K('field[Suburb]').value(),\n      \"state\": K('field[State]').value(),\n      \"postCode\": K('field[Postcode]').value(),\n      \"country\": K('field[Country]').value(),\n      \"email\": K('field[Email]').value(),\n      \"driversLicence\": K('field[Drivers Licence]').value(),\n      \"mobile\": K('field[Mobile]').value(),\n      \"payment\": K('field[Payment]').value(),\n      \"firstPayment\": K('field[First Payment]').value(),\n      \"billingPeriod\": K('field[Billing Period]').value(),\n      \"contractStartDate\": K('field[Billing Start Date]').value(),\n      \"paymentMethod\": K('field[Payment Method]').value(),\n      \"cardToken\": K('field[Credit Card Token]').value(),\n      \"adminFee\": K('field[Admin Fee]').value()!==null ? K('field[Admin Fee]').value().replace(\"%\",\"\") : \"\",\n      \"setupFee\": K('field[Setup Fee]').value().replace(\"%\",\"\"),\n      \"space\": K('space').slug(),\n      \"billingService\": \"Bambora\",\n      \"gbmemberId\": K('submission').id()\n    })\n  }\n\n\n  $.ajax(settings).done(function (response) {\n    debugger;\n    console.log(response);\n    if (response.error===100) {\n      var message=response.errorMessage;\n      if (response.errorMessage===\"DECLINE\") {\n        message=\"Credit Card not valid (Declined)\";  \n      }\n      $(\"#errorValue\").html(message);\n      K('section[Card Error]').show();\n    } else {\n      K('section[Card Error]').hide();\n      K('field[customerBillingId]').value(response.data.customerBillingId);\n      K('form').submitPage();      \n    }\n  });\n}\n"
+                }
+              ]
             }
           ]
         }
@@ -2655,13 +2663,6 @@
           "type": "Load",
           "action": "Custom",
           "code": "if (K('space').attributes('School Country Code')!==\"\" && K('space').attributes('School Country Code')!==null && K('space').attributes('School Country Code')!==undefined) {\n K('field[Country]').value(K('space').attributes('School Country Code'));\n}"
-        },
-        {
-          "name": "Complete Submit",
-          "type": "Submit",
-          "action": "Custom",
-          "code": "debugger;\nvar settings = {\n\t\"crossDomain\": true,\n\t\"url\": K('space').attributes('Kinetic Billing Server URL')+\"/registerUser\",\n\t\"method\": \"POST\",\n\t\"headers\": {},\n  \"dataType\": \"json\",\n  \"contentType\": \"application/json\",\n  \"data\": JSON.stringify({\n\t\t\"customerId\": K('field[Member ID]').value(),\n    \"firstName\": K('field[First Name]').value(),\n    \"lastName\": K('field[Last Name]').value(),\n    \"dob\": K('field[DOB]').value(),\n    \"address\": K('field[Address]').value(),\n    \"suburb\": K('field[Suburb]').value(),\n    \"state\": K('field[State]').value(),\n    \"postCode\": K('field[Postcode]').value(),\n    \"country\": K('field[Country]').value(),\n    \"email\": K('field[Email]').value(),\n    \"driversLicence\": K('field[Drivers Licence]').value(),\n    \"mobile\": K('field[Mobile]').value(),\n    \"payment\": K('field[Payment]').value(),\n    \"firstPayment\": K('field[First Payment]').value(),\n    \"billingPeriod\": K('field[Billing Period]').value(),\n    \"contractStartDate\": K('field[Billing Start Date]').value(),\n    \"paymentMethod\": K('field[Payment Method]').value(),\n    \"cardToken\": K('field[Credit Card Token]').value(),\n    \"adminFee\": K('field[Admin Fee]').value()!==null ? K('field[Admin Fee]').value().replace(\"%\",\"\") : \"\",\n    \"setupFee\": K('field[Setup Fee]').value().replace(\"%\",\"\"),\n    \"space\": K('space').slug(),\n    \"billingService\": \"Bambora\",\n    \"gbmemberId\": K('submission').id()\n  })\n}\n\n\n$.ajax(settings).done(function (response) {\n  debugger;\n\tconsole.log(response);\n  if (response.error===100) {\n\t\tvar message=response.errorMessage;\n    if (response.errorMessage===\"DECLINE\") {\n    \tmessage=\"Credit Card not valid (Declined)\";  \n    }\n    $(\"#errorValue\").html(message);\n    K('section[Card Error]').show();\n  } else {\n    K('section[Card Error]').hide();\n    K('field[customerBillingId]').value(response.data.customerBillingId);\n    K('form').submitPage();\n  }\n});\n",
-          "runIf": "Object.keys(K('form').validate()).length===0"
         }
       ],
       "name": "Billing Information",

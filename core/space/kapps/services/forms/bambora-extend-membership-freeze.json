@@ -814,11 +814,11 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Program Managers"
+      "name": "Bombara Program Managers"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Program Managers"
+      "name": "Bombara Program Managers"
     }
   ],
   "slug": "bambora-extend-membership-freeze",

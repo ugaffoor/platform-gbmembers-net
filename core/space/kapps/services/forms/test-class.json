@@ -290,7 +290,11 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Admins"
+      "name": "Program Managers and Coaches"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Everyone"
     }
   ],
   "slug": "test-class",

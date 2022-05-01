@@ -75,11 +75,11 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Admins"
+      "name": "Program Managers"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Admins"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",
