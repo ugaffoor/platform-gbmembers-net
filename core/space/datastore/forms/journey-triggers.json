@@ -913,6 +913,10 @@
                 {
                   "label": "Payment Failed",
                   "value": "Payment Failed"
+                },
+                {
+                  "label": "Member Joined",
+                  "value": "Member Joined"
                 }
               ]
             },
