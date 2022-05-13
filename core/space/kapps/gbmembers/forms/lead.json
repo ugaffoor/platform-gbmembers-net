@@ -1266,6 +1266,6 @@
   ],
   "slug": "lead",
   "status": "New",
-  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')}:${values('Is New Reply Received')}",
+  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')}:${values('Is New Reply Received')}:${values('Phone Number')}",
   "type": "Content"
 }

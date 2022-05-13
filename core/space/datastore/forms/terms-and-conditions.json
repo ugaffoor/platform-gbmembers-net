@@ -203,7 +203,7 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Admins"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Access",
@@ -211,7 +211,7 @@
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Admins"
+      "name": "Data Admins"
     }
   ],
   "slug": "terms-and-conditions",
