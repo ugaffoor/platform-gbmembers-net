@@ -98,6 +98,13 @@
       "unique": false
     },
     {
+      "name": "values[Cost]",
+      "parts": [
+        "values[Cost]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Details]",
       "parts": [
         "values[Details]"
@@ -608,6 +615,31 @@
             "label": "${resources('Get Products:Name')}-${resources('Get Products:Colour')}",
             "value": "${resources('Get Products:id')}"
           }
+        },
+        {
+          "type": "field",
+          "name": "Cost",
+          "label": "Cost",
+          "key": "f20",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
         },
         {
           "type": "field",
