@@ -1,4 +1,4 @@
-{"coreState":"Draft","currentPage":"Main","label":"Leads - On Create","values":{"Script Name":"On Create","Script":"<div>NO SCRIPT AVAILABLE</div>","Target":"Leads"}}
+{"coreState":"Submitted","currentPage":"Main","label":"Leads - On Create","values":{"Script Name":"On Create","Script":"<div>NO SCRIPT AVAILABLE</div>","Target":"Leads"}}
 {"coreState":"Draft","currentPage":"Main","label":"Leads - 1 day after creation","values":{"Script Name":"1 day after creation","Script":"<div>NO SCRIPT AVAILABLE</div>","Target":"Leads"}}
 {"coreState":"Draft","currentPage":"Main","label":"Leads - 2 days after creation","values":{"Script Name":"2 days after creation","Script":"<div><span style=\"color: rgb(255, 0, 0);\">NO SCRIPT AVAILABLE</span></div>","Target":"Leads"}}
 {"coreState":"Draft","currentPage":"Main","label":"Leads - 13 days after creation","values":{"Script Name":"13 days after creation","Script":"<div>NO SCRIPT AVAILABLE</div>","Target":"Leads"}}

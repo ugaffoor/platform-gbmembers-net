@@ -1,12 +1,17 @@
 {
   "attributes": [
-
+    {
+      "name": "Datastore Configuration",
+      "values": [
+        "{\"columns\":[{\"name\":\"Status\",\"label\":\"Status\",\"type\":\"value\",\"visible\":true},{\"name\":\"Program\",\"label\":\"Program\",\"type\":\"value\",\"visible\":true},{\"name\":\"Frequency\",\"label\":\"Frequency\",\"type\":\"value\",\"visible\":true},{\"name\":\"Info\",\"label\":\"Info\",\"type\":\"value\",\"visible\":true},{\"name\":\"Fee\",\"label\":\"Fee\",\"type\":\"value\",\"visible\":true},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":true},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":true},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false}],\"defaultSearchIndex\":null}"
+      ]
+    }
   ],
   "bridgedResources": [
 
   ],
   "customHeadContent": null,
-  "description": "",
+  "description": "Define additional services that can be offered as paid services to members.",
   "indexDefinitions": [
     {
       "name": "createdAt",
@@ -58,9 +63,37 @@
       "unique": false
     },
     {
+      "name": "values[Fee]",
+      "parts": [
+        "values[Fee]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Info]",
+      "parts": [
+        "values[Info]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Name]",
       "parts": [
         "values[Name]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Payment Frequency]",
+      "parts": [
+        "values[Payment Frequency]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Slug]",
+      "parts": [
+        "values[Slug]"
       ],
       "unique": false
     },
@@ -72,28 +105,15 @@
       "unique": false
     },
     {
-      "name": "values[Type]",
+      "name": "values[Status],values[Payment Frequency]",
       "parts": [
-        "values[Type]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Value]",
-      "parts": [
-        "values[Value]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Voucher]",
-      "parts": [
-        "values[Voucher]"
+        "values[Status]",
+        "values[Payment Frequency]"
       ],
       "unique": false
     }
   ],
-  "name": "POS Discounts",
+  "name": "Additional Services",
   "notes": null,
   "pages": [
     {
@@ -105,7 +125,7 @@
           "type": "field",
           "name": "Status",
           "label": "Status",
-          "key": "f6",
+          "key": "f1",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -129,11 +149,11 @@
           "choices": [
             {
               "label": "Active",
-              "value": "Active"
+              "value": "active"
             },
             {
               "label": "Inactive",
-              "value": "Inactive"
+              "value": "inactive"
             }
           ]
         },
@@ -141,7 +161,38 @@
           "type": "field",
           "name": "Name",
           "label": "Name",
-          "key": "f1",
+          "key": "f2",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+            {
+              "name": "Set Slug",
+              "type": "Change",
+              "action": "Custom",
+              "code": "var slug=values('Name').toLowerCase().replace(/ /g,\"_\");\nK('field[Slug]').value(slug);",
+              "runIf": "values('Name')!==\"\""
+            }
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Slug",
+          "label": "Slug",
+          "key": "f6",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -164,8 +215,8 @@
         },
         {
           "type": "field",
-          "name": "Voucher",
-          "label": "Voucher",
+          "name": "Payment Frequency",
+          "label": "Payment Frequency",
           "key": "f5",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -183,21 +234,41 @@
           ],
           "renderAttributes": {
           },
-          "dataType": "json",
-          "renderType": "checkbox",
+          "dataType": "string",
+          "renderType": "radio",
           "choicesResourceName": null,
           "choicesRunIf": null,
           "choices": [
             {
-              "label": "Voucher",
-              "value": "Voucher"
+              "label": "Daily",
+              "value": "Daily"
+            },
+            {
+              "label": "Weekly",
+              "value": "Weekly"
+            },
+            {
+              "label": "Fortnightly",
+              "value": "Fortnightly"
+            },
+            {
+              "label": "Monthly",
+              "value": "Monthly"
+            },
+            {
+              "label": "Quarterly",
+              "value": "Quarterly"
+            },
+            {
+              "label": "Yearly",
+              "value": "Yearly"
             }
           ]
         },
         {
           "type": "field",
-          "name": "Type",
-          "label": "Type",
+          "name": "Info",
+          "label": "Info",
           "key": "f3",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -216,32 +287,21 @@
           "renderAttributes": {
           },
           "dataType": "string",
-          "renderType": "radio",
-          "choicesResourceName": null,
-          "choicesRunIf": null,
-          "choices": [
-            {
-              "label": "Percentage",
-              "value": "Percentage"
-            },
-            {
-              "label": "Value",
-              "value": "Value"
-            }
-          ]
+          "renderType": "text",
+          "rows": 3
         },
         {
           "type": "field",
-          "name": "Value",
-          "label": "Value",
+          "name": "Fee",
+          "label": "Fee",
           "key": "f4",
           "defaultValue": null,
           "defaultResourceName": null,
-          "visible": "values('Voucher').length===0",
+          "visible": true,
           "enabled": true,
-          "required": "values('Voucher').length===0",
+          "required": true,
           "requiredMessage": null,
-          "omitWhenHidden": true,
+          "omitWhenHidden": null,
           "pattern": null,
           "constraints": [
 
@@ -280,15 +340,19 @@
       "name": "Authenticated Users"
     },
     {
+      "endpoint": "Modification",
+      "name": "Authenticated Users"
+    },
+    {
       "endpoint": "Submission Access",
-      "name": "Data Admins"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Data Admins"
+      "name": "Authenticated Users"
     }
   ],
-  "slug": "pos-discounts",
-  "status": "New",
-  "submissionLabelExpression": "${values('Status')}-${values('Name')}-${values('Type')}-${values('Value')}"
+  "slug": "additional-services",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Status')} - ${values('Name')} - ${values('Payment Frequency')} - ${values('Fee')}"
 }

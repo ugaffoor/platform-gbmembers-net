@@ -1,5 +1,6 @@
-{"coreState":"Draft","currentPage":"Main","label":"[\"Active\"]-Staff Discount-Percentage-10","values":{"Name":"Staff Discount","Status":["Active"],"Type":"Percentage","Value":"10"}}
-{"coreState":"Draft","currentPage":"Main","label":"[\"Active\"]-School Owner-Percentage-15","values":{"Name":"School Owner","Status":["Active"],"Type":"Percentage","Value":"15"}}
-{"coreState":"Draft","currentPage":"Main","label":"[\"Active\"]-Bring a Friend-Value-50","values":{"Name":"Bring a Friend","Status":["Active"],"Type":"Value","Value":"50"}}
-{"coreState":"Submitted","currentPage":"Main","label":"[\"Active\"]-Percentage Voucher-Percentage-","values":{"Name":"Percentage Voucher","Status":["Active"],"Type":"Percentage","Value":null,"Voucher":["Voucher"]}}
-{"coreState":"Submitted","currentPage":"Main","label":"[\"Active\"]-Value Voucher-Value-","values":{"Name":"Value Voucher","Status":["Active"],"Type":"Value","Value":null,"Voucher":["Voucher"]}}
+{"coreState":"Draft","currentPage":"Main","label":"-Staff Discount-Percentage-10","values":{"Name":"Staff Discount","Type":"Percentage","Value":"10"}}
+{"coreState":"Draft","currentPage":"Main","label":"-School Owner-Percentage-15","values":{"Name":"School Owner","Type":"Percentage","Value":"15"}}
+{"coreState":"Submitted","currentPage":"Main","label":"Active-Bring a Friend-Value-50","values":{"Name":"Bring a Friend","Type":"Value","Value":"50","Voucher":[],"Status":"Active"}}
+{"coreState":"Submitted","currentPage":"Main","label":"Active-Percentage Voucher-Percentage-","values":{"Name":"Percentage Voucher","Type":"Percentage","Value":null,"Voucher":["Voucher"],"Status":"Active"}}
+{"coreState":"Submitted","currentPage":"Main","label":"Active-Value Voucher-Value-","values":{"Name":"Value Voucher","Type":"Value","Value":null,"Voucher":["Voucher"],"Status":"Active"}}
+{"coreState":"Submitted","currentPage":"Main","label":"Active-TESTING-Percentage-1","values":{"Name":"TESTING","Type":"Percentage","Value":"1","Voucher":[],"Status":"Active"}}

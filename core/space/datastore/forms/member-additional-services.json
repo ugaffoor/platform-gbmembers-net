@@ -6,7 +6,7 @@
 
   ],
   "customHeadContent": null,
-  "description": "",
+  "description": "Member additional services added",
   "indexDefinitions": [
     {
       "name": "createdAt",
@@ -58,69 +58,51 @@
       "unique": false
     },
     {
-      "name": "values[Action]",
+      "name": "values[Billing ID]",
       "parts": [
-        "values[Action]"
+        "values[Billing ID]"
       ],
       "unique": false
     },
     {
-      "name": "values[Contact Type]",
+      "name": "values[End Date]",
       "parts": [
-        "values[Contact Type]"
+        "values[End Date]"
       ],
       "unique": false
     },
     {
-      "name": "values[Event Source Date]",
+      "name": "values[Member GUID]",
       "parts": [
-        "values[Event Source Date]"
+        "values[Member GUID]"
       ],
       "unique": false
     },
     {
-      "name": "values[Record ID]",
+      "name": "values[Member ID]",
       "parts": [
-        "values[Record ID]"
+        "values[Member ID]"
       ],
       "unique": false
     },
     {
-      "name": "values[Record ID],values[Status]",
+      "name": "values[Name]",
       "parts": [
-        "values[Record ID]",
-        "values[Status]"
+        "values[Name]"
       ],
       "unique": false
     },
     {
-      "name": "values[Record ID],values[Trigger ID]",
+      "name": "values[Slug]",
       "parts": [
-        "values[Record ID]",
-        "values[Trigger ID]"
+        "values[Slug]"
       ],
       "unique": false
     },
     {
-      "name": "values[Record ID],values[Trigger ID],values[Trigger Date]:UNIQUE",
+      "name": "values[Start Date]",
       "parts": [
-        "values[Record ID]",
-        "values[Trigger ID]",
-        "values[Trigger Date]"
-      ],
-      "unique": true
-    },
-    {
-      "name": "values[Record Name]",
-      "parts": [
-        "values[Record Name]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Record Type]",
-      "parts": [
-        "values[Record Type]"
+        "values[Start Date]"
       ],
       "unique": false
     },
@@ -130,30 +112,9 @@
         "values[Status]"
       ],
       "unique": false
-    },
-    {
-      "name": "values[Template Name]",
-      "parts": [
-        "values[Template Name]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Trigger Date]",
-      "parts": [
-        "values[Trigger Date]"
-      ],
-      "unique": false
-    },
-    {
-      "name": "values[Trigger ID]",
-      "parts": [
-        "values[Trigger ID]"
-      ],
-      "unique": false
     }
   ],
-  "name": "Journey Event",
+  "name": "Member Additional Services",
   "notes": null,
   "pages": [
     {
@@ -162,59 +123,67 @@
       "displayPage": null,
       "elements": [
         {
-          "type": "field",
-          "name": "Status",
-          "label": "Status",
-          "key": "f1",
-          "defaultValue": null,
-          "defaultResourceName": null,
+          "type": "section",
+          "renderType": null,
+          "name": "Details",
+          "title": null,
           "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
           "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
           "renderAttributes": {
           },
-          "dataType": "string",
-          "renderType": "radio",
-          "choicesResourceName": null,
-          "choicesRunIf": null,
-          "choices": [
+          "elements": [
             {
-              "label": "New",
-              "value": "New"
-            },
-            {
-              "label": "Process",
-              "value": "Process"
-            },
-            {
-              "label": "Completed",
-              "value": "Completed"
-            },
-            {
-              "label": "Delete",
-              "value": "Delete"
+              "type": "field",
+              "name": "Status",
+              "label": "Status",
+              "key": "f1",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Active",
+                  "value": "Active"
+                },
+                {
+                  "label": "Cancelled",
+                  "value": "Cancelled"
+                },
+                {
+                  "label": "Expired",
+                  "value": "Expired"
+                }
+              ]
             }
           ]
         },
         {
           "type": "field",
-          "name": "Trigger ID",
-          "label": "Trigger ID",
+          "name": "Member ID",
+          "label": "Member ID",
           "key": "f2",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
           "enabled": true,
-          "required": false,
+          "required": true,
           "requiredMessage": null,
           "omitWhenHidden": null,
           "pattern": null,
@@ -232,62 +201,14 @@
         },
         {
           "type": "field",
-          "name": "Trigger Date",
-          "label": "Trigger Date",
-          "key": "f9",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "date"
-        },
-        {
-          "type": "field",
-          "name": "Event Source Date",
-          "label": null,
-          "key": "f10",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "date"
-        },
-        {
-          "type": "field",
-          "name": "Record Type",
-          "label": "Record Type",
+          "name": "Member GUID",
+          "label": "Member GUID",
           "key": "f3",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
           "enabled": true,
-          "required": false,
+          "required": true,
           "requiredMessage": null,
           "omitWhenHidden": null,
           "pattern": null,
@@ -305,8 +226,82 @@
         },
         {
           "type": "field",
-          "name": "Record ID",
-          "label": "Record ID",
+          "name": "Name",
+          "label": "Name",
+          "key": "f4",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Slug",
+          "label": "Slug",
+          "key": "f5",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": true,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Start Date",
+          "label": "Start Date",
+          "key": "f6",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "date"
+        },
+        {
+          "type": "field",
+          "name": "End Date",
+          "label": "End Date",
           "key": "f7",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -325,89 +320,13 @@
           "renderAttributes": {
           },
           "dataType": "string",
-          "renderType": "text",
-          "rows": 1
+          "renderType": "date"
         },
         {
           "type": "field",
-          "name": "Record Name",
-          "label": "Record Name",
+          "name": "Billing ID",
+          "label": "Billing ID",
           "key": "f8",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Action",
-          "label": null,
-          "key": "f4",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Contact Type",
-          "label": "Contact Type",
-          "key": "f5",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Template Name",
-          "label": "Template Name",
-          "key": "f6",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -448,20 +367,9 @@
     }
   ],
   "securityPolicies": [
-    {
-      "endpoint": "Display",
-      "name": "Data Admins"
-    },
-    {
-      "endpoint": "Submission Access",
-      "name": "Program Managers and Coaches"
-    },
-    {
-      "endpoint": "Submission Modification",
-      "name": "Program Managers and Coaches"
-    }
+
   ],
-  "slug": "journey-event",
+  "slug": "member-additional-services",
   "status": "Active",
-  "submissionLabelExpression": "${values('Record Type')}[${values('Record Name')}]-${values('Contact Type')}-${values('Template Name')}-${values('Status')}-${values('Event Source Date')}"
+  "submissionLabelExpression": null
 }

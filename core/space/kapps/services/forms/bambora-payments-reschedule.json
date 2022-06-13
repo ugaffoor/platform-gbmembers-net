@@ -119,7 +119,7 @@
       }
     }
   ],
-  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n\n<style>\n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n.card-container {\n    background-color: rgb(240, 240, 240);\n    margin: auto;\n    width: calc(95%);\n\n    border: none;\n    border-radius: 4px;\n}\n.form-group {\n    flex: 0 0 auto;\n    flex-flow: column !important;\n}\n#checkout-form {\n    position: relative;\n    width: 400px;\n    padding: 10px;\n}\n\n#checkout-form label {\n    display: block;\n    min-height: 25px;\n\n    font-size: 15px;\n    font-weight: 500;\n    margin: 5px 0;\n    padding: 0;\n    color: red;\n}\n\n#card-number, #card-cvv, #card-expiry {\n    background-color: #FFF;\n    display: block;\n    width: calc(90%);\n    border-radius: 2px;\n    border: 1px solid rgba(200, 200, 200, 1);\n    padding: 14px 60px 13px 20px;\n    margin: auto;\n    transition: all 100ms ease-out;\n}\n\n/* card images are added to card number */\n#card-number {\n    background-image: none;\n\n    background-origin: content-box;\n    background-position: calc(100% + 40px) center;\n    background-repeat: no-repeat;\n    background-size: contain;\n}\n\n/* buttons */\n.btn {\n    vertical-align: top;\n}\n\n#pay-button {\n    position: relative;\n    border: none;\n    border-radius: 4px;\n    background-color: #0c384f;\n    color: rgba(255, 255, 255, 1);\n    display: inline-block;\n    transition: all 100ms ease-out;\n    padding: 11px 25px;\n    margin-left: 30px;\n}\n\n#pay-button:hover, #pay-button:active {\n    background-color: rgba(69, 36, 89, 1);\n}\n\n#pay-button:active {\n    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);\n}\n\n#pay-button:disabled {\n    background-color: rgba(255, 255, 255, 1);\n    border: 1px solid #0c384f;\n    color: #0c384f;\n}\n\n/* feedback is displayed after tokenization */\n#feedback {\n    position: relative;\n    left: 15px;\n    display: inline-block;\n    background-color: transparent;\n    border: 0px solid rgba(200, 200, 200, 1);\n    border-radius: 4px;\n    transition: all 100ms ease-out;\n    padding: 11px;\n}\n\n#feedback.error {\n    color: red;\n    border: 1px solid;\n}\n\n#feedback.success {\n    color: seagreen;\n    border: 1px solid;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n</script>\n<script>\nvar discounts;\nfunction completeTableChange(){\n  K('field[Family Member]').value(\"\");\n\t$(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(\"Select...\");  \t\t\t\t\n  K('field[Programs]').value(\"\");\n  K('field[tableMemberID]').value(\"\");\n  K('field[tableMemberName]').value(\"\");\n  K('field[tableProgram]').value(\"\");\n  K('field[tableFee]').value(\"\");\n  var useDiscounts=K('field[Apply Discounts]').value();\n  // Sort table\n  viewerConfig.response.sort(function(a, b){return b.cost - a.cost});\n  // Let calculate the discounts\n  viewerConfig.response.forEach(function(item, index){\n    if (useDiscounts===\"Yes\" && index<=discounts.length-1){\n      item.discount=discounts[index].discount;\n      item.fee=((new Number(item.cost))*discounts[index].cost).toFixed(2);\n    } else if (useDiscounts===\"Yes\" && index>discounts.length-1 && discounts.length>0){\n      item.discount=discounts[discounts.length-1].discount;\n      item.fee=((new Number(item.cost))*discounts[discounts.length-1].cost).toFixed(2);\n    } else {\n    item.discount=\"0%\";\n    item.fee=((new Number(item.cost))).toFixed(2);\n    }\n  });\n  \n  // Set payment value\n  var total=0;\n  viewerConfig.response.forEach(function(item, index){\n\t\ttotal=total+(new Number((new Number(item.fee)).toFixed(2)));\n  });\n  K('field[Payment Total]').value(total);\n\n  global.viewerConfig.renderer.type($('#memberTableDiv'),global.viewerConfig);\n\n  $('#member-table tbody tr').on( 'click', function () {\n    if ( $(this).hasClass('selected') ) {\n      $(this).removeClass('selected');\n    }\n    else {\n      $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n      $(this).addClass('selected');\n    }\n  } );  \n  \n}  \n  \nfunction memberProgramAdded(memberID, feeProgram) {\n  found=false;\n\n  viewerConfig.response.forEach(function(item){\n      if (item.id===memberID && item.feeProgram===feeProgram) {\n        found=true;\n      }\n  });  \n  return found;\n}\n</script>",
+  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n\n<style>\n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n.card-container {\n    background-color: rgb(240, 240, 240);\n    margin: auto;\n    width: calc(95%);\n\n    border: none;\n    border-radius: 4px;\n}\n.form-group {\n    flex: 0 0 auto;\n    flex-flow: column !important;\n}\n#checkout-form {\n    position: relative;\n    width: 400px;\n    padding: 10px;\n}\n\n#checkout-form label {\n    display: block;\n    min-height: 25px;\n\n    font-size: 15px;\n    font-weight: 500;\n    margin: 5px 0;\n    padding: 0;\n    color: red;\n}\n\n#card-number, #card-cvv, #card-expiry {\n    background-color: #FFF;\n    display: block;\n    width: calc(90%);\n    border-radius: 2px;\n    border: 1px solid rgba(200, 200, 200, 1);\n    padding: 14px 60px 13px 20px;\n    margin: auto;\n    transition: all 100ms ease-out;\n}\n\n/* card images are added to card number */\n#card-number {\n    background-image: none;\n\n    background-origin: content-box;\n    background-position: calc(100% + 40px) center;\n    background-repeat: no-repeat;\n    background-size: contain;\n}\n\n/* buttons */\n.btn {\n    vertical-align: top;\n}\n\n#pay-button {\n    position: relative;\n    border: none;\n    border-radius: 4px;\n    background-color: #0c384f;\n    color: rgba(255, 255, 255, 1);\n    display: inline-block;\n    transition: all 100ms ease-out;\n    padding: 11px 25px;\n    margin-left: 30px;\n}\n\n#pay-button:hover, #pay-button:active {\n    background-color: rgba(69, 36, 89, 1);\n}\n\n#pay-button:active {\n    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);\n}\n\n#pay-button:disabled {\n    background-color: rgba(255, 255, 255, 1);\n    border: 1px solid #0c384f;\n    color: #0c384f;\n}\n\n/* feedback is displayed after tokenization */\n#feedback {\n    position: relative;\n    left: 15px;\n    display: inline-block;\n    background-color: transparent;\n    border: 0px solid rgba(200, 200, 200, 1);\n    border-radius: 4px;\n    transition: all 100ms ease-out;\n    padding: 11px;\n}\n\n#feedback.error {\n    color: red;\n    border: 1px solid;\n}\n\n#feedback.success {\n    color: seagreen;\n    border: 1px solid;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n</script>\n<script>\nvar discounts;\nfunction completeTableChange(){\n  K('field[Family Member]').value(\"\");\n\t$(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(\"Select...\");  \t\t\t\t\n  K('field[Programs]').value(\"\");\n  K('field[tableMemberID]').value(\"\");\n  K('field[tableMemberName]').value(\"\");\n  K('field[tableProgram]').value(\"\");\n  K('field[tableFee]').value(\"\");\n  var useDiscounts=K('field[Apply Discounts]').value();\n  // Sort table\n  viewerConfig.response.sort(function(a, b){return b.cost - a.cost});\n  // Let calculate the discounts\n  viewerConfig.response.forEach(function(item, index){\n    if (useDiscounts===\"Yes\" && index<=discounts.length-1){\n      item.discount=discounts[index].discount;\n      item.fee=((new Number(item.cost))*discounts[index].cost).toFixed(2);\n    } else if (useDiscounts===\"Yes\" && index>discounts.length-1 && discounts.length>0){\n      item.discount=discounts[discounts.length-1].discount;\n      item.fee=((new Number(item.cost))*discounts[discounts.length-1].cost).toFixed(2);\n    } else {\n    item.discount=\"0%\";\n    item.fee=((new Number(item.cost))).toFixed(2);\n    }\n  });\n  \n  // Set payment value\n  var total=0;\n  viewerConfig.response.forEach(function(item, index){\n\t\ttotal=total+(new Number((new Number(item.fee)).toFixed(2)));\n  });\n  K('field[Payment Total]').value(total);\n\n  global.viewerConfig.renderer.type($('#memberTableDiv'),global.viewerConfig);\n\n  $('#member-table tbody tr').on( 'click', function () {\n    if ( $(this).hasClass('selected') ) {\n      $(this).removeClass('selected');\n    }\n    else {\n      $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n      $(this).addClass('selected');\n    }\n  } );  \n  \n}  \n  \nfunction memberProgramAdded(memberID, feeProgram) {\n  found=false;\n\n  viewerConfig.response.forEach(function(item){\n      if (item.id===memberID && item.feeProgram===feeProgram) {\n        found=true;\n      }\n  });  \n  return found;\n}\n  function getCardToken(){\nif (K('field[Credit Card Number]').value()===null || K('field[Credit Card Expiry Month]').value()===null || K('field[Credit Card Expiry Year]').value()===null ) {\n   return;\n}\n    debugger;\n    var tokenSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/getCardToken\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"creditCardNumber\": K('field[Credit Card Number]').value(),\n        \"creditCardExpiryMonth\": K('field[Credit Card Expiry Month]').value(),\n        \"creditCardExpiryYear\": K('field[Credit Card Expiry Year]').value().substring(2,4),\n        \"cvd\": K('field[CVV]').value(),\n      })\n    }\n\n    $.ajax(tokenSettings).done(function (response) {\n      debugger;\n      console.log(response);\n      if (response.error===100) {\n        var message=response.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=JSON.parse(response.data);\n        K('field[Credit Card Token]').value(data.token);\n        K('section[Card Error]').hide();\n      }\n    });    \n}\n  \nfunction autoCreateCard(){\n    debugger;\n    var paymentsSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/payments\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"customerId\": K('field[Billing Customer Id]').value(),\n        \"paymentType\": \"ALL\",\n        \"paymentMethod\": \"ALL\",\n        \"paymentSource\": \"ALL\",\n        \"dateField\": \"PAYMENT\",\n        \"dateFrom\": moment().subtract(1, 'months').format('YYYY-MM-DD'),\n        \"dateTo\": moment().format('YYYY-MM-DD'),\n        \"internalPaymentType\": 'customer',\n      })\n    }\n\n    $.ajax(paymentsSettings).done(function (paymentsResponse) {\n      debugger;\n      console.log(paymentsResponse);\n      if (paymentsResponse.error===100) {\n        var message=paymentsResponse.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=paymentsResponse.data;\n        \n        data.sort(function(p1, p2) {\n        \tif (p1.debitDate > p2.debitDate) return -1; \t \n        \tif (p1.debitDate < p2.debitDate) return 1; \t \n          return 0;\n        });\n        if (data.length===0) {\n\t\t      K('field[AutoCreating]').value(\"NoTransactions\");      \t\t          \n        } else {\n          var creditCardSettings = {\n            \"crossDomain\": true,\n            \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/createProfileCard\",\n            \"method\": \"POST\",\n            \"headers\": {},\n            \"dataType\": \"json\",\n            \"contentType\": \"application/json\",\n            \"data\": JSON.stringify({\n              \"space\": K('space').slug(),\n              \"billingService\": \"Bambora\",\n              \"transactionID\": data[0].paymentID,\n              \"name\": K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value(),\n              \"address\": K('field[Address]').value(),\n              \"city\": K('field[Suburb]').value(),\n              \"province\": K('field[State]').value(),\n              \"country\": K('space').attributes('School Country Code'),\n              \"postalCode\": K('field[Postcode]').value(),\n              \"email\": K('field[Email]').value(),\n            })\n        \t}\n          $.ajax(creditCardSettings).done(function (response) {\n            debugger;\n            console.log(response);\n            if (response.error===100) {\n              var data=JSON.parse(response.data);\n              var message=data.status_message;\n              $(\"#errorValue\").html(message);\n              K('section[Card Error]').show();\n            } else {\n              var data=JSON.parse(response.data);\n\t\t\t\t      K('field[POS Profile ID]').value(data.profileId);\n\t\t\t        K('section[Card Error]').hide();\n            }\n          });\n        }\n        K('section[Card Error]').hide();\n      }\n    });    \n}  \n</script>",
   "description": "Change the billing cycle for an Active Member. <br>\nSet a new next billing date.",
   "name": "Bambora Payments Reschedule",
   "notes": null,
@@ -160,7 +160,7 @@
                   "name": "Get Members",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    debugger;\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Reference]').value(bridgedData['Billing Customer Reference']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n    K('field[Biller Migrated]').value(bridgedData['Biller Migrated']);\n    K('field[Current Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Current Payment]').value(bridgedData['Payment']);\n    K('field[Current Fee]').value(bridgedData['Admin Fee'].replace(\"$\",\"\"));\n    K('field[Payment]').value(bridgedData['Payment']);\n    K('field[Address]').value(bridgedData['Address']);\n    K('field[Suburb]').value(bridgedData['Suburb']);\n    K('field[State]').value(bridgedData['State']);\n    K('field[Postcode]').value(bridgedData['Postcode']);\n    K('field[Email]').value(bridgedData['Email']);\n    K('field[Mobile]').value(bridgedData['Mobile']);\n    K('field[DOB]').value(bridgedData['DOB']);\n\n    K('section[Student Information]').show();\n\n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#newBillingStartDate\")[0]\n    });          \n    debugger;\n    var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000);\n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#newBillingStartDate\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n        startDate: tomorrow, \n        minDate: 0, \n        formatDate:\"m-d-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[New Billing Start Date]').value(ct.dateFormat('YYYY-MM-DD'));\n      }                \n    });          \n    \n    var familyMembers=bridgedData['Billing Family Members'];\n    if (familyMembers!==\"\" && familyMembers!==null && familyMembers!==\"[]\"){\n      if (JSON.parse(familyMembers).length>1) {\n\t      K('field[Include Family Members]').value(\"Yes\");\n      } else {\n\t      K('field[Include Family Members]').value(\"No\");\n      }\n      K('field[membersJSON]').value(familyMembers);\n      K('field[feesJSON]').value(bridgedData['Family Fee Details']);\n      \n      viewerConfig.response = JSON.parse(K('field[feesJSON]').value());\n      DataViewer.renderResults($('#memberTableDiv'), viewerConfig);  \n      \n      $('#member-table tbody tr').on( 'click', function () {\n        if ( $(this).hasClass('selected') ) {\n          $(this).removeClass('selected');\n        }\n        else {\n          $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n          $(this).addClass('selected');\n        }\n      });        \n    } else {\n\t      K('field[Include Family Members]').value(\"No\");\n    }\n    removedMembers=undefined;\n    \n    if (K('field[Biller Migrated]').value()===undefined || K('field[Biller Migrated]').value()===null || K('field[Biller Migrated]').value()===\"\") {\n          K('section[Biller Not Activated]').show();\n          K('section[Credit Card Details]').hide();\t      \n    } else {\n          K('section[Biller Not Activated]').hide();\n          K('section[Credit Card Details]').show();\t      \n    }\n  }\n});",
+                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    debugger;\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Reference]').value(bridgedData['Billing Customer Reference']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n    K('field[Biller Migrated]').value(bridgedData['Biller Migrated']);\n    K('field[Current Payment Frequency]').value(bridgedData['Billing Period']);\n    K('field[Current Payment]').value(bridgedData['Payment']);\n    K('field[Current Fee]').value(bridgedData['Admin Fee'].replace(\"$\",\"\"));\n    K('field[Payment]').value(bridgedData['Payment']);\n    K('field[Address]').value(bridgedData['Address']);\n    K('field[Suburb]').value(bridgedData['Suburb']);\n    K('field[State]').value(bridgedData['State']);\n    K('field[Postcode]').value(bridgedData['Postcode']);\n    K('field[Email]').value(bridgedData['Email']);\n    K('field[Mobile]').value(bridgedData['Mobile']);\n    K('field[DOB]').value(bridgedData['DOB']);\n    K('field[POS Profile ID]').value(bridgedData['POS Profile ID']);\n\n    K('section[Student Information]').show();\n\n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#newBillingStartDate\")[0]\n    });          \n    debugger;\n    var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000);\n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#newBillingStartDate\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n        startDate: tomorrow, \n        minDate: 0, \n        formatDate:\"m-d-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[New Billing Start Date]').value(ct.dateFormat('YYYY-MM-DD'));\n      }                \n    });          \n    \n    var familyMembers=bridgedData['Billing Family Members'];\n    if (familyMembers!==\"\" && familyMembers!==null && familyMembers!==\"[]\"){\n      if (JSON.parse(familyMembers).length>1) {\n\t      K('field[Include Family Members]').value(\"Yes\");\n      } else {\n\t      K('field[Include Family Members]').value(\"No\");\n      }\n      K('field[membersJSON]').value(familyMembers);\n      K('field[feesJSON]').value(bridgedData['Family Fee Details']);\n      \n      viewerConfig.response = JSON.parse(K('field[feesJSON]').value());\n      DataViewer.renderResults($('#memberTableDiv'), viewerConfig);  \n      \n      $('#member-table tbody tr').on( 'click', function () {\n        if ( $(this).hasClass('selected') ) {\n          $(this).removeClass('selected');\n        }\n        else {\n          $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n          $(this).addClass('selected');\n        }\n      });        \n    } else {\n\t      K('field[Include Family Members]').value(\"No\");\n    }\n    removedMembers=undefined;\n    \n    if (K('field[Biller Migrated]').value()===undefined || K('field[Biller Migrated]').value()===null || K('field[Biller Migrated]').value()===\"\") {\n          K('section[Biller Not Activated]').show();\n    } else {\n      K('section[Biller Not Activated]').hide();\n      if (K('field[POS Profile ID]').value()===null || K('field[POS Profile ID]').value()===\"\") {\n        K('field[AutoCreating]').value(\"InProgress\");  \n        autoCreateCard();\n      } else {\n        K('field[AutoCreating]').value(\"Completed\");      \t\t\n      }\n      \n    }\n  }\n});",
                   "bridgedResourceName": null,
                   "runIf": "values('Members')!==\"\""
                 },
@@ -681,6 +681,81 @@
               "name": "DOB",
               "label": "DOB",
               "key": "f85",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Source IP",
+              "label": "Source IP",
+              "key": "f89",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "POS Profile ID",
+              "label": "POS Profile ID",
+              "key": "f90",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "AutoCreating",
+              "label": "AutoCreating",
+              "key": "f93",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": false,
@@ -1297,48 +1372,56 @@
             {
               "type": "section",
               "renderType": null,
-              "name": "Credit Card Details",
-              "title": "Credit Card Details",
-              "visible": true,
-              "omitWhenHidden": null,
+              "name": "Registering Card Details",
+              "title": null,
+              "visible": "(values('POS Profile ID')===null || values('POS Profile ID')===\"\") && values('AutoCreating')===\"InProgress\"",
+              "omitWhenHidden": false,
               "renderAttributes": {
-                "class": "services-paysmart-billing-details"
               },
               "elements": [
                 {
                   "type": "content",
                   "renderType": "html",
-                  "name": "Credit Card Capture",
-                  "text": "<div class=\"card-container\">\n    <div class=\"row\">\n        <!-- Add form -->\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-12 text-center\">\n        <div id=\"feedback\"></div>\n    </div>\n</div>\n",
+                  "name": "Auto Card Create",
+                  "text": "<h4>Auto Creating Card Profile....</h4>",
                   "visible": true,
                   "renderAttributes": {
                   }
-                },
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Applying Exist Card details",
+              "title": null,
+              "visible": "values('POS Profile ID')!==null && values('POS Profile ID')!==\"\"",
+              "omitWhenHidden": true,
+              "renderAttributes": {
+              },
+              "elements": [
                 {
-                  "type": "field",
-                  "name": "Credit Card Token",
-                  "label": "Credit Card Token",
-                  "key": "f74",
-                  "defaultValue": null,
-                  "defaultResourceName": null,
-                  "visible": false,
-                  "enabled": true,
-                  "required": true,
-                  "requiredMessage": "Credit Card token is required. Please verify card details.",
-                  "omitWhenHidden": false,
-                  "pattern": null,
-                  "constraints": [
-
-                  ],
-                  "events": [
-
-                  ],
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Card Info",
+                  "text": "The existing card on file will continue to be used for this Member's billing.",
+                  "visible": true,
                   "renderAttributes": {
-                  },
-                  "dataType": "string",
-                  "renderType": "text",
-                  "rows": 1
-                },
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Credit Card Details",
+              "title": "Credit Card Details",
+              "visible": "(values('POS Profile ID')===null || values('POS Profile ID')===\"\") && values('AutoCreating')===\"NoTransactions\"",
+              "omitWhenHidden": true,
+              "renderAttributes": {
+                "class": "services-paysmart-billing-details"
+              },
+              "elements": [
                 {
                   "type": "field",
                   "name": "Credit Card Number",
@@ -1346,67 +1429,22 @@
                   "key": "f75",
                   "defaultValue": null,
                   "defaultResourceName": null,
-                  "visible": false,
+                  "visible": true,
                   "enabled": true,
-                  "required": true,
+                  "required": "values('POS Profile ID')===null || values('POS Profile ID')===\"\"",
                   "requiredMessage": null,
-                  "omitWhenHidden": false,
+                  "omitWhenHidden": null,
                   "pattern": null,
                   "constraints": [
 
                   ],
                   "events": [
-
-                  ],
-                  "renderAttributes": {
-                  },
-                  "dataType": "string",
-                  "renderType": "text",
-                  "rows": 1
-                },
-                {
-                  "type": "field",
-                  "name": "Credit Card Expiry Month",
-                  "label": "Credit Card Expiry Month",
-                  "key": "f76",
-                  "defaultValue": null,
-                  "defaultResourceName": null,
-                  "visible": false,
-                  "enabled": true,
-                  "required": true,
-                  "requiredMessage": null,
-                  "omitWhenHidden": false,
-                  "pattern": null,
-                  "constraints": [
-
-                  ],
-                  "events": [
-
-                  ],
-                  "renderAttributes": {
-                  },
-                  "dataType": "string",
-                  "renderType": "text",
-                  "rows": 1
-                },
-                {
-                  "type": "field",
-                  "name": "Credit Card Expiry Year",
-                  "label": "Credit Card Expiry Year",
-                  "key": "f77",
-                  "defaultValue": null,
-                  "defaultResourceName": null,
-                  "visible": false,
-                  "enabled": true,
-                  "required": true,
-                  "requiredMessage": null,
-                  "omitWhenHidden": false,
-                  "pattern": null,
-                  "constraints": [
-
-                  ],
-                  "events": [
-
+                    {
+                      "name": "GetToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken()"
+                    }
                   ],
                   "renderAttributes": {
                   },
@@ -1421,11 +1459,211 @@
                   "key": "f78",
                   "defaultValue": null,
                   "defaultResourceName": null,
-                  "visible": false,
+                  "visible": true,
                   "enabled": true,
-                  "required": false,
+                  "required": "values('POS Profile ID')===null || values('POS Profile ID')===\"\"",
                   "requiredMessage": null,
-                  "omitWhenHidden": false,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "GetToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken()"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Expiry Month",
+                  "label": "Credit Card Expiry Month",
+                  "key": "f91",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('POS Profile ID')===null || values('POS Profile ID')===\"\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "GetToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken()"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "01",
+                      "value": "01"
+                    },
+                    {
+                      "label": "02",
+                      "value": "02"
+                    },
+                    {
+                      "label": "03",
+                      "value": "03"
+                    },
+                    {
+                      "label": "04",
+                      "value": "04"
+                    },
+                    {
+                      "label": "05",
+                      "value": "05"
+                    },
+                    {
+                      "label": "06",
+                      "value": "06"
+                    },
+                    {
+                      "label": "07",
+                      "value": "07"
+                    },
+                    {
+                      "label": "08",
+                      "value": "08"
+                    },
+                    {
+                      "label": "09",
+                      "value": "09"
+                    },
+                    {
+                      "label": "10",
+                      "value": "10"
+                    },
+                    {
+                      "label": "11",
+                      "value": "11"
+                    },
+                    {
+                      "label": "12",
+                      "value": "12"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Expiry Year",
+                  "label": "Credit Card Expiry Year",
+                  "key": "f92",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('POS Profile ID')===null || values('POS Profile ID')===\"\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "GetToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken()"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "2022",
+                      "value": "2022"
+                    },
+                    {
+                      "label": "2023",
+                      "value": "2023"
+                    },
+                    {
+                      "label": "2024",
+                      "value": "2024"
+                    },
+                    {
+                      "label": "2025",
+                      "value": "2025"
+                    },
+                    {
+                      "label": "2026",
+                      "value": "2026"
+                    },
+                    {
+                      "label": "2027",
+                      "value": "2027"
+                    },
+                    {
+                      "label": "2028",
+                      "value": "2028"
+                    },
+                    {
+                      "label": "2029",
+                      "value": "2029"
+                    },
+                    {
+                      "label": "2030",
+                      "value": "2030"
+                    },
+                    {
+                      "label": "2031",
+                      "value": "2031"
+                    },
+                    {
+                      "label": "2032",
+                      "value": "2032"
+                    },
+                    {
+                      "label": "2033",
+                      "value": "2033"
+                    },
+                    {
+                      "label": "2034",
+                      "value": "2034"
+                    },
+                    {
+                      "label": "2035",
+                      "value": "2035"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Token",
+                  "label": "Credit Card Token",
+                  "key": "f74",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('POS Profile ID')===null || values('POS Profile ID')===\"\"",
+                  "requiredMessage": "Credit Card token is required. Please verify card details.",
+                  "omitWhenHidden": null,
                   "pattern": null,
                   "constraints": [
 
@@ -1562,10 +1800,18 @@
           },
           "events": [
             {
-              "name": "Submit",
+              "name": "Submit no Card on file",
               "type": "Click",
               "action": "Custom",
-              "code": "debugger;\nvar settings = {\n\t\"crossDomain\": true,\n\t\"url\": K('space').attributes('Kinetic Billing Server URL')+\"/registerUser\",\n\t\"method\": \"POST\",\n\t\"headers\": {},\n  \"dataType\": \"json\",\n  \"contentType\": \"application/json\",\n  \"data\": JSON.stringify({\n\t\t\"customerId\": K('field[Member ID]').value(),\n    \"firstName\": K('field[Student First Name]').value(),\n    \"lastName\": K('field[Student Last Name]').value(),\n    \"dob\": K('field[DOB]').value(),\n    \"address\": K('field[Address]').value(),\n    \"suburb\": K('field[Suburb]').value(),\n    \"state\": K('field[State]').value(),\n    \"postCode\": K('field[Postcode]').value(),\n    \"email\": K('field[Email]').value(),\n    \"mobile\": K('field[Mobile]').value(),\n    \"payment\": K('field[Payment]').value(),\n    \"billingPeriod\": K('field[Billing Period]').value(),\n    \"contractStartDate\": K('field[New Billing Start Date]').value(),\n    \"paymentMethod\": \"Credit Card\",\n    \"cardToken\": K('field[Credit Card Token]').value(),\n    \"space\": K('space').slug(),\n    \"billingService\": \"Bambora\",\n    \"gbmemberId\": K('submission').id()\n  })\n}\n\n$.ajax(settings).done(function (response) {\n  debugger;\n\tconsole.log(response);\n  if (response.error===100) {\n\t\tvar message=response.errorMessage;\n    if (response.errorMessage===\"DECLINE\") {\n    \tmessage=\"Credit Card not valid (Declined)\";  \n    }\n    $(\"#errorValue\").html(message);\n    K('section[Card Error]').show();\n  } else {\n    K('section[Card Error]').hide();\n    K('field[customerBillingId]').value(response.data.customerBillingId);\n\n    var cancelSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/customerStatusChange\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"customerId\": K('field[Billing Customer Reference]').value(),\n        \"newStatus\": \"Inactive\",\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"gbmemberId\": K('submission').id()\n      })\n    }\n    $.ajax(cancelSettings).done(function (cancelResponse) {\n      debugger;\n      console.log(cancelResponse);\n      if (cancelResponse.error===100) {\n        var message=cancelResponse.errorMessage;\n        if (cancelResponse.errorMessage===\"CANCEL_ERROR\") {\n          message=\"Cancelling previous billing has failed\";  \n        }\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n\t\t    K('form').submitPage();  \t\n      }\n    });\n  }\n});"
+              "code": "if (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n    var creditCardSettings = {\n    \"crossDomain\": true,\n    \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/createProfileCard\",\n    \"method\": \"POST\",\n    \"headers\": {},\n    \"dataType\": \"json\",\n    \"contentType\": \"application/json\",\n    \"data\": JSON.stringify({\n      \"space\": K('space').slug(),\n      \"billingService\": \"Bambora\",\n      \"token\": K('field[Credit Card Token]').value(),\n      \"name\": K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value(),\n      \"address\": K('field[Address]').value(),\n      \"city\": K('field[Suburb]').value(),\n      \"province\": K('field[State]').value(),\n      \"country\": K('space').attributes('School Country Code'),\n      \"postalCode\": K('field[Postcode]').value(),\n      \"email\": K('field[Email]').value(),\n    })\n  }\n\n  $.ajax(creditCardSettings).done(function (cardResponse) {\n    debugger;\n    console.log(cardResponse);\n    if (cardResponse.error===100) {\n      var data=JSON.parse(cardResponse.data);\n      var message=data.status_message;\n      $(\"#errorValue\").html(message);\n      K('section[Card Error]').show();\n    } else {\n      var data=JSON.parse(cardResponse.data);\n      K('section[Card Error]').hide();\n      K('field[POS Profile ID]').value(data.profileId);\n      var settings = {\n        \"crossDomain\": true,\n        \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/registerUser\",\n        \"method\": \"POST\",\n        \"headers\": {},\n        \"dataType\": \"json\",\n        \"contentType\": \"application/json\",\n        \"data\": JSON.stringify({\n          \"customerId\": K('field[Member ID]').value(),\n          \"firstName\": K('field[Student First Name]').value(),\n          \"lastName\": K('field[Student Last Name]').value(),\n          \"dob\": K('field[DOB]').value(),\n          \"address\": K('field[Address]').value(),\n          \"suburb\": K('field[Suburb]').value(),\n          \"state\": K('field[State]').value(),\n          \"postCode\": K('field[Postcode]').value(),\n          \"email\": K('field[Email]').value(),\n          \"mobile\": K('field[Mobile]').value(),\n          \"payment\": K('field[Payment]').value(),\n          \"billingPeriod\": K('field[Billing Period]').value(),\n          \"contractStartDate\": K('field[New Billing Start Date]').value(),\n          \"paymentMethod\": \"Credit Card\",\n          \"cardProfileID\": data.profileId,\n          \"space\": K('space').slug(),\n          \"billingService\": \"Bambora\",\n          \"gbmemberId\": K('submission').id()\n        })\n      }\n\n      $.ajax(settings).done(function (registerResponse) {\n        debugger;\n        console.log(registerResponse);\n        if (registerResponse.error===100) {\n          var message=registerResponse.errorMessage;\n          if (registerResponse.errorMessage===\"DECLINE\") {\n            message=\"Credit Card not valid (Declined)\";  \n          }\n          $(\"#errorValue\").html(message);\n          K('section[Card Error]').show();\n        } else {\n          K('section[Card Error]').hide();\n          K('field[customerBillingId]').value(registerResponse.data.customerBillingId);\n\n          var cancelSettings = {\n            \"crossDomain\": true,\n            \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/customerStatusChange\",\n            \"method\": \"POST\",\n            \"headers\": {},\n            \"dataType\": \"json\",\n            \"contentType\": \"application/json\",\n            \"data\": JSON.stringify({\n              \"customerId\": K('field[Billing Customer Reference]').value(),\n              \"newStatus\": \"Inactive\",\n              \"space\": K('space').slug(),\n              \"billingService\": \"Bambora\",\n              \"gbmemberId\": K('submission').id()\n            })\n          }\n          $.ajax(cancelSettings).done(function (cancelResponse) {\n            debugger;\n            console.log(cancelResponse);\n            if (cancelResponse.error===100) {\n              var message=cancelResponse.errorMessage;\n              if (cancelResponse.errorMessage===\"CANCEL_ERROR\") {\n                message=\"Cancelling previous billing has failed\";  \n              }\n              $(\"#errorValue\").html(message);\n              K('section[Card Error]').show();\n            } else {\n              K('form').submitPage();  \t\n            }\n          });\n        }\n      });\n    }\n  });\n}",
+              "runIf": "values('POS Profile ID')===null || values('POS Profile ID')===\"\""
+            },
+            {
+              "name": "Submit with Card on file",
+              "type": "Click",
+              "action": "Custom",
+              "code": "if (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n  var settings = {\n    \"crossDomain\": true,\n    \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/registerUser\",\n    \"method\": \"POST\",\n    \"headers\": {},\n    \"dataType\": \"json\",\n    \"contentType\": \"application/json\",\n    \"data\": JSON.stringify({\n      \"customerId\": K('field[Member ID]').value(),\n      \"firstName\": K('field[Student First Name]').value(),\n      \"lastName\": K('field[Student Last Name]').value(),\n      \"dob\": K('field[DOB]').value(),\n      \"address\": K('field[Address]').value(),\n      \"suburb\": K('field[Suburb]').value(),\n      \"state\": K('field[State]').value(),\n      \"postCode\": K('field[Postcode]').value(),\n      \"email\": K('field[Email]').value(),\n      \"mobile\": K('field[Mobile]').value(),\n      \"payment\": K('field[Payment]').value(),\n      \"billingPeriod\": K('field[Billing Period]').value(),\n      \"contractStartDate\": K('field[New Billing Start Date]').value(),\n      \"paymentMethod\": \"Credit Card\",\n      \"cardProfileID\": K('field[POS Profile ID]').value(),\n      \"space\": K('space').slug(),\n      \"billingService\": \"Bambora\",\n      \"gbmemberId\": K('submission').id()\n    })\n  }\n\n  $.ajax(settings).done(function (registerResponse) {\n    debugger;\n    console.log(registerResponse);\n    if (registerResponse.error===100) {\n      var message=registerResponse.errorMessage;\n      if (registerResponse.errorMessage===\"DECLINE\") {\n        message=\"Credit Card not valid (Declined)\";  \n      }\n      $(\"#errorValue\").html(message);\n      K('section[Card Error]').show();\n    } else {\n      K('section[Card Error]').hide();\n      K('field[customerBillingId]').value(registerResponse.data.customerBillingId);\n\n      var cancelSettings = {\n        \"crossDomain\": true,\n        \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/customerStatusChange\",\n        \"method\": \"POST\",\n        \"headers\": {},\n        \"dataType\": \"json\",\n        \"contentType\": \"application/json\",\n        \"data\": JSON.stringify({\n          \"customerId\": K('field[Billing Customer Reference]').value(),\n          \"newStatus\": \"Inactive\",\n          \"space\": K('space').slug(),\n          \"billingService\": \"Bambora\",\n          \"gbmemberId\": K('submission').id()\n        })\n      }\n      $.ajax(cancelSettings).done(function (cancelResponse) {\n        debugger;\n        console.log(cancelResponse);\n        if (cancelResponse.error===100) {\n          var message=cancelResponse.errorMessage;\n          if (cancelResponse.errorMessage===\"CANCEL_ERROR\") {\n            message=\"Cancelling previous billing has failed\";  \n          }\n          $(\"#errorValue\").html(message);\n          K('section[Card Error]').show();\n        } else {\n          K('form').submitPage();  \t\n        }\n      });\n    }\n  });\n }",
+              "runIf": "values('POS Profile ID')!==null && values('POS Profile ID')!==\"\""
             }
           ]
         }
@@ -1615,6 +1861,12 @@
           "type": "Load",
           "action": "Custom",
           "code": "var customCheckout = undefined;\nvar isCardNumberComplete = false;\nvar isCVVComplete = false;\nvar isExpiryComplete = false;\nsetTimeout(function(){\n  customCheckout = customcheckout();\n  var customCheckoutController = {\n    init: function() {\n      console.log('checkout.init()');\n      formElem=$(\"<form id='checkout-form' class='form-inline  text-center'></form>\");\n      formElem.append(\"<div class='form-group col-xs-6 has-feedback' id='card-number-bootstrap'><div id='card-number' class='form-control'></div><label class='help-block' for='card-number' id='card-number-error'></label></div>\");\n      formElem.append(\"<div class='form-group col-xs-2 has-feedback' id='card-cvv-bootstrap'><div id='card-cvv' class='form-control'></div><label class='help-block' for='card-cvv' id='card-cvv-error'></label></div>\");\n      formElem.append(\"<div class='form-group col-xs-2 has-feedback' id='card-expiry-bootstrap'><div id='card-expiry' class='form-control'></div><label class='help-block' for='card-expiry' id='card-expiry-error'></label></div>\");\n      formElem.append(\"<div class='col-xs-2 text-center'><button id='pay-button' type='submit' class='verifyBtn btn-primary disabled' disabled='true'>Verify</button></div>\");\n      $(\".card-container .row\").append(formElem);      \n      customCheckoutController.createInputs();\n      customCheckoutController.addListeners();\n    },\n    createInputs: function() {\n      console.log('checkout.createInputs()');\n      var options = {};\n\n      // Create and mount the inputs\n      options.placeholder = 'Card number';\n      customCheckout.create('card-number', options).mount('#card-number');\n\n      options.placeholder = 'CVV';\n      customCheckout.create('cvv', options).mount('#card-cvv');\n\n      options.placeholder = 'MM / YY';\n      customCheckout.create('expiry', options).mount('#card-expiry');\n    },\n    addListeners: function() {\n      var self = this;\n\n      // listen for submit button\n      if (document.getElementById('checkout-form') !== null) {\n        document\n        .getElementById('checkout-form')\n        .addEventListener('submit', self.onSubmit.bind(self));\n      }\n\n      customCheckout.on('brand', function(event) {\n        console.log('brand: ' + JSON.stringify(event));\n\n        var cardLogo = 'none';\n        if (event.brand && event.brand !== 'unknown') {\n          var filePath =\n            'https://cdn.na.bambora.com/downloads/images/cards/' +\n            event.brand +\n            '.svg';\n          cardLogo = 'url(' + filePath + ')';\n        }\n        document.getElementById('card-number').style.backgroundImage = cardLogo;\n      });\n\n      customCheckout.on('blur', function(event) {\n        console.log('blur: ' + JSON.stringify(event));\n      });\n\n      customCheckout.on('focus', function(event) {\n        console.log('focus: ' + JSON.stringify(event));\n      });\n\n      customCheckout.on('empty', function(event) {\n        console.log('empty: ' + JSON.stringify(event));\n\n        if (event.empty) {\n          if (event.field === 'card-number') {\n            isCardNumberComplete = false;\n          } else if (event.field === 'cvv') {\n            isCVVComplete = false;\n          } else if (event.field === 'expiry') {\n            isExpiryComplete = false;\n          }\n          self.setPayButton(false);\n        }\n      });\n\n      customCheckout.on('complete', function(event) {\n        console.log('complete: ' + JSON.stringify(event));\n\n        if (event.field === 'card-number') {\n          isCardNumberComplete = true;\n          self.hideErrorForId('card-number');\n        } else if (event.field === 'cvv') {\n          isCVVComplete = true;\n          self.hideErrorForId('card-cvv');\n        } else if (event.field === 'expiry') {\n          isExpiryComplete = true;\n          self.hideErrorForId('card-expiry');\n        }\n\n        self.setPayButton(\n          isCardNumberComplete && isCVVComplete && isExpiryComplete\n        );\n      });\n\n      customCheckout.on('error', function(event) {\n        console.log('error: ' + JSON.stringify(event));\n\n        if (event.field === 'card-number') {\n          isCardNumberComplete = false;\n          self.showErrorForId('card-number', event.message);\n        } else if (event.field === 'cvv') {\n          isCVVComplete = false;\n          self.showErrorForId('card-cvv', event.message);\n        } else if (event.field === 'expiry') {\n          isExpiryComplete = false;\n          self.showErrorForId('card-expiry', event.message);\n        }\n        self.setPayButton(false);\n      });\n    },\n    onSubmit: function(event) {\n      var self = this;\n\n      console.log('checkout.onSubmit()');\n\n      event.preventDefault();\n      self.setPayButton(false);\n      self.toggleProcessingScreen();\n\n      var callback = function(result) {\n        console.log('token result : ' + JSON.stringify(result));\n        debugger;\n        if (result.error) {\n          self.processTokenError(result.error);\n        } else {\n          self.processTokenSuccess(result.token);\n          K('field[Credit Card Token]').value(result[\"token\"]);\n          K('field[Credit Card Number]').value(\"...\"+result[\"last4\"]);\n          K('field[Credit Card Expiry Month]').value(result[\"expiryMonth\"]);\n          K('field[Credit Card Expiry Year]').value(result[\"expiryYear\"]);\n        }\n      };\n\n      console.log('checkout.createToken()');\n      customCheckout.createToken(callback);\n    },\n    hideErrorForId: function(id) {\n      console.log('hideErrorForId: ' + id);\n\n      var element = document.getElementById(id);\n\n      if (element !== null) {\n        var errorElement = document.getElementById(id + '-error');\n        if (errorElement !== null) {\n          errorElement.innerHTML = '';\n        }\n\n        var bootStrapParent = document.getElementById(id + '-bootstrap');\n        if (bootStrapParent !== null) {\n          bootStrapParent.className = 'form-group has-feedback has-success';\n        }\n      } else {\n        console.log('showErrorForId: Could not find ' + id);\n      }\n    },\n    showErrorForId: function(id, message) {\n      console.log('showErrorForId: ' + id + ' ' + message);\n\n      var element = document.getElementById(id);\n\n      if (element !== null) {\n        var errorElement = document.getElementById(id + '-error');\n        if (errorElement !== null) {\n          errorElement.innerHTML = message;\n        }\n\n        var bootStrapParent = document.getElementById(id + '-bootstrap');\n        if (bootStrapParent !== null) {\n          bootStrapParent.className = 'form-group has-feedback has-error ';\n        }\n      } else {\n        console.log('showErrorForId: Could not find ' + id);\n      }\n    },\n    setPayButton: function(enabled) {\n      console.log('checkout.setPayButton() disabled: ' + !enabled);\n\n      var payButton = document.getElementById('pay-button');\n      if (enabled) {\n        payButton.disabled = false;\n        payButton.className = 'btn btn-primary';\n      } else {\n        payButton.disabled = true;\n        payButton.className = 'btn btn-primary disabled';\n      }\n    },\n    toggleProcessingScreen: function() {\n      var processingScreen = document.getElementById('processing-screen');\n      if (processingScreen) {\n        processingScreen.classList.toggle('visible');\n      }\n    },\n    showErrorFeedback: function(message) {\n      var xMark = '\\u2718';\n      this.feedback = document.getElementById('feedback');\n      this.feedback.innerHTML = xMark + ' ' + message;\n      this.feedback.classList.add('error');\n    },\n    showSuccessFeedback: function(message) {\n      var checkMark = '\\u2714';\n      this.feedback = document.getElementById('feedback');\n      this.feedback.innerHTML = checkMark + ' ' + message;\n      this.feedback.classList.add('success');\n    },\n    processTokenError: function(error) {\n      error = JSON.stringify(error, undefined, 2);\n      console.log('processTokenError: ' + error);\n\n      this.showErrorFeedback(\n        'Error creating token: </br>' + JSON.stringify(error, null, 4)\n      );\n      this.setPayButton(true);\n      this.toggleProcessingScreen();\n    },\n    processTokenSuccess: function(token) {\n      console.log('processTokenSuccess: ' + token);\n\n      this.showSuccessFeedback('Success! Created token: ' + token);\n      this.setPayButton(true);\n      this.toggleProcessingScreen();\n\n      // Use token to call payments api\n      // this.makeTokenPayment(token);\n    },\n  };\n  customCheckoutController.init();\n},1000);\n\n"
+        },
+        {
+          "name": "Set Source IP",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$.getJSON('https://ipapi.co/json/', function(data) {\n  console.log(JSON.stringify(data, null, 2));\n  K('field[Source IP]').value(data.ip);\n});"
         }
       ],
       "name": "Instalment Information",

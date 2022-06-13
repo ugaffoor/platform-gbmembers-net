@@ -107,6 +107,9 @@
       "name": "Phone Number"
     },
     {
+      "name": "POS Profile ID"
+    },
+    {
       "name": "Postcode"
     },
     {
@@ -299,6 +302,10 @@
         {
           "name": "Billing Payment Type",
           "structureField": "${fields('values[Billing Payment Type]')}"
+        },
+        {
+          "name": "POS Profile ID",
+          "structureField": "${fields('values[POS Profile ID]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",
