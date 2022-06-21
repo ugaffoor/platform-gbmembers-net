@@ -1,0 +1,94 @@
+{
+  "activeMappingName": "Additional Services",
+  "attributes": [
+    {
+      "name": "Fee"
+    },
+    {
+      "name": "id"
+    },
+    {
+      "name": "Info"
+    },
+    {
+      "name": "Name"
+    },
+    {
+      "name": "Payment Frequency"
+    },
+    {
+      "name": "Slug"
+    },
+    {
+      "name": "Status"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "Status",
+          "structureField": "${fields('values[Status]')}"
+        },
+        {
+          "name": "Name",
+          "structureField": "${fields('values[Name]')}"
+        },
+        {
+          "name": "Slug",
+          "structureField": "${fields('values[Slug]')}"
+        },
+        {
+          "name": "Payment Frequency",
+          "structureField": "${fields('values[Payment Frequency]')}"
+        },
+        {
+          "name": "Info",
+          "structureField": "${fields('values[Info]')}"
+        },
+        {
+          "name": "Fee",
+          "structureField": "${fields('values[Fee]')}"
+        },
+        {
+          "name": "id",
+          "structureField": "${fields('id')}"
+        }
+      ],
+      "bridgeSlug": "kinetic-core",
+      "name": "Additional Services",
+      "qualifications": [
+        {
+          "name": "Get Active Services",
+          "query": "formSlug=additional-services&limit=1000&index=values[Status]&q=values[Status]=\"Active\""
+        },
+        {
+          "name": "Get Service",
+          "query": "id=${parameters('ID')}"
+        }
+      ],
+      "structure": "Datastore Submissions"
+    }
+  ],
+  "name": "Additional Services",
+  "qualifications": [
+    {
+      "name": "Get Active Services",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "Get Service",
+      "parameters": [
+        {
+          "name": "ID"
+        }
+      ],
+      "resultType": "Single"
+    }
+  ],
+  "status": "Active"
+}
