@@ -237,5 +237,5 @@
   ],
   "slug": "help-info",
   "status": "New",
-  "submissionLabelExpression": "${values('Application')}-${values('Category')}-${values('Title')}"
+  "submissionLabelExpression": "${values('Application')}-${values('Category')}-${values('Title')} :: ${values('Information')}"
 }

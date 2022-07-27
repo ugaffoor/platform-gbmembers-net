@@ -649,7 +649,7 @@
                   "name": "Set Fees",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "if (K('space').attributes('Ignore Admin Fee')!==\"YES\") {\n\tK('field[Admin Fee]').value(\"1.33%\");\n} else {\n\tK('field[Admin Fee]').value(\"0\");\n}\n",
+                  "code": "if (K('space').attributes('Ignore Admin Fee')!==\"YES\") {\n  K('field[Admin Fee]').value(K('space').attributes('Admin Fee Charge'));\n} else {\n\tK('field[Admin Fee]').value(\"0\");\n}\n",
                   "runIf": "values('Payment Frequency')!==null"
                 }
               ],
