@@ -433,5 +433,5 @@
   ],
   "slug": "member-attendance",
   "status": "Active",
-  "submissionLabelExpression": "${values('Class Date')} ${values('Class Time')} - ${values('Class')}"
+  "submissionLabelExpression": "${values('Class Date')} ${values('Class Time')} - ${values('Class')} - ${values('Member ID')}"
 }
