@@ -16,6 +16,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Kiosk PIN defaults to 0000",
+    "name": "Kiosk PIN"
+  },
+  {
+    "allowsMultiple": false,
     "description": "",
     "name": "Last Name"
   },

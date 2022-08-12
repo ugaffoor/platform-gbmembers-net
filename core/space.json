@@ -311,6 +311,12 @@
       ]
     },
     {
+      "name": "Self Checkin PIN",
+      "values": [
+        "3333"
+      ]
+    },
+    {
       "name": "Service Days Due",
       "values": [
         "7"
