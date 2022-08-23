@@ -105,6 +105,15 @@
       "unique": false
     },
     {
+      "name": "values[Member GUID],values[Status],values[Class Date]",
+      "parts": [
+        "values[Member GUID]",
+        "values[Status]",
+        "values[Class Date]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Member ID]",
       "parts": [
         "values[Member ID]"

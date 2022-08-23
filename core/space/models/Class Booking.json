@@ -87,7 +87,7 @@
         },
         {
           "name": "My Bookings",
-          "query": "formSlug=class-booking&limit=1000&index=values[Member ID],values[Status],values[Class Date]&q=values[Member ID]=\"${parameters('Member ID')}\" AND values[Status]=\"Booked\" AND values[Class Date]>=\"${parameters('Class Date')}\""
+          "query": "formSlug=class-booking&limit=1000&index=values[Member GUID],values[Status],values[Class Date]&q=values[Member GUID]=\"${parameters('Member GUID')}\" AND values[Status]=\"Booked\" AND values[Class Date]>=\"${parameters('Class Date')}\""
         }
       ],
       "structure": "Datastore Submissions"
@@ -138,7 +138,7 @@
           "name": "Class Date"
         },
         {
-          "name": "Member ID"
+          "name": "Member GUID"
         }
       ],
       "resultType": "Multiple"
