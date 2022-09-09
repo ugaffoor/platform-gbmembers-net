@@ -1,0 +1,1117 @@
+{
+  "anonymous": false,
+  "attributes": [
+    {
+      "name": "Cancel Disabled",
+      "values": [
+        "true"
+      ]
+    },
+    {
+      "name": "Cloning Disabled",
+      "values": [
+        "true"
+      ]
+    },
+    {
+      "name": "Comment Disabled",
+      "values": [
+        "true"
+      ]
+    },
+    {
+      "name": "Submission Workflow",
+      "values": [
+        "Submitted - True"
+      ]
+    }
+  ],
+  "bridgedResources": [
+    {
+      "model": "Members",
+      "name": "Get Billing Members",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "Get Billing Members",
+      "status": "Active"
+    },
+    {
+      "model": "Members",
+      "name": "Get Member",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Members')}",
+          "name": "ID"
+        }
+      ],
+      "qualification": "Get Member",
+      "status": "Active"
+    },
+    {
+      "model": "Members",
+      "name": "Members",
+      "order": [
+
+      ],
+      "parameters": [
+
+      ],
+      "qualification": "Get Billing Members",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+
+  ],
+  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n\n<style>\n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n.card-container {\n    background-color: rgb(240, 240, 240);\n    margin: auto;\n    width: calc(95%);\n\n    border: none;\n    border-radius: 4px;\n}\n.form-group {\n    flex: 0 0 auto;\n    flex-flow: column !important;\n}\n#checkout-form {\n    position: relative;\n    width: 400px;\n    padding: 10px;\n}\n\n#checkout-form label {\n    display: block;\n    min-height: 25px;\n\n    font-size: 15px;\n    font-weight: 500;\n    margin: 5px 0;\n    padding: 0;\n    color: red;\n}\n\n#card-number, #card-cvv, #card-expiry {\n    background-color: #FFF;\n    display: block;\n    width: calc(90%);\n    border-radius: 2px;\n    border: 1px solid rgba(200, 200, 200, 1);\n    padding: 14px 60px 13px 20px;\n    margin: auto;\n    transition: all 100ms ease-out;\n}\n\n/* card images are added to card number */\n#card-number {\n    background-image: none;\n\n    background-origin: content-box;\n    background-position: calc(100% + 40px) center;\n    background-repeat: no-repeat;\n    background-size: contain;\n}\n\n/* buttons */\n.btn {\n    vertical-align: top;\n}\n\n#pay-button {\n    position: relative;\n    border: none;\n    border-radius: 4px;\n    background-color: #0c384f;\n    color: rgba(255, 255, 255, 1);\n    display: inline-block;\n    transition: all 100ms ease-out;\n    padding: 11px 25px;\n    margin-left: 30px;\n}\n\n#pay-button:hover, #pay-button:active {\n    background-color: rgba(69, 36, 89, 1);\n}\n\n#pay-button:active {\n    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);\n}\n\n#pay-button:disabled {\n    background-color: rgba(255, 255, 255, 1);\n    border: 1px solid #0c384f;\n    color: #0c384f;\n}\n\n/* feedback is displayed after tokenization */\n#feedback {\n    position: relative;\n    left: 15px;\n    display: inline-block;\n    background-color: transparent;\n    border: 0px solid rgba(200, 200, 200, 1);\n    border-radius: 4px;\n    transition: all 100ms ease-out;\n    padding: 11px;\n}\n\n#feedback.error {\n    color: red;\n    border: 1px solid;\n}\n\n#feedback.success {\n    color: seagreen;\n    border: 1px solid;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n</script>\n",
+  "description": "Update members Credit Card details.<br>\nAll previous failed payments will be processed on the new Credit Card.<br>",
+  "name": "Dev-Bambora Change Credit Card Details",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Select Member",
+          "title": "Select Member",
+          "visible": "!form('review')",
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Members",
+              "label": "Members",
+              "key": "f38",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "A member must be selected",
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Get Members",
+                  "type": "Change",
+                  "action": "Custom",
+                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    debugger;\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Reference]').value(bridgedData['Billing Customer Reference']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n    K('field[Biller Migrated]').value(bridgedData['Biller Migrated']);\n    K('field[Payment]').value(bridgedData['Payment']);\n    K('field[Admin Fee]').value(bridgedData['Admin Fee'].replace(\"$\",\"\"));\n    K('field[Address]').value(bridgedData['Address']);\n    K('field[Suburb]').value(bridgedData['Suburb']);\n    K('field[State]').value(bridgedData['State']);\n    K('field[Postcode]').value(bridgedData['Postcode']);\n    K('field[Email]').value(bridgedData['Email']);\n    K('field[Mobile]').value(bridgedData['Phone Number']);\n    K('field[DOB]').value(bridgedData['DOB']);\n    K('field[Registered with Card]').value(bridgedData['Registered with Card']);\n    K('field[POS Profile ID]').value(bridgedData['POS Profile ID']);\n\n    K('section[Student Information]').show();\n    K('section[Program Information]').show();\n\t\n    K('section[Process Back Payments]').show();\n\n    K('section[Member Select Space]').hide();    \n    \n  }\n});",
+                  "bridgedResourceName": null,
+                  "runIf": "values('Members')!==\"\""
+                },
+                {
+                  "name": "Clear Member Details",
+                  "type": "Change",
+                  "action": "Custom",
+                  "code": "K('field[Member ID]').value(\"\");\nK('field[Billing Customer Id]').value(\"\");\nK('field[Billing Customer Reference]').value(\"\");\nK('field[Student First Name]').value(\"\");\nK('field[Student Last Name]').value(\"\");\nK('section[Student Information]').hide();\nK('section[Program Information]').hide();\nK('section[Terms]').hide();\nK('section[Program Information]').hide();\nK('section[Process Back Payments]').hide();\n\nK('section[Member Select Space]').show();    \n",
+                  "runIf": "values('Members')===null"
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "dropdown",
+              "choicesResourceName": "Get Billing Members",
+              "choicesRunIf": null,
+              "choices": {
+                "label": "${resources('Get Billing Members:First Name')} ${resources('Get Billing Members:Last Name')}",
+                "value": "${resources('Get Billing Members:id')}"
+              }
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Members Select",
+              "text": "<div id=\"selectMemberMenu\"></div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Student Information",
+          "title": "Student Information",
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Member ID",
+              "label": "Member ID",
+              "key": "f39",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Student First Name",
+              "label": "Student's First Name",
+              "key": "f28",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Set Requested For",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Requested For",
+                      "value": "${values('Student First Name')} ${values('Student Last Name')}",
+                      "visible": null
+                    }
+                  ]
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Student Last Name",
+              "label": "Student's Last Name",
+              "key": "f29",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Set Requested For",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Requested For",
+                      "value": "${values('Student First Name')} ${values('Student Last Name')}",
+                      "visible": null
+                    }
+                  ]
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Requested For",
+              "label": "Requested For",
+              "key": "f88",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Customer Id",
+              "label": "Billing Customer Id",
+              "key": "f55",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Customer Reference",
+              "label": "Billing Customer Reference",
+              "key": "f72",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Period",
+              "label": "Billing Period",
+              "key": "f60",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Biller Migrated",
+              "label": "Biller Migrated",
+              "key": "f87",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Start Date",
+              "label": "Billing Start Date",
+              "key": "f68",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Address",
+              "label": "Address",
+              "key": "f79",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Suburb",
+              "label": "Suburb",
+              "key": "f80",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "State",
+              "label": "State",
+              "key": "f81",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Postcode",
+              "label": "Postcode",
+              "key": "f82",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Email",
+              "label": "Email",
+              "key": "f83",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Mobile",
+              "label": "Mobile",
+              "key": "f84",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "DOB",
+              "label": "DOB",
+              "key": "f85",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Registered with Card",
+              "label": "Registered with Card",
+              "key": "f89",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "POS Profile ID",
+              "label": null,
+              "key": "f93",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Program Information",
+          "title": "Program Information",
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Payment",
+              "label": "Payment",
+              "key": "f54",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Admin Fee",
+              "label": "Admin Fee",
+              "key": "f65",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Credit Card Details",
+              "title": "Credit Card Details",
+              "visible": true,
+              "omitWhenHidden": null,
+              "renderAttributes": {
+                "class": "services-paysmart-billing-details"
+              },
+              "elements": [
+                {
+                  "type": "content",
+                  "renderType": "html",
+                  "name": "Credit Card Capture",
+                  "text": "This account has a saved credit card that has been used for the membership.\n<br>\nThis Credit Card update will also update the saved Credit card used for POS.\n<br>\n<div class=\"card-container\">\n    <div class=\"row\">\n        <!-- Add form -->\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-12 text-center\">\n        <div id=\"feedback\"></div>\n    </div>\n</div>\n",
+                  "visible": "values('Registered with Card')===\"YES\"",
+                  "renderAttributes": {
+                  }
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Token",
+                  "label": "Credit Card Token",
+                  "key": "f74",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": false,
+                  "enabled": false,
+                  "required": "values('Registered with Card')===\"YES\"",
+                  "requiredMessage": "Credit Card token is required. Please verify card details.",
+                  "omitWhenHidden": false,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Number",
+                  "label": "Credit Card Number",
+                  "key": "f75",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": "values('Registered with Card')!==\"YES\"",
+                  "enabled": true,
+                  "required": true,
+                  "requiredMessage": null,
+                  "omitWhenHidden": false,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Expiry Month",
+                  "label": "Credit Card Expiry Month",
+                  "key": "f90",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": "values('Registered with Card')!==\"YES\"",
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": true,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "01",
+                      "value": "01"
+                    },
+                    {
+                      "label": "02",
+                      "value": "02"
+                    },
+                    {
+                      "label": "03",
+                      "value": "03"
+                    },
+                    {
+                      "label": "04",
+                      "value": "04"
+                    },
+                    {
+                      "label": "05",
+                      "value": "05"
+                    },
+                    {
+                      "label": "06",
+                      "value": "06"
+                    },
+                    {
+                      "label": "07",
+                      "value": "07"
+                    },
+                    {
+                      "label": "08",
+                      "value": "08"
+                    },
+                    {
+                      "label": "09",
+                      "value": "09"
+                    },
+                    {
+                      "label": "10",
+                      "value": "10"
+                    },
+                    {
+                      "label": "11",
+                      "value": "11"
+                    },
+                    {
+                      "label": "12",
+                      "value": "12"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Expiry Year",
+                  "label": "Credit Card Expiry Year",
+                  "key": "f91",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": "values('Registered with Card')!==\"YES\"",
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": true,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "2022",
+                      "value": "2022"
+                    },
+                    {
+                      "label": "2023",
+                      "value": "2023"
+                    },
+                    {
+                      "label": "2024",
+                      "value": "2024"
+                    },
+                    {
+                      "label": "2025",
+                      "value": "2025"
+                    },
+                    {
+                      "label": "2026",
+                      "value": "2026"
+                    },
+                    {
+                      "label": "2027",
+                      "value": "2027"
+                    },
+                    {
+                      "label": "2028",
+                      "value": "2028"
+                    },
+                    {
+                      "label": "2029",
+                      "value": "2029"
+                    },
+                    {
+                      "label": "2030",
+                      "value": "2030"
+                    },
+                    {
+                      "label": "2031",
+                      "value": "2031"
+                    },
+                    {
+                      "label": "2032",
+                      "value": "2032"
+                    },
+                    {
+                      "label": "2033",
+                      "value": "2033"
+                    },
+                    {
+                      "label": "2034",
+                      "value": "2034"
+                    },
+                    {
+                      "label": "2035",
+                      "value": "2035"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "CVV",
+                  "label": "CVV",
+                  "key": "f78",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": false,
+                  "enabled": true,
+                  "required": false,
+                  "requiredMessage": null,
+                  "omitWhenHidden": false,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Process Back Payments",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Back Payment Info",
+              "text": "To ensure all previous overdue payments are made, click the \"Process Overdue Payments\" option.\n<br>\nAlternatively, to collect previous overdue payments in a payment plan, you can use the Bambora Setup Biller form, to alter future payments to cover all missed payments.",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "Process Overdue Payments",
+              "label": "",
+              "key": "f92",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Process Back Payments",
+                  "value": "Process Back Payments"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Card Error",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Error Details",
+              "text": "<p class=\"errorDetails\" id=\"errorValue\"/p>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Member Select Space",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Member Select Space",
+              "text": "<div style=\"height:300px\"></div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "name": "Submit Button",
+          "visible": true,
+          "enabled": true,
+          "renderType": "custom",
+          "renderAttributes": {
+          },
+          "events": [
+            {
+              "name": "Submit with Token",
+              "type": "Click",
+              "action": "Custom",
+              "code": "debugger;\nif (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n    var creditCardSettings = {\n    \"crossDomain\": true,\n    \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/updateProfileCard\",\n    \"method\": \"POST\",\n    \"headers\": {},\n    \"dataType\": \"json\",\n    \"contentType\": \"application/json\",\n    \"data\": JSON.stringify({\n      \"space\": K('space').slug(),\n      \"billingService\": \"Bambora\",\n      \"token\": K('field[Credit Card Token]').value(),\n      \"profileId\": K('field[POS Profile ID]').value(),\n      \"cardId\": \"1\",\n      \"name\": K('field[Address]').value(),\n    })\n  }\n\n  $.ajax(creditCardSettings).done(function (response) {\n    debugger;\n    console.log(response);\n    if (response.error===100) {\n      var message=response.errorMessage;\n      if (response.errorMessage===\"DECLINE\") {\n        message=\"Credit Card not valid (Declined)\";  \n      }\n      $(\"#errorValue\").html(message);\n      K('section[Card Error]').show();\n    } else {\n      K('section[Card Error]').hide();\n\n      var cancelSettings = {\n        \"crossDomain\": true,\n        \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/customerStatusChange\",\n        \"method\": \"POST\",\n        \"headers\": {},\n        \"dataType\": \"json\",\n        \"contentType\": \"application/json\",\n        \"data\": JSON.stringify({\n          \"customerId\": K('field[Billing Customer Reference]').value(),\n          \"newStatus\": \"Active\",\n          \"space\": K('space').slug(),\n          \"billingService\": \"Bambora\",\n          \"gbmemberId\": K('submission').id(),\n\t\t\t    \"processBackPayments\": (K('field[Process Overdue Payments]').value().length===1 ? \"1\" : \"0\")\n        })\n      }\n      $.ajax(cancelSettings).done(function (cancelResponse) {\n        debugger;\n        console.log(cancelResponse);\n        if (cancelResponse.error===100) {\n          var message=cancelResponse.errorMessage;\n          if (cancelResponse.errorMessage===\"CANCEL_ERROR\") {\n            message=\"Cancelling previous billing has failed\";  \n          }\n          $(\"#errorValue\").html(message);\n          K('section[Card Error]').show();\n        } else {\n          K('form').submitPage();  \t\n        }\n      });\n    }\n  });\n}",
+              "runIf": "values('Registered with Card')===\"YES\""
+            },
+            {
+              "name": "Submit no card",
+              "type": "Click",
+              "action": "Custom",
+              "code": "debugger;\nif (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n  var settings = {\n    \"crossDomain\": true,\n    \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/savePaymentMethod\",\n    \"method\": \"POST\",\n    \"headers\": {},\n    \"dataType\": \"json\",\n    \"contentType\": \"application/json\",\n    \"data\": JSON.stringify({\n      \"customerId\": K('field[Billing Customer Reference]').value(),\n      \"paymentMethod\": \"CREDITCARD\",\n      \"creditCardName\": K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value(),\n      \"creditCardNumber\": K('field[Credit Card Number]').value(),\n      \"creditCardExpiryDate\": K('field[Credit Card Expiry Month]').value()+\"/\"+K('field[Credit Card Expiry Year]').value(),\n      \"processBackPayments\": (K('field[Process Overdue Payments]').value().length===1 ? \"1\" : \"0\"),\n      \"space\": K('space').slug(),\n      \"billingService\": \"Bambora\"\n    })\n  }\n\n  $.ajax(settings).done(function (response) {\n    if (response.error===100) {\n      var message=response.errorMessage;\n      if (response.errorMessage===\"DECLINE\") {\n        message=\"Credit Card not valid (Declined)\";  \n      }\n      $(\"#errorValue\").html(message);\n      K('section[Card Error]').show();\n    } else {\n      K('section[Card Error]').hide();\n      var ccNumber=K('field[Credit Card Number]').value();\n      K('field[Credit Card Number]').value(\"...\"+ccNumber.substring(ccNumber.length-4,ccNumber.length));\n      K('form').submitPage();\n    }\n  });    \n}",
+              "runIf": "values('Registered with Card')!==\"YES\""
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "Load Members Select",
+          "type": "Load",
+          "action": "Custom",
+          "code": "\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\ndebugger;\nif (GetURLParameter(\"id\")!==null) {\n  K('field[Members]').value(GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n",
+          "runIf": "!form('review')"
+        },
+        {
+          "name": "Handle Errors",
+          "type": "Submit",
+          "action": "Custom",
+          "code": "if (!jQuery.isEmptyObject(K('form').validate())){\n  setTimeout(function(){\n  if ($(\".has-error\").length>0){\n    $(\".has-error\").each(function(i,l) { \n      if ($(l).attr(\"data-element-name\").indexOf(\"Signature\")!==-1) {\n        sigCanElName=$(l).attr(\"data-element-name\").replace(\"Encoded \",\"\");\n        $(K('content['+sigCanElName+']').element()).addClass(\"has-error\");\n      }\n    })  \n    $('.main-container').animate({\n      scrollTop: 0\n    },500);\n  }\n  },100);\n}"
+        },
+        {
+          "name": "Setup Credit Card",
+          "type": "Load",
+          "action": "Custom",
+          "code": "var customCheckout = undefined;\nvar isCardNumberComplete = false;\nvar isCVVComplete = false;\nvar isExpiryComplete = false;\nsetTimeout(function(){\n  customCheckout = customcheckout();\n  var customCheckoutController = {\n    init: function() {\n      console.log('checkout.init()');\n      formElem=$(\"<form id='checkout-form' class='form-inline  text-center'></form>\");\n      formElem.append(\"<div class='form-group col-xs-6 has-feedback' id='card-number-bootstrap'><div id='card-number' class='form-control'></div><label class='help-block' for='card-number' id='card-number-error'></label></div>\");\n      formElem.append(\"<div class='form-group col-xs-2 has-feedback' id='card-cvv-bootstrap'><div id='card-cvv' class='form-control'></div><label class='help-block' for='card-cvv' id='card-cvv-error'></label></div>\");\n      formElem.append(\"<div class='form-group col-xs-2 has-feedback' id='card-expiry-bootstrap'><div id='card-expiry' class='form-control'></div><label class='help-block' for='card-expiry' id='card-expiry-error'></label></div>\");\n      formElem.append(\"<div class='col-xs-2 text-center'><button id='pay-button' type='submit' class='verifyBtn btn-primary disabled' disabled='true'>Verify</button></div>\");\n      $(\".card-container .row\").append(formElem);      \n      customCheckoutController.createInputs();\n      customCheckoutController.addListeners();\n    },\n    createInputs: function() {\n      console.log('checkout.createInputs()');\n      var options = {};\n\n      // Create and mount the inputs\n      options.placeholder = 'Card number';\n      customCheckout.create('card-number', options).mount('#card-number');\n\n      options.placeholder = 'CVV';\n      customCheckout.create('cvv', options).mount('#card-cvv');\n\n      options.placeholder = 'MM / YY';\n      customCheckout.create('expiry', options).mount('#card-expiry');\n    },\n    addListeners: function() {\n      var self = this;\n\n      // listen for submit button\n      if (document.getElementById('checkout-form') !== null) {\n        document\n        .getElementById('checkout-form')\n        .addEventListener('submit', self.onSubmit.bind(self));\n      }\n\n      customCheckout.on('brand', function(event) {\n        console.log('brand: ' + JSON.stringify(event));\n\n        var cardLogo = 'none';\n        if (event.brand && event.brand !== 'unknown') {\n          var filePath =\n            'https://cdn.na.bambora.com/downloads/images/cards/' +\n            event.brand +\n            '.svg';\n          cardLogo = 'url(' + filePath + ')';\n        }\n        document.getElementById('card-number').style.backgroundImage = cardLogo;\n      });\n\n      customCheckout.on('blur', function(event) {\n        console.log('blur: ' + JSON.stringify(event));\n      });\n\n      customCheckout.on('focus', function(event) {\n        console.log('focus: ' + JSON.stringify(event));\n      });\n\n      customCheckout.on('empty', function(event) {\n        console.log('empty: ' + JSON.stringify(event));\n\n        if (event.empty) {\n          if (event.field === 'card-number') {\n            isCardNumberComplete = false;\n          } else if (event.field === 'cvv') {\n            isCVVComplete = false;\n          } else if (event.field === 'expiry') {\n            isExpiryComplete = false;\n          }\n          self.setPayButton(false);\n        }\n      });\n\n      customCheckout.on('complete', function(event) {\n        console.log('complete: ' + JSON.stringify(event));\n\n        if (event.field === 'card-number') {\n          isCardNumberComplete = true;\n          self.hideErrorForId('card-number');\n        } else if (event.field === 'cvv') {\n          isCVVComplete = true;\n          self.hideErrorForId('card-cvv');\n        } else if (event.field === 'expiry') {\n          isExpiryComplete = true;\n          self.hideErrorForId('card-expiry');\n        }\n\n        self.setPayButton(\n          isCardNumberComplete && isCVVComplete && isExpiryComplete\n        );\n      });\n\n      customCheckout.on('error', function(event) {\n        console.log('error: ' + JSON.stringify(event));\n\n        if (event.field === 'card-number') {\n          isCardNumberComplete = false;\n          self.showErrorForId('card-number', event.message);\n        } else if (event.field === 'cvv') {\n          isCVVComplete = false;\n          self.showErrorForId('card-cvv', event.message);\n        } else if (event.field === 'expiry') {\n          isExpiryComplete = false;\n          self.showErrorForId('card-expiry', event.message);\n        }\n        self.setPayButton(false);\n      });\n    },\n    onSubmit: function(event) {\n      var self = this;\n\n      console.log('checkout.onSubmit()');\n\n      event.preventDefault();\n      self.setPayButton(false);\n      self.toggleProcessingScreen();\n\n      var callback = function(result) {\n        console.log('token result : ' + JSON.stringify(result));\n        debugger;\n        if (result.error) {\n          self.processTokenError(result.error);\n        } else {\n          self.processTokenSuccess(result.token);\n          K('field[Credit Card Token]').value(result[\"token\"]);\n          K('field[Credit Card Number]').value(\"...\"+result[\"last4\"]);\n          K('field[Credit Card Expiry Month]').value(result[\"expiryMonth\"]);\n          K('field[Credit Card Expiry Year]').value(result[\"expiryYear\"]);\n        }\n      };\n\n      console.log('checkout.createToken()');\n      customCheckout.createToken(callback);\n    },\n    hideErrorForId: function(id) {\n      console.log('hideErrorForId: ' + id);\n\n      var element = document.getElementById(id);\n\n      if (element !== null) {\n        var errorElement = document.getElementById(id + '-error');\n        if (errorElement !== null) {\n          errorElement.innerHTML = '';\n        }\n\n        var bootStrapParent = document.getElementById(id + '-bootstrap');\n        if (bootStrapParent !== null) {\n          bootStrapParent.className = 'form-group has-feedback has-success';\n        }\n      } else {\n        console.log('showErrorForId: Could not find ' + id);\n      }\n    },\n    showErrorForId: function(id, message) {\n      console.log('showErrorForId: ' + id + ' ' + message);\n\n      var element = document.getElementById(id);\n\n      if (element !== null) {\n        var errorElement = document.getElementById(id + '-error');\n        if (errorElement !== null) {\n          errorElement.innerHTML = message;\n        }\n\n        var bootStrapParent = document.getElementById(id + '-bootstrap');\n        if (bootStrapParent !== null) {\n          bootStrapParent.className = 'form-group has-feedback has-error ';\n        }\n      } else {\n        console.log('showErrorForId: Could not find ' + id);\n      }\n    },\n    setPayButton: function(enabled) {\n      console.log('checkout.setPayButton() disabled: ' + !enabled);\n\n      var payButton = document.getElementById('pay-button');\n      if (enabled) {\n        payButton.disabled = false;\n        payButton.className = 'btn btn-primary';\n      } else {\n        payButton.disabled = true;\n        payButton.className = 'btn btn-primary disabled';\n      }\n    },\n    toggleProcessingScreen: function() {\n      var processingScreen = document.getElementById('processing-screen');\n      if (processingScreen) {\n        processingScreen.classList.toggle('visible');\n      }\n    },\n    showErrorFeedback: function(message) {\n      var xMark = '\\u2718';\n      this.feedback = document.getElementById('feedback');\n      this.feedback.innerHTML = xMark + ' ' + message;\n      this.feedback.classList.add('error');\n    },\n    showSuccessFeedback: function(message) {\n      var checkMark = '\\u2714';\n      this.feedback = document.getElementById('feedback');\n      this.feedback.innerHTML = checkMark + ' ' + message;\n      this.feedback.classList.add('success');\n    },\n    processTokenError: function(error) {\n      error = JSON.stringify(error, undefined, 2);\n      console.log('processTokenError: ' + error);\n\n      this.showErrorFeedback(\n        'Error creating token: </br>' + JSON.stringify(error, null, 4)\n      );\n      this.setPayButton(true);\n      this.toggleProcessingScreen();\n    },\n    processTokenSuccess: function(token) {\n      console.log('processTokenSuccess: ' + token);\n\n      this.showSuccessFeedback('Success! Created token: ' + token);\n      this.setPayButton(true);\n      this.toggleProcessingScreen();\n\n      // Use token to call payments api\n      // this.makeTokenPayment(token);\n    },\n  };\n  customCheckoutController.init();\n},1000);\n\n"
+        }
+      ],
+      "name": "Instalment Information",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Bombara Program Managers"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Bombara Program Managers"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Bombara Program Managers"
+    }
+  ],
+  "slug": "dev-bambora-change-credit-card-details",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Student First Name')} ${values('Student Last Name')} ",
+  "type": "Service"
+}

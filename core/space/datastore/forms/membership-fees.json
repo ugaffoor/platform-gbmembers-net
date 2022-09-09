@@ -222,6 +222,10 @@
               "value": "Quarterly"
             },
             {
+              "label": "6 Months",
+              "value": "6 Months"
+            },
+            {
               "label": "Yearly",
               "value": "Yearly"
             }

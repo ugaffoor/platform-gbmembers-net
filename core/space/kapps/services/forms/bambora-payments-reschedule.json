@@ -918,6 +918,14 @@
                 {
                   "label": "Quarterly",
                   "value": "Quarterly"
+                },
+                {
+                  "label": "6 Monthly",
+                  "value": "6 Monthly"
+                },
+                {
+                  "label": "Yearly",
+                  "value": "Yearly"
                 }
               ]
             },

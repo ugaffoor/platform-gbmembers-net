@@ -77,7 +77,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n.waiverButtons {\n    margin: 20px;\n}\n.waiverButtons button {\n\t\tbackground-color: #4d5059;\n    color: white;\n  \tborder-radius: 5px;\n}  \n</style>\n<script>\n  function agreeTerms() {\n    K('field[Agreement]').value(\"Agreed\");\n    K('form').submitPage();\n  }\n  function noAgreeTerms() {\n    K('field[Agreement]').value(\"NOT Agreed\");\n    K('form').submitPage();\n  }\n</script>",
+  "customHeadContent": "<style>\n.waiverButtons {\n    margin: 20px;\n}\n.waiverButtons button {\n\t\tbackground-color: #4d5059;\n    color: white;\n  \tborder-radius: 5px;\n}  \n</style>\n<script>\n  var waiverInfo=\"\";\n  function agreeTerms() {\n    K('field[Agreement]').value(\"Agreed\");\n    K('form').submitPage();\n  }\n  function noAgreeTerms() {\n    K('field[Agreement]').value(\"NOT Agreed\");\n    K('form').submitPage();\n  }\n</script>",
   "description": "Capture a Members agreement for the GB Waiver.",
   "name": "Member Waiver Agreement",
   "notes": null,
@@ -118,7 +118,7 @@
                   "name": "Get Member",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n\n    K('section[Waiver Section]').show();\n    K('section[Member Select Space]').hide();    \n    }\n});\n\n",
+                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\ndebugger;\n    info=waiverInfo;\n    \n    var schoolName=K('space').attributes('School Name');\n    if (schoolName.startsWith(\"GB \")){\n      schoolName=schoolName.replace(\"GB \",\"\"); \n    }\n    if (schoolName.startsWith(\"Gracie Barra \")){\n      schoolName=schoolName.replace(\"Gracie Barra \",\"\"); \n    }\n    var schoolEmail=K('space').attributes('School Email');\n    var acn=K('space').attributes('ACN');\n    var schoolLegalName=K('space').attributes('School Legal Name');\n    var schoolAddress=K('space').attributes('School Address');\n    info=info.replaceAll(\"$legalName$\", schoolLegalName);\n    info=info.replaceAll(\"$acn$\", acn);\n    info=info.replaceAll(\"$schoolName$\", schoolName);\n    info=info.replaceAll(\"$studentName$\", bridgedData['First Name']+\" \"+bridgedData['Last Name']);\n    info=info.replaceAll(\"$address$\", schoolAddress);\n    \n    $(\"#waiverInformation\").html(info);\n    \n    K('field[Waiver Information Text]').value($(\"#waiverInformation\").html());\n    \n    K('section[Waiver Section]').show();\n    K('section[Member Select Space]').hide();    \n }\n});\n\n",
                   "bridgedResourceName": null,
                   "runIf": "values('Members')!==\"\""
                 },
@@ -416,7 +416,7 @@
           "name": "Load Waiver",
           "type": "Load",
           "action": "Custom",
-          "code": "K('bridgedResource[Get Waiver]').load({\n  success: function(bridgedData) {\n    debugger;\n    $(\"#waiverInformation\").html(bridgedData[0][\"Terms Information\"]);\n    $(\"#legalName\").text(K('space').attributes('School Legal Name'));\n    K('field[Waiver Information Text]').value($(\"#waiverInformation\").html());\n  }\n});",
+          "code": "K('bridgedResource[Get Waiver]').load({\n  success: function(bridgedData) {\n    debugger;\n    waiverInfo=bridgedData[0][\"Terms Information\"];\n        \n    $(\"#waiverInformation\").html(waiverInfo);\n    \n    K('field[Waiver Information Text]').value($(\"#waiverInformation\").html());\n  }\n});",
           "runIf": "K('field[Waiver Information Text]').value()===null"
         },
         {

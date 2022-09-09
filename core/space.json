@@ -169,7 +169,7 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "http://localhost:8081/billingservice"
+        "https://services.gbmembers.net/billingservice"
       ]
     },
     {
@@ -187,7 +187,7 @@
     {
       "name": "Payment Frequencies",
       "values": [
-        "Daily,Weekly,Fortnightly,Monthly,Yearly"
+        "Daily,Weekly,Fortnightly,Monthly,6 Months,Yearly"
       ]
     },
     {
@@ -217,7 +217,7 @@
     {
       "name": "POS Service URL",
       "values": [
-        "http://localhost:8081/billingservice/processPOS"
+        "https://services.gbmembers.net/billingservice/processPOS"
       ]
     },
     {
@@ -378,7 +378,7 @@
     {
       "name": "Task Server Space Slug",
       "values": [
-        "usbeta"
+        "manage"
       ]
     },
     {
@@ -407,7 +407,7 @@
   "defaultDatastoreFormConfirmationPage": null,
   "defaultDatastoreFormDisplayPage": null,
   "defaultLocale": "en-US",
-  "defaultTimezone": "America/Los_Angeles",
+  "defaultTimezone": "America/Denver",
   "displayType": "Single Page App",
   "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
   "enabledLocales": [
