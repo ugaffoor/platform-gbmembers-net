@@ -92,7 +92,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n  .hidden{\n   display:none; \n  }\n  div[data-element-type='content'] a {\n      color: blue;\n  }  \n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }    \n  function isPrimaryBiller(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n</script>",
+  "customHeadContent": "<style>\n  .hidden{\n   display:none; \n  }\n  div[data-element-type='content'] a {\n      color: blue;\n  }  \n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }    \n  function isPrimaryBiller(){\n    try {\n      var parentMember=K('field[Billing Parent Member]').value();\n      var familyMembers=K('field[Billing Family Members]').value();\n      if (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n        var dependants=JSON.parse(familyMembers);\n        if (dependants.length>1) {\n          return true;\n        }\n      }\n    } catch {}\n    return false;\n  }\n</script>",
   "description": "Bambora Request to cancel a Membership",
   "name": "Bambora Member Cancellation",
   "notes": null,
