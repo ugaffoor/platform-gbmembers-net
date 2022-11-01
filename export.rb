@@ -83,6 +83,7 @@ SUBMISSIONS_TO_EXPORT = [
   { "datastore" => true, "formSlug" => "pos-discounts" },
   { "datastore" => true, "formSlug" => "pos-product" },
   { "datastore" => true, "formSlug" => "pos-barcodes" },
+  { "datastore" => true, "formSlug" => "help-info" },
 ]
 
 REMOVE_DATA_PROPERTIES = [

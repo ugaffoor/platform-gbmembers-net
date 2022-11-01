@@ -2,6 +2,12 @@
   "afterLogoutPath": "",
   "attributes": [
     {
+      "name": "About Us Choices",
+      "values": [
+        "Facebook; Family; Friend; Google; Google Ad; Instagram; Other; Word of Mouth;"
+      ]
+    },
+    {
       "name": "Additional Gender Options",
       "values": [
         "YES"
@@ -158,6 +164,12 @@
       "name": "Hidden Users Regex",
       "values": [
         ".*@kinops.io$"
+      ]
+    },
+    {
+      "name": "Interested In Choices",
+      "values": [
+        "Women's Self Defence Classes; Kids Classes; Men's Classes; Women's Classes;"
       ]
     },
     {
@@ -407,7 +419,7 @@
   "defaultDatastoreFormConfirmationPage": null,
   "defaultDatastoreFormDisplayPage": null,
   "defaultLocale": "en-US",
-  "defaultTimezone": "America/Denver",
+  "defaultTimezone": "Australia/Perth",
   "displayType": "Single Page App",
   "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
   "enabledLocales": [
