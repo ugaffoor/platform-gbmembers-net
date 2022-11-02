@@ -391,6 +391,14 @@
             {
               "label": "Spa Only",
               "value": "Spa Only"
+            },
+            {
+              "label": "Full Class",
+              "value": "Full Class"
+            },
+            {
+              "label": "Class Only",
+              "value": "Class Only"
             }
           ]
         },
@@ -433,5 +441,5 @@
   ],
   "slug": "member-attendance",
   "status": "Active",
-  "submissionLabelExpression": "${values('Class Date')} ${values('Class Time')} - ${values('Class')} - ${values('Member ID')}"
+  "submissionLabelExpression": "${values('Class Date')} ${values('Class Time')} - ${values('Class')} - ${values('Member ID')} - ${values('Attendance Status')}"
 }
