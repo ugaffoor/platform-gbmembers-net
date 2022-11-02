@@ -239,7 +239,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Data Admins"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",
