@@ -223,7 +223,7 @@
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Authenticated Users"
+      "name": "Data Admins"
     }
   ],
   "slug": "cash-payment",
