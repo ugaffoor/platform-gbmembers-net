@@ -58,6 +58,13 @@
       "unique": false
     },
     {
+      "name": "values[Accept Trial Bookings]",
+      "parts": [
+        "values[Accept Trial Bookings]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Allowed Programs]",
       "parts": [
         "values[Allowed Programs]"
@@ -68,6 +75,13 @@
       "name": "values[Cancellation Cutoff]",
       "parts": [
         "values[Cancellation Cutoff]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Child Trial Ages]",
+      "parts": [
+        "values[Child Trial Ages]"
       ],
       "unique": false
     },
@@ -124,6 +138,20 @@
       "name": "values[Title]",
       "parts": [
         "values[Title]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Trial Limit]",
+      "parts": [
+        "values[Trial Limit]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Trial Type]",
+      "parts": [
+        "values[Trial Type]"
       ],
       "unique": false
     },
@@ -427,6 +455,106 @@
               "dataType": "string",
               "renderType": "text",
               "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Accept Trial Bookings",
+              "label": "Accept Trial Bookings",
+              "key": "f14",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Trial Limit",
+              "label": "Trial Limit",
+              "key": "f17",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Trial Type",
+              "label": "Trial Type",
+              "key": "f15",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Child Trial Ages",
+              "label": "Child Trial Ages",
+              "key": "f16",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             }
           ]
         },
@@ -456,7 +584,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Authenticated Users"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",

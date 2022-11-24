@@ -435,7 +435,7 @@
                   "name": "Set Frequency Label",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "value=K('field[FREQUENCY Units]').name();\nvalue=value.replace(\"FREQUENCY\", K('field[Payment Frequency]').value());\n$(K('field[FREQUENCY Units]').wrapper()).find(\"label\").html(value);\n",
+                  "code": "value=K('field[FREQUENCY Units]').name();\nvalue=value.replace(\"FREQUENCY\", K.translate(K('field[Payment Frequency]').value()));\n$(K('field[FREQUENCY Units]').wrapper()).find(\"label\").html(value);\n",
                   "runIf": ""
                 }
               ],

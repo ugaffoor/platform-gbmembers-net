@@ -1,6 +1,11 @@
 [
   {
     "allowsMultiple": false,
+    "description": "Semi colon separated list of values that will populate Access Request menus",
+    "name": "About Us Choices"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Set as YES to include\nInclude additional agenda options:\nOther\nPrefer not to answer",
     "name": "Additional Gender Options"
   },
@@ -143,6 +148,11 @@
     "allowsMultiple": false,
     "description": "YES to not apply a Admin fee percentage",
     "name": "Ignore Admin Fee"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Semi colon separated list of values that will populate Access Request menus",
+    "name": "Interested In Choices"
   },
   {
     "allowsMultiple": false,
