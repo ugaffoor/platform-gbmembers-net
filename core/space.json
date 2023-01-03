@@ -191,6 +191,12 @@
       ]
     },
     {
+      "name": "LiveChat License",
+      "values": [
+        "14790045"
+      ]
+    },
+    {
       "name": "Member Discounts",
       "values": [
         "[]"
@@ -421,7 +427,7 @@
   "defaultLocale": "en-US",
   "defaultTimezone": "Australia/Perth",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
+  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers-v2",
   "enabledLocales": [
     "en-AU",
     "en-US"

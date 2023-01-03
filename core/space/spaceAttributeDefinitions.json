@@ -171,6 +171,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "LiveChat License key",
+    "name": "LiveChat License"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Discounts for family members",
     "name": "Member Discounts"
   },
@@ -203,6 +208,11 @@
     "allowsMultiple": false,
     "description": "Surcharge, Sales Tax, GST, VAT etc..",
     "name": "POS Sales Tax Label"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "",
+    "name": "POS Sales Total Label"
   },
   {
     "allowsMultiple": false,
