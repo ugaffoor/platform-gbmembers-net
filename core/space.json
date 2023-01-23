@@ -427,7 +427,7 @@
   "defaultLocale": "en-US",
   "defaultTimezone": "Australia/Perth",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers-v2",
+  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers",
   "enabledLocales": [
     "en-AU",
     "en-US"

@@ -58,7 +58,10 @@
           "omitWhenHidden": null,
           "pattern": null,
           "constraints": [
-
+            {
+              "content": "  value.filter(function(item) { return item.size > 11534336 }).length === 0",
+              "message": "The attachment file limit is 11mb. Please try another file."
+            }
           ],
           "events": [
 

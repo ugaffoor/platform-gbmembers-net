@@ -249,4 +249,41 @@ logger.info "  - submission data export complete"
 # complete
 # ------------------------------------------------------------------------------
 
+
+if false #options.exportTask
+    puts "Exporting Kinetic Task"
+    #--------------------------------------------------------------------------
+    # Kinetic Task
+    #--------------------------------------------------------------------------
+
+    task_server = "https://manage.gbmembers.net/kinetic-task"
+
+    # Handle special routing for kinops
+    if !task_server.end_with?("kinetic-task")
+        task_server = "#{task_server}/#{space_slug}/kinetic-task"
+    end
+
+    task_sdk = Kinetic::TaskApi::SDK.new(
+      app_server_url: task_server,
+      username: env["task"]["credentials"]["username"],
+      password: env["task"]["credentials"]["password"],
+      options: {
+        export_directory: "#{space_dir}/task",
+        log_level: env["log_level"]
+      }
+    )
+
+    # Delete all Existing Files in this Directory (if we delete an item from an exported engine we want it deleted)
+    FileUtils.rm_rf Dir.glob("#{space_dir}/task/*")
+
+    # Export all trees, routines, handlers, groups, policy rules and categories
+    task_sdk.export_trees
+    task_sdk.export_routines
+    task_sdk.export_handlers
+    task_sdk.export_groups
+    task_sdk.export_policy_rules
+    task_sdk.export_categories
+    puts "Task Export Complete"
+end
+
 logger.info "Finished exporting the \"#{template_name}\" template."

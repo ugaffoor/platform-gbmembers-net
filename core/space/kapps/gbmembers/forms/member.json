@@ -2430,6 +2430,6 @@
   ],
   "slug": "member",
   "status": "New",
-  "submissionLabelExpression": "${values('Member ID')}-${values('POS Profile ID')}: ${values('Non Paying')}",
+  "submissionLabelExpression": "${values('Member ID')}-${values('POS Profile ID')}: ${values('Date Joined')}",
   "type": "Content"
 }
