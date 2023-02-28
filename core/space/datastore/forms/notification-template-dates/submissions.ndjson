@@ -3,3 +3,4 @@
 {"coreState":"Draft","currentPage":"Datastore","label":"MM-DD-YY hh:mm (24 hour)","values":{"Name":"MM-DD-YY hh:mm (24 hour)","Format":"%m-%e-%y %H:%M","Status":"Active"}}
 {"coreState":"Draft","currentPage":"Datastore","label":"MM-DD-YY h:mm (12 hour am/pm)","values":{"Name":"MM-DD-YY h:mm (12 hour am/pm)","Format":"%m-%e-%y %l:%M %p","Status":"Active"}}
 {"coreState":"Draft","currentPage":"Datastore","label":"h:mm (12 hour am/pm)","values":{"Name":"h:mm (12 hour am/pm)","Format":"%l:%M %P","Status":"Active"}}
+{"coreState":"Draft","currentPage":"Datastore","label":"Month DD, YYYY h:mm (12 hour am/pm)","values":{"Name":"Month DD, YYYY h:mm (12 hour am/pm)","Format":"%b %d, %Y %l:%M %p","Status":"Active"}}

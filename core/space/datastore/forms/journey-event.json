@@ -463,5 +463,5 @@
   ],
   "slug": "journey-event",
   "status": "Active",
-  "submissionLabelExpression": "${values('Record ID')}:${values('Trigger ID')}:${values('Trigger Date')}"
+  "submissionLabelExpression": "${values('Record Name')}:${values('Record ID')}:${values('Trigger ID')}:${values('Trigger Date')}"
 }

@@ -79,6 +79,14 @@
       "unique": false
     },
     {
+      "name": "values[Lead ID],values[Trial Datetime]",
+      "parts": [
+        "values[Lead ID]",
+        "values[Trial Datetime]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Name]",
       "parts": [
         "values[Name]"

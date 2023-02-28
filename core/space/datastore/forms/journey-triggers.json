@@ -705,6 +705,18 @@
                 {
                   "label": "Intro No Show",
                   "value": "Intro No Show"
+                },
+                {
+                  "label": "Trial Booking Adult",
+                  "value": "Trial Booking Adult"
+                },
+                {
+                  "label": "Trial Booking Child",
+                  "value": "Trial Booking Child"
+                },
+                {
+                  "label": "Trial Class Cancelled",
+                  "value": "Trial Class Cancelled"
                 }
               ]
             },
@@ -1281,5 +1293,5 @@
   ],
   "slug": "journey-triggers",
   "status": "Active",
-  "submissionLabelExpression": "${values('Status')} - ${values('Record Type')}  ${values('Action')}  ${values('Contact Type')} - ${values('Lead Condition')}${values('Member Condition')} ${values('Lead Condition Duration')}${values('Member Condition Duration')}-${values('Template Name')}"
+  "submissionLabelExpression": "${values('Status')} - ${values('Record Type')}  ${values('Action')}  ${values('Contact Type')} - ${values('Lead Condition')}${values('Member Condition')} ${values('Lead Condition Duration')}${values('Member Condition Duration')}-${values('Template Name')}-${values('Additional Qual')}"
 }

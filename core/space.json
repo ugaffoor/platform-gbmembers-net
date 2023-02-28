@@ -425,7 +425,7 @@
   "defaultDatastoreFormConfirmationPage": null,
   "defaultDatastoreFormDisplayPage": null,
   "defaultLocale": "en-US",
-  "defaultTimezone": "Australia/Perth",
+  "defaultTimezone": "Australia/Sydney",
   "displayType": "Single Page App",
   "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers",
   "enabledLocales": [
