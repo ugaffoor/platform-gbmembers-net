@@ -949,7 +949,7 @@
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
-              "enabled": false,
+              "enabled": true,
               "required": false,
               "requiredMessage": null,
               "omitWhenHidden": null,

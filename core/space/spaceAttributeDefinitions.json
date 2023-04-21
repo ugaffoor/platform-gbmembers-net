@@ -251,6 +251,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "A list of dates that the school will be closed.\nMainly used for the website trial booking feature.\nUse YYYY-MM-DD format, comma seperated.",
+    "name": "School Closed Dates"
+  },
+  {
+    "allowsMultiple": false,
     "description": "ISO 3166-1 country code for School (US-United States, CA-Canada)",
     "name": "School Country Code"
   },
