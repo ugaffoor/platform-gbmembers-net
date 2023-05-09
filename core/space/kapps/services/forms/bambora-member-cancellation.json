@@ -1076,7 +1076,7 @@
               "type": "content",
               "renderType": "html",
               "name": "Terms Information",
-              "text": "<div class=\"emf-section-text\">The student's installment payments must be current and up to date prior to submitting the application.<br>\n<br>\nFor any cancellation request, the appropriate document must be provided:<br>\n<br>\n- Change of address; bill or lease agreement for the new address<br>\n- Medical condition; doctor's letter proving the permanent disability<br>\n- Document proving deployment<br>\n- Document proving loss of employment<br>\n<br>\nStudents who would like to cancel without reason must give 30 days written notice.<br>\n<br>\nYour request will be evaluated and you will be contacted within 3 business days.</div>",
+              "text": "<div class=\"emf-section-text\">The student's installment payments must be current and up to date prior to submitting the application.<br>\n<br>\nFor any cancellation request, the appropriate document must be provided:<br>\n<br>\n- Change of address; bill or lease agreement for the new address<br>\n- Medical condition; doctor's letter proving the permanent disability<br>\n- Document proving deployment<br>\n- Document proving loss of employment<br>\n<br>\nStudents who would like to cancel without reason must give $cancellationDuration$ days written notice.<br>\n<br>\nYour request will be evaluated and you will be contacted within 3 business days.</div>",
               "visible": true,
               "renderAttributes": {
               }
@@ -1275,7 +1275,7 @@
           "name": "Set Defaults",
           "type": "Load",
           "action": "Custom",
-          "code": "if (K('field[Members]').value()===null) {\n\tloadingDetails=true;\n  K('section[Member Select Space]').show();   \n}else {\n\tloadingDetails=false;\n  K('section[Member Select Space]').hide();   \n}\ndebugger;\nprimaryHTML=$(K('content[Primary Family Member Info]').element()).html();\ndependantHTML=$(K('content[Family Dependant Info]').element()).html();\nnonbillingHTML=$(K('content[Non Billing Info]').element()).html();\nnonpayingHTML=$(K('content[Non Paying Info]').element()).html();\n"
+          "code": "if (K('field[Members]').value()===null) {\n\tloadingDetails=true;\n  K('section[Member Select Space]').show();   \n}else {\n\tloadingDetails=false;\n  K('section[Member Select Space]').hide();   \n}\ndebugger;\nprimaryHTML=$(K('content[Primary Family Member Info]').element()).html();\ndependantHTML=$(K('content[Family Dependant Info]').element()).html();\nnonbillingHTML=$(K('content[Non Billing Info]').element()).html();\nnonpayingHTML=$(K('content[Non Paying Info]').element()).html();\n\ntermsInformationHTML=$(K('content[Terms Information]').element()).html();\nvar duration = K('space').attributes('Cancellation Duration');\nif (duration===null) {\n duration=\"30\"; \n}\ntermsInformationHTML=termsInformationHTML.replaceAll(\"$cancellationDuration$\", duration);\n$(K('content[Terms Information]').element()).html(termsInformationHTML);"
         },
         {
           "name": "Member User Load",

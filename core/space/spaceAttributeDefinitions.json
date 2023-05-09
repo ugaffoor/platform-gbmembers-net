@@ -71,6 +71,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Number of days before a Cancellation date.\nUsed as part of the cancellation form.",
+    "name": "Cancellation Duration"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Region of Cards used (leave empty to default, US)",
     "name": "Card Region"
   },
@@ -363,6 +368,36 @@
     "allowsMultiple": false,
     "description": "Name of the source for this space in the workflow engine",
     "name": "Task Source Name"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Example, GST VAT",
+    "name": "TAX 1 Label"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "5% GST for Canada",
+    "name": "TAX 1 Value"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "For Canada, HSP, PST or QST",
+    "name": "TAX 2 Label"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "For Canada, HSP PST or QST",
+    "name": "TAX 2 Value"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "For Canada, HSP PST or QST",
+    "name": "TAX 3 Label"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "For Canada, HSP PST or QST",
+    "name": "TAX 3 Value"
   },
   {
     "allowsMultiple": false,

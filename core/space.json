@@ -20,6 +20,12 @@
       ]
     },
     {
+      "name": "Admin Fee Label",
+      "values": [
+        "Admin Fee 1.33%"
+      ]
+    },
+    {
       "name": "Admin Kapp Slug",
       "values": [
         "admin"
