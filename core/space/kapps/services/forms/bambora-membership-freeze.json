@@ -948,11 +948,11 @@
               "key": "f57",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": "values('Freeze Fee')===\"Apply\"",
               "enabled": true,
               "required": false,
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": true,
               "pattern": null,
               "constraints": [
 
