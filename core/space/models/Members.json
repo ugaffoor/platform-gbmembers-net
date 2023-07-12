@@ -128,6 +128,9 @@
       "name": "State"
     },
     {
+      "name": "Status"
+    },
+    {
       "name": "Suburb"
     }
   ],
@@ -306,6 +309,10 @@
         {
           "name": "POS Profile ID",
           "structureField": "${fields('values[POS Profile ID]')}"
+        },
+        {
+          "name": "Status",
+          "structureField": "${fields('values[Status]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",

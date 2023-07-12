@@ -211,8 +211,18 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Percentage sales tax value to be applied on top of sub-total",
+    "name": "POS Sales Tax 2"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Surcharge, Sales Tax, GST, VAT etc..",
     "name": "POS Sales Tax Label"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Surcharge, Sales Tax, GST, VAT etc..",
+    "name": "POS Sales Tax Label 2"
   },
   {
     "allowsMultiple": false,

@@ -907,6 +907,10 @@
                   "value": "Child Last Attendance"
                 },
                 {
+                  "label": "Child Converted",
+                  "value": "Child Converted"
+                },
+                {
                   "label": "Converted",
                   "value": "Converted"
                 },
@@ -919,16 +923,16 @@
                   "value": "Last Attendance"
                 },
                 {
+                  "label": "Member Joined",
+                  "value": "Member Joined"
+                },
+                {
                   "label": "New Belt",
                   "value": "New Belt"
                 },
                 {
                   "label": "Payment Failed",
                   "value": "Payment Failed"
-                },
-                {
-                  "label": "Member Joined",
-                  "value": "Member Joined"
                 }
               ]
             },

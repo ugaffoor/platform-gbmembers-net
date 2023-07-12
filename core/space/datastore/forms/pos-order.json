@@ -128,6 +128,13 @@
       "unique": false
     },
     {
+      "name": "values[Sales Tax 2]",
+      "parts": [
+        "values[Sales Tax 2]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Sales Tax]",
       "parts": [
         "values[Sales Tax]"
@@ -549,6 +556,31 @@
           "name": "Sales Tax",
           "label": "Sales Tax",
           "key": "f16",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Sales Tax 2",
+          "label": "Sales Tax 2",
+          "key": "f18",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
