@@ -393,11 +393,19 @@
           "choices": [
             {
               "label": "Credit Card",
-              "value": "Credit Card"
+              "value": "creditcard"
+            },
+            {
+              "label": "Capture",
+              "value": "capture"
             },
             {
               "label": "Cash",
-              "value": "Cash"
+              "value": "cash"
+            },
+            {
+              "label": "Use Saved Credit Card",
+              "value": "useSavedCreditCard"
             }
           ]
         },
