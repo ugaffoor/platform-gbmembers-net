@@ -899,6 +899,14 @@
                   "value": "Birthday"
                 },
                 {
+                  "label": "Adult Birthday",
+                  "value": "Adult Birthday"
+                },
+                {
+                  "label": "Child Birthday",
+                  "value": "Child Birthday"
+                },
+                {
                   "label": "Cancelled",
                   "value": "Cancelled"
                 },
@@ -923,6 +931,10 @@
                   "value": "Last Attendance"
                 },
                 {
+                  "label": "Member Joined Once",
+                  "value": "Member Joined Once"
+                },
+                {
                   "label": "Member Joined",
                   "value": "Member Joined"
                 },
@@ -933,6 +945,10 @@
                 {
                   "label": "Payment Failed",
                   "value": "Payment Failed"
+                },
+                {
+                  "label": "Resume Frozen Member",
+                  "value": "Resume Frozen Member"
                 }
               ]
             },

@@ -297,6 +297,35 @@
             },
             {
               "type": "field",
+              "name": "Gender",
+              "label": "Gender",
+              "key": "f97",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+
+              ]
+            },
+            {
+              "type": "field",
               "name": "Requested For",
               "label": "Requested For",
               "key": "f96",
@@ -1390,7 +1419,7 @@
           "name": "Set Defaults",
           "type": "Load",
           "action": "Custom",
-          "code": "if ($(\".package-layout--services\").length===0) {\n\t$(\"body\").css(\"height\",\"auto\");\n}\nif (K('field[Leads]').value()===null) {\n\tloadingDetails=true;\n  K('section[Menu Space]').show();   \n}else {\n\tloadingDetails=false;\n  K('section[Menu Space]').hide();   \n}\n\n// Set DOB dates to be past date only\nvar dateFieldElement = K('field[Date of birth]').element();\nvar dateFieldCalendarInput = KD.noConflict.$(dateFieldElement).next(\"input\");\ndateFieldCalendarInput.data(\"xdsoft_datetimepicker\").setOptions({maxDate:0});\n\n$(\"#legalName\").text(K('space').attributes('School Legal Name'));\n\nif (!K(\"identity\").teams.includes(\"Role::Program Managers\")) {\n\tK('section[Select Lead]').hide();\n}",
+          "code": "if ($(\".package-layout--services\").length===0) {\n\t$(\"body\").css(\"height\",\"auto\");\n}\nif (K('field[Leads]').value()===null) {\n\tloadingDetails=true;\n  K('section[Menu Space]').show();   \n}else {\n\tloadingDetails=false;\n  K('section[Menu Space]').hide();   \n}\n\n// Set DOB dates to be past date only\nvar dateFieldElement = K('field[Date of birth]').element();\nvar dateFieldCalendarInput = KD.noConflict.$(dateFieldElement).next(\"input\");\ndateFieldCalendarInput.data(\"xdsoft_datetimepicker\").setOptions({maxDate:0});\n\n$(\"#legalName\").text(K('space').attributes('School Legal Name'));\n\nif (!K(\"identity\").teams.includes(\"Role::Program Managers\") && !K(\"identity\").teams.includes(\"Role::Kiosk\")) {\n\tK('section[Select Lead]').hide();\n}",
           "runIf": "!form('review')"
         },
         {
@@ -1406,6 +1435,12 @@
           "action": "Custom",
           "code": "$(\"#waiverInformation\").html(K('field[Waiver Information Text]').value());",
           "runIf": "K('field[Waiver Information Text]').value()!==null"
+        },
+        {
+          "name": "Set Gender Options",
+          "type": "Load",
+          "action": "Custom",
+          "code": "options=[{'label': 'Male', 'value': 'Male'},\n         {'label': 'Female', 'value': 'Female'}];\nif (K('space').attributes('Additional Gender Options')===\"YES\") {\n\toptions[options.length]={'label':'Prefer not to answer','value':'Prefer not to answer'};\n\toptions[options.length]={'label':'Other','value':'Other'};\n};\nK('field[Gender]').options(options);\n"
         }
       ],
       "name": "Registration Information",

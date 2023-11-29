@@ -61,6 +61,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Enter \"YES\" to allow the form to show an capture the Member Signature.",
+    "name": "Bambora Freeze Show Signature"
+  },
+  {
+    "allowsMultiple": false,
     "description": "The company identifier for the Billing Service used by School",
     "name": "Billing Company"
   },
@@ -188,6 +193,11 @@
     "allowsMultiple": false,
     "description": "Membership email, may be different to School email",
     "name": "Membership Email"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Location of the Meta JSON file to work with ReactCacheBuster.\nThis is to ensure code releases are automatically picked up.",
+    "name": "Meta JSON Location"
   },
   {
     "allowsMultiple": false,
@@ -413,6 +423,11 @@
     "allowsMultiple": false,
     "description": "Slug of this spaces Tech Bar Kapp (typically tech-bar)",
     "name": "Tech Bar Kapp Slug"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Use with the website Trial Booking widget.\nThe default without this setting is 2 for 2 hours prior.",
+    "name": "Trial Booking Cut Off"
   },
   {
     "allowsMultiple": false,

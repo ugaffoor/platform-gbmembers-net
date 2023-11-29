@@ -277,11 +277,11 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Authenticated Users"
+      "name": "Data Admins"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Data Admins"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",

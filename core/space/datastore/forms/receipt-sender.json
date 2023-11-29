@@ -58,6 +58,13 @@
       "unique": false
     },
     {
+      "name": "values[Currency Symbol]",
+      "parts": [
+        "values[Currency Symbol]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Form Slug]",
       "parts": [
         "values[Form Slug]"
@@ -110,6 +117,31 @@
           "name": "Submission ID",
           "label": "Submission ID",
           "key": "f2",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Currency Symbol",
+          "label": "Currency Symbol",
+          "key": "f3",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,

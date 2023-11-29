@@ -215,6 +215,12 @@
       ]
     },
     {
+      "name": "Meta JSON Location",
+      "values": [
+        "https://gbmembers-v2.s3.ap-southeast-2.amazonaws.com"
+      ]
+    },
+    {
       "name": "Payment Frequencies",
       "values": [
         "Daily,Weekly,Fortnightly,Monthly,Quarterly,4 Months,6 Months,Yearly"
@@ -239,9 +245,21 @@
       ]
     },
     {
+      "name": "POS Sales Tax 2",
+      "values": [
+        "0.05"
+      ]
+    },
+    {
       "name": "POS Sales Tax Label",
       "values": [
         "Sales Tax"
+      ]
+    },
+    {
+      "name": "POS Sales Tax Label 2",
+      "values": [
+        "State"
       ]
     },
     {
@@ -421,6 +439,12 @@
       "name": "Task Source Name",
       "values": [
         "Kinetic Request CE"
+      ]
+    },
+    {
+      "name": "Trial Booking Cut Off",
+      "values": [
+        "1"
       ]
     },
     {

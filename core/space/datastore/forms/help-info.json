@@ -239,7 +239,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Everyone"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",
