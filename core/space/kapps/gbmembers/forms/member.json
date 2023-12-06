@@ -1781,6 +1781,90 @@
               "dataType": "string",
               "renderType": "text",
               "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Main Benefits",
+              "label": null,
+              "key": "f99",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "excercise",
+                  "value": "excercise"
+                },
+                {
+                  "label": "discipline",
+                  "value": "discipline"
+                },
+                {
+                  "label": "self defense",
+                  "value": "self defense"
+                },
+                {
+                  "label": "reduce stress",
+                  "value": "reduce stress"
+                },
+                {
+                  "label": "respect",
+                  "value": "respect"
+                },
+                {
+                  "label": "self confidence",
+                  "value": "self confidence"
+                },
+                {
+                  "label": "concentration",
+                  "value": "concentration"
+                },
+                {
+                  "label": "coordination",
+                  "value": "coordination"
+                },
+                {
+                  "label": "balance",
+                  "value": "balance"
+                },
+                {
+                  "label": "character development",
+                  "value": "character development"
+                },
+                {
+                  "label": "focus",
+                  "value": "focus"
+                },
+                {
+                  "label": "fun",
+                  "value": "fun"
+                },
+                {
+                  "label": "competition",
+                  "value": "competition"
+                },
+                {
+                  "label": "Art of Jiu Jitsu",
+                  "value": "Art of Jiu Jitsu"
+                }
+              ]
             }
           ]
         },
