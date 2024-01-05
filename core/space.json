@@ -92,12 +92,6 @@
       ]
     },
     {
-      "name": "Card Region",
-      "values": [
-        "US"
-      ]
-    },
-    {
       "name": "Catalog Kapp Slug",
       "values": [
         "services"

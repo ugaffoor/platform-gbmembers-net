@@ -101,6 +101,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Used for Franchise application, to identify the Countries within the Region ",
+    "name": "Countries"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Currency value for Billing POS (AUD, USD ....)",
     "name": "Currency"
   },

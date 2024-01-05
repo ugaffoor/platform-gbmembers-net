@@ -47,7 +47,7 @@
     {
       "name": "Kinetic Billing Server URL",
       "values": [
-        "https://services.gbmembers.net/billingservice"
+        "http://localhost:8081/billingservice"
       ]
     },
     {

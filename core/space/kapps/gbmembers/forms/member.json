@@ -393,6 +393,31 @@
             },
             {
               "type": "field",
+              "name": "Country",
+              "label": "Country",
+              "key": "f101",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
               "name": "State",
               "label": "State",
               "key": "f10",
@@ -937,8 +962,8 @@
             },
             {
               "type": "field",
-              "name": "Billing Info Form Id",
-              "label": "Billing Info Form Id",
+              "name": "Billing Setup Fee Type",
+              "label": "Billing Setup Fee Type",
               "key": "f55",
               "defaultValue": null,
               "defaultResourceName": null,
@@ -1012,8 +1037,8 @@
             },
             {
               "type": "field",
-              "name": "Billing Safe Id",
-              "label": "Billing Safe Id",
+              "name": "Billing Setup Fee Id",
+              "label": "Billing Setup Fee Id",
               "key": "f79",
               "defaultValue": null,
               "defaultResourceName": null,
@@ -1865,6 +1890,31 @@
                   "value": "Art of Jiu Jitsu"
                 }
               ]
+            },
+            {
+              "type": "field",
+              "name": "useSubAccount",
+              "label": "useSubAccount",
+              "key": "f100",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             }
           ]
         },
