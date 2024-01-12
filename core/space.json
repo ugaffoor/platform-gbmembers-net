@@ -211,7 +211,7 @@
     {
       "name": "Meta JSON Location",
       "values": [
-        "https://gbmembers-v2.s3.ap-southeast-2.amazonaws.com"
+        "https://us-gbmembers.s3.us-east-2.amazonaws.com"
       ]
     },
     {
@@ -457,7 +457,7 @@
   "defaultLocale": "en-US",
   "defaultTimezone": "Australia/Sydney",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers-v2",
+  "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
   "enabledLocales": [
     "en-AU",
     "en-US"
