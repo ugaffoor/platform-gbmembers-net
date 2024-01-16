@@ -98,6 +98,13 @@
       "unique": false
     },
     {
+      "name": "values[Country]",
+      "parts": [
+        "values[Country]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[DOB]",
       "parts": [
         "values[DOB]"
@@ -562,6 +569,31 @@
               "name": "Suburb",
               "label": "Suburb",
               "key": "f20",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Country",
+              "label": "Country",
+              "key": "f28",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
