@@ -321,6 +321,16 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Date when a school will start accepting Trial Bookings via the GB Calendar widget",
+    "name": "School Start Date"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "State code used for Calendar Public holidays.\nBased on values used with api:\nhttps://date.nager.at/api/v3/NextPublicHolidays/",
+    "name": "School State Code"
+  },
+  {
+    "allowsMultiple": false,
     "description": "States for country the school is based in",
     "name": "School States"
   },

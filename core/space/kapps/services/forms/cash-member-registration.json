@@ -133,6 +133,15 @@
       "displayPage": null,
       "elements": [
         {
+          "type": "content",
+          "renderType": "html",
+          "name": "Receipt Info",
+          "text": "<div class=\"receiptInfo\">\n  <p>Receipt #: <span id=\"receiptId\"></span>\n</div>",
+          "visible": "form('review')",
+          "renderAttributes": {
+          }
+        },
+        {
           "type": "section",
           "renderType": null,
           "name": "Select Member",
@@ -1235,6 +1244,13 @@
           "action": "Custom",
           "code": "$(\"#termsInformation\").html(K('field[Terms Information Text]').value());",
           "runIf": "K('field[Terms Information Text]').value()!==null"
+        },
+        {
+          "name": "Review",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(\"#receiptId\").html(K('submission').id().substring(K('submission').id().length-6).toUpperCase());\n",
+          "runIf": "form('review')"
         }
       ],
       "name": "Instalment Information",

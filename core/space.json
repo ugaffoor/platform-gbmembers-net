@@ -295,7 +295,7 @@
     {
       "name": "School Country Code",
       "values": [
-        "US"
+        "AU"
       ]
     },
     {
@@ -326,6 +326,18 @@
       "name": "School Name",
       "values": [
         "GB US Beta"
+      ]
+    },
+    {
+      "name": "School Start Date",
+      "values": [
+        "2024-03-15"
+      ]
+    },
+    {
+      "name": "School State Code",
+      "values": [
+        "NSW"
       ]
     },
     {
