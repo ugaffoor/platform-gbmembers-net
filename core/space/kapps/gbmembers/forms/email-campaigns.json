@@ -146,6 +146,30 @@
         },
         {
           "type": "field",
+          "name": "Scheduled Time",
+          "label": "Scheduled Time",
+          "key": "f12",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "datetime"
+        },
+        {
+          "type": "field",
           "name": "Event Source Date",
           "label": "Event Source Date",
           "key": "f11",
@@ -198,6 +222,56 @@
           "name": "Embedded Images",
           "label": "Embedded Images",
           "key": "f8",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Cancel Campaign",
+          "label": "Cancel Campaign",
+          "key": "f14",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Emailed Count",
+          "label": "Emailed Count",
+          "key": "f13",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -307,6 +381,6 @@
   ],
   "slug": "email-campaigns",
   "status": "New",
-  "submissionLabelExpression": "${values('From')}-${values('Attachments')}",
+  "submissionLabelExpression": "${values('Subject')}",
   "type": "Content"
 }
