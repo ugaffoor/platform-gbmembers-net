@@ -1,17 +1,119 @@
 {
-  "anonymous": false,
   "attributes": [
-
+    {
+      "name": "Datastore Hidden",
+      "values": [
+        "true"
+      ]
+    }
   ],
   "bridgedResources": [
 
   ],
-  "categorizations": [
-
-  ],
   "customHeadContent": null,
-  "description": "This form will capture the sms campaign information for a School",
-  "name": "SMS Campaigns",
+  "description": "Record Online Trial bookings",
+  "indexDefinitions": [
+    {
+      "name": "createdAt",
+      "parts": [
+        "createdAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedAt",
+      "parts": [
+        "submittedAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedAt",
+      "parts": [
+        "updatedAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Class Title]",
+      "parts": [
+        "values[Class Title]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Email]",
+      "parts": [
+        "values[Email]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Lead ID]",
+      "parts": [
+        "values[Lead ID]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Lead ID],values[Trial Datetime]",
+      "parts": [
+        "values[Lead ID]",
+        "values[Trial Datetime]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Name]",
+      "parts": [
+        "values[Name]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Phone Number]",
+      "parts": [
+        "values[Phone Number]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Trial Datetime]",
+      "parts": [
+        "values[Trial Datetime]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Trial Bookings",
   "notes": null,
   "pages": [
     {
@@ -21,9 +123,9 @@
       "elements": [
         {
           "type": "field",
-          "name": "From Number",
-          "label": "From Number",
-          "key": "f4",
+          "name": "Lead ID",
+          "label": "Lead ID",
+          "key": "f6",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -46,33 +148,8 @@
         },
         {
           "type": "field",
-          "name": "Recipients",
-          "label": null,
-          "key": "f1",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Phone Numbers",
-          "label": "Phone Numbers",
+          "name": "Class Title",
+          "label": "Class Title",
           "key": "f7",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -96,8 +173,33 @@
         },
         {
           "type": "field",
-          "name": "SMS Content",
-          "label": "SMS Content",
+          "name": "Name",
+          "label": "Name",
+          "key": "f1",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Email",
+          "label": "Email",
           "key": "f2",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -121,8 +223,8 @@
         },
         {
           "type": "field",
-          "name": "Sent Date",
-          "label": "Sent Date",
+          "name": "Phone Number",
+          "label": "Phone Number",
           "key": "f3",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -146,58 +248,9 @@
         },
         {
           "type": "field",
-          "name": "Target",
-          "label": "Target",
-          "key": "f8",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Scheduled Time",
-          "label": "Scheduled Time",
-          "key": "f5",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "datetime"
-        },
-        {
-          "type": "field",
-          "name": "Cancel Campaign",
-          "label": "Cancel Campaign",
-          "key": "f6",
+          "name": "Trial Datetime",
+          "label": "Trial Datetime",
+          "key": "f4",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -240,23 +293,18 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Program Managers"
-    },
-    {
-      "endpoint": "Modification",
       "name": "Admins"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Program Managers"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Program Managers"
+      "name": "Program Managers and Coaches"
     }
   ],
-  "slug": "sms-campaigns",
-  "status": "New",
-  "submissionLabelExpression": null,
-  "type": "Content"
+  "slug": "trial-booking",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Name')} ${values('Trial Datetime')}"
 }

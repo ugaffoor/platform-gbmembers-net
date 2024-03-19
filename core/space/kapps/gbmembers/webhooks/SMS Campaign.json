@@ -1,0 +1,8 @@
+{
+  "event": "Created",
+  "filter": "form('name')==\"SMS Campaigns\"",
+  "name": "SMS Campaign",
+  "type": "Submission",
+  "url": "/app/api/v1/run-tree/${space('attribute:Task Source Name')}/Submissions%20%3E%20gbmembers%20%3E%20sms-campaigns/Created",
+  "attributes": null
+}

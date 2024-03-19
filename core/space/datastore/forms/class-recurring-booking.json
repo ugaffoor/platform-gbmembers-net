@@ -1,17 +1,134 @@
 {
-  "anonymous": false,
   "attributes": [
-
+    {
+      "name": "Datastore Hidden",
+      "values": [
+        "true"
+      ]
+    }
   ],
   "bridgedResources": [
 
   ],
-  "categorizations": [
-
-  ],
   "customHeadContent": null,
-  "description": "This form will capture the sms campaign information for a School",
-  "name": "SMS Campaigns",
+  "description": "",
+  "indexDefinitions": [
+    {
+      "name": "createdAt",
+      "parts": [
+        "createdAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedAt",
+      "parts": [
+        "submittedAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedAt",
+      "parts": [
+        "updatedAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Class Day]",
+      "parts": [
+        "values[Class Day]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Class Day],values[Class Time],values[Member GUID]:UNIQUE",
+      "parts": [
+        "values[Class Day]",
+        "values[Class Time]",
+        "values[Member GUID]"
+      ],
+      "unique": true
+    },
+    {
+      "name": "values[Class Time]",
+      "parts": [
+        "values[Class Time]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Member GUID]",
+      "parts": [
+        "values[Member GUID]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Member ID]",
+      "parts": [
+        "values[Member ID]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Member Name]",
+      "parts": [
+        "values[Member Name]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Program]",
+      "parts": [
+        "values[Program]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status]",
+      "parts": [
+        "values[Status]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Title]",
+      "parts": [
+        "values[Title]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Class Recurring Booking",
   "notes": null,
   "pages": [
     {
@@ -21,9 +138,9 @@
       "elements": [
         {
           "type": "field",
-          "name": "From Number",
-          "label": "From Number",
-          "key": "f4",
+          "name": "Status",
+          "label": null,
+          "key": "f5",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -41,13 +158,24 @@
           "renderAttributes": {
           },
           "dataType": "string",
-          "renderType": "text",
-          "rows": 1
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Active",
+              "value": "Active"
+            },
+            {
+              "label": "Delete",
+              "value": "Delete"
+            }
+          ]
         },
         {
           "type": "field",
-          "name": "Recipients",
-          "label": null,
+          "name": "Program",
+          "label": "Program",
           "key": "f1",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -71,8 +199,89 @@
         },
         {
           "type": "field",
-          "name": "Phone Numbers",
-          "label": "Phone Numbers",
+          "name": "Title",
+          "label": "Title",
+          "key": "f9",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Class Day",
+          "label": null,
+          "key": "f10",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "dropdown",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Monday",
+              "value": "1"
+            },
+            {
+              "label": "Tuesday",
+              "value": "2"
+            },
+            {
+              "label": "Wednesday",
+              "value": "3"
+            },
+            {
+              "label": "Thursday",
+              "value": "4"
+            },
+            {
+              "label": "Friday",
+              "value": "5"
+            },
+            {
+              "label": "Saturday",
+              "value": "6"
+            },
+            {
+              "label": "Sunday",
+              "value": "7"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Class Time",
+          "label": "Class Time",
           "key": "f7",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -91,38 +300,12 @@
           "renderAttributes": {
           },
           "dataType": "string",
-          "renderType": "text",
-          "rows": 1
+          "renderType": "time"
         },
         {
           "type": "field",
-          "name": "SMS Content",
-          "label": "SMS Content",
-          "key": "f2",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Sent Date",
-          "label": "Sent Date",
+          "name": "Member ID",
+          "label": "Member ID",
           "key": "f3",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -146,8 +329,8 @@
         },
         {
           "type": "field",
-          "name": "Target",
-          "label": "Target",
+          "name": "Member GUID",
+          "label": "Member GUID",
           "key": "f8",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -171,33 +354,9 @@
         },
         {
           "type": "field",
-          "name": "Scheduled Time",
-          "label": "Scheduled Time",
-          "key": "f5",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "datetime"
-        },
-        {
-          "type": "field",
-          "name": "Cancel Campaign",
-          "label": "Cancel Campaign",
-          "key": "f6",
+          "name": "Member Name",
+          "label": "Member Name",
+          "key": "f4",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -240,23 +399,18 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Program Managers"
-    },
-    {
-      "endpoint": "Modification",
-      "name": "Admins"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Program Managers"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Program Managers"
+      "name": "Authenticated Users"
     }
   ],
-  "slug": "sms-campaigns",
-  "status": "New",
-  "submissionLabelExpression": null,
-  "type": "Content"
+  "slug": "class-recurring-booking",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Status')}-${values('Class Day')}-${values('Class Time')}-${values('Member Name')}-${values('Status')}"
 }
