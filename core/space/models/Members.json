@@ -336,7 +336,7 @@
         },
         {
           "name": "Get Member by Username",
-          "query": "kappSlug=gbmembers&formSlug=member&q=values[Member ID]=\"${parameters(\"username\")}\""
+          "query": "kappSlug=gbmembers&formSlug=member&q=values[Member ID]=\"${parameters(\"username\")}\" AND values[Status]=\"Active\""
         },
         {
           "name": "Get Active and Frozen Members",
