@@ -110,6 +110,12 @@
       ]
     },
     {
+      "name": "Currency",
+      "values": [
+        "USD"
+      ]
+    },
+    {
       "name": "Default Kapp Display",
       "values": [
         "gbmembers"
@@ -295,13 +301,13 @@
     {
       "name": "School Country Code",
       "values": [
-        "AU"
+        "US"
       ]
     },
     {
       "name": "School Email",
       "values": [
-        "gbusbeta2@gmail.com"
+        "gracie.barra@uniqconsulting.com.au"
       ]
     },
     {
@@ -331,7 +337,7 @@
     {
       "name": "School Start Date",
       "values": [
-        "2024-03-15"
+        "2024-06-06"
       ]
     },
     {
@@ -512,12 +518,22 @@
   "sharedBundleBase": "hydrogen-v1",
   "slug": "usbeta",
   "trustedFrameDomains": [
-
+    "https://services.gbmembers.net",
+    "http://localhost:8081"
   ],
   "trustedResourceDomains": [
 
   ],
   "webApis": [
-
+    {
+      "method": "POST",
+      "securityPolicies": [
+        {
+          "endpoint": "Execution",
+          "name": "Everyone"
+        }
+      ],
+      "slug": "testing"
+    }
   ]
 }

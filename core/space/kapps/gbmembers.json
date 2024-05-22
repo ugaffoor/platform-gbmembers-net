@@ -58,7 +58,7 @@
     {
       "name": "Lead Status Values",
       "values": [
-        "Open,Inquiry,Pending Intro 1,Pending Intro 2,Not Interested"
+        "Open,Inquiry,Pending Intro 1,Pending Intro 2,Not Interested,Converted"
       ]
     },
     {
