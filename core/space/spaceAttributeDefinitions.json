@@ -446,6 +446,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Return URL after a lead completes the Calendar widget Contact Us, Book a Trial or Self Signup",
+    "name": "Trial Booking Thank you URL"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Url of the request web server that this space exists",
     "name": "Web Server Url"
   }
