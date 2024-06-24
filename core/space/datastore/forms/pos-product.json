@@ -138,6 +138,13 @@
       "unique": false
     },
     {
+      "name": "values[Exclude Taxes]",
+      "parts": [
+        "values[Exclude Taxes]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Image Type]",
       "parts": [
         "values[Image Type]"
@@ -695,6 +702,38 @@
           "dataType": "string",
           "renderType": "text",
           "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Exclude Taxes",
+          "label": "Exclude Taxes (If Selected the product will not apply an configured Taxes)",
+          "key": "f21",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "json",
+          "renderType": "checkbox",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Exclude Taxes",
+              "value": "Exclude Taxes"
+            }
+          ]
         },
         {
           "type": "field",
