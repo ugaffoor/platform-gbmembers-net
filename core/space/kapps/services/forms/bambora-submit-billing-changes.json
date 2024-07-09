@@ -1344,7 +1344,7 @@
                       "type": "Click",
                       "action": "Custom",
                       "code": "DataViewer.renderFieldValues($('#memberTableDiv'), global.viewerConfig);\ncompleteTableChange();\n",
-                      "runIf": "values('tableProgram')!=null && values('tableFee')!=null && !memberProgramAdded(K('field[tableMemberID]').value(),K('field[tableFeeProgram]').value())"
+                      "runIf": "values('tableMemberName')!=null && values('tableProgram')!=null && values('tableFee')!=null && !memberProgramAdded(K('field[tableMemberID]').value(),K('field[tableFeeProgram]').value())"
                     }
                   ]
                 },
