@@ -514,7 +514,7 @@
               "name": "Build URL",
               "type": "Change",
               "action": "Custom",
-              "code": "debugger;\nfileJSON=K('field[Image]').value();\nurl=\"/app/datastore/submissions/\"+K('form').submission().id()+\"/files/Image/0/\"+fileJSON[0].name;\nK('field[Image URL]').value(url);"
+              "code": "debugger;\nfileJSON=K('field[Image]').value();\nif (fileJSON.length>0){\n  url=\"/app/datastore/submissions/\"+K('form').submission().id()+\"/files/Image/0/\"+fileJSON[0].name;\n  K('field[Image URL]').value(url);\n}"
             }
           ],
           "renderAttributes": {

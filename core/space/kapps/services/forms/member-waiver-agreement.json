@@ -1,5 +1,5 @@
 {
-  "anonymous": false,
+  "anonymous": true,
   "attributes": [
     {
       "name": "Cancel Disabled",
@@ -43,6 +43,21 @@
       "status": "Active"
     },
     {
+      "model": "Members",
+      "name": "Get Member by Username",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${identity('username')}",
+          "name": "username"
+        }
+      ],
+      "qualification": "Get Member by Username",
+      "status": "Active"
+    },
+    {
       "model": "Terms and Conditions",
       "name": "Get Waiver",
       "order": [
@@ -77,7 +92,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n.waiverButtons {\n    margin: 20px;\n}\n.waiverButtons button {\n\t\tbackground-color: #4d5059;\n    color: white;\n  \tborder-radius: 5px;\n}  \n</style>\n<script>\n  var waiverInfo=\"\";\n  function agreeTerms() {\n    K('field[Agreement]').value(\"Agreed\");\n    K('form').submitPage();\n  }\n  function noAgreeTerms() {\n    K('field[Agreement]').value(\"NOT Agreed\");\n    K('form').submitPage();\n  }\n</script>",
+  "customHeadContent": "<style>\n\n.waiverButtons {\n    margin: 20px;\n}\n.waiverButtons button {\n\t\tbackground-color: #4d5059;\n    color: white;\n  \tborder-radius: 5px;\n}  \n.waiverButtons button:hover, .waiverButtons button:disabled {\n    background-color: #b2b2b2 !important;\n}  \n</style>\n<script>\n  var waiverInfo=\"\";\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n  \n  function agreeTerms() {\n    K('field[Agreement]').value(\"Agreed\");\n    K('form').submitPage();\n  }\n  function noAgreeTerms() {\n    K('field[Agreement]').value(\"NOT Agreed\");\n    K('form').submitPage();\n  }\n</script>",
   "description": "Capture a Members agreement for the GB Waiver.",
   "name": "Member Waiver Agreement",
   "notes": null,
@@ -402,7 +417,7 @@
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "K('bridgedResource[Members]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name', 'Covid19 Waiver'],\n  success: function(bridgedData) {\n debugger;\n    var options=[];\n    $.each( bridgedData, function( key, value ) {\n      if (value['Covid19 Waiver']===null || value['Covid19 Waiver']===\"\" || value['Covid19 Waiver']===\"NOT Agreed\") {\n\t      options[options.length]={'label':value['First Name']+\" \"+value['Last Name'],'value':value['id']};\n      }\n    });\n\t\tK('field[Members]').options(options);\n    bundle.config.widgets.selectMenu({\n      element: K(\"form\").find(\"#selectMemberMenu\")[0],\n      options: options,\n      onChange: function(option) {\n        K('field[Members]').value(option.value);\n        setTimeout(function(){\n          $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n        },100);\n      },\n      value: K('field[Members]').value(),\n    });  \n  }\n});\n",
+          "code": "K('bridgedResource[Members]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name', 'Covid19 Waiver'],\n  success: function(bridgedData) {\n debugger;\n    var options=[];\n    $.each( bridgedData, function( key, value ) {\n/*      if (value['Covid19 Waiver']===null || value['Covid19 Waiver']===\"\" || value['Covid19 Waiver']===\"NOT Agreed\") { */\n\t      options[options.length]={'label':value['First Name']+\" \"+value['Last Name'],'value':value['id']};\n/*      }*/\n    });\n\t\tK('field[Members]').options(options);\n    \n    var label=null;\n\t\tK('field[Members]').options(options);\n    if (GetURLParameter(\"id\")!==null && GetURLParameter(\"id\")!==undefined) {\n    \tK('field[Members]').value(GetURLParameter(\"id\"));\n      $(K('field[Members]').options()).each(function(index) {\n       if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) label=K('field[Members]').options()[index].label;\n      });      \n    } else {\n\t\t\tif (!K(\"identity\").teams.includes(\"Role::Program Managers\")) {      \n        K('bridgedResource[Get Member by Username]').load({\n          attributes: ['Member ID', 'First Name', 'Last Name', 'Covid19 Waiver'],\n          success: function(bridgedData) {\n\t         \tdebugger;\n            K('field[Members]').value(bridgedData['id']);\n\t\t\t    \tK('section[Select Member]').hide();      \n          }\n        });\n      }\n    }\n    \n    bundle.config.widgets.selectMenu({\n      element: K(\"form\").find(\"#selectMemberMenu\")[0],\n      options: options,\n      onChange: function(option) {\n        K('field[Members]').value(option.value);\n        setTimeout(function(){\n          $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n        },100);\n      },\n      value: K('field[Members]').value(),\n    });  \n    \n    if (label!==null){\n    \tK('section[Select Member]').hide();      \n    }    \n  }\n});\n",
           "runIf": "!form('review')"
         },
         {
@@ -425,25 +440,53 @@
           "action": "Custom",
           "code": "$(\"#waiverInformation\").html(K('field[Waiver Information Text]').value());",
           "runIf": "K('field[Waiver Information Text]').value()!==null"
+        },
+        {
+          "name": "Set Defaults",
+          "type": "Load",
+          "action": "Custom",
+          "code": "if ($(\".package-layout--services\").length===0) {\n\t$(\"body\").css(\"height\",\"auto\");\n}"
         }
       ],
       "name": "Instalment Information",
       "renderType": "submittable",
+      "type": "page"
+    },
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "text",
+          "name": "Info",
+          "text": "Thank you for completing your Agreement form.",
+          "visible": true,
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Thank You",
+      "renderType": "confirmation",
       "type": "page"
     }
   ],
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Program Managers"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Program Managers"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Program Managers"
+      "name": "Everyone"
     }
   ],
   "slug": "member-waiver-agreement",

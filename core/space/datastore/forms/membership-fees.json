@@ -3,14 +3,14 @@
     {
       "name": "Datastore Configuration",
       "values": [
-        "{\"columns\":[{\"name\":\"Status\",\"label\":\"Status\",\"type\":\"value\",\"visible\":true},{\"name\":\"Program\",\"label\":\"Program\",\"type\":\"value\",\"visible\":true},{\"name\":\"Frequency\",\"label\":\"Frequency\",\"type\":\"value\",\"visible\":true},{\"name\":\"Info\",\"label\":\"Info\",\"type\":\"value\",\"visible\":true},{\"name\":\"Fee\",\"label\":\"Fee\",\"type\":\"value\",\"visible\":true},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":true},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":true},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false}],\"defaultSearchIndex\":null}"
+        "{\"columns\":[{\"name\":\"Status\",\"label\":\"Status\",\"type\":\"value\",\"visible\":true},{\"name\":\"Program\",\"label\":\"Program\",\"type\":\"value\",\"visible\":true},{\"name\":\"Frequency\",\"label\":\"Frequency\",\"type\":\"value\",\"visible\":true},{\"name\":\"Info\",\"label\":\"Info\",\"type\":\"value\",\"visible\":true},{\"name\":\"Fee\",\"label\":\"Fee\",\"type\":\"value\",\"visible\":true},{\"name\":\"handle\",\"label\":\"Handle\",\"type\":\"system\",\"visible\":true},{\"name\":\"label\",\"label\":\"Label\",\"type\":\"system\",\"visible\":true},{\"name\":\"createdAt\",\"label\":\"Created At\",\"type\":\"system\",\"visible\":false},{\"name\":\"createdBy\",\"label\":\"Created By\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedAt\",\"label\":\"Updated At\",\"type\":\"system\",\"visible\":false},{\"name\":\"updatedBy\",\"label\":\"Updated By\",\"type\":\"system\",\"visible\":false},{\"name\":\"id\",\"label\":\"Id\",\"type\":\"system\",\"visible\":false},{\"name\":\"Visible On Website\",\"label\":\"Visible On Website\",\"type\":\"value\",\"visible\":true},{\"name\":\"Visible Date\",\"label\":\"Visible Date\",\"type\":\"value\",\"visible\":false},{\"name\":\"No end date\",\"label\":\"No end date\",\"type\":\"value\",\"visible\":false},{\"name\":\"Removal Date\",\"label\":\"Removal Date\",\"type\":\"value\",\"visible\":false},{\"name\":\"Billing Date\",\"label\":\"Billing Date\",\"type\":\"value\",\"visible\":false},{\"name\":\"Registration Fee Include\",\"label\":\"Registration Fee Include\",\"type\":\"value\",\"visible\":false},{\"name\":\"Registration Fee\",\"label\":\"Registration Fee\",\"type\":\"value\",\"visible\":false}],\"defaultSearchIndex\":null}"
       ]
     }
   ],
   "bridgedResources": [
 
   ],
-  "customHeadContent": null,
+  "customHeadContent": "<style>\n.visible_dates {\n    margin-left: 20px;\n    background-color: #faf4f4;\n    padding: 10px;\n    width: 300px;\n}  \n</style>",
   "description": "",
   "indexDefinitions": [
     {
@@ -63,6 +63,27 @@
       "unique": false
     },
     {
+      "name": "values[Billing Date]",
+      "parts": [
+        "values[Billing Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Charge Timing]",
+      "parts": [
+        "values[Charge Timing]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Display Info Text]",
+      "parts": [
+        "values[Display Info Text]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Fee]",
       "parts": [
         "values[Fee]"
@@ -84,9 +105,37 @@
       "unique": false
     },
     {
+      "name": "values[No end date]",
+      "parts": [
+        "values[No end date]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Program]",
       "parts": [
         "values[Program]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Registration Fee Include]",
+      "parts": [
+        "values[Registration Fee Include]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Registration Fee]",
+      "parts": [
+        "values[Registration Fee]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Removal Date]",
+      "parts": [
+        "values[Removal Date]"
       ],
       "unique": false
     },
@@ -102,6 +151,28 @@
       "parts": [
         "values[Status]",
         "values[Frequency]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status],values[Visible On Website]",
+      "parts": [
+        "values[Status]",
+        "values[Visible On Website]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Visible Date]",
+      "parts": [
+        "values[Visible Date]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Visible On Website]",
+      "parts": [
+        "values[Visible On Website]"
       ],
       "unique": false
     }
@@ -152,8 +223,169 @@
         },
         {
           "type": "field",
+          "name": "Visible On Website",
+          "label": "Check the box if you want this to visible option on your website",
+          "key": "f6",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": "space('attribute:Billing Company')===\"Bambora\"",
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": true,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "json",
+          "renderType": "checkbox",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Visible",
+              "value": "YES"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Website Info",
+          "title": null,
+          "visible": "values('Visible On Website')[0]===\"YES\"",
+          "omitWhenHidden": true,
+          "renderAttributes": {
+            "class": "visible_dates"
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Visible Date",
+              "label": "Visible Date",
+              "key": "f7",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": "values('Visible On Website')[0]===\"YES\"",
+              "requiredMessage": "Please provide a Date for when the program is visible on your website",
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "date"
+            },
+            {
+              "type": "field",
+              "name": "No end date",
+              "label": "",
+              "key": "f9",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "No end date",
+                  "value": "YES"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Removal Date",
+              "label": "Removal Date",
+              "key": "f8",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": "values('No end date')[0]!==\"YES\"",
+              "enabled": true,
+              "required": "values('Visible On Website')[0]===\"YES\" && values('No end date')[0]!==\"YES\"",
+              "requiredMessage": "Please provide a Removal Date for when the program is visible on your website",
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "date"
+            },
+            {
+              "type": "field",
+              "name": "Billing Date",
+              "label": "Billing Date",
+              "key": "f12",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": "values('Visible On Website')[0]===\"YES\"",
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Any day from Visible Date",
+                  "value": "Any Date"
+                },
+                {
+                  "label": "Any day from School Start Date",
+                  "value": "School Start Date"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "field",
           "name": "Program",
-          "label": "Program",
+          "label": "Membership Plan",
           "key": "f2",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -286,6 +518,137 @@
           "rows": 1
         },
         {
+          "type": "field",
+          "name": "Registration Fee Include",
+          "label": "Check the box if you want to include a one time Registration fee",
+          "key": "f10",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": "space('attribute:Billing Company')===\"Bambora\"",
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": true,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "json",
+          "renderType": "checkbox",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Fee",
+              "value": "YES"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Registration Fee section",
+          "title": null,
+          "visible": "values('Registration Fee Include')[0]===\"YES\"",
+          "omitWhenHidden": true,
+          "renderAttributes": {
+            "class": "visible_dates"
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Display Info Text",
+              "label": "Display Info Text",
+              "key": "f14",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": "values('Registration Fee Include')[0]===\"YES\"",
+              "requiredMessage": "",
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 2
+            },
+            {
+              "type": "field",
+              "name": "Charge Timing",
+              "label": "Charge Timing",
+              "key": "f13",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": "values('Registration Fee Include')[0]===\"YES\"",
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Immediately",
+                  "value": "Immediately"
+                },
+                {
+                  "label": "At Billing Start",
+                  "value": "At Billing Start"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Registration Fee",
+              "label": "Registration Fee",
+              "key": "f11",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": "values('Registration Fee Include')[0]===\"YES\"",
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        },
+        {
           "type": "button",
           "label": "Submit",
           "name": "Submit Button",
@@ -315,7 +678,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Authenticated Users"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",
@@ -324,5 +687,5 @@
   ],
   "slug": "membership-fees",
   "status": null,
-  "submissionLabelExpression": null
+  "submissionLabelExpression": "${values('Program')}-${values('Frequency')}-${values('Fee')}"
 }

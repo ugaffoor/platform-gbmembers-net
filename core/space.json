@@ -50,12 +50,6 @@
       ]
     },
     {
-      "name": "Australia School States",
-      "values": [
-        "ACT,NSW,NT,QLD,TAS,VIC,WA"
-      ]
-    },
-    {
       "name": "AWS GBShop Bucket",
       "values": [
         "us-gbmembers-gbshop"
@@ -82,7 +76,7 @@
     {
       "name": "Calendar Time Slots",
       "values": [
-        "5"
+        "10"
       ]
     },
     {
@@ -223,7 +217,7 @@
     {
       "name": "Payment Frequencies",
       "values": [
-        "Daily,Weekly,Fortnightly,Monthly,Quarterly,4 Months,6 Months,Yearly"
+        "Weekly,Fortnightly,Monthly,Quarterly,4 Months,6 Months,Yearly"
       ]
     },
     {
@@ -236,30 +230,6 @@
       "name": "POS Accepted Cards",
       "values": [
         "[\"amex\", \"visa\", \"mastercard\"]"
-      ]
-    },
-    {
-      "name": "POS Sales Tax",
-      "values": [
-        "0.012"
-      ]
-    },
-    {
-      "name": "POS Sales Tax 2",
-      "values": [
-        "0.05"
-      ]
-    },
-    {
-      "name": "POS Sales Tax Label",
-      "values": [
-        "Sales Tax"
-      ]
-    },
-    {
-      "name": "POS Sales Tax Label 2",
-      "values": [
-        "State"
       ]
     },
     {
@@ -335,12 +305,6 @@
       ]
     },
     {
-      "name": "School Start Date",
-      "values": [
-        "2024-06-06"
-      ]
-    },
-    {
       "name": "School State Code",
       "values": [
         "NSW"
@@ -373,7 +337,7 @@
     {
       "name": "Self Checkin PIN",
       "values": [
-        "3333"
+        "0000"
       ]
     },
     {
@@ -385,7 +349,7 @@
     {
       "name": "Services Slugs",
       "values": [
-        "bambora-payments-reschedule,bambora-change-payment-type,bambora-member-cancellation,bambora-member-registration,bambora-membership-freeze,bambora-resume-frozen-member,bambora-setup-biller-details,cash-member-registration,incident-report,kids-registration,mens-registration,pink-team-registration"
+        "bambora-payments-reschedule,bambora-change-payment-type,bambora-member-cancellation,bambora-member-registration,bambora-membership-freeze,bambora-resume-frozen-member,bambora-setup-biller-details,cash-member-registration,incident-report,kids-registration,mens-registration,pink-team-registration,member-self-sign-up"
       ]
     },
     {
@@ -456,7 +420,7 @@
     {
       "name": "Trial Booking Cut Off",
       "values": [
-        "1"
+        "2"
       ]
     },
     {

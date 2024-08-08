@@ -2,6 +2,12 @@
   "activeMappingName": "Program Fees",
   "attributes": [
     {
+      "name": "Charge Timing"
+    },
+    {
+      "name": "Display Info Text"
+    },
+    {
       "name": "Fee"
     },
     {
@@ -15,6 +21,12 @@
     },
     {
       "name": "Program"
+    },
+    {
+      "name": "Registration Fee"
+    },
+    {
+      "name": "Registration Fee Include"
     }
   ],
   "mappings": [
@@ -40,6 +52,22 @@
         {
           "name": "id",
           "structureField": "${fields('id')}"
+        },
+        {
+          "name": "Registration Fee Include",
+          "structureField": "${fields('values[Registration Fee Include]')}"
+        },
+        {
+          "name": "Display Info Text",
+          "structureField": "${fields('values[Display Info Text]')}"
+        },
+        {
+          "name": "Charge Timing",
+          "structureField": "${fields('values[Charge Timing]')}"
+        },
+        {
+          "name": "Registration Fee",
+          "structureField": "${fields('values[Registration Fee]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",

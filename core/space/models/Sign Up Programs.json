@@ -1,0 +1,109 @@
+{
+  "activeMappingName": "Sign Up Programs",
+  "attributes": [
+    {
+      "name": "Fee"
+    },
+    {
+      "name": "Frequency"
+    },
+    {
+      "name": "Info"
+    },
+    {
+      "name": "No end date"
+    },
+    {
+      "name": "Program"
+    },
+    {
+      "name": "Registration Fee"
+    },
+    {
+      "name": "Registration Fee Include"
+    },
+    {
+      "name": "Removal Date"
+    },
+    {
+      "name": "Status"
+    },
+    {
+      "name": "Visible Date"
+    },
+    {
+      "name": "Visible On Website"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "Status",
+          "structureField": "${fields(\"values[Status]\")}"
+        },
+        {
+          "name": "Visible On Website",
+          "structureField": "${fields(\"values[Visible On Website]\")}"
+        },
+        {
+          "name": "Visible Date",
+          "structureField": "${fields(\"values[Visible Date]\")}"
+        },
+        {
+          "name": "No end date",
+          "structureField": "${fields(\"values[No end date]\")}"
+        },
+        {
+          "name": "Removal Date",
+          "structureField": "${fields(\"values[Removal Date]\")}"
+        },
+        {
+          "name": "Program",
+          "structureField": "${fields(\"values[Program]\")}"
+        },
+        {
+          "name": "Frequency",
+          "structureField": "${fields(\"values[Frequency]\")}"
+        },
+        {
+          "name": "Info",
+          "structureField": "${fields(\"values[Info]\")}"
+        },
+        {
+          "name": "Fee",
+          "structureField": "${fields(\"values[Fee]\")}"
+        },
+        {
+          "name": "Registration Fee Include",
+          "structureField": "${fields(\"values[Registration Fee Include]\")}"
+        },
+        {
+          "name": "Registration Fee",
+          "structureField": "${fields(\"values[Registration Fee]\")}"
+        }
+      ],
+      "bridgeSlug": "kinetic-core",
+      "name": "Sign Up Programs",
+      "qualifications": [
+        {
+          "name": "Get Sign Up Programs",
+          "query": "formSlug=membership-fees&limit=100&index=values[Status],values[Visible On Website]&q=values[Status]=\"Active\" AND values[Visible On Website]=\"YES\""
+        }
+      ],
+      "structure": "Datastore Submissions"
+    }
+  ],
+  "name": "Sign Up Programs",
+  "qualifications": [
+    {
+      "name": "Get Sign Up Programs",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    }
+  ],
+  "status": "Active"
+}

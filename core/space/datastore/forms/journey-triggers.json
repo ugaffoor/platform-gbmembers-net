@@ -949,6 +949,14 @@
                 {
                   "label": "Resume Frozen Member",
                   "value": "Resume Frozen Member"
+                },
+                {
+                  "label": "Member Child Self Signup",
+                  "value": "Member Child Self Signup"
+                },
+                {
+                  "label": "Member Adult Self Signup",
+                  "value": "Member Adult Self Signup"
                 }
               ]
             },
