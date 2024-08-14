@@ -2020,7 +2020,7 @@
           "name": "Set JSON",
           "type": "Submit",
           "action": "Custom",
-          "code": "debugger;\nif (viewerConfig.response!==null) {\n  K('field[feesJSON]').value(JSON.stringify(viewerConfig.response));\n\n  members=new Array();\n  viewerConfig.response.forEach(function(item){\n    members.push(item.id);\n  });\n  K('field[membersJSON]').value(JSON.stringify(members));\n}\nif (removedMembers!==undefined) {\n  uniqueMembers=new Array()\n  removedMembers.forEach(id => { if (!uniqueMembers.includes(id)) uniqueMembers.push(id); });\n  K('field[removedMembersJSON]').value(JSON.stringify(uniqueMembers));\n} else {\n  K('field[removedMembersJSON]').value(JSON.stringify(new Array()));\n}\n\n"
+          "code": "debugger;\nif (viewerConfig.response!==null) {\n  K('field[feesJSON]').value(JSON.stringify(viewerConfig.response));\n\n  members=new Array();\n  viewerConfig.response.forEach(function(item){\n    members.push(item.id);\n  });\n  K('field[membersJSON]').value(JSON.stringify(members));\n}\nif (removedMembers!==undefined) {\n  removedMembers=removedMembers.filter(element => members.findIndex(checkID => checkID===element)===-1 ? true : false)\n  uniqueMembers=new Array()\n  removedMembers.forEach(id => { if (!uniqueMembers.includes(id)) uniqueMembers.push(id); });\n  K('field[removedMembersJSON]').value(JSON.stringify(uniqueMembers));\n} else {\n  K('field[removedMembersJSON]').value(JSON.stringify(new Array()));\n}\n\n"
         },
         {
           "name": "Set Source IP",
