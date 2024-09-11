@@ -2,6 +2,12 @@
   "activeMappingName": "Members",
   "attributes": [
     {
+      "name": "Additional Program 1"
+    },
+    {
+      "name": "Additional Program 2"
+    },
+    {
       "name": "Address"
     },
     {
@@ -313,6 +319,14 @@
         {
           "name": "Status",
           "structureField": "${fields('values[Status]')}"
+        },
+        {
+          "name": "Additional Program 1",
+          "structureField": "${fields('values[Additional Program 1]')}"
+        },
+        {
+          "name": "Additional Program 2",
+          "structureField": "${fields('values[Additional Program 2]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",

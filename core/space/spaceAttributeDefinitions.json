@@ -36,6 +36,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Set to YES to allow a Coach profile to Promote students.",
+    "name": "Allow Coach Promotions"
+  },
+  {
+    "allowsMultiple": false,
     "description": "The Queue kapp form which approvals should be created in (Overridden by Kapp and Form Attributes)",
     "name": "Approval Form Slug"
   },
