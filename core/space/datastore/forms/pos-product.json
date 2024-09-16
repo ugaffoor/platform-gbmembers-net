@@ -159,6 +159,13 @@
       "unique": false
     },
     {
+      "name": "values[ImageURLUpdated]",
+      "parts": [
+        "values[ImageURLUpdated]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Limited Edition]",
       "parts": [
         "values[Limited Edition]"
@@ -1049,6 +1056,31 @@
             "label": "${resources('Categories:Label')}",
             "value": "${resources('Categories:Label')}"
           }
+        },
+        {
+          "type": "field",
+          "name": "ImageURLUpdated",
+          "label": "ImageURLUpdated",
+          "key": "f22",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": false,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": false,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
         },
         {
           "type": "button",
