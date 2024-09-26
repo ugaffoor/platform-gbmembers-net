@@ -1123,5 +1123,5 @@
   ],
   "slug": "pos-product",
   "status": "New",
-  "submissionLabelExpression": "${values('Display Order')}:${values('Status')}-${values('Product Type')}-${values('Display Type')}-${values('Name')}-${values('Colour')}-${values('Price')}-${values('Limited Edition')}-${values('Categories')}-${values('Sizes')}-${values('SKU')}-${values('Size Chart URL')}-${values('Image Type')}"
+  "submissionLabelExpression": "${values('Display Order')}:${values('Status')}-${values('Product Type')}-${values('Display Type')}-${values('Name')}-${values('Colour')}-${values('Price')}"
 }

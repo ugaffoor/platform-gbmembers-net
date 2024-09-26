@@ -56,6 +56,21 @@
     },
     {
       "model": "Members",
+      "name": "Get Member by Username",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${identity('username')}",
+          "name": "username"
+        }
+      ],
+      "qualification": "Get Member by Username",
+      "status": "Active"
+    },
+    {
+      "model": "Members",
       "name": "Members",
       "order": [
 
@@ -171,6 +186,31 @@
               "required": false,
               "requiredMessage": null,
               "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Member GUID",
+              "label": "Member GUID",
+              "key": "f100",
+              "defaultValue": "${resources('Get Member by Username:id')}",
+              "defaultResourceName": "Get Member by Username",
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
@@ -922,10 +962,6 @@
                   "choicesRunIf": null,
                   "choices": [
                     {
-                      "label": "2023",
-                      "value": "2023"
-                    },
-                    {
                       "label": "2024",
                       "value": "2024"
                     },
@@ -1147,7 +1183,7 @@
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\ndebugger;\nif (GetURLParameter(\"id\")!==null) {\n  K('field[Members]').value(GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\nif (GetURLParameter(\"overdue\")!==null) {\n\tK('field[Amount]').value(GetURLParameter(\"overdue\"));\n  K('section[Overdue Payment]').show();\n}",
+          "code": "\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\ndebugger;\nif (GetURLParameter(\"id\")!==null || !K(\"identity\").teams.includes(\"Role::Program Managers\")) {\n  if (GetURLParameter(\"id\")!==null && GetURLParameter(\"id\")!==undefined) {\n    K('field[Members]').value(GetURLParameter(\"id\"));\n  }else{\n    K('field[Members]').value(K('field[Member GUID]').value());\n  }\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n  K('section[Select Member]').hide();\n}\nif (GetURLParameter(\"overdue\")!==null) {\n\tK('field[Amount]').value(GetURLParameter(\"overdue\"));\n  K('section[Overdue Payment]').show();\n}",
           "runIf": "!form('review')"
         },
         {
