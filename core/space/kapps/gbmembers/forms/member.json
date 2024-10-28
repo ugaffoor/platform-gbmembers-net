@@ -800,6 +800,31 @@
             },
             {
               "type": "field",
+              "name": "Belt Size",
+              "label": "Belt Size",
+              "key": "f102",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
               "name": "Attendance Count",
               "label": "Attendance Count",
               "key": "f72",

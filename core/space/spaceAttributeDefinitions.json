@@ -26,6 +26,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Number of days that a school allows a Class Booking to me made in advance.",
+    "name": "Advance Class Booking Cutoff"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Slug of the Admin Kapp form that is used for managing system alerts (typically 'alerts').",
     "name": "Alerts Form Slug"
   },
@@ -193,6 +198,11 @@
     "allowsMultiple": false,
     "description": "LiveChat License key",
     "name": "LiveChat License"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Current Belt of Member",
+    "name": "Member Belt Size"
   },
   {
     "allowsMultiple": false,
@@ -368,6 +378,11 @@
     "allowsMultiple": false,
     "description": "Use a shared workflow engine (true/false)?",
     "name": "Shared Workflow Engine"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "NO if you want to only show \"Available\" instead of \"Open Spots: X\"",
+    "name": "Show Class Spots Remaining"
   },
   {
     "allowsMultiple": true,

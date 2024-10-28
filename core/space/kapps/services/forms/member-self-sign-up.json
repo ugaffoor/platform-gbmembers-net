@@ -694,6 +694,56 @@
               "dataType": "string",
               "renderType": "text",
               "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing First Name",
+              "label": "Billing First Name",
+              "key": "f90",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": "values('Billing First Name')!==null && values('Billing First Name')!==\"\"",
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Last Name",
+              "label": "Billing Last Name",
+              "key": "f91",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": "values('Billing Last Name')!==null && values('Billing Last Name')!==\"\"",
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             }
           ]
         },

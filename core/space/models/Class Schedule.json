@@ -5,6 +5,9 @@
       "name": "Allowed Programs"
     },
     {
+      "name": "Booking Cutoff"
+    },
+    {
       "name": "Cancellation Cutoff"
     },
     {
@@ -75,6 +78,10 @@
         {
           "name": "Coaches",
           "structureField": "${fields('values[Coaches]')}"
+        },
+        {
+          "name": "Booking Cutoff",
+          "structureField": "${fields('values[Booking Cutoff]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",
