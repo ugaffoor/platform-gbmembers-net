@@ -77,6 +77,13 @@
       "unique": false
     },
     {
+      "name": "values[Booking Cutoff]",
+      "parts": [
+        "values[Booking Cutoff]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Cancellation Cutoff]",
       "parts": [
         "values[Cancellation Cutoff]"
@@ -416,6 +423,31 @@
               "name": "Cancellation Cutoff",
               "label": "Cancellation Cutoff",
               "key": "f13",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Booking Cutoff",
+              "label": "Booking Cutoff",
+              "key": "f18",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,

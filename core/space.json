@@ -50,6 +50,12 @@
       ]
     },
     {
+      "name": "Australia School States",
+      "values": [
+        "ACT,NSW,NT,QLD,TAS,VIC,WA"
+      ]
+    },
+    {
       "name": "AWS GBShop Bucket",
       "values": [
         "us-gbmembers-gbshop"
@@ -76,7 +82,7 @@
     {
       "name": "Calendar Time Slots",
       "values": [
-        "10"
+        "5"
       ]
     },
     {
@@ -173,9 +179,15 @@
       ]
     },
     {
+      "name": "Hide Class Spots Remaining",
+      "values": [
+        "NO"
+      ]
+    },
+    {
       "name": "Interested In Choices",
       "values": [
-        "Women's Self Defence Classes; Kids Classes; Men's Classes; Women's Classes;"
+        "Women's Self Defense Classes; Kids Classes; Men's Classes; Women's Classes;"
       ]
     },
     {
@@ -203,6 +215,12 @@
       ]
     },
     {
+      "name": "Member Belt Size",
+      "values": [
+        "A0,A1,A1L,A2,A2L,A3,A3L,A4,A5,A5W,A6,A7,Y0,Y1,Y2,Y3,Y4,Y5,Y6"
+      ]
+    },
+    {
       "name": "Member Discounts",
       "values": [
         "[]"
@@ -211,13 +229,13 @@
     {
       "name": "Meta JSON Location",
       "values": [
-        "https://us-gbmembers.s3.us-east-2.amazonaws.com"
+        "https://gbmembers-v2.s3.ap-southeast-2.amazonaws.com"
       ]
     },
     {
       "name": "Payment Frequencies",
       "values": [
-        "Weekly,Fortnightly,Monthly,Quarterly,4 Months,6 Months,Yearly"
+        "Daily,Weekly,Fortnightly,Monthly,4 Months,Yearly"
       ]
     },
     {
@@ -230,6 +248,30 @@
       "name": "POS Accepted Cards",
       "values": [
         "[\"amex\", \"visa\", \"mastercard\"]"
+      ]
+    },
+    {
+      "name": "POS Sales Tax",
+      "values": [
+        "0.012"
+      ]
+    },
+    {
+      "name": "POS Sales Tax 2",
+      "values": [
+        "0.05"
+      ]
+    },
+    {
+      "name": "POS Sales Tax Label",
+      "values": [
+        "Sales Tax"
+      ]
+    },
+    {
+      "name": "POS Sales Tax Label 2",
+      "values": [
+        "State"
       ]
     },
     {
@@ -265,7 +307,13 @@
     {
       "name": "School Address",
       "values": [
-        "123 Somewhere St"
+        "123 Somewhere St, Smallville 673636"
+      ]
+    },
+    {
+      "name": "School Closed Dates",
+      "values": [
+        "2024-10-10,2024-10-24,2024-10-16,2024-09-11,2024-09-12,2024-09-13"
       ]
     },
     {
@@ -301,7 +349,13 @@
     {
       "name": "School Name",
       "values": [
-        "GB US Beta"
+        "Gracie Barra United States Beta"
+      ]
+    },
+    {
+      "name": "School Start Date",
+      "values": [
+        "2024-06-07"
       ]
     },
     {
@@ -319,7 +373,7 @@
     {
       "name": "School Telephone",
       "values": [
-        "6510001111"
+        "6511002222"
       ]
     },
     {
@@ -337,7 +391,7 @@
     {
       "name": "Self Checkin PIN",
       "values": [
-        "0000"
+        "3333"
       ]
     },
     {
@@ -356,6 +410,12 @@
       "name": "Shared Workflow Engine",
       "values": [
         "False"
+      ]
+    },
+    {
+      "name": "Show Class Spots Remaining",
+      "values": [
+        ""
       ]
     },
     {
@@ -418,9 +478,39 @@
       ]
     },
     {
+      "name": "TAX 1 Label",
+      "values": [
+        "GST 5%"
+      ]
+    },
+    {
+      "name": "TAX 1 Value",
+      "values": [
+        "0.05"
+      ]
+    },
+    {
+      "name": "TAX 2 Label",
+      "values": [
+        "HST 12%"
+      ]
+    },
+    {
+      "name": "TAX 2 Value",
+      "values": [
+        "0.12"
+      ]
+    },
+    {
       "name": "Trial Booking Cut Off",
       "values": [
-        "2"
+        "1"
+      ]
+    },
+    {
+      "name": "Trial Booking Thank you URL",
+      "values": [
+        "http://ec2-54-206-97-139.ap-southeast-2.compute.amazonaws.com:8080/kinetic/gbrousehill/gbsocial?page=timetables"
       ]
     },
     {
@@ -439,7 +529,7 @@
   "defaultLocale": "en-US",
   "defaultTimezone": "Australia/Sydney",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
+  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers-v2",
   "enabledLocales": [
     "en-AU",
     "en-US"
@@ -483,10 +573,11 @@
   "slug": "usbeta",
   "trustedFrameDomains": [
     "https://services.gbmembers.net",
-    "http://localhost:8081"
+    "http://localhost:8081",
+    "localhost:3000"
   ],
   "trustedResourceDomains": [
-
+    "http://localhost:3000"
   ],
   "webApis": [
     {
