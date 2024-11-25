@@ -77,6 +77,7 @@ SUBMISSIONS_TO_EXPORT = [
   { "datastore" => true, "formSlug" => "robot-definitions" },
   { "datastore" => true, "formSlug" => "terms-and-conditions" },
   { "datastore" => true, "formSlug" => "journey-triggers" },
+  { "datastore" => true, "formSlug" => "trigger-groups" },
   { "datastore" => true, "formSlug" => "sms-templates" },
   { "datastore" => true, "formSlug" => "call-scripts" },
   { "datastore" => true, "formSlug" => "pos-categories" },
