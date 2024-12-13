@@ -1436,7 +1436,7 @@
                   "defaultValue": null,
                   "defaultResourceName": null,
                   "visible": true,
-                  "enabled": true,
+                  "enabled": "K(\"identity\").teams.includes(\"Role::Program Managers\")",
                   "required": false,
                   "requiredMessage": null,
                   "omitWhenHidden": null,
