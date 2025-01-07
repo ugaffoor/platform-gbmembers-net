@@ -254,7 +254,7 @@
         },
         {
           "type": "button",
-          "label": "Submit",
+          "label": "Save",
           "name": "Submit Button",
           "visible": true,
           "enabled": true,

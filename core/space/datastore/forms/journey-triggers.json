@@ -275,7 +275,7 @@
       "status": "Active"
     }
   ],
-  "customHeadContent": "<style>\n  .preview {\n      padding: 10px;\n      background-color: #f7f7f7;\n      margin-bottom: 40px;\n  }  \n</style>",
+  "customHeadContent": "<style>\n  .preview {\n      padding: 10px;\n      background-color: #f7f7f7;\n      margin-bottom: 40px;\n  }  \n  a.editTemplate {\n      background-color: #090808;\n      color: white;\n      padding: 2px;\n      padding-left: 10px;\n      padding-right: 10px;\n      border-radius: 5px;\n  }  \n</style>\n<script>\n  function editTemplate() {\n    if (K('field[Record Type]').value()===\"Member\") {    \n      if (K('field[Contact Type]').value()===\"Email\") {\n        window.postMessage({\"action\": \"triggerEmailTemplateEdit\", \"id\": K('field[Member Email]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"SMS\") {\n        window.postMessage({\"action\": \"triggerSMSTemplateEdit\", \"id\": K('field[Member SMS]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"Call\") {\n        window.postMessage({\"action\": \"triggerScriptTemplateEdit\", \"id\": K('field[Member Call Script]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n    } else if (K('field[Record Type]').value()===\"Lead\") {    \n      if (K('field[Contact Type]').value()===\"Email\") {\n        window.postMessage({\"action\": \"triggerEmailTemplateEdit\", \"id\": K('field[Lead Email]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"SMS\") {\n        window.postMessage({\"action\": \"triggerSMSTemplateEdit\", \"id\": K('field[Lead SMS]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"Call\") {\n        window.postMessage({\"action\": \"triggerScriptTemplateEdit\", \"id\": K('field[Lead Call Script]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n    }\n  }\n  function newTemplate() {\n    if (K('field[Contact Type]').value()===\"Email\") {\n\t    window.postMessage({\"action\": \"triggerEmailTemplateNew\", \"id\":\"newEmail\"},\"*\");\n    }\n    if (K('field[Contact Type]').value()===\"SMS\") {\n\t    window.postMessage({\"action\": \"triggerSMSTemplateNew\", \"id\":\"newSMS\"},\"*\");\n    }\n    if (K('field[Contact Type]').value()===\"Call\") {\n\t    window.postMessage({\"action\": \"triggerScriptTemplateNew\", \"id\":\"newCall\"},\"*\");\n    }\n  }  \n</script>",
   "description": "Configure Lead and Member Journey triggers",
   "indexDefinitions": [
     {
@@ -352,6 +352,13 @@
       "name": "values[Contact Type]",
       "parts": [
         "values[Contact Type]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Embedded Dirty]",
+      "parts": [
+        "values[Embedded Dirty]"
       ],
       "unique": false
     },
@@ -591,7 +598,18 @@
 
           ],
           "events": [
-
+            {
+              "name": "Set Dirty",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Embedded Dirty",
+                  "value": "TRUE",
+                  "visible": null
+                }
+              ]
+            }
           ],
           "renderAttributes": {
           },
@@ -627,7 +645,18 @@
 
           ],
           "events": [
-
+            {
+              "name": "Set Dirty",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Embedded Dirty",
+                  "value": "TRUE",
+                  "visible": null
+                }
+              ]
+            }
           ],
           "renderAttributes": {
           },
@@ -668,7 +697,7 @@
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
-              "enabled": true,
+              "enabled": "!K('form').embeddedMode()",
               "required": "values('Record Type')===\"Lead\"",
               "requiredMessage": null,
               "omitWhenHidden": null,
@@ -677,7 +706,18 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
+                }
               ],
               "renderAttributes": {
               },
@@ -740,7 +780,18 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
+                }
               ],
               "renderAttributes": {
               },
@@ -771,6 +822,18 @@
                   "action": "Custom",
                   "bridgedResourceName": "Get Lead Script",
                   "code": "$(K('content[Content View]').element()).html(resource['Script']);\nK('field[Template Name]').value(resource['Script Name']);"
+                },
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
                 }
               ],
               "renderAttributes": {
@@ -807,6 +870,18 @@
                   "action": "Custom",
                   "code": "debugger;\n$(K('content[Content View]').element()).html(resource['SMS Content']);\nK('field[Template Name]').value(resource['Template Name']);",
                   "bridgedResourceName": "Get Lead SMS"
+                },
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
                 }
               ],
               "renderAttributes": {
@@ -843,6 +918,18 @@
                   "action": "Custom",
                   "code": "debugger;\n$(K('content[Content View]').element()).html(resource['Email Content']);\nK('field[Template Name]').value(resource['Template Name']);",
                   "bridgedResourceName": "Get Lead Email"
+                },
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
                 }
               ],
               "renderAttributes": {
@@ -885,7 +972,18 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
+                }
               ],
               "renderAttributes": {
               },
@@ -977,7 +1075,18 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
+                }
               ],
               "renderAttributes": {
               },
@@ -1007,7 +1116,18 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
+                }
               ],
               "renderAttributes": {
               },
@@ -1040,7 +1160,18 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
+                }
               ],
               "renderAttributes": {
               },
@@ -1071,6 +1202,18 @@
                   "action": "Custom",
                   "code": "$(K('content[Content View]').element()).html(resource['Script']);\nK('field[Template Name]').value(resource['Script Name']);",
                   "bridgedResourceName": "Get Member Script"
+                },
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
                 }
               ],
               "renderAttributes": {
@@ -1107,6 +1250,18 @@
                   "action": "Custom",
                   "code": "$(K('content[Content View]').element()).html(resource['SMS Content']);\nK('field[Template Name]').value(resource['Template Name']);",
                   "bridgedResourceName": "Get Member SMS"
+                },
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
                 }
               ],
               "renderAttributes": {
@@ -1143,6 +1298,18 @@
                   "action": "Custom",
                   "code": "debugger;\n$(K('content[Content View]').element()).html(resource['Email Content']);\nK('field[Template Name]').value(resource['Template Name']);",
                   "bridgedResourceName": "Get Member Email"
+                },
+                {
+                  "name": "Set Dirty",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Embedded Dirty",
+                      "value": "YES",
+                      "visible": null
+                    }
+                  ]
                 }
               ],
               "renderAttributes": {
@@ -1184,13 +1351,60 @@
 
           ],
           "events": [
-
+            {
+              "name": "Set Dirty",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Embedded Dirty",
+                  "value": "YES",
+                  "visible": null
+                }
+              ]
+            }
           ],
           "renderAttributes": {
           },
           "dataType": "string",
           "renderType": "text",
           "rows": 1
+        },
+        {
+          "type": "button",
+          "label": "New Template",
+          "name": "New Template",
+          "visible": "values('Contact Type')!==\"\" && values('Contact Type')!==null",
+          "enabled": true,
+          "renderType": "custom",
+          "renderAttributes": {
+          },
+          "events": [
+            {
+              "name": "New Template",
+              "type": "Click",
+              "action": "Custom",
+              "code": "newTemplate();"
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "label": "Edit Template",
+          "name": "Edit Template",
+          "visible": "values('Template Name')!==\"\" && values('Template Name')!==null",
+          "enabled": true,
+          "renderType": "custom",
+          "renderAttributes": {
+          },
+          "events": [
+            {
+              "name": "Edit Template",
+              "type": "Click",
+              "action": "Custom",
+              "code": "editTemplate();"
+            }
+          ]
         },
         {
           "type": "field",
@@ -1209,7 +1423,18 @@
 
           ],
           "events": [
-
+            {
+              "name": "Set Dirty",
+              "type": "Change",
+              "action": "Set Fields",
+              "mappings": [
+                {
+                  "field": "Embedded Dirty",
+                  "value": "YES",
+                  "visible": null
+                }
+              ]
+            }
           ],
           "renderAttributes": {
           },
@@ -1240,8 +1465,63 @@
           ]
         },
         {
+          "type": "section",
+          "renderType": null,
+          "name": "New Templates",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "New Email Template",
+              "text": "<div id=\"newEmailTemplateForm\"/>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "New SMS Template",
+              "text": "<div id=\"newSMSTemplateForm\"/>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "Embedded Dirty",
+              "label": "Embedded Dirty",
+              "key": "f20",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        },
+        {
           "type": "button",
-          "label": "Submit",
+          "label": "Save",
           "name": "Submit Button",
           "visible": true,
           "enabled": true,
