@@ -1390,7 +1390,7 @@
     },
     {
       "endpoint": "Submission Access",
-      "name": "Everyone"
+      "name": "Authenticated Users"
     },
     {
       "endpoint": "Submission Modification",
@@ -1399,6 +1399,6 @@
   ],
   "slug": "lead",
   "status": "New",
-  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')}:${values('Is New Reply Received')}:${values('Phone Number')}:${values('Interest in Program')}",
+  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')}:${values('Emails Sent Count')}: ${values('SMS Sent Count')}",
   "type": "Content"
 }

@@ -471,6 +471,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Items if selected will be hidden on the Adult/Womens/Kids waiver forms.",
+    "name": "Waiver Hidden Items"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Url of the request web server that this space exists",
     "name": "Web Server Url"
   }

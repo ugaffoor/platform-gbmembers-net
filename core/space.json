@@ -32,6 +32,12 @@
       ]
     },
     {
+      "name": "Advance Class Booking Cutoff",
+      "values": [
+        "2"
+      ]
+    },
+    {
       "name": "Alerts Form Slug",
       "values": [
         "alerts"
@@ -82,7 +88,7 @@
     {
       "name": "Calendar Time Slots",
       "values": [
-        "5"
+        "10"
       ]
     },
     {
@@ -229,7 +235,7 @@
     {
       "name": "Meta JSON Location",
       "values": [
-        "https://gbmembers-v2.s3.ap-southeast-2.amazonaws.com"
+        "https://us-gbmembers.s3.us-east-2.amazonaws.com"
       ]
     },
     {
@@ -510,7 +516,13 @@
     {
       "name": "Trial Booking Thank you URL",
       "values": [
-        "http://ec2-54-206-97-139.ap-southeast-2.compute.amazonaws.com:8080/kinetic/gbrousehill/gbsocial?page=timetables"
+        ""
+      ]
+    },
+    {
+      "name": "Waiver Hidden Items",
+      "values": [
+        "info_images,social_media,report_aboutus,report_many_days,health_info,juijitsui_previous,juijitsui_current,juijitsui_long,juijitsui_benefits,path_to_excellance"
       ]
     },
     {
@@ -529,7 +541,7 @@
   "defaultLocale": "en-US",
   "defaultTimezone": "Australia/Sydney",
   "displayType": "Single Page App",
-  "displayValue": "spa.jsp?location=https://s3-ap-southeast-2.amazonaws.com/gbmembers-v2",
+  "displayValue": "spa.jsp?location=https://s3.us-east-2.amazonaws.com/us-gbmembers",
   "enabledLocales": [
     "en-AU",
     "en-US"

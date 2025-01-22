@@ -359,6 +359,10 @@
         {
           "name": "Get Pending Cancellation Members",
           "query": "kappSlug=gbmembers&formSlug=member&q=values[Status]=\"Pending Cancellation\""
+        },
+        {
+          "name": "Get Active Billing Members",
+          "query": "kappSlug=gbmembers&formSlug=member&q=values[Billing User]=\"YES\" AND values[Status]=\"Active\""
         }
       ],
       "structure": "Submissions"
@@ -375,6 +379,13 @@
     },
     {
       "name": "Get Active and Frozen Members",
+      "parameters": [
+
+      ],
+      "resultType": "Multiple"
+    },
+    {
+      "name": "Get Active Billing Members",
       "parameters": [
 
       ],
