@@ -182,6 +182,15 @@
           "rows": 20
         },
         {
+          "type": "content",
+          "renderType": "html",
+          "name": "Terms Editor",
+          "text": "<div id=\"terms_editor\"></div>",
+          "visible": true,
+          "renderAttributes": {
+          }
+        },
+        {
           "type": "button",
           "label": "Submit",
           "name": "Submit Button",
@@ -193,7 +202,12 @@
         }
       ],
       "events": [
-
+        {
+          "name": "Show Review",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(\"#terms_editor\").html(K('field[Terms Information]').value());\nK('field[Terms Information]').hide();"
+        }
       ],
       "name": "Main",
       "renderType": "submittable",

@@ -207,7 +207,13 @@
         }
       ],
       "events": [
-
+        {
+          "name": "Show Review",
+          "type": "Load",
+          "action": "Custom",
+          "code": "$(\"#script_editor\").html(K('field[Script]').value());\nK('field[Script]').hide();",
+          "runIf": "form('review')"
+        }
       ],
       "name": "Main",
       "renderType": "submittable",
