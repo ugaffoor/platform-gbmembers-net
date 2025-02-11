@@ -233,6 +233,12 @@
       ]
     },
     {
+      "name": "Member Waiver Compliance Date",
+      "values": [
+        "2024-01-01"
+      ]
+    },
+    {
       "name": "Meta JSON Location",
       "values": [
         "https://us-gbmembers.s3.us-east-2.amazonaws.com"
@@ -361,7 +367,7 @@
     {
       "name": "School Start Date",
       "values": [
-        "2024-06-07"
+        ""
       ]
     },
     {
@@ -517,6 +523,12 @@
       "name": "Trial Booking Thank you URL",
       "values": [
         ""
+      ]
+    },
+    {
+      "name": "Trial Calendar Name",
+      "values": [
+        "Intro Classes"
       ]
     },
     {

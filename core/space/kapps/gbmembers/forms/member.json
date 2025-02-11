@@ -2626,6 +2626,30 @@
           "rows": 1
         },
         {
+          "type": "field",
+          "name": "Waiver Complete Date",
+          "label": "Waiver Complete Date",
+          "key": "f103",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "date"
+        },
+        {
           "type": "button",
           "label": "Submit",
           "name": "Submit Button",
@@ -2664,6 +2688,6 @@
   ],
   "slug": "member",
   "status": "New",
-  "submissionLabelExpression": "${values('Member ID')}-${values('POS Profile ID')}: ${values('Date Joined')}",
+  "submissionLabelExpression": "${values('Member ID')}-${values('POS Profile ID')}: ${values('Waiver Complete Date')}",
   "type": "Content"
 }

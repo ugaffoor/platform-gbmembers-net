@@ -211,6 +211,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "This date indicates the date which all members should have completed a waiver as a Lead or a Member.\nIf a new waiver is generate and all members are required to complete, this date is used to ensure a member has completed their waiver.\nIndications in the application will identify members not compliant.",
+    "name": "Member Waiver Compliance Date"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Membership email, may be different to School email",
     "name": "Membership Email"
   },
@@ -468,6 +473,11 @@
     "allowsMultiple": false,
     "description": "Return URL after a lead completes the Calendar widget Contact Us, Book a Trial or Self Signup",
     "name": "Trial Booking Thank you URL"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Name of google calendar that will be used for all Intro/Free class appointments.",
+    "name": "Trial Calendar Name"
   },
   {
     "allowsMultiple": false,

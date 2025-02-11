@@ -751,8 +751,8 @@
           "defaultResourceName": null,
           "visible": "values('Product Type')===\"Apparel\"",
           "enabled": true,
-          "required": false,
-          "requiredMessage": null,
+          "required": "values('Product Type')===\"Apparel\"",
+          "requiredMessage": "Sizes is Required: Use ALL for any products that don't have specific sizes.",
           "omitWhenHidden": true,
           "pattern": null,
           "constraints": [
