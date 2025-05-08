@@ -1,0 +1,8 @@
+{
+  "event": "Created",
+  "filter": "form('name')==\"Bambora Remote Registration\" || form('name')==\"PaySmart Remote Registration\"",
+  "name": "Member Migration Created",
+  "type": "Submission",
+  "url": "/app/api/v1/run-tree/${space('attribute:Task Source Name')}/Submissions%20%3E%20services%20%3E%20remote-registration/Created",
+  "attributes": null
+}

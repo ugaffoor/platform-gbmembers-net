@@ -328,6 +328,31 @@
               "dataType": "string",
               "renderType": "text",
               "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Parent or Guardian",
+              "label": "Parent or Guardian",
+              "key": "f104",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             }
           ]
         },
@@ -2688,6 +2713,6 @@
   ],
   "slug": "member",
   "status": "New",
-  "submissionLabelExpression": "${values('Member ID')}-${values('POS Profile ID')}: ${values('Waiver Complete Date')}",
+  "submissionLabelExpression": "${values('First Name')} ${values('Last Name')} : ${values('Parent or Guardian')}",
   "type": "Content"
 }

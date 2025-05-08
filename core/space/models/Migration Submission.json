@@ -1,0 +1,223 @@
+{
+  "activeMappingName": "Migration Submission",
+  "attributes": [
+    {
+      "name": "Address"
+    },
+    {
+      "name": "Admin Fee"
+    },
+    {
+      "name": "coreState"
+    },
+    {
+      "name": "Country"
+    },
+    {
+      "name": "DOB"
+    },
+    {
+      "name": "Email"
+    },
+    {
+      "name": "Fee Total"
+    },
+    {
+      "name": "feesJSON"
+    },
+    {
+      "name": "First Name"
+    },
+    {
+      "name": "I promise to pay equal FREQUENCY instalments of"
+    },
+    {
+      "name": "id"
+    },
+    {
+      "name": "Include Family Members"
+    },
+    {
+      "name": "Last Name"
+    },
+    {
+      "name": "Member GUID"
+    },
+    {
+      "name": "Member ID"
+    },
+    {
+      "name": "membersJSON"
+    },
+    {
+      "name": "Mobile"
+    },
+    {
+      "name": "Payment Frequency"
+    },
+    {
+      "name": "Postcode"
+    },
+    {
+      "name": "Requested For"
+    },
+    {
+      "name": "State"
+    },
+    {
+      "name": "StatePlaceholder"
+    },
+    {
+      "name": "Suburb"
+    },
+    {
+      "name": "TAX 1"
+    },
+    {
+      "name": "TAX 2"
+    },
+    {
+      "name": "TAX 3"
+    },
+    {
+      "name": "The first instalment is due on"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "id",
+          "structureField": "${fields(\"id\")}"
+        },
+        {
+          "name": "Member ID",
+          "structureField": "${fields('values[Member ID]')}"
+        },
+        {
+          "name": "First Name",
+          "structureField": "${fields('values[Student First Name]')}"
+        },
+        {
+          "name": "Last Name",
+          "structureField": "${fields('values[Student Last Name]')}"
+        },
+        {
+          "name": "Requested For",
+          "structureField": "${fields('values[Requested For]')}"
+        },
+        {
+          "name": "Include Family Members",
+          "structureField": "${fields('values[Include Family Members]')}"
+        },
+        {
+          "name": "Payment Frequency",
+          "structureField": "${fields('values[Payment Frequency]')}"
+        },
+        {
+          "name": "membersJSON",
+          "structureField": "${fields('values[membersJSON]')}"
+        },
+        {
+          "name": "feesJSON",
+          "structureField": "${fields('values[feesJSON]')}"
+        },
+        {
+          "name": "Fee Total",
+          "structureField": "${fields('values[Fee Total]')}"
+        },
+        {
+          "name": "Admin Fee",
+          "structureField": "${fields('values[Admin Fee]')}"
+        },
+        {
+          "name": "TAX 1",
+          "structureField": "${fields('values[TAX 1]')}"
+        },
+        {
+          "name": "TAX 2",
+          "structureField": "${fields('values[TAX 2]')}"
+        },
+        {
+          "name": "TAX 3",
+          "structureField": "${fields('values[TAX 3]')}"
+        },
+        {
+          "name": "I promise to pay equal FREQUENCY instalments of",
+          "structureField": "${fields('values[I promise to pay equal FREQUENCY instalments of]')}"
+        },
+        {
+          "name": "The first instalment is due on",
+          "structureField": "${fields('values[The first instalment is due on]')}"
+        },
+        {
+          "name": "Address",
+          "structureField": "${fields('values[Address]')}"
+        },
+        {
+          "name": "Suburb",
+          "structureField": "${fields('values[Suburb]')}"
+        },
+        {
+          "name": "Postcode",
+          "structureField": "${fields('values[Postcode]')}"
+        },
+        {
+          "name": "Country",
+          "structureField": "${fields('values[Country]')}"
+        },
+        {
+          "name": "State",
+          "structureField": "${fields('values[State]')}"
+        },
+        {
+          "name": "Mobile",
+          "structureField": "${fields('values[Mobile]')}"
+        },
+        {
+          "name": "DOB",
+          "structureField": "${fields('values[DOB]')}"
+        },
+        {
+          "name": "Email",
+          "structureField": "${fields('values[Email]')}"
+        },
+        {
+          "name": "StatePlaceholder",
+          "structureField": "${fields('values[StatePlaceholder]')}"
+        },
+        {
+          "name": "coreState",
+          "structureField": "${fields(\"coreState\")}"
+        },
+        {
+          "name": "Member GUID",
+          "structureField": "${fields('values[Member GUID]')}"
+        }
+      ],
+      "bridgeSlug": "kinetic-core",
+      "name": "Migration Submission",
+      "qualifications": [
+        {
+          "name": "Get Migration Record",
+          "query": "id=${parameters('ID')}"
+        }
+      ],
+      "structure": "Submissions"
+    }
+  ],
+  "name": "Migration Submission",
+  "qualifications": [
+    {
+      "name": "Get Migration Record",
+      "parameters": [
+        {
+          "name": "ID"
+        }
+      ],
+      "resultType": "Single"
+    }
+  ],
+  "status": "Active"
+}

@@ -226,6 +226,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Migration Mode used to onboard billing information for a school.",
+    "name": "Migration Mode"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Weekly,Fortnightly,Monthly,Quarterly",
     "name": "Payment Frequencies"
   },

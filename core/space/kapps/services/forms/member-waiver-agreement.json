@@ -343,6 +343,52 @@
               "visible": true,
               "renderAttributes": {
               }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Signature",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Waiver Signature",
+              "text": "<label class=\"field-label required\">Waiver Signature</label>\n<div id=\"waiver-signature-canvas\"/>",
+              "visible": "!form('review') ||  (form('review') && values('Encoded Waiver Signature')!==null)",
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "Encoded Waiver Signature",
+              "label": "Encoded Waiver Signature",
+              "key": "f43",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "Waiver Signature is required",
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
             },
             {
               "type": "content",
@@ -446,6 +492,12 @@
           "type": "Load",
           "action": "Custom",
           "code": "if ($(\".package-layout--services\").length===0) {\n\t$(\"body\").css(\"height\",\"auto\");\n}"
+        },
+        {
+          "name": "Load Signatures",
+          "type": "Load",
+          "action": "Custom",
+          "code": "bundle.config.widgets.signatureCanvas({\n  element: K(\"form\").find(\"#waiver-signature-canvas\")[0],\n  initialValue: K(\"field[Encoded Waiver Signature]\").value(),\n  onChange: function(value) {\n\t  K(\"field[Encoded Waiver Signature]\").value(value);\n\t},\n  height: 250,\n  width: 500,\n  disable: form('review'),\n  ref: function(el) {\n    window.waiverSignaturePad = el;\n  },\n});\n"
         }
       ],
       "name": "Instalment Information",

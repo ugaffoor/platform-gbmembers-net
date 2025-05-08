@@ -275,7 +275,7 @@
       "status": "Active"
     }
   ],
-  "customHeadContent": "<style>\n  .preview {\n      padding: 10px;\n      background-color: #f7f7f7;\n      margin-bottom: 40px;\n  }  \n  a.editTemplate {\n      background-color: #090808;\n      color: white;\n      padding: 2px;\n      padding-left: 10px;\n      padding-right: 10px;\n      border-radius: 5px;\n  }  \n</style>\n<script>\n  function editTemplate() {\n    if (K('field[Record Type]').value()===\"Member\") {    \n      if (K('field[Contact Type]').value()===\"Email\") {\n        window.postMessage({\"action\": \"triggerEmailTemplateEdit\", \"id\": K('field[Member Email]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"SMS\") {\n        window.postMessage({\"action\": \"triggerSMSTemplateEdit\", \"id\": K('field[Member SMS]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"Call\") {\n        window.postMessage({\"action\": \"triggerScriptTemplateEdit\", \"id\": K('field[Member Call Script]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n    } else if (K('field[Record Type]').value()===\"Lead\") {    \n      if (K('field[Contact Type]').value()===\"Email\") {\n        window.postMessage({\"action\": \"triggerEmailTemplateEdit\", \"id\": K('field[Lead Email]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"SMS\") {\n        window.postMessage({\"action\": \"triggerSMSTemplateEdit\", \"id\": K('field[Lead SMS]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"Call\") {\n        window.postMessage({\"action\": \"triggerScriptTemplateEdit\", \"id\": K('field[Lead Call Script]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n    }\n  }\n  function newTemplate() {\n    if (K('field[Contact Type]').value()===\"Email\") {\n\t    window.postMessage({\"action\": \"triggerEmailTemplateNew\", \"id\":\"newEmail\"},\"*\");\n    }\n    if (K('field[Contact Type]').value()===\"SMS\") {\n\t    window.postMessage({\"action\": \"triggerSMSTemplateNew\", \"id\":\"newSMS\"},\"*\");\n    }\n    if (K('field[Contact Type]').value()===\"Call\") {\n\t    window.postMessage({\"action\": \"triggerScriptTemplateNew\", \"id\":\"newCall\"},\"*\");\n    }\n  }  \n</script>",
+  "customHeadContent": "<style>\n  .preview {\n      padding: 10px;\n      background-color: #f7f7f7;\n      margin-bottom: 40px;\n  }  \n  a.editTemplate {\n      background-color: #090808;\n      color: white;\n      padding: 2px;\n      padding-left: 10px;\n      padding-right: 10px;\n      border-radius: 5px;\n  }  \n</style>\n<script>\n\tfunction isAgeLessOrSame(age){\n    if (!Number.isInteger(age)) {\n     \tthrow \"Invalid age value\"; \n    }\n  }\n  function isAgeAfterOrSame(age){\n    \n  }\n  function isAgeBetween(from, to){\n    \n  }\n\n  function editTemplate() {\n    if (K('field[Record Type]').value()===\"Member\") {    \n      if (K('field[Contact Type]').value()===\"Email\") {\n        window.postMessage({\"action\": \"triggerEmailTemplateEdit\", \"id\": K('field[Member Email]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"SMS\") {\n        window.postMessage({\"action\": \"triggerSMSTemplateEdit\", \"id\": K('field[Member SMS]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"Call\") {\n        window.postMessage({\"action\": \"triggerScriptTemplateEdit\", \"id\": K('field[Member Call Script]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n    } else if (K('field[Record Type]').value()===\"Lead\") {    \n      if (K('field[Contact Type]').value()===\"Email\") {\n        window.postMessage({\"action\": \"triggerEmailTemplateEdit\", \"id\": K('field[Lead Email]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"SMS\") {\n        window.postMessage({\"action\": \"triggerSMSTemplateEdit\", \"id\": K('field[Lead SMS]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n      if (K('field[Contact Type]').value()===\"Call\") {\n        window.postMessage({\"action\": \"triggerScriptTemplateEdit\", \"id\": K('field[Lead Call Script]').options().find((option) => option.label.indexOf(K('field[Template Name]').value())!==-1).value},\"*\");\n      }\n    }\n  }\n  function newTemplate() {\n    if (K('field[Contact Type]').value()===\"Email\") {\n\t    window.postMessage({\"action\": \"triggerEmailTemplateNew\", \"id\":\"newEmail\"},\"*\");\n    }\n    if (K('field[Contact Type]').value()===\"SMS\") {\n\t    window.postMessage({\"action\": \"triggerSMSTemplateNew\", \"id\":\"newSMS\"},\"*\");\n    }\n    if (K('field[Contact Type]').value()===\"Call\") {\n\t    window.postMessage({\"action\": \"triggerScriptTemplateNew\", \"id\":\"newCall\"},\"*\");\n    }\n  }  \n</script>",
   "description": "Configure Lead and Member Journey triggers",
   "indexDefinitions": [
     {
@@ -1013,10 +1013,6 @@
                   "value": "Child Last Attendance"
                 },
                 {
-                  "label": "Child Converted",
-                  "value": "Child Converted"
-                },
-                {
                   "label": "Converted",
                   "value": "Converted"
                 },
@@ -1043,6 +1039,10 @@
                 {
                   "label": "Payment Failed",
                   "value": "Payment Failed"
+                },
+                {
+                  "label": "Frozen",
+                  "value": "Frozen"
                 },
                 {
                   "label": "Resume Frozen Member",
@@ -1329,7 +1329,7 @@
           "type": "content",
           "renderType": "html",
           "name": "Additional Qual",
-          "text": "<div id=\"additionalHelp\" style=\"display:none\">\n<p>This is an advanced qualification and should be used with care.<br>\nThis allows additional values to be used to filter Members or Leads<br>\nAn example, ['values']['Ranking Program']=='GB1'\n  <br>OR<br>\n['values']['Ranking Program'].include?('GB1')<br>\nThe field 'Main Benefits' will contain multiple values, use:<br>\n['values']['Main Benefits'].include?('exercise') OR ['values']['Main Benefits'].include?('exercise')<br></p>\n</div>",
+          "text": "<div id=\"additionalHelp\" style=\"display:none\">\n<p>This is an advanced qualification and should be used with care.<br>\nThis allows additional values to be used to filter Members or Leads<br>\nAn example, ['values']['Ranking Program']=='GB1'\n  <br>OR<br>\n['values']['Ranking Program'].include?('GB1')<br>\nThe field 'Main Benefits' will contain multiple values, use:<br>\n['values']['Main Benefits'].include?('exercise') || ['values']['Main Benefits'].include?('self defense')<br></p>\n  <p>To qualify by age use one of the following:</p>\n<ul>\n  <li>isAgeLessOrSame(age number) - use 15 for all Kids </li>  \n  <li>isAgeAfterOrSame(age number) - use 16 for all Adults </li>  \n  <li>isAgeBetween(from age number, to age number) - the age is included </li>  \n</ul>\nYou can use the <b>AND</b> logic:<br>\nTo match Kids that are Female<br>\nisAgeLessOrSame(16) && ['values']['Ranking Program']=='Female'\n  \n</div>",
           "visible": true,
           "renderAttributes": {
           }
@@ -1525,9 +1525,17 @@
           "name": "Submit Button",
           "visible": true,
           "enabled": true,
-          "renderType": "submit-page",
+          "renderType": "custom",
           "renderAttributes": {
-          }
+          },
+          "events": [
+            {
+              "name": "Submit",
+              "type": "Click",
+              "action": "Custom",
+              "code": "if (K('field[Additional Qual]').value()!==\"\" && K('field[Additional Qual]').value()!==null) {\n  \n  member={\n      \"values\":{\n\t\t\t\t\"Status\":\"\",\n\t\t\t\t\"First Name\":\"\",\n\t\t\t\t\"Last Name\":\"\",\n\t\t\t\t\"Gender\":\"\",\n\t\t\t\t\"EmailAdditional Email\":\"\",\n\t\t\t\t\"Phone Number\":\"\",\n\t\t\t\t\"Additional Phone Number\":\"\",\n\t\t\t\t\"Last Promotion\":\"\",\n\t\t\t\t\"Suburb\":\"\",\n\t\t\t\t\"Country\":\"\",\n\t\t\t\t\"State\":\"\",\n\t\t\t\t\"Postcode\":\"\",\n\t\t\t\t\"Date Joined\":\"\",\n\t\t\t\t\"DOB\":\"\",\n\t\t\t\t\"Member Type\":\"\",\n\t\t\t\t\"Ranking Program\":\"\",\n\t\t\t\t\"Ranking Belt\":\"\",\n\t\t\t\t\"Belt Size\":\"\",\n\t\t\t\t\"Additional Program 1\":\"\",\n\t\t\t\t\"Additional Program 2\":\"\",\n\t\t\t\t\"Billing User\":\"\",\n\t\t\t\t\"Billing Payment Period\":\"\",\n\t\t\t\t\"Billing Payment Type\":\"\",\n\t\t\t\t\"Billing Period\":\"\",        \n\t\t\t\t\"Main Benefits\":\"\"        \n      }\n  }\n  let qual=K('field[Additional Qual]').value();\n  qual=qual.replaceAll(\"['values']\",\"member['values']\");\n  qual=qual.replaceAll(\"include?\",\"includes\");\n  \n  try {\n   \teval(qual); \n  } catch (e) {\n    alert(\"Please ensure that the Additional Qaul value is valid, there appears to be an error./n\"+qual);\n    return;\n  }\n\tK('form').submitPage();  \n} else {\n\tK('form').submitPage();\n}"
+            }
+          ]
         }
       ],
       "events": [

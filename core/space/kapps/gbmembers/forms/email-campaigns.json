@@ -194,6 +194,31 @@
         },
         {
           "type": "field",
+          "name": "Event Source ID",
+          "label": "Event Source ID",
+          "key": "f15",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
           "name": "Attachments",
           "label": "Attachments",
           "key": "f7",
@@ -381,6 +406,6 @@
   ],
   "slug": "email-campaigns",
   "status": "New",
-  "submissionLabelExpression": "${values('Subject')}",
+  "submissionLabelExpression": "${values('Subject')} : ${values('Recipients')}",
   "type": "Content"
 }

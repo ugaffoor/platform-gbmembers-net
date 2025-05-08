@@ -70,6 +70,13 @@
       "unique": false
     },
     {
+      "name": "values[Email Content]",
+      "parts": [
+        "values[Email Content]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Form Slug]",
       "parts": [
         "values[Form Slug]"
@@ -168,6 +175,31 @@
           "rows": 1
         },
         {
+          "type": "field",
+          "name": "Email Content",
+          "label": "Email Content",
+          "key": "f4",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
           "type": "button",
           "label": "Submit",
           "name": "Submit Button",
@@ -202,5 +234,5 @@
   ],
   "slug": "receipt-sender",
   "status": "New",
-  "submissionLabelExpression": null
+  "submissionLabelExpression": "${values('Form Slug')}-${values('Currency Symbol')}"
 }
