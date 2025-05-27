@@ -1,5 +1,5 @@
 {
-  "anonymous": false,
+  "anonymous": true,
   "attributes": [
     {
       "name": "Cancel Disabled",
@@ -83,13 +83,9 @@
     }
   ],
   "categorizations": [
-    {
-      "category": {
-        "slug": "bambora-billing"
-      }
-    }
+
   ],
-  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n\n<style>\n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n.card-container {\n    background-color: rgb(240, 240, 240);\n    margin: auto;\n    width: calc(95%);\n\n    border: none;\n    border-radius: 4px;\n}\n.form-group {\n    flex: 0 0 auto;\n    flex-flow: column !important;\n}\n#checkout-form {\n    position: relative;\n    width: 400px;\n    padding: 10px;\n}\n\n#checkout-form label {\n    display: block;\n    min-height: 25px;\n\n    font-size: 15px;\n    font-weight: 500;\n    margin: 5px 0;\n    padding: 0;\n    color: red;\n}\n\n#card-number, #card-cvv, #card-expiry {\n    background-color: #FFF;\n    display: block;\n    width: calc(90%);\n    border-radius: 2px;\n    border: 1px solid rgba(200, 200, 200, 1);\n    padding: 14px 60px 13px 20px;\n    margin: auto;\n    transition: all 100ms ease-out;\n}\n\n/* card images are added to card number */\n#card-number {\n    background-image: none;\n\n    background-origin: content-box;\n    background-position: calc(100% + 40px) center;\n    background-repeat: no-repeat;\n    background-size: contain;\n}\n\n/* buttons */\n.btn {\n    vertical-align: top;\n}\n\n#pay-button {\n    position: relative;\n    border: none;\n    border-radius: 4px;\n    background-color: #0c384f;\n    color: rgba(255, 255, 255, 1);\n    display: inline-block;\n    transition: all 100ms ease-out;\n    padding: 11px 25px;\n    margin-left: 30px;\n}\n\n#pay-button:hover, #pay-button:active {\n    background-color: rgba(69, 36, 89, 1);\n}\n\n#pay-button:active {\n    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);\n}\n\n#pay-button:disabled {\n    background-color: rgba(255, 255, 255, 1);\n    border: 1px solid #0c384f;\n    color: #0c384f;\n}\n\n/* feedback is displayed after tokenization */\n#feedback {\n    position: relative;\n    left: 15px;\n    display: inline-block;\n    background-color: transparent;\n    border: 0px solid rgba(200, 200, 200, 1);\n    border-radius: 4px;\n    transition: all 100ms ease-out;\n    padding: 11px;\n}\n\n#feedback.error {\n    color: red;\n    border: 1px solid;\n}\n\n#feedback.success {\n    color: seagreen;\n    border: 1px solid;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\n  function GetURLParameter(sParam){\n    if (window.location.hash.indexOf(\"?\")!==-1) {\n      var params = window.location.hash.split(\"?\")[1]\n        .substring(0)\n        .split(\"&\")\n        .map(v => v.split(\"=\"))\n        .reduce((map, [key, value]) => map.set(key, decodeURIComponent(value)), new Map());    \n      \n      if (params.get(sParam)!==undefined) {\n        return params.get(sParam);\n      } else {\n       \treturn null; \n      }\n    }\n    return null;\n  }  \n  \n  function getCardToken(){\nif (K('field[Credit Card Number]').value()===null || K('field[Credit Card Expiry Month]').value()===null || K('field[Credit Card Expiry Year]').value()===null ) {\n   return;\n}\n    debugger;\n    var tokenSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/getCardToken\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"creditCardNumber\": K('field[Credit Card Number]').value(),\n        \"creditCardExpiryMonth\": K('field[Credit Card Expiry Month]').value(),\n        \"creditCardExpiryYear\": K('field[Credit Card Expiry Year]').value().substring(2,4),\n        \"cvd\": K('field[CVV]').value(),\n      })\n    }\n\n    $.ajax(tokenSettings).done(function (response) {\n      debugger;\n      console.log(response);\n      if (response.error===100) {\n        var message=response.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=JSON.parse(response.data);\n        K('field[Credit Card Token]').value(data.token);\n        K('section[Card Error]').hide();\n      }\n    });\n    \n  }\n</script>\n",
+  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n\n<style>\nimg.GBLogo {\n  @media (max-width: 600px) {    \n  \twidth: 100%;\n  }\n}  \n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n.card-container {\n    background-color: rgb(240, 240, 240);\n    margin: auto;\n    width: calc(95%);\n\n    border: none;\n    border-radius: 4px;\n}\n.form-group {\n    flex: 0 0 auto;\n    flex-flow: column !important;\n}\n#checkout-form {\n    position: relative;\n    width: 400px;\n    padding: 10px;\n}\n\n#checkout-form label {\n    display: block;\n    min-height: 25px;\n\n    font-size: 15px;\n    font-weight: 500;\n    margin: 5px 0;\n    padding: 0;\n    color: red;\n}\n\n#card-number, #card-cvv, #card-expiry {\n    background-color: #FFF;\n    display: block;\n    width: calc(90%);\n    border-radius: 2px;\n    border: 1px solid rgba(200, 200, 200, 1);\n    padding: 14px 60px 13px 20px;\n    margin: auto;\n    transition: all 100ms ease-out;\n}\n\n/* card images are added to card number */\n#card-number {\n    background-image: none;\n\n    background-origin: content-box;\n    background-position: calc(100% + 40px) center;\n    background-repeat: no-repeat;\n    background-size: contain;\n}\n\n/* buttons */\n.btn {\n    vertical-align: top;\n}\n\n#pay-button {\n    position: relative;\n    border: none;\n    border-radius: 4px;\n    background-color: #0c384f;\n    color: rgba(255, 255, 255, 1);\n    display: inline-block;\n    transition: all 100ms ease-out;\n    padding: 11px 25px;\n    margin-left: 30px;\n}\n\n#pay-button:hover, #pay-button:active {\n    background-color: rgba(69, 36, 89, 1);\n}\n\n#pay-button:active {\n    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);\n}\n\n#pay-button:disabled {\n    background-color: rgba(255, 255, 255, 1);\n    border: 1px solid #0c384f;\n    color: #0c384f;\n}\n\n/* feedback is displayed after tokenization */\n#feedback {\n    position: relative;\n    left: 15px;\n    display: inline-block;\n    background-color: transparent;\n    border: 0px solid rgba(200, 200, 200, 1);\n    border-radius: 4px;\n    transition: all 100ms ease-out;\n    padding: 11px;\n}\n\n#feedback.error {\n    color: red;\n    border: 1px solid;\n}\n\n#feedback.success {\n    color: seagreen;\n    border: 1px solid;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n<script>\n  function GetURLParameter(sParam){\n    if (window.location.hash.indexOf(\"?\")!==-1) {\n      var params = window.location.hash.split(\"?\")[1]\n        .substring(0)\n        .split(\"&\")\n        .map(v => v.split(\"=\"))\n        .reduce((map, [key, value]) => map.set(key, decodeURIComponent(value)), new Map());    \n      \n      if (params.get(sParam)!==undefined) {\n        return params.get(sParam);\n      } else {\n       \treturn null; \n      }\n    }\n    return null;\n  }  \n  \n  function getCardToken(){\nif (K('field[Credit Card Number]').value()===null || K('field[Credit Card Expiry Month]').value()===null || K('field[Credit Card Expiry Year]').value()===null ) {\n   return;\n}\n    debugger;\n    var tokenSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/getCardToken\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"creditCardNumber\": K('field[Credit Card Number]').value(),\n        \"creditCardExpiryMonth\": K('field[Credit Card Expiry Month]').value(),\n        \"creditCardExpiryYear\": K('field[Credit Card Expiry Year]').value().substring(2,4),\n        \"cvd\": K('field[CVV]').value(),\n      })\n    }\n\n    $.ajax(tokenSettings).done(function (response) {\n      debugger;\n      console.log(response);\n      if (response.error===100) {\n        var message=response.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=JSON.parse(response.data);\n        K('field[Credit Card Token]').value(data.token);\n        K('section[Card Error]').hide();\n      }\n    });\n    \n  }\n</script>\n",
   "description": "Update members Credit Card details.<br>\nAll previous failed payments will be processed on the new Credit Card.<br>",
   "name": "Bambora Change Credit Card Details",
   "notes": null,
@@ -99,6 +95,16 @@
       "displayCondition": null,
       "displayPage": null,
       "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "GB Logo",
+          "text": "<img src=\"https://gbfms-files.s3-ap-southeast-2.amazonaws.com/GB+Name+Log.png\" alt=\"GB Logo\" class=\"GBLogo\">",
+          "visible": false,
+          "renderAttributes": {
+            "class": "logo"
+          }
+        },
         {
           "type": "section",
           "renderType": null,
@@ -962,10 +968,6 @@
                   "choicesRunIf": null,
                   "choices": [
                     {
-                      "label": "2024",
-                      "value": "2024"
-                    },
-                    {
                       "label": "2025",
                       "value": "2025"
                     },
@@ -1217,25 +1219,63 @@
           "action": "Custom",
           "code": "if (K('field[Apply Overdue payment]').value().indexOf(\"Apply Overdue payment\")!==-1){\n  K('section[Overdue Payment]').show();\n}",
           "runIf": "form('review')"
+        },
+        {
+          "name": "Load for Member",
+          "type": "Load",
+          "action": "Custom",
+          "code": "if ($(\".package-layout--services\").length===0) {\n  $(\"body\").css(\"height\",\"auto\");\n  K('content[GB Logo]').show();  \n}  ",
+          "runIf": "!form('review')"
         }
       ],
       "name": "Instalment Information",
       "renderType": "submittable",
+      "type": "page"
+    },
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "GB Logo",
+          "text": "<img src=\"https://gbfms-files.s3-ap-southeast-2.amazonaws.com/GB+Name+Log.png\" alt=\"GB Logo\" class=\"GBLogo\">",
+          "visible": true,
+          "renderAttributes": {
+          }
+        },
+        {
+          "type": "content",
+          "renderType": "text",
+          "name": "Info",
+          "text": "Thank you for updating your Credit Card details.",
+          "visible": true,
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+
+      ],
+      "name": "Thank You",
+      "renderType": "confirmation",
       "type": "page"
     }
   ],
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Bombara Program Managers"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Bombara Program Managers"
+      "name": "Everyone"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Bombara Program Managers"
+      "name": "Everyone"
     }
   ],
   "slug": "bambora-change-credit-card-details",

@@ -1,0 +1,55 @@
+{
+  "activeMappingName": "Notification Data",
+  "attributes": [
+    {
+      "name": "HTML Content"
+    },
+    {
+      "name": "Name"
+    },
+    {
+      "name": "Subject"
+    }
+  ],
+  "mappings": [
+    {
+      "agentSlug": "system",
+      "attributes": [
+        {
+          "name": "Name",
+          "structureField": "${fields('values[Name]')}"
+        },
+        {
+          "name": "HTML Content",
+          "structureField": "${fields('values[HTML Content]')}"
+        },
+        {
+          "name": "Subject",
+          "structureField": "{fields('values[Subject]')}"
+        }
+      ],
+      "bridgeSlug": "kinetic-core",
+      "name": "Notification Data",
+      "qualifications": [
+        {
+          "name": "Get Notification",
+          "query": "formSlug=notification-data&limit=1&index=values[Name],values[Status]&q=values[Name]=\"${parameters(\"name\")}\"  AND values[Status]=\"Active\""
+        }
+      ],
+      "structure": "Datastore Submissions"
+    }
+  ],
+  "name": "Notification Data",
+  "qualifications": [
+    {
+      "name": "Get Notification",
+      "parameters": [
+        {
+          "name": "name"
+        }
+      ],
+      "resultType": "Single"
+    }
+  ],
+  "status": "Active"
+}

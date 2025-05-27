@@ -56,12 +56,6 @@
       ]
     },
     {
-      "name": "Australia School States",
-      "values": [
-        "ACT,NSW,NT,QLD,TAS,VIC,WA"
-      ]
-    },
-    {
       "name": "AWS GBShop Bucket",
       "values": [
         "us-gbmembers-gbshop"
@@ -104,12 +98,6 @@
       ]
     },
     {
-      "name": "Change Manager Form Slug",
-      "values": [
-        "manager-change-request"
-      ]
-    },
-    {
       "name": "Company Logo",
       "values": [
         "/app/datastore/submissions/617f9165-c2cb-11e8-aff8-15815e938e2a/files/Image%20File/0/Logo-GB-Sydney1.png"
@@ -125,12 +113,6 @@
       "name": "Default Kapp Display",
       "values": [
         "gbmembers"
-      ]
-    },
-    {
-      "name": "Disable Self Sign Up",
-      "values": [
-        "false"
       ]
     },
     {
@@ -235,7 +217,6 @@
     {
       "name": "Member Waiver Compliance Date",
       "values": [
-        "2024-01-01"
       ]
     },
     {
@@ -263,30 +244,6 @@
       ]
     },
     {
-      "name": "POS Sales Tax",
-      "values": [
-        "0.012"
-      ]
-    },
-    {
-      "name": "POS Sales Tax 2",
-      "values": [
-        "0.05"
-      ]
-    },
-    {
-      "name": "POS Sales Tax Label",
-      "values": [
-        "Sales Tax"
-      ]
-    },
-    {
-      "name": "POS Sales Tax Label 2",
-      "values": [
-        "State"
-      ]
-    },
-    {
       "name": "POS Service URL",
       "values": [
         "https://services.gbmembers.net/billingservice/processPOS"
@@ -311,12 +268,6 @@
       ]
     },
     {
-      "name": "Request Alert Form Slug",
-      "values": [
-        "kinops-request-an-alert"
-      ]
-    },
-    {
       "name": "School Address",
       "values": [
         "123 Somewhere St, Smallville 673636"
@@ -325,7 +276,6 @@
     {
       "name": "School Closed Dates",
       "values": [
-        "2024-10-10,2024-10-24,2024-10-16,2024-09-11,2024-09-12,2024-09-13"
       ]
     },
     {
@@ -337,7 +287,6 @@
     {
       "name": "School Email",
       "values": [
-        "gracie.barra@uniqconsulting.com.au"
       ]
     },
     {
@@ -349,31 +298,22 @@
     {
       "name": "School From Alias",
       "values": [
-        "GB US Beta"
       ]
     },
     {
       "name": "School Legal Name",
       "values": [
-        "GB US Beta Inc"
       ]
     },
     {
       "name": "School Name",
       "values": [
-        "Gracie Barra United States Beta"
       ]
     },
     {
       "name": "School Start Date",
       "values": [
         ""
-      ]
-    },
-    {
-      "name": "School State Code",
-      "values": [
-        "NSW"
       ]
     },
     {
@@ -403,7 +343,7 @@
     {
       "name": "Self Checkin PIN",
       "values": [
-        "3333"
+        "0000"
       ]
     },
     {
@@ -415,7 +355,7 @@
     {
       "name": "Services Slugs",
       "values": [
-        "bambora-payments-reschedule,bambora-change-payment-type,bambora-member-cancellation,bambora-member-registration,bambora-membership-freeze,bambora-resume-frozen-member,bambora-setup-biller-details,cash-member-registration,incident-report,kids-registration,mens-registration,pink-team-registration,member-self-sign-up"
+        "bambora-payments-reschedule,bambora-change-payment-type,bambora-member-cancellation,bambora-member-registration,bambora-membership-freeze,bambora-resume-frozen-member,bambora-setup-biller-details,cash-member-registration,incident-report,kids-registration,mens-registration,pink-team-registration,member-self-sign-up,bambora-remote-registration,bambora-submit-billing-changes"
       ]
     },
     {
@@ -490,30 +430,6 @@
       ]
     },
     {
-      "name": "TAX 1 Label",
-      "values": [
-        "GST 5%"
-      ]
-    },
-    {
-      "name": "TAX 1 Value",
-      "values": [
-        "0.05"
-      ]
-    },
-    {
-      "name": "TAX 2 Label",
-      "values": [
-        "HST 12%"
-      ]
-    },
-    {
-      "name": "TAX 2 Value",
-      "values": [
-        "0.12"
-      ]
-    },
-    {
       "name": "Trial Booking Cut Off",
       "values": [
         "1"
@@ -534,7 +450,6 @@
     {
       "name": "Waiver Hidden Items",
       "values": [
-        "info_images,social_media,report_aboutus,report_many_days,health_info,juijitsui_previous,juijitsui_current,juijitsui_long,juijitsui_benefits,path_to_excellance"
       ]
     },
     {
@@ -592,27 +507,12 @@
       "name": "Program Managers"
     }
   ],
-  "sessionInactiveLimitInSeconds": 2592000,
+  "sessionInactiveLimitInSeconds": null,
   "sharedBundleBase": "hydrogen-v1",
   "slug": "usbeta",
   "trustedFrameDomains": [
-    "https://services.gbmembers.net",
-    "http://localhost:8081",
-    "localhost:3000"
+    "https://services.gbmembers.net"
   ],
   "trustedResourceDomains": [
-    "http://localhost:3000"
-  ],
-  "webApis": [
-    {
-      "method": "POST",
-      "securityPolicies": [
-        {
-          "endpoint": "Execution",
-          "name": "Everyone"
-        }
-      ],
-      "slug": "testing"
-    }
   ]
 }

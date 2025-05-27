@@ -1055,6 +1055,10 @@
                 {
                   "label": "Member Adult Self Signup",
                   "value": "Member Adult Self Signup"
+                },
+                {
+                  "label": "Payment Notification",
+                  "value": "Payment Notification"
                 }
               ]
             },

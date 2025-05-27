@@ -962,6 +962,31 @@
           "elements": [
             {
               "type": "field",
+              "name": "Send Payment Receipt",
+              "label": null,
+              "key": "f105",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
               "name": "Non Paying",
               "label": "Non Paying",
               "key": "f73",
@@ -2181,6 +2206,31 @@
               "name": "Payment Method",
               "label": "Payment Method",
               "key": "f86",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Last Payment Transaction ID",
+              "label": "Last Payment Transaction ID",
+              "key": "f106",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,

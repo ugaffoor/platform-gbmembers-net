@@ -504,7 +504,10 @@
           "required": true,
           "requiredMessage": null,
           "omitWhenHidden": null,
-          "pattern": null,
+          "pattern": {
+            "regex": "^\\d{1,8}$|(?=^.{1,8}$)^\\d+\\.\\d{0,2}$",
+            "message": "Enter a valid number with or without a decimal"
+          },
           "constraints": [
 
           ],
@@ -633,7 +636,10 @@
               "required": "values('Registration Fee Include')[0]===\"YES\"",
               "requiredMessage": null,
               "omitWhenHidden": null,
-              "pattern": null,
+              "pattern": {
+                "regex": "^\\d{1,8}$|(?=^.{1,8}$)^\\d+\\.\\d{0,2}$",
+                "message": "Enter a valid number with or without a decimal"
+              },
               "constraints": [
 
               ],
