@@ -156,6 +156,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "\"YES' if this school is an Affiliate of GB Online.\nThis value is used to send an email to GB Online when a new member is created.",
+    "name": "GB Online Affiliate"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Name of the Space Bundle which allows for sharing of headers and footers",
     "name": "Header Bundle Path"
   },
