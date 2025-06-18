@@ -381,6 +381,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Set as \"YES\" to disallow the Select Member dropdown in the Self Checkin mode.\nWhen set the Scanning option will be the only available option to check in.",
+    "name": "Self Checkin Scan Only"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Number of days until service is expected to be fulfilled - Overridden by Form / Kapp Attribute",
     "name": "Service Days Due"
   },

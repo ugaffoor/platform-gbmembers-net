@@ -75,6 +75,10 @@
         {
           "name": "Get Bambora Member Registrations",
           "query": "kappSlug=services&formSlug=bambora-member-registration&limit=10&q=values[Members]=\"${parameters('Member GUID')}\""
+        },
+        {
+          "name": "Get Self Signup Registrations",
+          "query": "kappSlug=services&formSlug=member-self-sign-up&limit=10&q=values[Member GUID]=\"${parameters('Member GUID')}\""
         }
       ],
       "structure": "Submissions"
@@ -135,6 +139,15 @@
         }
       ],
       "resultType": "Multiple"
+    },
+    {
+      "name": "Get Self Signup Registrations",
+      "parameters": [
+        {
+          "name": "Member GUID"
+        }
+      ],
+      "resultType": "Single"
     }
   ],
   "status": "Active"

@@ -29,6 +29,9 @@
       "name": "First Name"
     },
     {
+      "name": "First Payment"
+    },
+    {
       "name": "I promise to pay equal FREQUENCY instalments of"
     },
     {
@@ -194,6 +197,10 @@
         {
           "name": "Member GUID",
           "structureField": "${fields('values[Member GUID]')}"
+        },
+        {
+          "name": "First Payment",
+          "structureField": "${fields('values[First Payment]')}"
         }
       ],
       "bridgeSlug": "kinetic-core",
