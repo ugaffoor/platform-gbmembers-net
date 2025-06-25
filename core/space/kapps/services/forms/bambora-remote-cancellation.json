@@ -1,0 +1,972 @@
+{
+  "anonymous": true,
+  "attributes": [
+    {
+      "name": "Cancel Disabled",
+      "values": [
+        "true"
+      ]
+    },
+    {
+      "name": "Cloning Disabled",
+      "values": [
+        "true"
+      ]
+    },
+    {
+      "name": "Comment Disabled",
+      "values": [
+        "true"
+      ]
+    },
+    {
+      "name": "Submission Workflow",
+      "values": [
+        "Submitted - True"
+      ]
+    }
+  ],
+  "bridgedResources": [
+    {
+      "model": "Members",
+      "name": "Get Member",
+      "order": [
+
+      ],
+      "parameters": [
+        {
+          "mapping": "${values('Member GUID')}",
+          "name": "ID"
+        }
+      ],
+      "qualification": "Get Member",
+      "status": "Active"
+    }
+  ],
+  "categorizations": [
+    {
+      "category": {
+        "slug": "bambora-billing"
+      }
+    }
+  ],
+  "customHeadContent": "<style>\n  img.GBLogo {\n    @media (max-width: 600px) {    \n      width: 100%;\n    }\n  }  \n  .companyInfo {\n      display: flex;\n    \tflex-direction: row;\n  }  \n  .companyInfo #info {\n    margin-left: auto;\n\t}\n\t@media (max-width: 600px) {\n    .companyInfo {\n    \tflex-direction: column !important;\n    }  \n    .companyInfo .info{\n      margin-left: unset !important;\n      margin-top: 4px;\n    }  \n  }  \n  .companyInfo .logo {\n      margin-top: 6px;\n  }\n  .companyInfo .info p {\n      margin-bottom: 2px;\n      font-size: 14px;\n  }  \n  \n  .hidden{\n   display:none; \n  }\n  div[data-element-type='content'] a {\n      color: blue;\n  }  \n  .confirmation {\n    background-color: rgb(235, 230, 230);\n    padding: 5px;    \n  }\n</style>\n<script>\n  var confirmationInfoHTML = $(\"#confirmationInfo\").html();\n  \n  function cancelConfirmation(){\n    K('section[Confirmation]').hide();\n    K('button[Submit]').show();\n  }  \n  function GetURLParameter(sParam){\n    if (window.location.hash.indexOf(\"?\")!==-1) {\n      var params = window.location.hash.split(\"?\")[1]\n        .substring(0)\n        .split(\"&\")\n        .map(v => v.split(\"=\"))\n        .reduce((map, [key, value]) => map.set(key, decodeURIComponent(value)), new Map());    \n      \n      if (params.get(sParam)!==undefined) {\n        return params.get(sParam);\n      } else {\n       \treturn null; \n      }\n    }\n    return null;\n  }  \n  function formatWithMask(value, mask) {\n    const digits = value.replace(/\\D/g, '').split('');\n    let result = '';\n    let digitIndex = 0;\n\n    for (let i = 0; i < mask.length; i++) {\n      if (mask[i] === '#') {\n        if (digitIndex < digits.length) {\n          result += digits[digitIndex++];\n        } else {\n          break; // No more digits to fill\n        }\n      } else {\n        result += mask[i]; // Insert static mask character (e.g., \"-\")\n      }\n    }\n\n    return result;\n  }  \n  function replaceAttribute(content, text, attribute){\n\t\tlet value=K('space').attributes(attribute);\n    if (attribute===\"School Telephone\"){\n\t\t\tvalue=formatWithMask(K('space').attributes('School Telephone'), K('space').attributes('PhoneNumber Format'));        \n    }\n\n  \treturn content.replace(text, value);\n  }  \n</script>",
+  "description": "Bambora Request to cancel a Membership",
+  "name": "Bambora Remote Cancellation",
+  "notes": null,
+  "pages": [
+    {
+      "advanceCondition": null,
+      "displayCondition": null,
+      "displayPage": null,
+      "elements": [
+        {
+          "type": "content",
+          "renderType": "html",
+          "name": "GB Logo",
+          "text": "<div class=\"companyInfo\">\n\t<span class=\"logo\">\n<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer_2\" viewBox=\"0 0 238.92 59.89\" width=\"238.9199981689453\" height=\"59.88999938964844\"><defs><style>.cls-1{fill:#e1251b;}</style></defs><g id=\"Layer_1-2\"><g><path class=\"cls-1\" d=\"M44.49,39.93c0-2.84-1.6-5.17-4.39-6.39-1.71-.75-4.12-1.07-8.04-1.07H.48c-.24,0-.44,.2-.44,.44v25.96c0,.24,.19,.44,.44,.44h31.59c5.65,0,7.98-.52,9.95-2.2,1.64-1.4,2.48-3.14,2.48-5.18,0-3.67-1.93-5.41-3.56-6.22,1.42-.68,3.56-2.28,3.56-5.76m-11.21,13.27H7.03v-4.43h26.01c3.76,0,4.19,1.27,4.19,2.22,0,1.47-1.33,2.21-3.95,2.21m0-10.54H7.03v-4.09h26.25c1.82,0,3.95,.49,3.95,1.88,0,1.55-1.18,2.21-3.95,2.21\"/><path class=\"cls-1\" d=\"M93.51,27.49h6.31c.14,0,.28-.07,.36-.19l3.8-5.52h22.54l3.79,5.52c.08,.12,.22,.19,.36,.19h6.31c.16,0,.31-.09,.39-.24,.08-.14,.06-.32-.03-.45L119.18,.3c-.08-.12-.22-.19-.36-.19h-7.12c-.14,0-.28,.07-.36,.19l-18.19,26.49c-.09,.13-.1,.31-.03,.45,.08,.14,.23,.24,.39,.24M115.31,5.49l6.97,10.17h-13.95l6.97-10.17Z\"/><path class=\"cls-1\" d=\"M47.61,59.74h6.31c.14,0,.28-.07,.36-.19l3.8-5.52h22.54l3.79,5.52c.08,.12,.22,.19,.36,.19h6.31c.16,0,.31-.09,.39-.23,.08-.15,.06-.32-.03-.45l-18.17-26.49c-.08-.12-.22-.19-.36-.19h-7.12c-.14,0-.28,.07-.36,.19l-18.19,26.49c-.09,.13-.1,.31-.03,.46,.08,.14,.23,.23,.39,.23m21.8-22l6.97,10.17h-13.95l6.97-10.17Z\"/><path class=\"cls-1\" d=\"M194.96,59.74h6.31c.14,0,.28-.07,.36-.19l3.8-5.52h22.54l3.79,5.52c.08,.12,.22,.19,.36,.19h6.31c.16,0,.31-.09,.39-.23,.08-.15,.07-.32-.03-.45l-18.17-26.49c-.08-.12-.21-.19-.36-.19h-7.12c-.14,0-.28,.07-.36,.19l-18.19,26.49c-.09,.13-.1,.31-.03,.46,.08,.14,.23,.23,.39,.23m21.8-22l6.97,10.17h-13.95l6.97-10.17Z\"/><path class=\"cls-1\" d=\"M14.23,27.49h29.64c.24,0,.44-.2,.44-.44V11.09c0-.24-.2-.44-.44-.44H12.97c-.24,0-.44,.2-.44,.44v5.21c0,.24,.2,.44,.44,.44h24.18v4.49H14.23c-3.11,0-4.39-1.26-4.7-1.65l-.11-.12c-.42-.46-1.69-1.85-1.69-5.64,0-2.46,.63-4.5,1.77-5.75,.01-.01,.07-.08,.08-.1,.01-.02,1.43-1.87,4.65-1.87h29.64c.24,0,.44-.2,.44-.44V.53c0-.24-.2-.44-.44-.44H14.23C2.47,.09,0,7.59,0,13.88c0,9.16,4.66,13.61,14.23,13.61\"/><path class=\"cls-1\" d=\"M146.48,8.04s1.42-1.86,4.65-1.86h29.64c.24,0,.44-.19,.44-.44V.64c0-.24-.19-.44-.44-.44h-29.64c-11.76,0-14.23,7.46-14.23,13.72,0,9.11,4.66,13.54,14.23,13.54h29.64c.24,0,.44-.2,.44-.44v-5.35c0-.24-.19-.44-.44-.44h-29.64c-3.11,0-4.39-1.26-4.7-1.64l-.11-.12c-.42-.45-1.69-1.84-1.69-5.61,0-2.45,.63-4.48,1.77-5.73,0-.01,.07-.08,.08-.1\"/><path class=\"cls-1\" d=\"M238.48,.08h-29.64c-11.76,0-14.23,7.5-14.23,13.8,0,9.16,4.66,13.61,14.24,13.61h29.64c.24,0,.44-.2,.44-.44v-5.38c0-.24-.19-.44-.44-.44h-29.64c-3.11,0-4.39-1.26-4.7-1.65l-.11-.12c-.27-.3-.95-1.05-1.36-2.68h35.67c.24,0,.44-.2,.44-.44v-5.12c0-.24-.19-.44-.44-.44h-35.63c.24-.86,.65-1.91,1.4-2.73,0,0,.07-.08,.08-.09,.01-.02,1.43-1.87,4.65-1.87h29.64c.24,0,.44-.2,.44-.44V.52c0-.24-.19-.44-.44-.44\"/><path class=\"cls-1\" d=\"M91.39,26.82l-5.82-10.06c2.06-.51,5.6-3.03,5.6-8.19,0-3.18-2.25-8.58-10.71-8.58H47.45c-.24,0-.44,.2-.44,.44V27.05c0,.24,.19,.44,.44,.44h6.16c.24,0,.44-.2,.44-.44v-9.37h24.41l5.28,9.57c.08,.14,.23,.23,.39,.23h6.89c.16,0,.3-.08,.38-.22,.08-.14,.08-.3,0-.44m-12.35-15.2h-25V6.13h25c3.34,0,5.18,.97,5.18,2.73,0,1.36-.62,2.76-5.18,2.76\"/><path class=\"cls-1\" d=\"M140.57,59.23l-5.82-10.06c2.06-.51,5.6-3.03,5.6-8.19,0-3.18-2.25-8.58-10.71-8.58h-33.02c-.24,0-.44,.2-.44,.44v26.61c0,.24,.2,.44,.44,.44h6.16c.24,0,.44-.2,.44-.44v-9.37h24.41l5.28,9.57c.08,.14,.22,.23,.38,.23h6.89c.16,0,.3-.08,.38-.22,.08-.14,.08-.3,0-.44m-12.35-15.2h-25v-5.49h25c3.34,0,5.18,.97,5.18,2.73,0,1.36-.62,2.76-5.18,2.76\"/><path class=\"cls-1\" d=\"M189.77,59.23l-5.82-10.06c2.06-.51,5.6-3.03,5.6-8.19,0-3.18-2.25-8.58-10.71-8.58h-33.02c-.24,0-.44,.2-.44,.44v26.61c0,.24,.19,.44,.44,.44h6.15c.24,0,.44-.2,.44-.44v-9.37h24.41l5.28,9.57c.08,.14,.22,.23,.38,.23h6.89c.16,0,.3-.08,.38-.22,.08-.14,.08-.3,0-.44m-12.35-15.2h-25v-5.49h25c3.34,0,5.18,.97,5.18,2.73,0,1.36-.62,2.76-5.18,2.76\"/><path class=\"cls-1\" d=\"M184.31,.04h7.2c.24,0,.44,.2,.44,.44V27.05c0,.24-.2,.44-.44,.44h-7.2c-.24,0-.44-.2-.44-.44V.48c0-.24,.2-.44,.44-.44Z\"/></g></g></svg>    \n  </span>\n  <span class=\"info\" id=\"info\">\n    <p><strong><span id=\"infoSchoolName\"></span> Academy</strong></p>\n    <p><span id=\"infoSchoolPhone\"></span></p>\n    <p></p>\n    <p><span id=\"infoSchoolEmail\"></span></p>\n    <p><span id=\"infoSchoolAddress\"></span></p>  \n  </span>  \n</div>",
+          "visible": true,
+          "renderAttributes": {
+            "class": "logo"
+          }
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Student Information",
+          "title": "",
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Member GUID",
+              "label": "Member GUID",
+              "key": "f49",
+              "defaultValue": "",
+              "defaultResourceName": "",
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Get Member",
+                  "type": "Change",
+                  "action": "Custom",
+                  "code": "K('bridgedResource[Get Member]').load({\n  attributes: ['Member ID', 'First Name', 'Last Name'],\n  values: {'ID' : 'Allen'},\n  success: function(bridgedData) {\n    debugger;\n    K('field[Member ID]').value(bridgedData['Member ID']);\n    K('field[Billing Customer Id]').value(bridgedData['Billing Customer Id']);\n    K('field[Billing Customer Reference]').value(bridgedData['Billing Customer Reference']);\n    K('field[Student First Name]').value(bridgedData['First Name']);\n    K('field[Student Last Name]').value(bridgedData['Last Name']);\n    K('field[Billing Start Date]').value(bridgedData['Billing Start Date']);\n    K('field[Billing Period]').value(bridgedData['Billing Period']);\n\n    K('section[Student Information]').show();\n\t\n    K('section[Member Select Space]').hide();    \n    \n  }\n});",
+                  "runIf": "values('Member GUID')!==\"\""
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Member ID",
+              "label": "Member ID",
+              "key": "f39",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Student First Name",
+              "label": "First Name",
+              "key": "f28",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Set Requested For",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Requested For",
+                      "value": "${values('Student First Name')} ${values('Student Last Name')}",
+                      "visible": null
+                    }
+                  ]
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Student Last Name",
+              "label": "Last Name",
+              "key": "f29",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Set Requested For",
+                  "type": "Change",
+                  "action": "Set Fields",
+                  "mappings": [
+                    {
+                      "field": "Requested For",
+                      "value": "${values('Student First Name')} ${values('Student Last Name')}",
+                      "visible": null
+                    }
+                  ]
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Requested For",
+              "label": "Requested For",
+              "key": "f60",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Co-Signer Full Name",
+              "label": "Co-Signer's Full Name",
+              "key": "f30",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing User",
+              "label": "Billing User",
+              "key": "f58",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Customer Id",
+              "label": "Billing Customer Id",
+              "key": "f47",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Customer Reference",
+              "label": "Billing Customer Reference",
+              "key": "f54",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+                {
+                  "name": "Load Billing Details",
+                  "type": "Change",
+                  "action": "Custom",
+                  "code": "var settings = {\n  \"crossDomain\": true,\n  \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/billingInfo\",\n  \"method\": \"POST\",\n  \"headers\": {},\n  \"dataType\": \"json\",\n  \"contentType\": \"application/json\",\n  \"data\": JSON.stringify({\n    \"space\": K('space').slug(),\n    \"billingService\": \"Bambora\",\n    \"customerId\": K('field[Billing Customer Reference]').value(),\n  })\n}\n$.ajax(settings).done(function (response) {\n  debugger;\n  console.log(response);\n  if (response.error===100) {\n    var data=response.data;\n    var message=data.status_message;\n    $(\"#errorValue\").html(message);\n  } else {\n    var paymentPeriod=K('field[Billing Period]').value();\n    var period=\"months\";\n    if (paymentPeriod===\"Daily\") {\n      period=\"days\";\n    } else if (paymentPeriod===\"Weekly\" || paymentPeriod===\"Fortnightly\") {\n      period=\"weeks\"; \n    } else if (paymentPeriod===\"Monthly\" || paymentPeriod===\"Quarterly\" || paymentPeriod===\"4 Months\" || paymentPeriod===\"6 Months\") {\n      period=\"months\"; \n    } \n    \n    period=1;\n    span=\"days\";\n    if (paymentPeriod===\"Weekly\"){\n      period=7;\n    }\n    if (paymentPeriod===\"Fortnightly\"){\n      period=14;\n    }\n    if (paymentPeriod===\"Monthly\") {\n      period=1;\n      span=\"months\";\n    }\n    if (paymentPeriod===\"Quarterly\") {\n      period=3;\n      span=\"months\";\n    }\n    if (paymentPeriod===\"4 Months\") {\n      period=4;\n      span=\"months\";\n    }\n    if (paymentPeriod===\"6 Months\") {\n      period=6;\n      span=\"months\";\n    }\n    \n    nextBillingDate = moment(response.data.nextBillingDate,\"YYYY-MM-DD'T'hh:mm:ss\");\n        \n    K('field[Next Billing Date]').value(nextBillingDate.format(\"YYYY-MM-DD\"));\n    K('field[Billing Next Date]').value(nextBillingDate.format('YYYY-MM-DD'));\n//    K('field[The last debit will be taken on]').value(nextBillingDate.format('YYYY-MM-DD'));\n\n    bundle.config.widgets.xdsoftDatepickerRemove({\n      element: K(\"form\").find(\"#lastdebitdate\")[0]\n    });          \n    var duration = K('space').attributes('Cancellation Duration');\n    if (duration===null) {\n     duration=\"30\"; \n    }\n    $(\"#cancellationDays\").html(duration);\n    $(\"#cancellationDays2\").html(duration);\n    var earliest = moment().add(duration, \"days\");    \n    allowDates=[];\n    for (i=0;i<22;i++){\n      if (moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).isAfter(moment()) && moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).isAfter(earliest)) {\n        allowDates[allowDates.length]=moment(nextBillingDate, \"YYYY-MM-DD\").add(period*i,span).format(\"DD-MM-YYYY\");\n      }\n    }\n    debugger;\n    var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000);\n    bundle.config.widgets.xdsoftDatepicker({\n      element: K(\"form\").find(\"#lastdebitdate\")[0],\n      timepicker: false,\n      displayDateFormat: \"MM/DD/YYYY\",\n      options: {\n        allowDates: allowDates,\n       /* startDate: tomorrow,\n        minDate: 0,*/\n        formatDate:\"d-m-Y\",\n        validateOnBlur:false\n      },\n      onSelectDate:function(ct,$i){\n        K('field[The last debit will be taken on]').value(ct.dateFormat('YYYY-MM-DD'));\n        K('field[Can train up until]').value(ct.dateFormat('YYYY-MM-DD'));\n      },                \n      onGenerate: function( ct ){\n      $('.xdsoft_today')\n        .addClass('xdsoft_disabled');\n    }\n    });          \n    \n    \n    K('section[Cancellation Information]').show();\n    K('section[List of Documents]').show();\n    K('section[Terms]').show();\n\n  }\n});\n"
+                }
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Period",
+              "label": "Billing Period",
+              "key": "f48",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Start Date",
+              "label": "Billing Start Date",
+              "key": "f50",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Next Date",
+              "label": "Billing Next Date",
+              "key": "f51",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Payment Type",
+              "label": "Billing Payment Type",
+              "key": "f59",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Payment Frequency",
+              "label": "Payment Frequency",
+              "key": "f52",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Next Billing Date",
+              "label": "Next Billing Date",
+              "key": "f53",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Parent Member",
+              "label": "Billing Parent Member",
+              "key": "f56",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Billing Family Members",
+              "label": "Billing Family Members",
+              "key": "f57",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Non Paying",
+              "label": "Non Paying",
+              "key": "f55",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Cancellation Information",
+          "title": "",
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Reason for cancellation",
+              "label": "Reason for cancellation",
+              "key": "f40",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "json",
+              "renderType": "checkbox",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Work Trip",
+                  "value": "Work Trip"
+                },
+                {
+                  "label": "Financial Issues",
+                  "value": "Financial Issues"
+                },
+                {
+                  "label": "Temporary Schedule Issues",
+                  "value": "Temporary Schedule Issues"
+                },
+                {
+                  "label": "Other",
+                  "value": "Other"
+                }
+              ]
+            },
+            {
+              "type": "field",
+              "name": "Other Reason",
+              "label": "",
+              "key": "f41",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": "values('Reason for cancellation').indexOf(\"Other\")!=-1",
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "The last debit will be taken on HTML",
+              "text": "<div class=\"form-group required\" linkedField=\"The last debit will be taken on\">  \n  <label class=\"field-label\" for=\"lastdebitdate\">\n    The required cancellation notice for your school is <span id=\"cancellationDays\"></span> days. <br>Please select a billing termination date after the required minimum notice.<br>\n    Payment Cancellation Date(no payment will be made on this date) (Next billing cycle dates)\n<ul>\n  <li>Immediate cancellation, select next available billing date.</li>\n  <li>Future cancellation, select a future billing date</li>\n  <li>eg, if the last payment should be on the 14th, then select the 28th</li> \n</ul>\n  </label>\n  <div id=\"lastdebitdate\"></div>\n</div>",
+              "visible": "!form('review')",
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "The last debit will be taken on",
+              "label": "Cancellation Date(no payment made)",
+              "key": "f32",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": "form('review')",
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "Cancellation Date",
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "date"
+            },
+            {
+              "type": "field",
+              "name": "Can train up until",
+              "label": "Can train up until",
+              "key": "f62",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "date"
+            },
+            {
+              "type": "field",
+              "name": "Please explain in detail your request for cancellation",
+              "label": "Please explain in detail your request for cancellation",
+              "key": "f43",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 5
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "List of Documents",
+          "title": "List of Documents",
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Document Information",
+              "text": "<p>Please provide the list of documents you are submitting to prove the reason for your membership cancellation request.</p>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "Document 1",
+              "label": "Document 1",
+              "key": "f44",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "file",
+              "renderType": "attachment",
+              "allowMultiple": false
+            },
+            {
+              "type": "field",
+              "name": "Document 2",
+              "label": "Document 2",
+              "key": "f45",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "file",
+              "renderType": "attachment",
+              "allowMultiple": false
+            },
+            {
+              "type": "field",
+              "name": "Document 3",
+              "label": "Document 2",
+              "key": "f46",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "file",
+              "renderType": "attachment",
+              "allowMultiple": false
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Terms",
+          "title": "Terms",
+          "visible": false,
+          "omitWhenHidden": true,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Terms Information",
+              "text": "<div class=\"emf-section-text\">The student's installment payments must be current and up to date prior to submitting the application.<br>\n<br>\nFor any cancellation request in exception to the minimum notice of cancellation policy, one of the following must be provided<br>\n<br>\n- Change of address; bill or lease agreement for the new address<br>\n- Medical condition; doctor's letter proving the permanent disability<br>\n- Document proving deployment<br>\n- Document proving loss of employment<br>\n<br>\nStudents who would like to cancel without reason must give <span id=\"cancellationDays2\"></span> days written notice.<br>\n<br>\nUpon written request, your submission will be evaluated, and you will be contacted within 3 business days.</div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Member Signature",
+              "text": "<label class=\"field-label required\">Member Signature</label><div id=\"member-signature-canvas\"/>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "field",
+              "name": "Encoded Member Signature",
+              "label": "Encoded Member Signature",
+              "key": "f35",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": true,
+              "requiredMessage": "Gracie Barra Representative Signature is required",
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
+          "name": "Member Select Space",
+          "title": null,
+          "visible": true,
+          "omitWhenHidden": null,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "Member Select Space",
+              "text": "<div style=\"height:300px\"></div>",
+              "visible": true,
+              "renderAttributes": {
+              }
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "name": "Submit",
+          "visible": true,
+          "enabled": "(values('Billing Customer Reference')!==\"\" && values('Billing Customer Reference')!==null) ",
+          "renderType": "submit-page",
+          "renderAttributes": {
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "Load Signatures",
+          "type": "Load",
+          "action": "Custom",
+          "code": "bundle.config.widgets.signatureCanvas({\n  element: K(\"form\").find(\"#member-signature-canvas\")[0],\n  initialValue: K(\"field[Encoded Member Signature]\").value(),\n  onChange: function(value) {\n\t  K(\"field[Encoded Member Signature]\").value(value);\n\t},\n  height: 250,\n  width: 500,\n  disable: form('review'),\n  ref: function(el) {\n    window.memberSignaturePad = el;\n  },\n});\n",
+          "runIf": ""
+        },
+        {
+          "name": "Handle Errors",
+          "type": "Submit",
+          "action": "Custom",
+          "code": "if (!jQuery.isEmptyObject(K('form').validate())){\n  setTimeout(function(){\n  if ($(\".has-error\").length>0){\n    $(\".has-error\").each(function(i,l) { \n      if ($(l).attr(\"data-element-name\").indexOf(\"Signature\")!==-1) {\n        sigCanElName=$(l).attr(\"data-element-name\").replace(\"Encoded \",\"\");\n        $(K('content['+sigCanElName+']').element()).addClass(\"has-error\");\n      }\n    })  \n    $('.main-container').animate({\n      scrollTop: 0\n    },500);\n  }\n  },100);\n}"
+        },
+        {
+          "name": "Load Review",
+          "type": "Load",
+          "action": "Custom",
+          "code": "K('section[Student Information]').show();\nK('section[Cancellation Information]').show();\nK('section[List of Documents]').show();    \nK('section[Terms]').show();\n\nK('section[Member Select Space]').hide();    \n",
+          "runIf": "form('review')"
+        },
+        {
+          "name": "Set Defaults",
+          "type": "Load",
+          "action": "Custom",
+          "code": "if ($(\".package-layout--services\").length===0) {\n  $(\"body\").css(\"height\",\"auto\");\n  K('content[GB Logo]').show();  \n}  \ndebugger;\nif (GetURLParameter(\"id\")!==null && GetURLParameter(\"id\")!==undefined) {\n    K('field[Member GUID]').value(GetURLParameter(\"id\"));\n}\n\ntermsInformationHTML=$(K('content[Terms Information]').element()).html();\nvar duration = K('space').attributes('Cancellation Duration');\nif (duration===null) {\n duration=\"30\"; \n}\ntermsInformationHTML=termsInformationHTML.replaceAll(\"$cancellationDuration$\", duration);\n$(K('content[Terms Information]').element()).html(termsInformationHTML);\n\n    let telephone=formatWithMask(K('space').attributes('School Telephone'), K('space').attributes('PhoneNumber Format'));        \n    \n    $(\"#infoSchoolName\").html(K('space').attributes('School Name'));   \n    $(\"#infoSchoolPhone\").html(telephone);\n    $(\"#infoSchoolEmail\").html(K('space').attributes('School Email'));\n    $(\"#infoSchoolAddress\").html(K('space').attributes('School Address'));\n    \n    $(\"#schoolEmail\").html(K('space').attributes('School Email'));\n    $(\"#schoolTelephone\").html(telephone);\n    $(\"#schoolName\").html(K('space').attributes('School Name'));   \n    \n\n"
+        },
+        {
+          "name": "Member User Load",
+          "type": "Load",
+          "action": "Custom",
+          "code": "debugger;\nif (!K(\"identity\").teams.includes(\"Role::Program Managers\")) {\n  if (K('field[Member ID]').value().toLowerCase()!==K(\"identity\").username) {\n    K('section[Select Member]').hide();\n    K('section[Invalid Member]').show();\n    K('section[Student Information]').hide();  \n    K('section[Cancellation Information]').hide();\n    K('section[List of Documents]').hide();\n    K('section[Terms]').hide();\n\t\tK('button[Save for Member to Complete]').hide();\n    K('button[Submit Button]').hide();\n  } else {\n    K('section[Select Member]').hide();\n    K('section[Student Information]').show();  \n    if (K('field[Members]').value()!==\"\") {\n      K('field[The last debit will be taken on]').disable();\n      K('field[Can train up until]').disable();\n      \n      K('content[The last debit will be taken on HTML]').hide();\n      K('field[The last debit will be taken on]').disable();\n      K('field[The last debit will be taken on]').show();\n      K('field[Can train up until]').disable();\n      K('button[Save for Member to Complete]').hide();\n    }\n  }\n} else {\n    K('section[Select Member]').hide();\n    K('section[Student Information]').show();  \n  \n    $.ajax({\n      type: \"post\",\n        url: K('space').attributes(\"Kinetic Billing Server URL\")+\"/billingInfo\",\n        data: JSON.stringify({ \n          customerId: K('field[Billing Customer Id]').value(),\n          space: K('space').slug(),\n          billingService: K('space').attributes(\"Billing Company\"),\n        }),\n        headers: {\n          'Accept': 'application/json, text/plain, */*',\n          'Content-Type': 'application/json;charset=UTF-8'\n      \t}\n      })\n      .done(function( data ) {\n        if (data.data===null) {\n  \t      K('field[The last debit will be taken on]').value(\"\");\n          K('field[Billing Period]').value(\"\");\n        } else {\n          bundle.config.widgets.xdsoftDatepickerRemove({\n              element: K(\"form\").find(\"#lastdebitdate\")[0]\n          });          \n          period=7;\n          if (data.data['paymentPeriod']===\"Fortnightly\"){\n            period=14;\n          }\n          allowDates=[];\n          for (i=0;i<20;i++){\n            if (moment(data.data['nextBillingDate'], \"DD-MM-YYYY\").add(period*i,\"days\").isAfter(moment())) {\n  \t\t\t\t\t\t  allowDates[allowDates.length]=moment(data.data['nextBillingDate'], \"DD-MM-YYYY\").add(period*i,\"days\").format(\"DD-MM-YYYY\");\n            }\n  \t\t\t\t}\n          debugger;\n          bundle.config.widgets.xdsoftDatepicker({\n              element: K(\"form\").find(\"#lastdebitdate\")[0],\n              timepicker: false,\n              displayDateFormat: \"d/m/Y\",\n            \tvalue:  K('field[The last debit will be taken on]').value(),\n              value_format: \"YYYY-MM-DD\",\n              options: {\n                allowDates: allowDates,\n                formatDate:\"d-m-Y\",\n                validateOnBlur:false\n              },\n              onSelectDate:function(ct,$i){\n                debugger;\n                K('field[The last debit will be taken on]').value(ct.dateFormat('YYYY-MM-DD'));\n                K('field[Can train up until]').value(ct.dateFormat('YYYY-MM-DD'));\n              }                \n          });          \n         }\n      });\n  \n}\n\n    html=primaryHTML.replaceAll(\"$studentName$\", K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value());\n    html=html.replaceAll(\"$parentMemberID$\", K('field[Billing Parent Member]').value());    \n\t\t$(K('content[Primary Family Member Info]').element()).html(html);\n\n    \n    html=dependantHTML.replaceAll(\"$studentName$\", K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value());\n    html=html.replaceAll(\"$parentMemberID$\", K('field[Billing Parent Member]').value());    \n\t\t$(K('content[Family Dependant Info]').element()).html(html);\n    \n    html=nonpayingHTML.replaceAll(\"$studentName$\", K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value());\n    html=html.replaceAll(\"$memberGUID$\", K('field[Member GUID]').value());    \n\t\t$(K('content[Non Paying Info]').element()).html(html);\n\n    html=nonbillingHTML.replaceAll(\"$studentName$\", K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value());\n    html=html.replaceAll(\"$memberGUID$\", K('field[Member GUID]').value());    \n\t\t$(K('content[Non Billing Info]').element()).html(html);\n\n",
+          "runIf": "values('Member ID')!==null && !form('review')"
+        }
+      ],
+      "name": "Instalment Information",
+      "renderType": "submittable",
+      "type": "page"
+    }
+  ],
+  "securityPolicies": [
+    {
+      "endpoint": "Display",
+      "name": "Everyone"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Everyone"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Everyone"
+    }
+  ],
+  "slug": "bambora-remote-cancellation",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Student First Name')} ${values('Student Last Name')}",
+  "type": "Service"
+}
