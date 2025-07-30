@@ -112,6 +112,13 @@
       "unique": false
     },
     {
+      "name": "values[Description]",
+      "parts": [
+        "values[Description]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[End]",
       "parts": [
         "values[End]"
@@ -273,6 +280,31 @@
               "name": "Title",
               "label": "Title",
               "key": "f4",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "Description",
+              "label": "Description",
+              "key": "f19",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": true,
