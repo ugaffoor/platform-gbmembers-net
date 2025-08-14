@@ -182,6 +182,10 @@
             {
               "label": "Package",
               "value": "Package"
+            },
+            {
+              "label": "Concession",
+              "value": "Concession"
             }
           ]
         },

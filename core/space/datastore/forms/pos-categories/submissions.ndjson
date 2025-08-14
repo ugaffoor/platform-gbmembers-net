@@ -12,3 +12,4 @@
 {"coreState":"Draft","currentPage":"Main","label":"Active-Apparel-Custom Apparel","values":{"Status":"Active","Label":"Custom Apparel","Description":null,"Icon":null,"Type":"Apparel"}}
 {"coreState":"Draft","currentPage":"Main","label":"Active-Service-Promo","values":{"Status":"Active","Label":"Promo","Description":null,"Icon":"promotion","Type":"Service"}}
 {"coreState":"Draft","currentPage":"Main","label":"Active-Package-All","values":{"Status":"Active","Label":"All","Description":null,"Icon":null,"Type":"Package"}}
+{"coreState":"Submitted","currentPage":"Main","label":"Active-Concession-Drinks","values":{"Status":"Active","Label":"Drinks","Description":null,"Icon":"promotion","Type":"Concession"}}
