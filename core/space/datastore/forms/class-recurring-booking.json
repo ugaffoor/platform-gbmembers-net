@@ -79,6 +79,16 @@
       "unique": true
     },
     {
+      "name": "values[Class Day],values[Class Time],values[Program],values[Title]",
+      "parts": [
+        "values[Class Day]",
+        "values[Class Time]",
+        "values[Program]",
+        "values[Title]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Class Time]",
       "parts": [
         "values[Class Time]"

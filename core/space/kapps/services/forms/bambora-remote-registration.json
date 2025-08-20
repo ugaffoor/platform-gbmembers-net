@@ -1408,11 +1408,11 @@
               "key": "f95",
               "defaultValue": null,
               "defaultResourceName": null,
-              "visible": true,
+              "visible": "K(\"identity\").teams.includes(\"Role::Program Managers\")",
               "enabled": "K(\"identity\").teams.includes(\"Role::Program Managers\")",
               "required": false,
               "requiredMessage": null,
-              "omitWhenHidden": null,
+              "omitWhenHidden": false,
               "pattern": null,
               "constraints": [
 
