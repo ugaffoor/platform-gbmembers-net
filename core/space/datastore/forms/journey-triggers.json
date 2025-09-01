@@ -1520,24 +1520,24 @@
               "dataType": "string",
               "renderType": "text",
               "rows": 1
-            }
-          ]
-        },
-        {
-          "type": "button",
-          "label": "Save",
-          "name": "Submit Button",
-          "visible": true,
-          "enabled": true,
-          "renderType": "custom",
-          "renderAttributes": {
-          },
-          "events": [
+            },
             {
-              "name": "Submit",
-              "type": "Click",
-              "action": "Custom",
-              "code": "if (K('field[Additional Qual]').value()!==\"\" && K('field[Additional Qual]').value()!==null) {\n  \n  member={\n      \"values\":{\n\t\t\t\t\"Status\":\"\",\n\t\t\t\t\"First Name\":\"\",\n\t\t\t\t\"Last Name\":\"\",\n\t\t\t\t\"Gender\":\"\",\n\t\t\t\t\"EmailAdditional Email\":\"\",\n\t\t\t\t\"Phone Number\":\"\",\n\t\t\t\t\"Additional Phone Number\":\"\",\n\t\t\t\t\"Last Promotion\":\"\",\n\t\t\t\t\"Suburb\":\"\",\n\t\t\t\t\"Country\":\"\",\n\t\t\t\t\"State\":\"\",\n\t\t\t\t\"Postcode\":\"\",\n\t\t\t\t\"Date Joined\":\"\",\n\t\t\t\t\"DOB\":\"\",\n\t\t\t\t\"Member Type\":\"\",\n\t\t\t\t\"Ranking Program\":\"\",\n\t\t\t\t\"Ranking Belt\":\"\",\n\t\t\t\t\"Belt Size\":\"\",\n\t\t\t\t\"Additional Program 1\":\"\",\n\t\t\t\t\"Additional Program 2\":\"\",\n\t\t\t\t\"Billing User\":\"\",\n\t\t\t\t\"Billing Payment Period\":\"\",\n\t\t\t\t\"Billing Payment Type\":\"\",\n\t\t\t\t\"Billing Period\":\"\",        \n\t\t\t\t\"Main Benefits\":\"\"        \n      }\n  }\n  let qual=K('field[Additional Qual]').value();\n  qual=qual.replaceAll(\"['values']\",\"member['values']\");\n  qual=qual.replaceAll(\"include?\",\"includes\");\n  \n  try {\n   \teval(qual); \n  } catch (e) {\n    alert(\"Please ensure that the Additional Qaul value is valid, there appears to be an error./n\"+qual);\n    return;\n  }\n\tK('form').submitPage();  \n} else {\n\tK('form').submitPage();\n}"
+              "type": "button",
+              "label": "Save",
+              "name": "Submit Button",
+              "visible": true,
+              "enabled": true,
+              "renderType": "custom",
+              "renderAttributes": {
+              },
+              "events": [
+                {
+                  "name": "Submit",
+                  "type": "Click",
+                  "action": "Custom",
+                  "code": "if (K('field[Additional Qual]').value()!==\"\" && K('field[Additional Qual]').value()!==null) {\n  debugger;\n  member={\n      \"values\":{\n\t\t\t\t\"Status\":\"\",\n\t\t\t\t\"First Name\":\"\",\n\t\t\t\t\"Last Name\":\"\",\n\t\t\t\t\"Gender\":\"\",\n\t\t\t\t\"EmailAdditional Email\":\"\",\n\t\t\t\t\"Phone Number\":\"\",\n\t\t\t\t\"Additional Phone Number\":\"\",\n\t\t\t\t\"Last Promotion\":\"\",\n\t\t\t\t\"Suburb\":\"\",\n\t\t\t\t\"Country\":\"\",\n\t\t\t\t\"State\":\"\",\n\t\t\t\t\"Postcode\":\"\",\n\t\t\t\t\"Date Joined\":\"\",\n\t\t\t\t\"DOB\":\"\",\n\t\t\t\t\"Member Type\":\"\",\n\t\t\t\t\"Ranking Program\":\"\",\n\t\t\t\t\"Ranking Belt\":\"\",\n\t\t\t\t\"Belt Size\":\"\",\n\t\t\t\t\"Additional Program 1\":\"\",\n\t\t\t\t\"Additional Program 2\":\"\",\n\t\t\t\t\"Billing User\":\"\",\n\t\t\t\t\"Billing Payment Period\":\"\",\n\t\t\t\t\"Billing Payment Type\":\"\",\n\t\t\t\t\"Billing Period\":\"\",        \n\t\t\t\t\"Main Benefits\":\"\",        \n\t\t\t\t\"Source\":\"\",        \n\t\t\t\t\"Source Reference 1\":\"\",        \n\t\t\t\t\"Source Reference 2\":\"\",        \n\t\t\t\t\"Source Reference 3\":\"\",        \n\t\t\t\t\"Source Reference 4\":\"\",        \n\t\t\t\t\"Source Reference 5\":\"\"      \n      }\n  }\n  let qual=K('field[Additional Qual]').value();\n  qual=qual.replaceAll(\"['values']\",\"member['values']\");\n  qual=qual.replaceAll(\"include?\",\"includes\");\n  \n  try {\n   \teval(qual); \n  } catch (e) {\n    alert(\"Please ensure that the Additional Qaul value is valid, there appears to be an error./n\"+qual);\n    return;\n  }\n\tK('form').submitPage();  \n} else {\n\tK('form').submitPage();\n}"
+                }
+              ]
             }
           ]
         }
