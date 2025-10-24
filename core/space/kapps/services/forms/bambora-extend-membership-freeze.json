@@ -62,7 +62,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n  div[data-element-type='content'] a {\n      color: blue;\n  }    \n</style>\n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }    \n  function isPrimaryBiller(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n</script>",
+  "customHeadContent": "<style>\n  div[data-element-type='content'] a {\n      color: blue;\n  }    \n</style>\n",
   "description": "Bambora Request to Extend a membership freeze",
   "name": "Bambora Extend Membership Freeze",
   "notes": null,
@@ -780,7 +780,7 @@
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "bundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\nif (GetURLParameter(\"id\")!==null && GetURLParameter(\"id\")!==undefined) {\n  K('field[Members]').value(GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n      $(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n"
+          "code": "bundle.GetURLParameter = function(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }    \nbundle.isPrimaryBiller = function(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n\nbundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\nif (bundle.GetURLParameter(\"id\")!==null && bundle.GetURLParameter(\"id\")!==undefined) {\n  K('field[Members]').value(bundle.GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===bundle.GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n      $(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n"
         },
         {
           "name": "Handle Errors",

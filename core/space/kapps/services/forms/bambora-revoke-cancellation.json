@@ -62,7 +62,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n  div[data-element-type='content'] a {\n      color: blue;\n  }    \n</style>  \n<script>\n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \n  function isPrimaryBiller(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n    debugger;\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n  \n</script>\n",
+  "customHeadContent": "<style>\n  div[data-element-type='content'] a {\n      color: blue;\n  }    \n</style>  \n",
   "description": "Revoke a current Cancellation request, only available for Pending Cancellation Members.<br>\nThe Member status will be set to Active upon completion.",
   "name": "Bambora Revoke Cancellation",
   "notes": null,
@@ -526,7 +526,7 @@
           "renderType": null,
           "name": "Primary Family Member",
           "title": null,
-          "visible": "!form('review') && values('Members')!==null && isPrimaryBiller() && (values('Billing Customer Reference')!==\"\" || values('Billing Customer Reference')!==null)  && (typeof(loadingDetails) !== \"undefined\" && !loadingDetails)",
+          "visible": "!form('review') && values('Members')!==null && bundle.isPrimaryBiller() && (values('Billing Customer Reference')!==\"\" || values('Billing Customer Reference')!==null)  && (typeof(loadingDetails) !== \"undefined\" && !loadingDetails)",
           "omitWhenHidden": false,
           "renderAttributes": {
           },
@@ -713,14 +713,14 @@
           "name": "Load Signatures",
           "type": "Load",
           "action": "Custom",
-          "code": "bundle.config.widgets.signatureCanvas({\n  element: K(\"form\").find(\"#member-signature-canvas\")[0],\n  initialValue: K(\"field[Encoded Member Signature]\").value(),\n  onChange: function(value) {\n\t  K(\"field[Encoded Member Signature]\").value(value);\n\t},\n  height: 250,\n  width: 500,\n  disable: form('review'),\n  ref: function(el) {\n    window.memberSignaturePad = el;\n  },\n});\n",
+          "code": "bundle.GetURLParameter = function(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }  \nbundle.isPrimaryBiller = function(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n    debugger;\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n\n\nbundle.config.widgets.signatureCanvas({\n  element: K(\"form\").find(\"#member-signature-canvas\")[0],\n  initialValue: K(\"field[Encoded Member Signature]\").value(),\n  onChange: function(value) {\n\t  K(\"field[Encoded Member Signature]\").value(value);\n\t},\n  height: 250,\n  width: 500,\n  disable: form('review'),\n  ref: function(el) {\n    window.memberSignaturePad = el;\n  },\n});\n",
           "runIf": ""
         },
         {
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "bundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\ndebugger;\nif (GetURLParameter(\"id\")!==null && GetURLParameter(\"id\")!==undefined) {\n  K('field[Members]').value(GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n\n"
+          "code": "bundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\ndebugger;\nif (bundle.GetURLParameter(\"id\")!==null && bundle.GetURLParameter(\"id\")!==undefined) {\n  K('field[Members]').value(bundle.GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===bundle.GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n    \t$(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n\n"
         },
         {
           "name": "Handle Errors",

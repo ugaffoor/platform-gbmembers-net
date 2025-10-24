@@ -281,6 +281,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Publishable key used for API access",
+    "name": "POS Stripe Publishable Key"
+  },
+  {
+    "allowsMultiple": false,
     "description": "System name for process POS transactions",
     "name": "POS System"
   },
@@ -308,6 +313,11 @@
     "allowsMultiple": false,
     "description": null,
     "name": "School Address"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "For Stripe Terminal",
+    "name": "School City"
   },
   {
     "allowsMultiple": false,
@@ -351,8 +361,18 @@
   },
   {
     "allowsMultiple": false,
+    "description": "For Stripe Terminal",
+    "name": "School Postcode"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Date when a school will start accepting Trial Bookings via the GB Calendar widget",
     "name": "School Start Date"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "For Stripe Terminal",
+    "name": "School State"
   },
   {
     "allowsMultiple": false,
@@ -405,6 +425,11 @@
     "name": "Show Class Spots Remaining"
   },
   {
+    "allowsMultiple": false,
+    "description": "Account ID for the school, such as, acct_1KndiLPh1yLRrgic",
+    "name": "Stripe Account ID"
+  },
+  {
     "allowsMultiple": true,
     "description": "Defines which workflow type should be executed for each type of action. All values should be prefixed with an action (Submitted, Created, Updated, Deleted) Workflow type options are (True, False, or a custom process name) This attribute can be overridden by a kapp or form's attribute Ex (Submitted - False | Submitted - True | Submitted - My Custom Process)",
     "name": "Submission Workflow"
@@ -413,6 +438,11 @@
     "allowsMultiple": false,
     "description": "Form used to request a new service be added to the catalog.",
     "name": "Suggest a Service Form Slug"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "YES to switch to Select class first then provide name details.\nThe default is to provide name details first then select a class.",
+    "name": "Switch Trial Class Booking Order"
   },
   {
     "allowsMultiple": true,

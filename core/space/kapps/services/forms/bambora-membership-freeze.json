@@ -62,7 +62,7 @@
       }
     }
   ],
-  "customHeadContent": "<style>\n  div[data-element-type='content'] a {\n      color: blue;\n  }    \n  .confirmation {\n    background-color: rgb(235, 230, 230);\n    padding: 5px;    \n  }\n</style>\n<script>\n  var confirmationInfoHTML = $(\"#confirmationInfo\").html();\n  debugger;\n  function cancelConfirmation(){\n    K('section[Confirmation]').hide();\n    K('button[Continue]').show();\n  }  \n  function GetURLParameter(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }    \n  function isPrimaryBiller(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n</script>",
+  "customHeadContent": "<style>\n  div[data-element-type='content'] a {\n      color: blue;\n  }    \n  .confirmation {\n    background-color: rgb(235, 230, 230);\n    padding: 5px;    \n  }\n</style>\n",
   "description": "Bambora Request to freeze a Membership",
   "name": "Bambora Membership Freeze",
   "notes": null,
@@ -625,7 +625,7 @@
           "renderType": null,
           "name": "Primary Family Member",
           "title": "",
-          "visible": "!form('review') && values('Members')!==null && isPrimaryBiller() && (values('Billing Customer Reference')!==\"\" || values('Billing Customer Reference')!==null)  && (typeof(loadingDetails) !== \"undefined\" && !loadingDetails)",
+          "visible": "!form('review') && values('Members')!==null && bundle.isPrimaryBiller() && (values('Billing Customer Reference')!==\"\" || values('Billing Customer Reference')!==null)  && (typeof(loadingDetails) !== \"undefined\" && !loadingDetails)",
           "omitWhenHidden": true,
           "renderAttributes": {
           },
@@ -846,7 +846,7 @@
                   "name": "Cancel Confirmation",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "cancelConfirmation();"
+                  "code": "bundle.cancelConfirmation();"
                 }
               ],
               "renderAttributes": {
@@ -899,7 +899,7 @@
                   "name": "Cancel Confirmation",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "cancelConfirmation();"
+                  "code": "bundle.cancelConfirmation();"
                 }
               ],
               "renderAttributes": {
@@ -979,7 +979,7 @@
                   "name": "Set Value",
                   "type": "Change",
                   "action": "Custom",
-                  "code": "if (K('field[Freeze Fee]').value()===\"Apply\") {    \n\t\tvar freezeCharge=K('space').attributes('School Freeze Charge');    \n    if (freezeCharge!==undefined && freezeCharge!==\"\" && freezeCharge!==null) {\n      if (K('field[Payment Frequency]').value()===\"Fortnightly\"){\n        freezeCharge=\"$\"+(parseFloat(freezeCharge)/2).toFixed(2);\n      } else {\n        freezeCharge=\"$\"+freezeCharge;\n      }\n\t    K('field[Freeze Charge]').value(freezeCharge);\n    } else {\n\t    K('field[Freeze Charge]').value(\"$0\");\n    }\n} else {\n    K('field[Freeze Charge]').value(\"\");\n}\n\ncancelConfirmation();"
+                  "code": "if (K('field[Freeze Fee]').value()===\"Apply\") {    \n\t\tvar freezeCharge=K('space').attributes('School Freeze Charge');    \n    if (freezeCharge!==undefined && freezeCharge!==\"\" && freezeCharge!==null) {\n      if (K('field[Payment Frequency]').value()===\"Fortnightly\"){\n        freezeCharge=\"$\"+(parseFloat(freezeCharge)/2).toFixed(2);\n      } else {\n        freezeCharge=\"$\"+freezeCharge;\n      }\n\t    K('field[Freeze Charge]').value(freezeCharge);\n    } else {\n\t    K('field[Freeze Charge]').value(\"$0\");\n    }\n} else {\n    K('field[Freeze Charge]').value(\"\");\n}\n\nbundle.cancelConfirmation();"
                 }
               ],
               "renderAttributes": {
@@ -1260,7 +1260,7 @@
                   "name": "Cancel Continue",
                   "type": "Click",
                   "action": "Custom",
-                  "code": "cancelConfirmation();\n"
+                  "code": "bundle.cancelConfirmation();\n"
                 }
               ]
             },
@@ -1311,7 +1311,7 @@
               "name": "Confirmation Submission",
               "type": "Click",
               "action": "Custom",
-              "code": "debugger;\nif (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n    K('section[Confirmation]').show();\n  \tconfirmationInfo=confirmationInfoHTML;\n    confirmationInfo=confirmationInfo.replaceAll(\"_MemberName_\", K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value());\n  \n  \tvar startDate=moment(K('field[Date of Last Payment]').value(), \"YYYY-MM-DD\").format(\"Do MMM YYYY\");\n    if (K('field[Next Billing Date]').value()===K('field[Date of Last Payment]').value()) {\n    \tstartDate=\"Immediately\";  \n    }\n  \n    confirmationInfo=confirmationInfo.replaceAll(\"_StartingDate_\", startDate);\n    if (K('field[Resume Date Option]').value()===\"Resume Date\") {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"_ResumeDate_\", moment(K('field[Date Payments Resume]').value(), \"YYYY-MM-DD\").format(\"Do MMM YYYY\"));\n    } else {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"_ResumeDate_\", \"Until Further Notice\");\n    }\n  \n    if (K('field[Freeze Fee]').value()===\"Apply\") {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"$_FreezeFee_\", K('field[Freeze Charge]').value());\n    } else {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"$_FreezeFee_\", \"Waived\");\n    }\n\n    $(\"#confirmationInfo\").html(confirmationInfo);\n\n    K('button[Continue]').hide();    \n}\n\n",
+              "code": "debugger;\nif (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n    K('section[Confirmation]').show();\n  \tconfirmationInfo=bundle.confirmationInfoHTML;\n    confirmationInfo=confirmationInfo.replaceAll(\"_MemberName_\", K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value());\n  \n  \tvar startDate=moment(K('field[Date of Last Payment]').value(), \"YYYY-MM-DD\").format(\"Do MMM YYYY\");\n    if (K('field[Next Billing Date]').value()===K('field[Date of Last Payment]').value()) {\n    \tstartDate=\"Immediately\";  \n    }\n  \n    confirmationInfo=confirmationInfo.replaceAll(\"_StartingDate_\", startDate);\n    if (K('field[Resume Date Option]').value()===\"Resume Date\") {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"_ResumeDate_\", moment(K('field[Date Payments Resume]').value(), \"YYYY-MM-DD\").format(\"Do MMM YYYY\"));\n    } else {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"_ResumeDate_\", \"Until Further Notice\");\n    }\n  \n    if (K('field[Freeze Fee]').value()===\"Apply\") {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"$_FreezeFee_\", K('field[Freeze Charge]').value());\n    } else {\n\t    confirmationInfo=confirmationInfo.replaceAll(\"$_FreezeFee_\", \"Waived\");\n    }\n\n    $(\"#confirmationInfo\").html(confirmationInfo);\n\n    K('button[Continue]').hide();    \n}\n\n",
               "runIf": "values('Confirmed')!==\"YES\""
             }
           ]
@@ -1322,14 +1322,14 @@
           "name": "Load Signatures",
           "type": "Load",
           "action": "Custom",
-          "code": "bundle.config.widgets.signatureCanvas({\n  element: K(\"form\").find(\"#member-signature-canvas\")[0],\n  initialValue: K(\"field[Encoded Member Signature]\").value(),\n  onChange: function(value) {\n\t  K(\"field[Encoded Member Signature]\").value(value);\n\t},\n  height: 250,\n  width: 500,\n  disable: form('review'),\n  ref: function(el) {\n    window.memberSignaturePad = el;\n  },\n});\n",
+          "code": "bundle.confirmationInfoHTML = $(\"#confirmationInfo\").html();\nbundle.cancelConfirmation = function(){\n    K('section[Confirmation]').hide();\n    K('button[Continue]').show();\n  }  \nbundle.GetURLParameter =function(sParam){\n    arr=window.location.hash.split(sParam+\"=\");\n    if (arr.length>0){\n      return arr[1];\n    }\n    return null;\n  }    \nbundle.isPrimaryBiller = function(){\n    var parentMember=K('field[Billing Parent Member]').value();\n    var familyMembers=K('field[Billing Family Members]').value();\n   \tif (K('field[Members]').value()===parentMember && familyMembers!==null && familyMembers!==undefined){\n      var dependants=JSON.parse(familyMembers);\n      if (dependants.length>1) {\n\t      return true;\n      }\n    }\n    return false;\n  }\n\n\nbundle.config.widgets.signatureCanvas({\n  element: K(\"form\").find(\"#member-signature-canvas\")[0],\n  initialValue: K(\"field[Encoded Member Signature]\").value(),\n  onChange: function(value) {\n\t  K(\"field[Encoded Member Signature]\").value(value);\n\t},\n  height: 250,\n  width: 500,\n  disable: form('review'),\n  ref: function(el) {\n    window.memberSignaturePad = el;\n  },\n});\n",
           "runIf": ""
         },
         {
           "name": "Load Members Select",
           "type": "Load",
           "action": "Custom",
-          "code": "bundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\nif (GetURLParameter(\"id\")!==null && GetURLParameter(\"id\")!==undefined) {\n  K('field[Members]').value(GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n      $(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n"
+          "code": "bundle.config.widgets.selectMenu({\n  element: K(\"form\").find(\"#selectMemberMenu\")[0],\n\toptions: K('field[Members]').options(),\n  onChange: function(option) {\n\t  K('field[Members]').value(option.value);\n    setTimeout(function(){\n\t    $(K(\"form\").find(\"#selectMemberMenu .css-1492t68\")).html(option.label);\n    },100);\n\t},\n  value: K('field[Members]').value(),\n});\nif (bundle.GetURLParameter(\"id\")!==null && bundle.GetURLParameter(\"id\")!==undefined) {\n  K('field[Members]').value(bundle.GetURLParameter(\"id\"));\n  $(K('field[Members]').options()).each(function(index) {\n    if (K('field[Members]').options()[index].value===bundle.GetURLParameter(\"id\")) {\n      label=K('field[Members]').options()[index].label;\n      $(K(\"form\").find(\"#selectMemberMenu [class$='placeholder']\")).html(label);\n    }\n  });      \n}\n"
         },
         {
           "name": "Handle Errors",
