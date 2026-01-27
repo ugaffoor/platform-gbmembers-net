@@ -873,12 +873,20 @@
               "value": "A1L"
             },
             {
+              "label": "A1T",
+              "value": "A1T"
+            },
+            {
               "label": "A2",
               "value": "A2"
             },
             {
               "label": "A2L",
               "value": "A2L"
+            },
+            {
+              "label": "A2T",
+              "value": "A2T"
             },
             {
               "label": "A3",
@@ -889,8 +897,20 @@
               "value": "A3L"
             },
             {
+              "label": "A3T",
+              "value": "A3T"
+            },
+            {
               "label": "A4",
               "value": "A4"
+            },
+            {
+              "label": "A4L",
+              "value": "A4L"
+            },
+            {
+              "label": "A4T",
+              "value": "A4T"
             },
             {
               "label": "A5",

@@ -89,6 +89,13 @@
         "values[Member ID]"
       ],
       "unique": false
+    },
+    {
+      "name": "values[Payment Type]",
+      "parts": [
+        "values[Payment Type]"
+      ],
+      "unique": false
     }
   ],
   "name": "Cash Payment",
@@ -99,6 +106,42 @@
       "displayCondition": null,
       "displayPage": null,
       "elements": [
+        {
+          "type": "field",
+          "name": "Payment Type",
+          "label": "Payment Type",
+          "key": "f5",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Membership Fee",
+              "value": "Membership Fee"
+            },
+            {
+              "label": "Registration Fee",
+              "value": "Registration Fee"
+            }
+          ]
+        },
         {
           "type": "field",
           "name": "Member ID",

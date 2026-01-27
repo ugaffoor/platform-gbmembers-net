@@ -527,7 +527,7 @@
           "key": "f10",
           "defaultValue": null,
           "defaultResourceName": null,
-          "visible": "space('attribute:Billing Company')===\"Bambora\"",
+          "visible": "space('attribute:Billing Company')===\"Bambora\" || space('attribute:Billing Company')===\"Stripe\"",
           "enabled": true,
           "required": false,
           "requiredMessage": null,

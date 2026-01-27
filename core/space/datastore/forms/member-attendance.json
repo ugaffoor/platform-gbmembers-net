@@ -72,6 +72,15 @@
       "unique": false
     },
     {
+      "name": "values[Class Date],values[Class Time],values[Member GUID]:UNIQUE",
+      "parts": [
+        "values[Class Date]",
+        "values[Class Time]",
+        "values[Member GUID]"
+      ],
+      "unique": true
+    },
+    {
       "name": "values[Class Date],values[Class]",
       "parts": [
         "values[Class Date]",
@@ -473,5 +482,5 @@
   ],
   "slug": "member-attendance",
   "status": "Active",
-  "submissionLabelExpression": "${values('Class Date')} ${values('Class Time')} - ${values('Class')} - ${values('Member ID')} - ${values('Attendance Status')}"
+  "submissionLabelExpression": "${submission('id')}-${values('Class Date')} ${values('Class Time')} - ${values('Class')} - ${values('Member ID')} - ${values('Attendance Status')}"
 }

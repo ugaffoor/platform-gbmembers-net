@@ -747,6 +747,18 @@
                   "value": "Intro No Show"
                 },
                 {
+                  "label": "Meeting Call Scheduled",
+                  "value": "Meeting Call Scheduled"
+                },
+                {
+                  "label": "Meeting Completed",
+                  "value": "Meeting Completed"
+                },
+                {
+                  "label": "Meeting No Answer",
+                  "value": "Meeting No Answer"
+                },
+                {
                   "label": "Trial Booking Adult",
                   "value": "Trial Booking Adult"
                 },

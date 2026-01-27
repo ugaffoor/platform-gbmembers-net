@@ -46,6 +46,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "YES if you will allow setting and tracking of Meeting scheduled calls",
+    "name": "Allow Meeting Calls"
+  },
+  {
+    "allowsMultiple": false,
     "description": "The Queue kapp form which approvals should be created in (Overridden by Kapp and Form Attributes)",
     "name": "Approval Form Slug"
   },
@@ -53,6 +58,11 @@
     "allowsMultiple": false,
     "description": "",
     "name": "Australia School States"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Google auto complete API Key Key",
+    "name": "AutoCompleteKey"
   },
   {
     "allowsMultiple": false,

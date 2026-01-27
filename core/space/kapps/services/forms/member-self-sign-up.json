@@ -403,6 +403,31 @@
             },
             {
               "type": "field",
+              "name": "Billing Customer Reference",
+              "label": "Billing Customer Reference",
+              "key": "f92",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
               "name": "Billing Customer ID",
               "label": null,
               "key": "f54",

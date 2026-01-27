@@ -68,6 +68,8 @@ kapps.gbmembers.forms.member,en-US,Is New Reply Received,
 kapps.gbmembers.forms.member,en-US,Last Attendance Date,
 kapps.gbmembers.forms.member,en-US,Last Name,
 kapps.gbmembers.forms.member,en-US,Last Payment Date,
+kapps.gbmembers.forms.member,en-US,Last Payment Transaction Amount,
+kapps.gbmembers.forms.member,en-US,Last Payment Transaction ID,
 kapps.gbmembers.forms.member,en-US,Last Promotion,
 kapps.gbmembers.forms.member,en-US,Lead History,
 kapps.gbmembers.forms.member,en-US,Lead Source,
@@ -113,6 +115,7 @@ kapps.gbmembers.forms.member,en-US,Status History,
 kapps.gbmembers.forms.member,en-US,Student Covid Check,
 kapps.gbmembers.forms.member,en-US,Submit,
 kapps.gbmembers.forms.member,en-US,Suburb,City
+kapps.gbmembers.forms.member,en-US,TAX ID,
 kapps.gbmembers.forms.member,en-US,useSubAccount,
 kapps.gbmembers.forms.member,en-US,Waiver Complete Date,
 kapps.services.forms.kids-registration,en-US,Accept Gracie Barra Waiver,
@@ -210,6 +213,6 @@ kapps.services.forms.kids-registration,en-US,What are the three main benefits yo
 kapps.services.forms.kids-registration,en-US,What are the three main benefits you expect to get out of your Brazilian Jiu Jitsu training?,
 kapps.services.forms.kids-registration,en-US,Word of Mouth,
 kapps.services.forms.kids-registration,en-US,Yes,
-shared,en-US,Fortnightly,Bi-weekly
+shared,en-US,Fortnightly,Bi-Weekly
 shared,en-US,Postcode,Zip
 shared,en-US,Suburb,City
