@@ -11,6 +11,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Set to YES if you want to apply the Admin Fee to all POS",
+    "name": "Admin Fee Apply to POS"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Admin Charge used by US, initially set as 1.33%",
     "name": "Admin Fee Charge"
   },

@@ -63,6 +63,13 @@
       "unique": false
     },
     {
+      "name": "values[Admin Fee]",
+      "parts": [
+        "values[Admin Fee]"
+      ],
+      "unique": false
+    },
+    {
       "name": "values[Auth Code]",
       "parts": [
         "values[Auth Code]"
@@ -544,6 +551,31 @@
           "name": "Discount",
           "label": "Discount",
           "key": "f14",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Admin Fee",
+          "label": "Admin Fee",
+          "key": "f19",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
