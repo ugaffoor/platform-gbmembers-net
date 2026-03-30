@@ -228,7 +228,7 @@
           "key": "f6",
           "defaultValue": null,
           "defaultResourceName": null,
-          "visible": "space('attribute:Billing Company')===\"Bambora\"",
+          "visible": "space('attribute:Billing Company')===\"Bambora\" || space('attribute:Billing Company')===\"Stripe\"",
           "enabled": true,
           "required": false,
           "requiredMessage": null,
@@ -444,6 +444,10 @@
             {
               "label": "Fortnightly",
               "value": "Fortnightly"
+            },
+            {
+              "label": "4 Weekly",
+              "value": "4 Weekly"
             },
             {
               "label": "Monthly",

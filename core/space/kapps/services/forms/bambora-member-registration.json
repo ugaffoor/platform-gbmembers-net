@@ -668,6 +668,10 @@
                   "value": "Fortnightly"
                 },
                 {
+                  "label": "4 Weekly",
+                  "value": "4 Weekly"
+                },
+                {
                   "label": "Monthly",
                   "value": "Monthly"
                 },
@@ -2020,7 +2024,7 @@
           "name": "Set Payment Frequencies",
           "type": "Load",
           "action": "Custom",
-          "code": "options=[];\nvar freqValue=K('field[Payment Frequency]').value();\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n\toptions[options.length]={'label':value,'value':value};\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nif (form('review')) K('field[Payment Frequency]').disable();\ndebugger;\nif (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  K('field[Admin Fee]').hide();\n  K('field[Admin Fee]').value(\"\");\n} else {\n  if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\" && (K('field[Admin Fee]').value()===null || K('field[Admin Fee]').value().indexOf(\"%\")===-1)) {\n    $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n  }\n}",
+          "code": "options=[];\nvar freqValue=K('field[Payment Frequency]').value();\n\nconst sortOrder = ['Daily','Weekly','Fortnightly','4 Weekly','Monthly','Quarterly','4 Months','6 Months','Yearly'];\n\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n    options[options.length] = {'label': value, 'value': value};\n});\n\noptions.sort(function(a, b) {\n    return sortOrder.indexOf(a.value) - sortOrder.indexOf(b.value);\n});\n\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nif (form('review')) K('field[Payment Frequency]').disable();\ndebugger;\nif (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  K('field[Admin Fee]').hide();\n  K('field[Admin Fee]').value(\"\");\n} else {\n  if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\" && (K('field[Admin Fee]').value()===null || K('field[Admin Fee]').value().indexOf(\"%\")===-1)) {\n    $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n  }\n}",
           "runIf": ""
         },
         {
