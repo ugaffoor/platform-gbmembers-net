@@ -330,7 +330,18 @@
     }
   ],
   "securityPolicies": [
-
+    {
+      "endpoint": "Display",
+      "name": "Data Admins"
+    },
+    {
+      "endpoint": "Submission Access",
+      "name": "Data Admins"
+    },
+    {
+      "endpoint": "Submission Modification",
+      "name": "Data Admins"
+    }
   ],
   "slug": "member-price-increase",
   "status": "Active",

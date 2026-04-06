@@ -1,18 +1,147 @@
 {
-  "anonymous": false,
   "attributes": [
-
+    {
+      "name": "Datastore Hidden",
+      "values": [
+        "true"
+      ]
+    }
   ],
   "bridgedResources": [
 
   ],
-  "categorizations": [
-
-  ],
   "customHeadContent": null,
-  "description": "This form will capture the email campaign information for a School",
-  "name": "Email Campaigns",
-  "notes": "",
+  "description": "This form will capture a schools Price increase for one or more Membership Fees applied to their members.\nThe increase can be scheduled.\nThe increase can be cancelled if not already completed.",
+  "indexDefinitions": [
+    {
+      "name": "createdAt",
+      "parts": [
+        "createdAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "createdBy",
+      "parts": [
+        "createdBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "handle",
+      "parts": [
+        "handle"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedAt",
+      "parts": [
+        "submittedAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "submittedBy",
+      "parts": [
+        "submittedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedAt",
+      "parts": [
+        "updatedAt"
+      ],
+      "unique": false
+    },
+    {
+      "name": "updatedBy",
+      "parts": [
+        "updatedBy"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Billing Members]",
+      "parts": [
+        "values[Billing Members]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Email Template ID]",
+      "parts": [
+        "values[Email Template ID]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Email Template Name]",
+      "parts": [
+        "values[Email Template Name]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Excluded Members]",
+      "parts": [
+        "values[Excluded Members]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Fixed Amount]",
+      "parts": [
+        "values[Fixed Amount]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Increase Type]",
+      "parts": [
+        "values[Increase Type]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Membership Fees Selected]",
+      "parts": [
+        "values[Membership Fees Selected]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Name]:UNIQUE",
+      "parts": [
+        "values[Name]"
+      ],
+      "unique": true
+    },
+    {
+      "name": "values[Percentage]",
+      "parts": [
+        "values[Percentage]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Scheduled Date Time]",
+      "parts": [
+        "values[Scheduled Date Time]"
+      ],
+      "unique": false
+    },
+    {
+      "name": "values[Status]",
+      "parts": [
+        "values[Status]"
+      ],
+      "unique": false
+    }
+  ],
+  "name": "Membership Fee Price Increase",
+  "notes": null,
   "pages": [
     {
       "advanceCondition": null,
@@ -21,33 +150,8 @@
       "elements": [
         {
           "type": "field",
-          "name": "From",
-          "label": "From",
-          "key": "f2",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Recipients",
-          "label": "Recipients",
+          "name": "Status",
+          "label": "Status",
           "key": "f1",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -66,211 +170,40 @@
           "renderAttributes": {
           },
           "dataType": "string",
-          "renderType": "text",
-          "rows": 1
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "New",
+              "value": "New"
+            },
+            {
+              "label": "Scheduled",
+              "value": "Scheduled"
+            },
+            {
+              "label": "Deleted",
+              "value": "Deleted"
+            },
+            {
+              "label": "Cancelled",
+              "value": "Cancelled"
+            },
+            {
+              "label": "In Progress",
+              "value": "In Progress"
+            },
+            {
+              "label": "Completed",
+              "value": "Completed"
+            }
+          ]
         },
         {
           "type": "field",
-          "name": "Subject",
-          "label": "Subject",
-          "key": "f3",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Body",
-          "label": "Body",
-          "key": "f4",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Sent Date",
-          "label": "Sent Date",
-          "key": "f6",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Scheduled Time",
-          "label": "Scheduled Time",
-          "key": "f12",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "datetime"
-        },
-        {
-          "type": "field",
-          "name": "Event Source Date",
-          "label": "Event Source Date",
-          "key": "f11",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "date"
-        },
-        {
-          "type": "field",
-          "name": "Event Source ID",
-          "label": "Event Source ID",
-          "key": "f15",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Additional Values",
-          "label": null,
-          "key": "f16",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Attachments",
-          "label": "Attachments",
-          "key": "f7",
-          "defaultValue": null,
-          "defaultResourceName": null,
-          "visible": true,
-          "enabled": true,
-          "required": false,
-          "requiredMessage": null,
-          "omitWhenHidden": null,
-          "pattern": null,
-          "constraints": [
-
-          ],
-          "events": [
-
-          ],
-          "renderAttributes": {
-          },
-          "dataType": "string",
-          "renderType": "text",
-          "rows": 1
-        },
-        {
-          "type": "field",
-          "name": "Embedded Images",
-          "label": "Embedded Images",
+          "name": "Name",
+          "label": "Name",
           "key": "f8",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -294,9 +227,45 @@
         },
         {
           "type": "field",
-          "name": "Cancel Campaign",
-          "label": "Cancel Campaign",
-          "key": "f14",
+          "name": "Increase Type",
+          "label": "Increase Type",
+          "key": "f2",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "radio",
+          "choicesResourceName": null,
+          "choicesRunIf": null,
+          "choices": [
+            {
+              "label": "Fixed Amount",
+              "value": "Fixed Amount"
+            },
+            {
+              "label": "Percentage",
+              "value": "Percentage"
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Fixed Amount",
+          "label": "Fixed Amount",
+          "key": "f3",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -319,9 +288,9 @@
         },
         {
           "type": "field",
-          "name": "Emailed Count",
-          "label": "Emailed Count",
-          "key": "f13",
+          "name": "Percentage",
+          "label": "Percentage",
+          "key": "f4",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -344,8 +313,58 @@
         },
         {
           "type": "field",
-          "name": "Opened By Members",
-          "label": "Opened By Members",
+          "name": "Membership Fees Selected",
+          "label": "Membership Fees Selected",
+          "key": "f7",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Email Template Name",
+          "label": "Email Template Name",
+          "key": "f9",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Email Template ID",
+          "label": "Email Template ID",
           "key": "f10",
           "defaultValue": null,
           "defaultResourceName": null,
@@ -369,9 +388,58 @@
         },
         {
           "type": "field",
-          "name": "Clicked By Members",
-          "label": "Clicked By Members",
-          "key": "f9",
+          "name": "Scheduled Date Time",
+          "label": "Scheduled Date Time",
+          "key": "f5",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "datetime"
+        },
+        {
+          "type": "field",
+          "name": "Billing Members",
+          "label": "Billing Members",
+          "key": "f11",
+          "defaultValue": null,
+          "defaultResourceName": null,
+          "visible": true,
+          "enabled": true,
+          "required": false,
+          "requiredMessage": null,
+          "omitWhenHidden": null,
+          "pattern": null,
+          "constraints": [
+
+          ],
+          "events": [
+
+          ],
+          "renderAttributes": {
+          },
+          "dataType": "string",
+          "renderType": "text",
+          "rows": 1
+        },
+        {
+          "type": "field",
+          "name": "Excluded Members",
+          "label": "Excluded Members",
+          "key": "f6",
           "defaultValue": null,
           "defaultResourceName": null,
           "visible": true,
@@ -414,23 +482,18 @@
   "securityPolicies": [
     {
       "endpoint": "Display",
-      "name": "Program Managers"
-    },
-    {
-      "endpoint": "Modification",
-      "name": "Admins"
+      "name": "Data Admins"
     },
     {
       "endpoint": "Submission Access",
-      "name": "Program Managers"
+      "name": "Data Admins"
     },
     {
       "endpoint": "Submission Modification",
-      "name": "Program Managers"
+      "name": "Data Admins"
     }
   ],
-  "slug": "email-campaigns",
-  "status": "New",
-  "submissionLabelExpression": "${values('Subject')} : ${values('Recipients')}",
-  "type": "Content"
+  "slug": "membership-fee-price-increase",
+  "status": "Active",
+  "submissionLabelExpression": "${values('Name')} - ${values('Status')}"
 }
