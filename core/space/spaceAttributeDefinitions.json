@@ -56,6 +56,11 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Set to YES to allow the display of the Price Increase feature",
+    "name": "Allow Price Increase"
+  },
+  {
+    "allowsMultiple": false,
     "description": "The Queue kapp form which approvals should be created in (Overridden by Kapp and Form Attributes)",
     "name": "Approval Form Slug"
   },
@@ -86,8 +91,18 @@
   },
   {
     "allowsMultiple": false,
+    "description": "Date YYYY-MM-DD when the Bombora to Stripe migration is completed and the Bambora transactions get archived.",
+    "name": "Bambora Cutoff Date"
+  },
+  {
+    "allowsMultiple": false,
     "description": "Enter \"YES\" to allow the form to show an capture the Member Signature.",
     "name": "Bambora Freeze Show Signature"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Set as YES to enable the Bambora to Stripe Migration",
+    "name": "Bambora Stripe Migration"
   },
   {
     "allowsMultiple": false,
@@ -538,6 +553,16 @@
     "allowsMultiple": false,
     "description": "Name of google calendar that will be used for all Intro/Free class appointments.",
     "name": "Trial Calendar Name"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Trial Booking cost, required to complete a booking",
+    "name": "Trial Payment Amount"
+  },
+  {
+    "allowsMultiple": false,
+    "description": "Message display to Lead when capturing a payment for a Trial Booking.",
+    "name": "Trial Payment Message"
   },
   {
     "allowsMultiple": false,

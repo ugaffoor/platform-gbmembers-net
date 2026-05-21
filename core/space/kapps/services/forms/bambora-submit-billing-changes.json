@@ -119,7 +119,7 @@
       }
     }
   ],
-  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n<script src=\"https://code.jquery.com/ui/1.14.1/jquery-ui.js\"></script>\n<link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css\">\n<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.12.1/css/all.css\" crossorigin=\"anonymous\">\n\n<style>\n.review_true {\n\tdisplay: none;  \n}\n.discountEdit {\n\tmargin-left: 10px;\n  cursor: pointer;\n}\ninput.percent {\n    width: 80px;\n}  \n  \n#memberTableDiv:before {\n    content: \"*\";\n    color: red;\n    float: right;\n}  \n.editOptionText {\n    margin: 10px;\n    background-color: #eeeded;\n    border-radius: 5px;\n    padding: 4px;\n}  \n.editingOptions {\n  display: flex;\n }\n.editingOptions input {\n    visibility: hidden;\n}\n.editingOptions label {\n\t\twidth: 250px;  \n    background-color: gray;\n    padding: 5px;\n    border-radius: 5px;\n    color: white !important;\n    cursor: pointer;\n}\n.editingOptions input[type='radio']:checked + label {\n    background-color: #4d5059;\n}\n  \n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n/* buttons */\n.btn {\n    vertical-align: top;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n.editingOptions button {\n    background-color: #d7d1d1;\n    border-color: gray;\n}\n.editingOptions button:hover, .editingOptions button:active, .editingOptions button:focus {\n    background-color: gray !important;\n}  \n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n",
+  "customHeadContent": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>\n<script src=\"https://code.jquery.com/ui/1.14.1/jquery-ui.js\"></script>\n<link rel=\"stylesheet\" href=\"https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css\">\n<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.12.1/css/all.css\" crossorigin=\"anonymous\">\n\n<style>\n.review_true {\n\tdisplay: none;  \n}\n.discountEdit {\n\tmargin-left: 10px;\n  cursor: pointer;\n}\ninput.percent {\n    width: 80px;\n}  \n  \n#memberTableDiv:before {\n    content: \"*\";\n    color: red;\n    float: right;\n}  \n.editOptionText {\n    margin: 10px;\n    background-color: #eeeded;\n    border-radius: 5px;\n    padding: 4px;\n}  \n.editInactiveOptionText {\n    margin: 10px;\n    background-color: #c0e2c0;\n    border-radius: 5px;\n    padding: 4px;\n}  \n.editingOptions {\n  display: flex;\n }\n.editingOptions input {\n    visibility: hidden;\n}\n.editingOptions label {\n\t\twidth: 250px;  \n    background-color: gray;\n    padding: 5px;\n    border-radius: 5px;\n    color: white !important;\n    cursor: pointer;\n}\n.editingOptions input[type='radio']:checked + label {\n    background-color: #4d5059;\n}\n  \n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n/* buttons */\n.btn {\n    vertical-align: top;\n}\n</style>\n<style>\n\t.acceptTerms + label {\n    margin-left: 20px !important;\n\t}  \n  .hidden{\n   display:none; \n  }\nbody a {\n    color: #003b72;\n}  \nbutton.editButton {\n    border-radius: .25rem;\n    line-height: 1.0rem;\n    padding: .2rem 0.8rem;\n    margin-right: .5rem;\n    border: none;\n    color: #fff;\n    font-size: .75rem;\n    background-color: #0c384f;\n}\n.editingOptions button {\n    background-color: #d7d1d1;\n    border-color: gray;\n}\n.editingOptions button:hover, .editingOptions button:active, .editingOptions button:focus {\n    background-color: gray !important;\n}  \n</style>\n\n<style>\n  .hidden{\n   display:none; \n  }\n</style>\n\n<style>\n#checkout-form iframe {\n    height: 18px;\n}  \n.errorDetails {\n    background-color: red;\n    border-radius: 5px;\n    margin: 5px;\n}  \n.card-container {\n    background-color: rgb(240, 240, 240);\n    margin: auto;\n    width: calc(95%);\n\n    border: none;\n    border-radius: 4px;\n}\n.form-group {\n    flex: 0 0 auto;\n    flex-flow: column !important;\n}\n#checkout-form {\n    position: relative;\n    width: 400px;\n    padding: 10px;\n}\n\n#checkout-form label {\n    display: block;\n    min-height: 25px;\n\n    font-size: 15px;\n    font-weight: 500;\n    margin: 5px 0;\n    padding: 0;\n    color: red;\n}\n\n#card-number, #card-cvv, #card-expiry {\n    background-color: #FFF;\n    display: block;\n    width: calc(90%);\n    border-radius: 2px;\n    border: 1px solid rgba(200, 200, 200, 1);\n    padding: 14px 60px 13px 20px;\n    margin: auto;\n    transition: all 100ms ease-out;\n}\n\n/* card images are added to card number */\n#card-number {\n    background-image: none;\n\n    background-origin: content-box;\n    background-position: calc(100% + 40px) center;\n    background-repeat: no-repeat;\n    background-size: contain;\n}\n\n/* buttons */\n.btn {\n    vertical-align: top;\n}\n\n#pay-button {\n    position: relative;\n    border: none;\n    border-radius: 4px;\n    background-color: #0c384f;\n    color: rgba(255, 255, 255, 1);\n    display: inline-block;\n    transition: all 100ms ease-out;\n    padding: 11px 25px;\n    margin-left: 30px;\n}\n\n#pay-button:hover, #pay-button:active {\n    background-color: rgba(69, 36, 89, 1);\n}\n\n#pay-button:active {\n    box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);\n}\n\n#pay-button:disabled {\n    background-color: rgba(255, 255, 255, 1);\n    border: 1px solid #0c384f;\n    color: #0c384f;\n}\n\n/* feedback is displayed after tokenization */\n#feedback {\n    position: relative;\n    left: 15px;\n    display: inline-block;\n    background-color: transparent;\n    border: 0px solid rgba(200, 200, 200, 1);\n    border-radius: 4px;\n    transition: all 100ms ease-out;\n    padding: 11px;\n}\n\n#feedback.error {\n    color: red;\n    border: 1px solid;\n}\n\n#feedback.success {\n    color: seagreen;\n    border: 1px solid;\n}\n</style>\n<script>\n  \n  function getCardToken(){\nif (K('field[Credit Card Number]').value()===null || K('field[Credit Card Expiry Month]').value()===null || K('field[Credit Card Expiry Year]').value()===null ) {\n   return;\n}\n    debugger;\n    var tokenSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/getCardToken\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"creditCardNumber\": K('field[Credit Card Number]').value(),\n        \"creditCardExpiryMonth\": K('field[Credit Card Expiry Month]').value(),\n        \"creditCardExpiryYear\": K('field[Credit Card Expiry Year]').value().substring(2,4),\n        \"cvd\": K('field[CVV]').value(),\n      })\n    }\n\n    $.ajax(tokenSettings).done(function (response) {\n      debugger;\n      console.log(response);\n      if (response.error===100) {\n        var message=response.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=JSON.parse(response.data);\n        K('field[Credit Card Token]').value(data.token);\n        K('section[Card Error]').hide();\n      }\n    });\n    \n  }\n\nfunction completeRegisterUser(){\n  var settings = {\n    \"crossDomain\": true,\n    \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/registerUser\",\n    \"method\": \"POST\",\n    \"headers\": {},\n    \"dataType\": \"json\",\n    \"contentType\": \"application/json\",\n    \"data\": JSON.stringify({\n      \"customerId\": K('field[Billing Customer Id]').value(),\n      \"firstName\": K('field[Student First Name]').value(),\n      \"lastName\": K('field[Student Last Name]').value(),\n      \"dob\": K('field[DOB]').value(),\n      \"address\": K('field[Address]').value(),\n      \"suburb\": K('field[Suburb]').value(),\n      \"state\": K('field[State]').value(),\n      \"postCode\": K('field[Postcode]').value(),\n      \"email\": K('field[Email]').value(),\n      \"mobile\": K('field[Mobile]').value(),\n      \"payment\": K('field[Payment Total]').value(),\n      \"billingPeriod\": K('field[Billing Period]').value(),\n      \"contractStartDate\": K('field[Date Affective]').value(),\n      \"paymentMethod\": \"Credit Card\",\n      \"cardProfileID\": K('field[POS Profile ID]').value(),\n      \"space\": K('space').slug(),\n      \"billingService\": \"Bambora\",\n      \"gbmemberId\": K('submission').id()\n    })\n  }\n\n  $.ajax(settings).done(function (registerResponse) {\n    debugger;\n    console.log(registerResponse);\n    if (registerResponse.error===100) {\n      var message=registerResponse.errorMessage;\n      if (registerResponse.errorMessage===\"DECLINE\") {\n        message=\"Credit Card not valid (Declined)\";  \n      }\n      $(\"#errorValue\").html(message);\n      $(\"#errorValue\").show();\n      K('button[Submit]').enable();      \n    } else {\n      K('field[customerBillingId]').value(registerResponse.data.customerBillingId);\n      K('form').submitPage();  \t\n    }\n  });  \n}\n</script>\n",
   "description": "All billing changes that are not freezes or cancellations will be processed through this form.<br>\n<br>\n<ul>\n<li>\nManage billing details for existing members, whether they are for families or individuals.\n</li>\n<li>\nAdd or remove family members within an existing billing account.\n</li>\n<li>\nAdjust the tuition pricing for an entire family or a single student.\n</li>\n<li>\nAdjust the payment date or frequency.\n</li>\n</ul>",
   "name": "Bambora Submit Billing Changes",
   "notes": null,
@@ -303,6 +303,31 @@
             },
             {
               "type": "field",
+              "name": "Billing Status",
+              "label": "Billing Status",
+              "key": "f110",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": false,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
               "name": "Requested For",
               "label": "Requested For",
               "key": "f88",
@@ -368,7 +393,12 @@
 
               ],
               "events": [
-
+                {
+                  "name": "Get Billing Info",
+                  "type": "Change",
+                  "action": "Custom",
+                  "code": "var settings = {\n  \"crossDomain\": true,\n  \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/billingInfo\",\n  \"method\": \"POST\",\n  \"headers\": {},\n  \"dataType\": \"json\",\n  \"contentType\": \"application/json\",\n  \"data\": JSON.stringify({\n    \"space\": K('space').slug(),\n    \"billingService\": \"Bambora\",\n    \"customerId\": K('field[Billing Customer Reference]').value(),\n  })\n}\n$.ajax(settings).done(function (response) {\n  debugger;\n  console.log(response);\n  if (response.error===100) {\n    var data=response.data;\n    var message=data.status_message;\n    $(\"#errorValue\").html(message);\n  } else {\n    K('field[Billing Status]').value(response.data.statusCode);\n    \n    K('field[Billing Status]').hide();\n    K('section[Inactive Payment Options]').hide();\n\n    if (response.data.statusCode===\"Inactive\") {\n      K('field[Billing Status]').show();\n      $(\"#rescheduleDateOnlyLabel\").hide();\n      $(\"#rescheduleDateOnly\").prop(\"disabled\", true);\n\t\t\t$(\"#rescheduleWithDetailsLabel\").hide();      \n\t\t\t$(\"#rescheduleWithDetails\").prop(\"disabled\", true);  \n\t    K('section[Inactive Payment Options]').show();\n      \n      bundle.config.widgets.xdsoftDatepickerRemove({\n        element: K(\"form\").find(\"#dateaffective\")[0]\n      });          \n      debugger;\n      var tomorrow = new Date((new Date()).getTime() + 24 * 60 * 60 * 1000);\n      bundle.config.widgets.xdsoftDatepicker({\n        element: K(\"form\").find(\"#dateaffective\")[0],\n        timepicker: false,\n        displayDateFormat: \"MM/DD/YYYY\",\n        options: {\n          formatDate:\"d-m-Y\",\n          validateOnBlur:false\n        },\n        onSelectDate:function(ct,$i){\n          K('field[Date Affective]').value(ct.dateFormat('YYYY-MM-DD'));\n        },                \n        onGenerate: function( ct ){\n            $(\"#dateaffective input\").val(moment(K('field[Date Affective]').value(),\"YYYY-MM-DD\").format(\"MM/DD/YYYY\"));\n        }\n      });          \n    }    \n  }\n});\n"
+                }
               ],
               "renderAttributes": {
               },
@@ -830,7 +860,7 @@
               "type": "content",
               "renderType": "html",
               "name": "Editing Options",
-              "text": "<span class=\"editingOptions\">\n\t<input type=\"radio\" name=\"editingOptions\" id=\"editBillingDetails\" value=\"editBillingDetails\"/>\n  <label for=\"editBillingDetails\"> Edit Billing Details</label>\n\t<input type=\"radio\" name=\"editingOptions\" id=\"rescheduleDateOnly\" value=\"rescheduleDateOnly\"/>\n  <label for=\"rescheduleDateOnly\"> Reschedule Date Only</label>\n\t<input type=\"radio\" name=\"editingOptions\" id=\"rescheduleWithDetails\" value=\"rescheduleWithDetails\"/>\n  <label for=\"rescheduleWithDetails\"> Reschedule and Change Details</label>\n</span>",
+              "text": "<span class=\"editingOptions\">\n\t<input type=\"radio\" name=\"editingOptions\" id=\"editBillingDetails\" value=\"editBillingDetails\"/>\n  <label id=\"editBillingDetailsLabel\" for=\"editBillingDetails\"> Edit Billing Details</label>\n\t<input type=\"radio\" name=\"editingOptions\" id=\"rescheduleDateOnly\" value=\"rescheduleDateOnly\"/>\n  <label id=\"rescheduleDateOnlyLabel\" for=\"rescheduleDateOnly\"> Reschedule Date Only</label>\n\t<input type=\"radio\" name=\"editingOptions\" id=\"rescheduleWithDetails\" value=\"rescheduleWithDetails\"/>\n  <label id=\"rescheduleWithDetailsLabel\" for=\"rescheduleWithDetails\"> Reschedule and Change Details</label>\n</span>",
               "visible": true,
               "renderAttributes": {
               }
@@ -883,7 +913,16 @@
               "renderType": "html",
               "name": "EditBillingDetailsInfo",
               "text": "<div class=\"editOptionText\">\n\t<span>This option will maintain the current Billing cycle.</span>\n</div>",
-              "visible": "values('Editing Option')===\"EditBillingDetails\" ",
+              "visible": "values('Editing Option')===\"EditBillingDetails\" && values('Billing Status')===\"Active\"",
+              "renderAttributes": {
+              }
+            },
+            {
+              "type": "content",
+              "renderType": "html",
+              "name": "EditInactiveBillingDetailsInfo",
+              "text": "<div class=\"editInactiveOptionText\">\n\t<span>The current Billing account is Inactive. \n    <br>You need to select a new Billing Start date.\n    <br>You can also maintain or rebuild the Program Fees.\n    <br>Saving this form will create a new Recurring account.</span>\n</div>",
+              "visible": "values('Editing Option')===\"EditBillingDetails\" && values('Billing Status')===\"Inactive\"",
               "renderAttributes": {
               }
             },
@@ -1090,6 +1129,11 @@
                       "field": "tableMemberID",
                       "value": "${resources('Get Family Member:id')}",
                       "visible": true
+                    },
+                    {
+                      "field": "tableMemberBiller",
+                      "value": "${resources('Get Family Member:Billing User')}",
+                      "visible": true
                     }
                   ],
                   "bridgedResourceName": "Get Family Member"
@@ -1154,6 +1198,31 @@
               "name": "tableMemberName",
               "label": "tableMemberName",
               "key": "f49",
+              "defaultValue": null,
+              "defaultResourceName": null,
+              "visible": false,
+              "enabled": true,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": true,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "text",
+              "rows": 1
+            },
+            {
+              "type": "field",
+              "name": "tableMemberBiller",
+              "label": "tableMemberBiller",
+              "key": "f117",
               "defaultValue": null,
               "defaultResourceName": null,
               "visible": false,
@@ -1357,7 +1426,14 @@
                       "type": "Click",
                       "action": "Custom",
                       "code": "DataViewer.renderFieldValues($('#memberTableDiv'), global.viewerConfig);\nbundle.completeTableChange();\n",
-                      "runIf": "values('tableMemberName')!=null && values('tableProgram')!=null && values('tableFee')!=null && !bundle.memberProgramAdded(K('field[tableMemberID]').value(),K('field[tableFeeProgram]').value())"
+                      "runIf": "values('tableMemberBiller')!=\"YES\" && values('tableMemberName')!=null && values('tableProgram')!=null && values('tableFee')!=null && !bundle.memberProgramAdded(K('field[tableMemberID]').value(),K('field[tableFeeProgram]').value())"
+                    },
+                    {
+                      "name": "No Biller Allowed",
+                      "type": "Click",
+                      "action": "Custom",
+                      "code": "alert(\"You can not add an existing Biller Member, please first Cancel the member to avoid billing charges.\");",
+                      "runIf": "values('tableMemberBiller')===\"YES\" "
                     }
                   ]
                 },
@@ -1785,11 +1861,11 @@
                       "key": "f106",
                       "defaultValue": null,
                       "defaultResourceName": null,
-                      "visible": true,
-                      "enabled": "!form('review')",
-                      "required": "values('Editing Option')===\"EditBillingDetails\" && values('Update Bambora')==\"Update Bambora\"",
+                      "visible": "values('Billing Status')===\"Active\"",
+                      "enabled": "!form('review') && values('Billing Status')===\"Active\"",
+                      "required": "values('Billing Status')===\"Active\" && values('Editing Option')===\"EditBillingDetails\" && values('Update Bambora')==\"Update Bambora\"",
                       "requiredMessage": null,
-                      "omitWhenHidden": null,
+                      "omitWhenHidden": false,
                       "pattern": null,
                       "constraints": [
 
@@ -1901,6 +1977,300 @@
         {
           "type": "section",
           "renderType": null,
+          "name": "Inactive Payment Options",
+          "title": null,
+          "visible": false,
+          "omitWhenHidden": false,
+          "renderAttributes": {
+          },
+          "elements": [
+            {
+              "type": "field",
+              "name": "Payment Options",
+              "label": "Payment Options",
+              "key": "f111",
+              "defaultValue": "Use existing payment details",
+              "defaultResourceName": null,
+              "visible": true,
+              "enabled": false,
+              "required": false,
+              "requiredMessage": null,
+              "omitWhenHidden": null,
+              "pattern": null,
+              "constraints": [
+
+              ],
+              "events": [
+
+              ],
+              "renderAttributes": {
+              },
+              "dataType": "string",
+              "renderType": "radio",
+              "choicesResourceName": null,
+              "choicesRunIf": null,
+              "choices": [
+                {
+                  "label": "Use existing payment details",
+                  "value": "Use existing payment details"
+                },
+                {
+                  "label": "Set new payment details",
+                  "value": "Set new payment details"
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "renderType": null,
+              "name": "Credit Card Details",
+              "title": "Credit Card Details",
+              "visible": "values('Payment Options')===\"Set new payment details\"",
+              "omitWhenHidden": false,
+              "renderAttributes": {
+              },
+              "elements": [
+                {
+                  "type": "field",
+                  "name": "Credit Card Number",
+                  "label": "Credit Card Number",
+                  "key": "f112",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('Payment Options')===\"Set new payment details\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "GetToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken()"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                },
+                {
+                  "type": "field",
+                  "name": "CVV",
+                  "label": "CVV",
+                  "key": "f113",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('Payment Options')===\"Set new payment details\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Expiry Month",
+                  "label": "Credit Card Expiry Month",
+                  "key": "f114",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('Payment Options')===\"Set new payment details\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "getToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken();"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "01",
+                      "value": "01"
+                    },
+                    {
+                      "label": "02",
+                      "value": "02"
+                    },
+                    {
+                      "label": "03",
+                      "value": "03"
+                    },
+                    {
+                      "label": "04",
+                      "value": "04"
+                    },
+                    {
+                      "label": "05",
+                      "value": "05"
+                    },
+                    {
+                      "label": "06",
+                      "value": "06"
+                    },
+                    {
+                      "label": "07",
+                      "value": "07"
+                    },
+                    {
+                      "label": "08",
+                      "value": "08"
+                    },
+                    {
+                      "label": "09",
+                      "value": "09"
+                    },
+                    {
+                      "label": "10",
+                      "value": "10"
+                    },
+                    {
+                      "label": "11",
+                      "value": "11"
+                    },
+                    {
+                      "label": "12",
+                      "value": "12"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Expiry Year",
+                  "label": "Credit Card Expiry Year",
+                  "key": "f115",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": true,
+                  "required": "values('Payment Options')===\"Set new payment details\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+                    {
+                      "name": "getToken",
+                      "type": "Change",
+                      "action": "Custom",
+                      "code": "getCardToken();"
+                    }
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "dropdown",
+                  "choicesResourceName": null,
+                  "choicesRunIf": null,
+                  "choices": [
+                    {
+                      "label": "2026",
+                      "value": "2026"
+                    },
+                    {
+                      "label": "2027",
+                      "value": "2027"
+                    },
+                    {
+                      "label": "2028",
+                      "value": "2028"
+                    },
+                    {
+                      "label": "2029",
+                      "value": "2029"
+                    },
+                    {
+                      "label": "2030",
+                      "value": "2030"
+                    },
+                    {
+                      "label": "2031",
+                      "value": "2031"
+                    },
+                    {
+                      "label": "2032",
+                      "value": "2032"
+                    },
+                    {
+                      "label": "2033",
+                      "value": "2033"
+                    },
+                    {
+                      "label": "2034",
+                      "value": "2034"
+                    },
+                    {
+                      "label": "2035",
+                      "value": "2035"
+                    }
+                  ]
+                },
+                {
+                  "type": "field",
+                  "name": "Credit Card Token",
+                  "label": "Credit Card Token",
+                  "key": "f116",
+                  "defaultValue": null,
+                  "defaultResourceName": null,
+                  "visible": true,
+                  "enabled": false,
+                  "required": "values('Payment Options')===\"Set new payment details\"",
+                  "requiredMessage": null,
+                  "omitWhenHidden": null,
+                  "pattern": null,
+                  "constraints": [
+
+                  ],
+                  "events": [
+
+                  ],
+                  "renderAttributes": {
+                  },
+                  "dataType": "string",
+                  "renderType": "text",
+                  "rows": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "renderType": null,
           "name": "Card Error",
           "title": null,
           "visible": true,
@@ -1990,7 +2360,14 @@
               "type": "Click",
               "action": "Custom",
               "code": "debugger;\nif (Object.keys(K('form').validate()).length===0) {\n  K('form').submitPage();\n}",
-              "runIf": "bundle.isEditBillingDetails()"
+              "runIf": "bundle.isEditBillingDetails() && values('Billing Status')===\"Active\""
+            },
+            {
+              "name": "Submit Inactive Details",
+              "type": "Click",
+              "action": "Custom",
+              "code": "debugger;\nif (Object.keys(K('form').validate()).length>0) {\n  K('form').submitPage();\n} else {\n  K('button[Submit]').disable();\n  if (K('field[Payment Options]').value()===\"Set new payment details\") {  \n    var creditCardSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/createProfileCard\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"token\": K('field[Credit Card Token]').value(),\n        \"name\": K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value(),\n        \"address\": K('field[Address]').value(),\n        \"city\": K('field[Suburb]').value(),\n        \"province\": K('field[State]').value(),\n        \"country\": K('space').attributes('School Country Code'),\n        \"postalCode\": K('field[Postcode]').value(),\n        \"email\": K('field[Email]').value(),\n      })\n    }\n\n    $.ajax(creditCardSettings).done(function (response) {\n      debugger;\n      console.log(response);\n      if (response.error===100) {\n        var data=JSON.parse(response.data);\n        var message=data.status_message;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=JSON.parse(response.data);\n        K('section[Card Error]').hide();\n        K('field[POS Profile ID]').value(data.profileId);\n\n        completeRegisterUser();\n      }\n    });\n  } else if (K('field[Payment Options]').value()===\"Use existing payment details\") {\n    completeRegisterUser();\n  }\n}",
+              "runIf": "bundle.isEditBillingDetails() && values('Billing Status')===\"Inactive\""
             }
           ]
         }
@@ -2020,14 +2397,14 @@
           "name": "Set Payment Frequencies",
           "type": "Load",
           "action": "Custom",
-          "code": "\nbundle.editFeeMode=false;\nbundle.tax1Value;\nbundle.tax2Value;\nbundle.tax3Value;\n\nbundle.discounts;\nbundle.removedMembers;  \nbundle.getInt = function(val){\n    //So as not to breakup a potential fraction\n    let v = parseFloat(val);\n    //If we only have the whole:\n    if(v % 1 === 0){\n      return v;  \n    //If the numberis a fraction  \n    }else{\n      let n = v.toString().split('.').join('');\n      return parseInt(n);\n    }\n  }  \nbundle.editDiscount = function(id){\n    $(\"#discountDialog\").attr(\"rowID\", id);\n    let dataRow=global.viewerConfig.response.find(row => row.id===id);\n    $(\"#discountDialog .discountPercent\").val(dataRow.discount);\n    $(\"#discountDialog\").dialog(\"open\");\n  }\nbundle.applyCurrentDiscount = function(){\n    debugger;\n    let id=$(\"#discountDialog\").attr(\"rowID\");\n    let dataRow=global.viewerConfig.response.find(row => row.id===id);\n    dataRow.discount=$(\"#discountDialog .discountPercent\").val();\n    dataRow.edited=true;\n    $(\"#discountDialog\").dialog(\"close\");\n    bundle.completeTableChange();\n  }\n  \nbundle.completeTableChange = function(){\n  if (K(\"form\").reviewMode()) return;\n \n  K('field[Family Member]').value(\"\");\n\t$(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(\"Select...\");  \t\t\t\t\n  K('field[Programs]').value(\"\");\n  K('field[tableMemberID]').value(\"\");\n  K('field[tableMemberName]').value(\"\");\n  K('field[tableProgram]').value(\"\");\n  K('field[tableFee]').value(\"\");\n  var useDiscounts=K('field[Apply Discounts]').value();\n  // Sort table\n  viewerConfig.response.sort(function(a, b){return b.cost - a.cost});\n  // Let calculate the discounts\n  viewerConfig.response.forEach(function(item, index){\n    if (item.edited) {\n        item.fee=((new Number(item.cost)) - ((new Number(item.cost))*(new Number(item.discount.replace(\"%\",\"\")))/100)).toFixed(2);\n    } else {\n      if (useDiscounts===\"Yes\" && index<=bundle.discounts.length-1){\n        item.discount=bundle.discounts[index].discount;\n        item.fee=((new Number(item.cost))*bundle.discounts[index].cost).toFixed(2);\n      } else if (useDiscounts===\"Yes\" && index>bundle.discounts.length-1 && bundle.discounts.length>0){\n        item.discount=bundle.discounts[bundle.discounts.length-1].discount;\n        item.fee=((new Number(item.cost))*bundle.discounts[bundle.discounts.length-1].cost).toFixed(2);\n      } else {\n        item.discount=\"0%\";\n        item.fee=((new Number(item.cost))).toFixed(2);\n      }\n    }\n  });\n  debugger;\n  if (bundle.editFeeMode) {\n    // Set payment value\n    var feeTotal=0;\n    var subTotal=0;\n    var total=0;\n    viewerConfig.response.forEach(function(item, index){\n      feeTotal=feeTotal+(new Number((new Number(item.fee)).toFixed(2)));\n    });\n    if (feeTotal===0) {\n      K('field[Fee Total]').value(\"0\");\n      K('field[TAX 1]').value(\"\");\n      K('field[TAX 2]').value(\"\");\n      K('field[TAX 3]').value(\"\");\n      K('field[Payment Total]').value(\"0\");\n    } else {  \n      if (K('space').attributes('Ignore Admin Fee')===null || K('space').attributes('Ignore Admin Fee')!==\"YES\") {  \n        var adminFee=K('space').attributes('Admin Fee Charge').replace(\"%\",\"\");\n\n        if (adminFee!==\"\" && adminFee!==0) {\n          var value=(Number(feeTotal)*(Number(adminFee)/100));\n          value=new Number(value.toFixed(2));\n          K('field[Admin Fee]').value(value);\n          subTotal=subTotal+value;\n        }\n      }\n      // Add taxes if configured\n      if (bundle.tax1Value!==undefined && bundle.tax1Value!==null && bundle.tax1Value!==\"\"){\n        var value=feeTotal*(new Number(bundle.tax1Value));\n        value=new Number(value.toFixed(2));\n        K('field[TAX 1]').value(value);\n        subTotal=subTotal+value;\n      }\n      if (bundle.tax2Value!==undefined && bundle.tax2Value!==null && bundle.tax2Value!==\"\"){\n        var value=feeTotal*(new Number(bundle.tax2Value));\n        value=new Number(value.toFixed(2));\n        K('field[TAX 2]').value(value);\n        subTotal=subTotal+value;\n      }\n      if (bundle.tax3Value!==undefined && bundle.tax3Value!==null && bundle.tax3Value!==\"\"){\n        var value=feeTotal*(new Number(bundle.tax3Value));\n        value=new Number(value.toFixed(2));\n        K('field[TAX 3]').value(value);\n        subTotal=subTotal+value;\n      }\n      total=feeTotal+subTotal;\n      K('field[Payment Total]').value(total!==0 ? total.toFixed(2) : \"\");\n      K('field[Fee Total]').value(feeTotal.toFixed(2));   \n    }\n  }\n  global.viewerConfig.renderer.type($('#memberTableDiv'),global.viewerConfig);\n\n  $('#member-table tbody tr').on( 'click', function () {\n    if ( $(this).hasClass('selected') ) {\n      $(this).removeClass('selected');\n    }\n    else {\n      $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n      $(this).addClass('selected');\n    }\n  } );  \n  if (viewerConfig.response.length===0) {\n    K('field[ProgramTableContent]').value(\"EMPTY\");\n  }\n} \n  \nbundle.memberProgramAdded = function(memberID, feeProgram) {\n  debugger;\n  found=false;\n\tif (memberID===null) return true;\n  viewerConfig.response.forEach(function(item){\n      if (item.id===memberID && item.feeProgram===feeProgram) {\n        found=true;\n      }\n  });  \n  return found;\n}\nbundle.disableEdits = function(){\n  K('field[Include Family Members]').disable();  \n  K('field[Apply Discounts]').hide();  \n  K('field[Payment Frequency]').disable();  \n  K('field[Programs]').hide();  \n  K('section[Add buttons]').hide();\n  debugger;\n  K('field[TAX 1]').hide();\n  K('field[TAX 2]').hide();\n  K('field[TAX 3]').hide();\n  K('field[Admin Fee]').hide();\n\n  K('field[Fee Total]').hide();\n  K('field[Fee Total]').hide();\n  bundle.editFeeMode=false;\n  \n  K('section[New Schedule Date]').hide();\n  $(\"#rescheduleDateOnly\").prop(\"checked\", false);\n  $(\"#editBillingDetails\").prop(\"checked\", false);\n  $(\"#rescheduleWithDetails\").prop(\"checked\", false);\n  K('field[Editing Option]').value(\"\");\n  \n  $(\".discountEdit\").removeClass(\"fa\");\n  $(\".discountEdit\").removeClass(\"fa-pen\");\n}\n  \nbundle.enableRescheduleWithDetails = function(){\n  K('field[Payment Frequency]').value(K('field[Billing Period]').value());\n  \n  if (!K(\"form\").reviewMode()) {\n\t  K('field[Include Family Members]').enable();  \n    K('field[Payment Frequency]').enable();  \n  }\n  K('field[Programs]').show();  \n  K('section[Add buttons]').show();\n  debugger;\n  let tax1Label=K('space').attributes('TAX 1 Label'); \n  bundle.tax1Value=K('space').attributes('TAX 1 Value');     \n  if (tax1Label!==undefined && tax1Label!==null && tax1Label!==\"\") {\n    $(K('field[TAX 1]').wrapper()).find(\"label\").html(tax1Label);\n    K('field[TAX 1]').show();\n  }\n\n  let tax2Label=K('space').attributes('TAX 2 Label'); \n  bundle.tax2Value=K('space').attributes('TAX 2 Value');                \n  if (tax2Label!==undefined && tax2Label!==null && tax2Label!==\"\") {\n    $(K('field[TAX 2]').wrapper()).find(\"label\").html(tax2Label);\n    K('field[TAX 2]').show();\n  }\n\n  let tax3Label=K('space').attributes('TAX 3 Label'); \n  bundle.tax3Value=K('space').attributes('TAX 3 Value');                \n  if (tax3Label!==undefined && tax3Label!==null && tax3Label!==\"\") {\n    $(K('field[TAX 3]').wrapper()).find(\"label\").html(tax3Label);\n    K('field[TAX 3]').show();\n  }\n\n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n    K('field[Admin Fee]').hide();\n  } else {\n    K('field[Admin Fee]').show();\n  }\n    \n  if (K(\"form\").reviewMode()) {\n    if (K('field[Fee Total]').value()===null || K('field[Fee Total]').value()===\"\"){\n    \tK('field[Fee Total]').hide();\n  \t} else {\n      K('field[Fee Total]').show();\n    }\n  } else {\n\t\tK('field[Fee Total]').show();\n\t  K('field[Fee Total]').enable();\n  }\n  K('field[Payment Total]').disable();\n  \n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  } else {\n    if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\"/* && (K('field[Admin Fee]').value()===null || K('field[Admin Fee]').value().indexOf(\"%\")===-1)*/) {\n      $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n    }\n  }\n  $(\".discountEdit\").addClass(\"fa\");\n  $(\".discountEdit\").addClass(\"fa-pen\");\n  bundle.editFeeMode=true;  \n  bundle.completeTableChange();  \n}  \nbundle.disableRescheduleWithDetails = function(){\n  K('field[Include Family Members]').disable();  \n  K('field[Apply Discounts]').hide();  \n  K('field[Payment Frequency]').disable();  \n  K('field[Programs]').hide();  \n  K('section[Add buttons]').hide();\n  debugger;\n  K('field[TAX 1]').hide();\n  K('field[TAX 2]').hide();\n  K('field[TAX 3]').hide();\n  K('field[Admin Fee]').hide();\n\n  K('field[Fee Total]').hide();\n  K('field[Fee Total]').hide();\n  bundle.editFeeMode=false;\n  $(\".discountEdit\").removeClass(\"fa\");\n  $(\".discountEdit\").removeClass(\"fa-pen\");\n}\nbundle.disableEditBillingDetails = function(){\n  K('field[Include Family Members]').disable();  \n  K('field[Apply Discounts]').hide();  \n  K('field[Payment Frequency]').disable();  \n  K('field[Programs]').hide();  \n  K('section[Add buttons]').hide();\n  debugger;\n  K('field[TAX 1]').hide();\n  K('field[TAX 2]').hide();\n  K('field[TAX 3]').hide();\n  K('field[Admin Fee]').hide();\n\n  K('field[Fee Total]').hide();\n  K('field[Fee Total]').hide();\n  bundle.editFeeMode=false;\n  $(\".discountEdit\").removeClass(\"fa\");\n  $(\".discountEdit\").removeClass(\"fa-pen\");\n}\nbundle.enableEditBillingDetails = function(){\n  K('field[Payment Frequency]').value(K('field[Billing Period]').value());\n  if (!K(\"form\").reviewMode()) {\n\t  K('field[Include Family Members]').enable();  \n  }\n  K('field[Programs]').show();  \n  K('section[Add buttons]').show();\n  debugger;\n  let tax1Label=K('space').attributes('TAX 1 Label'); \n  bundle.tax1Value=K('space').attributes('TAX 1 Value');     \n  if (tax1Label!==undefined && tax1Label!==null && tax1Label!==\"\") {\n    $(K('field[TAX 1]').wrapper()).find(\"label\").html(tax1Label);\n    K('field[TAX 1]').show();\n  }\n\n  let tax2Label=K('space').attributes('TAX 2 Label'); \n  bundle.tax2Value=K('space').attributes('TAX 2 Value');                \n  if (tax2Label!==undefined && tax2Label!==null && tax2Label!==\"\") {\n    $(K('field[TAX 2]').wrapper()).find(\"label\").html(tax2Label);\n    K('field[TAX 2]').show();\n  }\n\n  let tax3Label=K('space').attributes('TAX 3 Label'); \n  bundle.tax3Value=K('space').attributes('TAX 3 Value');                \n  if (tax3Label!==undefined && tax3Label!==null && tax3Label!==\"\") {\n    $(K('field[TAX 3]').wrapper()).find(\"label\").html(tax3Label);\n    K('field[TAX 3]').show();\n  }\n\n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n    K('field[Admin Fee]').hide();\n  } else {\n    K('field[Admin Fee]').show();\n  }\n    \n  if (K(\"form\").reviewMode()) {\n    if (K('field[Fee Total]').value()===null || K('field[Fee Total]').value()===\"\"){\n    \tK('field[Fee Total]').hide();\n  \t} else {\n      K('field[Fee Total]').show();\n    }\n  } else {\n\t\tK('field[Fee Total]').show();\n\t  if (!K(\"form\").reviewMode()) {\n\t\t  K('field[Fee Total]').enable();\n    }\n  }\n  K('field[Payment Total]').disable();\n  \n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  } else {\n    if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\"/* && (K('field[Admin Fee]').value()===null || K('field[Admin Fee]').value().indexOf(\"%\")===-1)*/) {\n      $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n    }\n  }\n  \n  bundle.editFeeMode=true;  \n  $(\".discountEdit\").addClass(\"fa\");\n  $(\".discountEdit\").addClass(\"fa-pen\");\n  bundle.completeTableChange();  \n}    \nbundle.rescheduleDateOnly = function(){\n  debugger;\n  K('field[Payment Frequency]').value(K('field[Billing Period]').value());\n  K('field[Editing Option]').value(\"RescheduleDateOnly\");\n  bundle.disableRescheduleWithDetails();\n  bundle.disableEditBillingDetails();\n}\nbundle.rescheduleWithDetails = function(){\n  K('field[Editing Option]').value(\"RescheduleWithDetails\");\n  bundle.disableEditBillingDetails();\n  bundle.enableRescheduleWithDetails();  \n}\nbundle.editBillingDetails = function(){\n  K('field[Editing Option]').value(\"EditBillingDetails\");\n  bundle.disableRescheduleWithDetails();\n  bundle.enableEditBillingDetails();\n}\nbundle.isRescheduleChange = function() {\n  return (K('field[Editing Option]').value()===\"RescheduleDateOnly\" || K('field[Editing Option]').value()===\"RescheduleWithDetails\");\n}\nbundle.isEditBillingDetails = function() {\n  return (K('field[Editing Option]').value()===\"EditBillingDetails\");\n}\nbundle.isBamboraFailedPayment = function(payment) {\n  return (\n    (payment.paymentStatus === 'Transaction Declined' ||\n      payment.paymentStatus === 'DECLINED' ||\n      payment.paymentStatus === 'PIN RETRY EXCEEDED' ||\n      payment.paymentStatus === 'SERV NOT ALLOWED' ||\n      payment.paymentStatus === 'INV ACCT NUM' ||\n      payment.paymentStatus === 'Invalid Card Number' ||\n      payment.paymentStatus === 'Validation greater than maximum amount' ||\n      payment.paymentStatus === 'BAD PROCESSING CODE' ||\n      payment.paymentStatus === 'EXPIRED CARD') &&\n    payment.paymentSource !== 'Manual Membership Payment'\n  );\n}\nbundle.autoCreateCard = function(){\n    debugger;\n    var paymentsSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/payments\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"customerId\": K('field[Billing Customer Id]').value(),\n        \"paymentType\": \"ALL\",\n        \"paymentMethod\": \"ALL\",\n        \"paymentSource\": \"ALL\",\n        \"dateField\": \"PAYMENT\",\n        \"dateFrom\": moment().subtract(6, 'months').format('YYYY-MM-DD'),\n        \"dateTo\": moment().format('YYYY-MM-DD'),\n        \"internalPaymentType\": 'customer',\n      })\n    }\n\n    $.ajax(paymentsSettings).done(function (paymentsResponse) {\n      debugger;\n      console.log(paymentsResponse);\n      if (paymentsResponse.error===100) {\n        var message=paymentsResponse.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=paymentsResponse.data;\n        data=data.filter(payment => !bundle.isBamboraFailedPayment(payment));\n        data.sort(function(p1, p2) {\n        \tif (p1.debitDate > p2.debitDate) return -1; \t \n        \tif (p1.debitDate < p2.debitDate) return 1; \t \n          return 0;\n        });\n        if (data.length===0) {\n\t\t      K('field[AutoCreating]').value(\"NoTransactions\");      \t\t          \n        } else {\n          var creditCardSettings = {\n            \"crossDomain\": true,\n            \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/createProfileCard\",\n            \"method\": \"POST\",\n            \"headers\": {},\n            \"dataType\": \"json\",\n            \"contentType\": \"application/json\",\n            \"data\": JSON.stringify({\n              \"space\": K('space').slug(),\n              \"billingService\": \"Bambora\",\n              \"transactionID\": data[0].paymentID,\n              \"name\": K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value(),\n              \"address\": K('field[Address]').value(),\n              \"city\": K('field[Suburb]').value(),\n              \"province\": K('field[State]').value(),\n              \"country\": K('space').attributes('School Country Code'),\n              \"postalCode\": K('field[Postcode]').value(),\n              \"email\": K('field[Email]').value(),\n            })\n        \t}\n          $.ajax(creditCardSettings).done(function (response) {\n            debugger;\n            console.log(response);\n            if (response.error===100) {\n              var data=JSON.parse(response.data);\n              var message=data.status_message;\n              $(\"#errorValue\").html(message);\n              K('section[Card Error]').show();\n            } else {\n              var data=JSON.parse(response.data);\n\t\t\t\t      K('field[POS Profile ID]').value(data.profileId);\n\t\t\t        K('section[Card Error]').hide();\n            }\n          });\n        }\n        K('section[Card Error]').hide();\n      }\n    });    \n}    \n\n\nbundle.discounts=(K('space').attributes('Member Discounts')!==undefined ? JSON.parse(K('space').attributes('Member Discounts')) : []);  \n\n\noptions=[];\nvar freqValue=K('field[Payment Frequency]').value();\nconst sortOrder = ['Daily','Weekly','Fortnightly','4 Weekly','Monthly','Quarterly','4 Months','6 Months','Yearly'];\n\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n    options[options.length] = {'label': value, 'value': value};\n});\n\noptions.sort(function(a, b) {\n    return sortOrder.indexOf(a.value) - sortOrder.indexOf(b.value);\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nK('field[Payment Frequency]').disable();",
+          "code": "\nbundle.editFeeMode=false;\nbundle.tax1Value;\nbundle.tax2Value;\nbundle.tax3Value;\n\nbundle.discounts;\nbundle.removedMembers;  \nbundle.getInt = function(val){\n    //So as not to breakup a potential fraction\n    let v = parseFloat(val);\n    //If we only have the whole:\n    if(v % 1 === 0){\n      return v;  \n    //If the numberis a fraction  \n    }else{\n      let n = v.toString().split('.').join('');\n      return parseInt(n);\n    }\n  }  \nbundle.editDiscount = function(id){\n    $(\"#discountDialog\").attr(\"rowID\", id);\n    let dataRow=global.viewerConfig.response.find(row => row.id===id);\n    $(\"#discountDialog .discountPercent\").val(dataRow.discount);\n    $(\"#discountDialog\").dialog(\"open\");\n  }\nbundle.applyCurrentDiscount = function(){\n    debugger;\n    let id=$(\"#discountDialog\").attr(\"rowID\");\n    let dataRow=global.viewerConfig.response.find(row => row.id===id);\n    dataRow.discount=$(\"#discountDialog .discountPercent\").val();\n    dataRow.edited=true;\n    $(\"#discountDialog\").dialog(\"close\");\n    bundle.completeTableChange();\n  }\n  \nbundle.completeTableChange = function(){\n  if (K(\"form\").reviewMode()) return;\n \n  K('field[Family Member]').value(\"\");\n\t$(K(\"form\").find(\"#selectFamilyMemberMenu [class$='placeholder']\")).html(\"Select...\");  \t\t\t\t\n  K('field[Programs]').value(\"\");\n  K('field[tableMemberID]').value(\"\");\n  K('field[tableMemberName]').value(\"\");\n  K('field[tableProgram]').value(\"\");\n  K('field[tableFee]').value(\"\");\n  var useDiscounts=K('field[Apply Discounts]').value();\n  // Sort table\n  viewerConfig.response.sort(function(a, b){return b.cost - a.cost});\n  // Let calculate the discounts\n  viewerConfig.response.forEach(function(item, index){\n    if (item.edited) {\n        item.fee=((new Number(item.cost)) - ((new Number(item.cost))*(new Number(item.discount.replace(\"%\",\"\")))/100)).toFixed(2);\n    } else {\n      if (useDiscounts===\"Yes\" && index<=bundle.discounts.length-1){\n        item.discount=bundle.discounts[index].discount;\n        item.fee=((new Number(item.cost))*bundle.discounts[index].cost).toFixed(2);\n      } else if (useDiscounts===\"Yes\" && index>bundle.discounts.length-1 && bundle.discounts.length>0){\n        item.discount=bundle.discounts[bundle.discounts.length-1].discount;\n        item.fee=((new Number(item.cost))*bundle.discounts[bundle.discounts.length-1].cost).toFixed(2);\n      } else {\n        item.discount=\"0%\";\n        item.fee=((new Number(item.cost))).toFixed(2);\n      }\n    }\n  });\n  debugger;\n  if (bundle.editFeeMode) {\n    // Set payment value\n    var feeTotal=0;\n    var subTotal=0;\n    var total=0;\n    viewerConfig.response.forEach(function(item, index){\n      feeTotal=feeTotal+(new Number((new Number(item.fee)).toFixed(2)));\n    });\n    if (feeTotal===0) {\n      K('field[Fee Total]').value(\"0\");\n      K('field[TAX 1]').value(\"\");\n      K('field[TAX 2]').value(\"\");\n      K('field[TAX 3]').value(\"\");\n      K('field[Payment Total]').value(\"0\");\n    } else {  \n      if (K('space').attributes('Ignore Admin Fee')===null || K('space').attributes('Ignore Admin Fee')!==\"YES\") {  \n        var adminFee=K('space').attributes('Admin Fee Charge').replace(\"%\",\"\");\n\n        if (adminFee!==\"\" && adminFee!==0) {\n          var value=(Number(feeTotal)*(Number(adminFee)/100));\n          value=new Number(value.toFixed(2));\n          K('field[Admin Fee]').value(value);\n          subTotal=subTotal+value;\n        }\n      }\n      // Add taxes if configured\n      if (bundle.tax1Value!==undefined && bundle.tax1Value!==null && bundle.tax1Value!==\"\"){\n        var value=feeTotal*(new Number(bundle.tax1Value));\n        value=new Number(value.toFixed(2));\n        K('field[TAX 1]').value(value);\n        subTotal=subTotal+value;\n      }\n      if (bundle.tax2Value!==undefined && bundle.tax2Value!==null && bundle.tax2Value!==\"\"){\n        var value=feeTotal*(new Number(bundle.tax2Value));\n        value=new Number(value.toFixed(2));\n        K('field[TAX 2]').value(value);\n        subTotal=subTotal+value;\n      }\n      if (bundle.tax3Value!==undefined && bundle.tax3Value!==null && bundle.tax3Value!==\"\"){\n        var value=feeTotal*(new Number(bundle.tax3Value));\n        value=new Number(value.toFixed(2));\n        K('field[TAX 3]').value(value);\n        subTotal=subTotal+value;\n      }\n      total=feeTotal+subTotal;\n      K('field[Payment Total]').value(total!==0 ? total.toFixed(2) : \"\");\n      K('field[Fee Total]').value(feeTotal.toFixed(2));   \n    }\n  }\n  global.viewerConfig.renderer.type($('#memberTableDiv'),global.viewerConfig);\n\n  $('#member-table tbody tr').on( 'click', function () {\n    if ( $(this).hasClass('selected') ) {\n      $(this).removeClass('selected');\n    }\n    else {\n      $('#member-table').DataTable().$('tr.selected').removeClass('selected');\n      $(this).addClass('selected');\n    }\n  } );  \n  if (viewerConfig.response.length===0) {\n    K('field[ProgramTableContent]').value(\"EMPTY\");\n  }\n} \n  \nbundle.memberProgramAdded = function(memberID, feeProgram) {\n  debugger;\n  found=false;\n\tif (memberID===null) return true;\n  viewerConfig.response.forEach(function(item){\n      if (item.id===memberID && item.feeProgram===feeProgram) {\n        found=true;\n      }\n  });  \n  return found;\n}\nbundle.disableEdits = function(){\n  K('field[Include Family Members]').disable();  \n  K('field[Apply Discounts]').hide();  \n  K('field[Payment Frequency]').disable();  \n  K('field[Programs]').hide();  \n  K('section[Add buttons]').hide();\n  debugger;\n  K('field[TAX 1]').hide();\n  K('field[TAX 2]').hide();\n  K('field[TAX 3]').hide();\n  K('field[Admin Fee]').hide();\n\n  K('field[Fee Total]').hide();\n  K('field[Fee Total]').hide();\n  bundle.editFeeMode=false;\n  \n  K('section[New Schedule Date]').hide();\n  $(\"#rescheduleDateOnly\").prop(\"checked\", false);\n  $(\"#editBillingDetails\").prop(\"checked\", false);\n  $(\"#rescheduleWithDetails\").prop(\"checked\", false);\n  \n  K('field[Editing Option]').value(\"\");\n  $(K('field[Update Bambora]').element()).prop('checked', false);\n  $(K('field[Immediately]').element()).prop('checked', false);\n  K('field[Update Bambora]').enable()\n  K('field[Payment Options]').disable();\n\n  $(\".discountEdit\").removeClass(\"fa\");\n  $(\".discountEdit\").removeClass(\"fa-pen\");\n}\n  \nbundle.enableRescheduleWithDetails = function(){\n  K('field[Payment Frequency]').value(K('field[Billing Period]').value());\n  \n  if (!K(\"form\").reviewMode()) {\n\t  K('field[Include Family Members]').enable();  \n    K('field[Payment Frequency]').enable();  \n  }\n  K('field[Programs]').show();  \n  K('section[Add buttons]').show();\n  debugger;\n  let tax1Label=K('space').attributes('TAX 1 Label'); \n  bundle.tax1Value=K('space').attributes('TAX 1 Value');     \n  if (tax1Label!==undefined && tax1Label!==null && tax1Label!==\"\") {\n    $(K('field[TAX 1]').wrapper()).find(\"label\").html(tax1Label);\n    K('field[TAX 1]').show();\n  }\n\n  let tax2Label=K('space').attributes('TAX 2 Label'); \n  bundle.tax2Value=K('space').attributes('TAX 2 Value');                \n  if (tax2Label!==undefined && tax2Label!==null && tax2Label!==\"\") {\n    $(K('field[TAX 2]').wrapper()).find(\"label\").html(tax2Label);\n    K('field[TAX 2]').show();\n  }\n\n  let tax3Label=K('space').attributes('TAX 3 Label'); \n  bundle.tax3Value=K('space').attributes('TAX 3 Value');                \n  if (tax3Label!==undefined && tax3Label!==null && tax3Label!==\"\") {\n    $(K('field[TAX 3]').wrapper()).find(\"label\").html(tax3Label);\n    K('field[TAX 3]').show();\n  }\n\n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n    K('field[Admin Fee]').hide();\n  } else {\n    K('field[Admin Fee]').show();\n  }\n    \n  if (K(\"form\").reviewMode()) {\n    if (K('field[Fee Total]').value()===null || K('field[Fee Total]').value()===\"\"){\n    \tK('field[Fee Total]').hide();\n  \t} else {\n      K('field[Fee Total]').show();\n    }\n  } else {\n\t\tK('field[Fee Total]').show();\n\t  K('field[Fee Total]').enable();\n  }\n  K('field[Payment Total]').disable();\n  \n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  } else {\n    if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\"/* && (K('field[Admin Fee]').value()===null || K('field[Admin Fee]').value().indexOf(\"%\")===-1)*/) {\n      $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n    }\n  }\n  $(\".discountEdit\").addClass(\"fa\");\n  $(\".discountEdit\").addClass(\"fa-pen\");\n  bundle.editFeeMode=true;  \n  bundle.completeTableChange();  \n}  \nbundle.disableRescheduleWithDetails = function(){\n  K('field[Include Family Members]').disable();  \n  K('field[Apply Discounts]').hide();  \n  K('field[Payment Frequency]').disable();  \n  K('field[Programs]').hide();  \n  K('section[Add buttons]').hide();\n  debugger;\n  K('field[TAX 1]').hide();\n  K('field[TAX 2]').hide();\n  K('field[TAX 3]').hide();\n  K('field[Admin Fee]').hide();\n\n  K('field[Fee Total]').hide();\n  K('field[Fee Total]').hide();\n  bundle.editFeeMode=false;\n  $(\".discountEdit\").removeClass(\"fa\");\n  $(\".discountEdit\").removeClass(\"fa-pen\");\n}\nbundle.disableEditBillingDetails = function(){\n  K('field[Include Family Members]').disable();  \n  K('field[Apply Discounts]').hide();  \n  K('field[Payment Frequency]').disable();  \n  K('field[Programs]').hide();  \n  K('section[Add buttons]').hide();\n  debugger;\n  K('field[TAX 1]').hide();\n  K('field[TAX 2]').hide();\n  K('field[TAX 3]').hide();\n  K('field[Admin Fee]').hide();\n\n  K('field[Fee Total]').hide();\n  K('field[Fee Total]').hide();\n  bundle.editFeeMode=false;\n  $(\".discountEdit\").removeClass(\"fa\");\n  $(\".discountEdit\").removeClass(\"fa-pen\");\n}\nbundle.enableEditBillingDetails = function(){\n  K('field[Payment Frequency]').value(K('field[Billing Period]').value());\n  if (!K(\"form\").reviewMode()) {\n\t  K('field[Include Family Members]').enable();  \n  }\n  K('field[Programs]').show();  \n  K('section[Add buttons]').show();\n  debugger;\n  let tax1Label=K('space').attributes('TAX 1 Label'); \n  bundle.tax1Value=K('space').attributes('TAX 1 Value');     \n  if (tax1Label!==undefined && tax1Label!==null && tax1Label!==\"\") {\n    $(K('field[TAX 1]').wrapper()).find(\"label\").html(tax1Label);\n    K('field[TAX 1]').show();\n  }\n\n  let tax2Label=K('space').attributes('TAX 2 Label'); \n  bundle.tax2Value=K('space').attributes('TAX 2 Value');                \n  if (tax2Label!==undefined && tax2Label!==null && tax2Label!==\"\") {\n    $(K('field[TAX 2]').wrapper()).find(\"label\").html(tax2Label);\n    K('field[TAX 2]').show();\n  }\n\n  let tax3Label=K('space').attributes('TAX 3 Label'); \n  bundle.tax3Value=K('space').attributes('TAX 3 Value');                \n  if (tax3Label!==undefined && tax3Label!==null && tax3Label!==\"\") {\n    $(K('field[TAX 3]').wrapper()).find(\"label\").html(tax3Label);\n    K('field[TAX 3]').show();\n  }\n\n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n    K('field[Admin Fee]').hide();\n  } else {\n    K('field[Admin Fee]').show();\n  }\n    \n  if (K(\"form\").reviewMode()) {\n    if (K('field[Fee Total]').value()===null || K('field[Fee Total]').value()===\"\"){\n    \tK('field[Fee Total]').hide();\n  \t} else {\n      K('field[Fee Total]').show();\n    }\n  } else {\n\t\tK('field[Fee Total]').show();\n\t  if (!K(\"form\").reviewMode()) {\n\t\t  K('field[Fee Total]').enable();\n    }\n  }\n  K('field[Payment Total]').disable();\n  \n  if (K('space').attributes('Ignore Admin Fee')===\"YES\") {\n  } else {\n    if (K('space').attributes('Admin Fee Label')!==null && K('space').attributes('Admin Fee Label')!==\"\"/* && (K('field[Admin Fee]').value()===null || K('field[Admin Fee]').value().indexOf(\"%\")===-1)*/) {\n      $(\"#admin_fee_label\").html(K('space').attributes('Admin Fee Label'));\n    }\n  }\n  if (!K(\"form\").reviewMode()) {  \n    if (K('field[Billing Status]').value()===\"Inactive\"){\n      $(K('field[Update Bambora]').element()).prop('checked', true);\n      K('field[Update Bambora]').disable();\n      K('section[Update Bambora details]').show();\n      $(K('field[Immediately]').element()).prop('checked', false);  \n      K('field[Immediately]').disable();\n\t\t  K('field[Immediately]').hide();\n\t\t\t$(\"#dateaffective input\").val(\"\");\n\t\t\tK('field[Date Affective]').value(\"\");\n      K('field[Payment Options]').enable();\n    } else {\n      $(K('field[Update Bambora]').element()).prop('checked', false);\n      K('field[Update Bambora]').enable();\n      $(K('field[Immediately]').element()).prop('checked', false);  \n      K('field[Immediately]').enable();\n    }\n  }\n  \n  bundle.editFeeMode=true;  \n  $(\".discountEdit\").addClass(\"fa\");\n  $(\".discountEdit\").addClass(\"fa-pen\");\n  bundle.completeTableChange();  \n}    \nbundle.rescheduleDateOnly = function(){\n  debugger;\n  K('field[Payment Frequency]').value(K('field[Billing Period]').value());\n  K('field[Editing Option]').value(\"RescheduleDateOnly\");\n  bundle.disableRescheduleWithDetails();\n  bundle.disableEditBillingDetails();\n}\nbundle.rescheduleWithDetails = function(){\n  K('field[Editing Option]').value(\"RescheduleWithDetails\");\n  bundle.disableEditBillingDetails();\n  bundle.enableRescheduleWithDetails();  \n}\nbundle.editBillingDetails = function(){\n  K('field[Editing Option]').value(\"EditBillingDetails\");\n  bundle.disableRescheduleWithDetails();\n  bundle.enableEditBillingDetails();\n}\nbundle.isRescheduleChange = function() {\n  return (K('field[Editing Option]').value()===\"RescheduleDateOnly\" || K('field[Editing Option]').value()===\"RescheduleWithDetails\");\n}\nbundle.isEditBillingDetails = function() {\n  return (K('field[Editing Option]').value()===\"EditBillingDetails\");\n}\nbundle.isBamboraFailedPayment = function(payment) {\n  return (\n    (payment.paymentStatus === 'Transaction Declined' ||\n      payment.paymentStatus === 'DECLINED' ||\n      payment.paymentStatus === 'PIN RETRY EXCEEDED' ||\n      payment.paymentStatus === 'SERV NOT ALLOWED' ||\n      payment.paymentStatus === 'INV ACCT NUM' ||\n      payment.paymentStatus === 'Invalid Card Number' ||\n      payment.paymentStatus === 'Validation greater than maximum amount' ||\n      payment.paymentStatus === 'BAD PROCESSING CODE' ||\n      payment.paymentStatus === 'EXPIRED CARD') &&\n    payment.paymentSource !== 'Manual Membership Payment'\n  );\n}\nbundle.autoCreateCard = function(){\n    debugger;\n    var paymentsSettings = {\n      \"crossDomain\": true,\n      \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/payments\",\n      \"method\": \"POST\",\n      \"headers\": {},\n      \"dataType\": \"json\",\n      \"contentType\": \"application/json\",\n      \"data\": JSON.stringify({\n        \"space\": K('space').slug(),\n        \"billingService\": \"Bambora\",\n        \"customerId\": K('field[Billing Customer Id]').value(),\n        \"paymentType\": \"ALL\",\n        \"paymentMethod\": \"ALL\",\n        \"paymentSource\": \"ALL\",\n        \"dateField\": \"PAYMENT\",\n        \"dateFrom\": moment().subtract(6, 'months').format('YYYY-MM-DD'),\n        \"dateTo\": moment().format('YYYY-MM-DD'),\n        \"internalPaymentType\": 'customer',\n      })\n    }\n\n    $.ajax(paymentsSettings).done(function (paymentsResponse) {\n      debugger;\n      console.log(paymentsResponse);\n      if (paymentsResponse.error===100) {\n        var message=paymentsResponse.errorMessage;\n        $(\"#errorValue\").html(message);\n        K('section[Card Error]').show();\n      } else {\n        var data=paymentsResponse.data;\n        data=data.filter(payment => !bundle.isBamboraFailedPayment(payment));\n        data.sort(function(p1, p2) {\n        \tif (p1.debitDate > p2.debitDate) return -1; \t \n        \tif (p1.debitDate < p2.debitDate) return 1; \t \n          return 0;\n        });\n        if (data.length===0) {\n\t\t      K('field[AutoCreating]').value(\"NoTransactions\");      \t\t          \n        } else {\n          var creditCardSettings = {\n            \"crossDomain\": true,\n            \"url\": K('space').attributes('Kinetic Billing Server URL')+\"/createProfileCard\",\n            \"method\": \"POST\",\n            \"headers\": {},\n            \"dataType\": \"json\",\n            \"contentType\": \"application/json\",\n            \"data\": JSON.stringify({\n              \"space\": K('space').slug(),\n              \"billingService\": \"Bambora\",\n              \"transactionID\": data[0].paymentID,\n              \"name\": K('field[Student First Name]').value()+\" \"+K('field[Student Last Name]').value(),\n              \"address\": K('field[Address]').value(),\n              \"city\": K('field[Suburb]').value(),\n              \"province\": K('field[State]').value(),\n              \"country\": K('space').attributes('School Country Code'),\n              \"postalCode\": K('field[Postcode]').value(),\n              \"email\": K('field[Email]').value(),\n            })\n        \t}\n          $.ajax(creditCardSettings).done(function (response) {\n            debugger;\n            console.log(response);\n            if (response.error===100) {\n              var data=JSON.parse(response.data);\n              var message=data.status_message;\n              $(\"#errorValue\").html(message);\n              K('section[Card Error]').show();\n            } else {\n              var data=JSON.parse(response.data);\n\t\t\t\t      K('field[POS Profile ID]').value(data.profileId);\n\t\t\t        K('section[Card Error]').hide();\n            }\n          });\n        }\n        K('section[Card Error]').hide();\n      }\n    });    \n}    \n\n\nbundle.discounts=(K('space').attributes('Member Discounts')!==undefined ? JSON.parse(K('space').attributes('Member Discounts')) : []);  \n\n\noptions=[];\nvar freqValue=K('field[Payment Frequency]').value();\nconst sortOrder = ['Daily','Weekly','Fortnightly','4 Weekly','Monthly','Quarterly','4 Months','6 Months','Yearly'];\n\nK('space').attributes('Payment Frequencies').split(\",\").forEach(function(value) {\n    options[options.length] = {'label': value, 'value': value};\n});\n\noptions.sort(function(a, b) {\n    return sortOrder.indexOf(a.value) - sortOrder.indexOf(b.value);\n});\nK('field[Payment Frequency]').options(options);\nsetTimeout(function() { K('field[Payment Frequency]').value(freqValue); }, 100, freqValue);\n\nK('field[Payment Frequency]').disable();",
           "runIf": ""
         },
         {
           "name": "Load Members Table",
           "type": "Load",
           "action": "Custom",
-          "code": "global.viewerConfig ={\n  resultsContainer:\n  '<table cellspacing=\"0\", border=\"0\", class=\"table table-striped table-bordered table-condensed dataTable\">',\n  data: [\n  {\n  title: 'MemberID',\n  name: 'id',\n  setField: 'tableMemberID',\n  class: 'hidden'\n  },\n  {\n  title: 'Name',\n  name: 'Name',\n  setField: 'tableMemberName'\n  },\n  {\n  title: 'Fee Program',\n  name: 'feeProgram',\n  setField: 'tableFeeProgram',\n  class: 'hidden'\n  },\n  {\n  title: 'Program',\n  name: 'program',\n  setField: 'tableProgram'\n  },\n  {\n  title: 'Fee',\n  name: 'fee',\n  setField: 'tableFee'\n  },\n  {\n  title: 'Cost',\n  name: 'cost',\n  class: 'hidden',\n  setField: 'tableFee'\n  },\n\t{\n  title: 'Discount',\n  name: 'discount',\n    render: function ( data, type, record ) {\n      debugger;\n      return \"<span>\"+data+\"<i class='discountEdit fa fa-pen review_\"+form('review')+\"' placeholder='Edit member discount' onclick='bundle.editDiscount(\\\"\"+record.id+\"\\\")'></i></span>\";\n    },\n  },\n],\n  resultsContainerId: 'member-table',\n  before: function(configObj) {\n\n  },\n  error: function(configObj) {},\n  complete: function(configObj) {\n\n  },\n  removeOnClick: false,\n  renderer: {\n  type: DataViewer.Renderers.DataTables, // Passing a function here allows for better customization\n  options: {\n  // Options for Render\n  processSingleResult: false,\n  // DataTable OPTIONS; Passing options here make it clear that they are being passed to data tables\n  // responsive: OPTIONAL Default for \"BridgeDataTable\" is true but can be over written.\n  responsive: false,\n  dom: 'tip',\n  orderFixed: [[4, 'desc']], /* Fee */\n  paging: false,\n  scrollY: '60vh',\n  scrollCollapse: true,\n  select: {\n  \tstyle: 'single',\n\t\tselector: 'td:first-child'\n\t},\n  createdRow: function createdRow(row, data, dataIndex) {\n\n  },\n\tdeferRender: true,\n}\n}\n};\nviewerConfig.response = (K('field[feesJSON]').value()===null ? [] : JSON.parse(K('field[feesJSON]').value()));\nDataViewer.renderResults($('#memberTableDiv'), viewerConfig);\n\nsetTimeout(function() {\n  $(\"#discountDialog\").dialog({\n    autoOpen : false, modal : true, show : \"blind\", hide : \"blind\"\n  });\n},1000);\n"
+          "code": "global.viewerConfig ={\n  resultsContainer:\n  '<table cellspacing=\"0\", border=\"0\", class=\"table table-striped table-bordered table-condensed dataTable\">',\n  data: [\n  {\n  title: 'MemberID',\n  name: 'id',\n  setField: 'tableMemberID',\n  class: 'hidden'\n  },\n  {\n  title: 'Name',\n  name: 'Name',\n  setField: 'tableMemberName'\n  },\n  {\n  title: 'Fee Program',\n  name: 'feeProgram',\n  setField: 'tableFeeProgram',\n  class: 'hidden'\n  },\n  {\n  title: 'Program',\n  name: 'program',\n  setField: 'tableProgram'\n  },\n  {\n  title: 'Fee',\n  name: 'fee',\n  setField: 'tableFee'\n  },\n  {\n  title: 'Cost',\n  name: 'cost',\n  class: 'hidden',\n  setField: 'tableFee'\n  },\n\t{\n  title: 'Discount',\n  name: 'discount',\n    render: function ( data, type, record ) {\n      return \"<span>\"+data+\"<i class='discountEdit fa fa-pen review_\"+form('review')+\"' placeholder='Edit member discount' onclick='bundle.editDiscount(\\\"\"+record.id+\"\\\")'></i></span>\";\n    },\n  },\n],\n  resultsContainerId: 'member-table',\n  before: function(configObj) {\n\n  },\n  error: function(configObj) {},\n  complete: function(configObj) {\n\n  },\n  removeOnClick: false,\n  renderer: {\n  type: DataViewer.Renderers.DataTables, // Passing a function here allows for better customization\n  options: {\n  // Options for Render\n  processSingleResult: false,\n  // DataTable OPTIONS; Passing options here make it clear that they are being passed to data tables\n  // responsive: OPTIONAL Default for \"BridgeDataTable\" is true but can be over written.\n  responsive: false,\n  dom: 'tip',\n  orderFixed: [[4, 'desc']], /* Fee */\n  paging: false,\n  scrollY: '60vh',\n  scrollCollapse: true,\n  select: {\n  \tstyle: 'single',\n\t\tselector: 'td:first-child'\n\t},\n  createdRow: function createdRow(row, data, dataIndex) {\n\n  },\n\tdeferRender: true,\n}\n}\n};\nviewerConfig.response = (K('field[feesJSON]').value()===null ? [] : JSON.parse(K('field[feesJSON]').value()));\nDataViewer.renderResults($('#memberTableDiv'), viewerConfig);\n\nsetTimeout(function() {\n  $(\"#discountDialog\").dialog({\n    autoOpen : false, modal : true, show : \"blind\", hide : \"blind\"\n  });\n},1000);\n"
         },
         {
           "name": "Set JSON",
